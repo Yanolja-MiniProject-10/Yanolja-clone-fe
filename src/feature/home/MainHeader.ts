@@ -4,12 +4,15 @@ import { LuShoppingCart } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  /* position: fixed; */
+  position: fixed;
+  height: 50px;
+  top: 0;
+  width: 100%;
+  max-width: 52.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* max-width: 52.5rem; */
-  height: 50px;
+  background-color: white;
   border-bottom: 1px solid ${({ theme }) => theme.color.middleGray};
 `;
 const LinkedBox = styled(Link)`
@@ -23,9 +26,6 @@ const LinkedBox = styled(Link)`
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
-  * {
-    color: ${({ theme }) => theme.color.middleGray};
-  }
 `;
 const InputText = styled.p`
   color: ${({ theme }) => theme.color.middleGray};
@@ -34,6 +34,7 @@ const InputText = styled.p`
 
 const SearchIcon = styled(IoSearch)`
   font-size: ${({ theme }) => theme.fontSize.sm};
+  color: black;
 `;
 
 const CartIcon = styled(LuShoppingCart)`

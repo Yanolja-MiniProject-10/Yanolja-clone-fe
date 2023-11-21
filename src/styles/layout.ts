@@ -14,4 +14,5 @@ export const Box = styled.div`
   height: 100%;
   max-width: 52.5rem;
   background-color: ${({ theme }) => theme.color.white};
+  padding-top: 50px;
 `;

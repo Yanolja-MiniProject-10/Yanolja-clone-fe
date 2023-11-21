@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, LinkedBox, InputText, SearchIcon, CartIcon } from "./MainHeader.style";
+import { Container, LinkedBox, InputText, SearchIcon, CartIcon } from "./MainHeader.ts";
 
 const MainHeader = () => {
   return (
