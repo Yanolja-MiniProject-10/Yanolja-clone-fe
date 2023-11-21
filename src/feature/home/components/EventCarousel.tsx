@@ -1,9 +1,7 @@
 import React from "react";
 
 const EventCarousel = () => {
-  return <div style={{ height: "2000px" }}>EventCarousel</div>;
+  return <div style={{ height: "200px" }}>EventCarousel</div>;
 };
 
 export default EventCarousel;
-
-//, backgroundColor: "pink"
