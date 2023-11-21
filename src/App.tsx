@@ -1,10 +1,29 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
+import LogIn from "./pages/LogIn";
+import Search from "./pages/Search";
+import Cart from "./pages/Cart";
+import Accommodation from "./pages/Accommodation";
+import Reservation from "./pages/Reservation";
+import Profile from "./pages/Profile";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <>
-      <h1>파이팅</h1>
-    </>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/accommodation" element={<Accommodation />} />
+        <Route path="/accommodation/:id" element={<Accommodation />} />
+        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </Layout>
   );
 }
 
