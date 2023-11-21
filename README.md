@@ -24,8 +24,8 @@ ex) Feat: 로그인 구현 (#22)
 ### 브랜치관리
 `main`
 
-`UserList/#issue`
-(파스칼로 작성)
+`userList/#issue`
+(카멜 케이스로 작성)
 
 ### pr 제목
 - 이슈 제목과 동일하게
