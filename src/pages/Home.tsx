@@ -1,4 +1,4 @@
-import MainHeader from "../feature/accommodation/MainHeader";
+import MainHeader from "../feature/home/MainHeader";
 
 const Home = () => {
   return (
