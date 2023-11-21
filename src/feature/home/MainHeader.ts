@@ -39,6 +39,7 @@ const SearchIcon = styled(IoSearch)`
 
 const CartIcon = styled(LuShoppingCart)`
   font-size: ${({ theme }) => theme.fontSize.lg};
+  color: black;
   margin-left: 1rem;
 `;
 

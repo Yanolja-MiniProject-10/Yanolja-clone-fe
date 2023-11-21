@@ -15,17 +15,33 @@ const Container = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xl};
   vertical-align: middle;
   * {
-    cursor: pointer;
     color: black;
+  }
+`;
+
+const ArrowBox = styled.div`
+  cursor: pointer;
+  * {
     &:hover {
       color: ${({ theme }) => theme.color.hoverPink};
     }
   }
 `;
 
+const HeadingText = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.md};
+  font-weight: 600;
+`;
+
 const RightIcons = styled.div`
   display: flex;
   gap: 1rem;
+  cursor: pointer;
+  * {
+    &:hover {
+      color: ${({ theme }) => theme.color.hoverPink};
+    }
+  }
 `;
 
-export { Container, RightIcons };
+export { Container, ArrowBox, RightIcons, HeadingText };
