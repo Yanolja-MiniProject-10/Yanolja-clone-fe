@@ -13,11 +13,11 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
-  border-bottom: 1px solid ${({ theme }) => theme.color.middleGray};
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
 `;
 const LinkedBox = styled(Link)`
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 1rem;
   border: 1px solid ${({ theme }) => theme.color.middleGray};
   width: 90%;
   height: 60%;
@@ -41,6 +41,9 @@ const CartIcon = styled(LuShoppingCart)`
   font-size: ${({ theme }) => theme.fontSize.lg};
   color: black;
   margin-left: 1rem;
+  &:hover {
+    color: ${({ theme }) => theme.color.hoverPink};
+  }
 `;
 
 export { Container, LinkedBox, InputText, SearchIcon, CartIcon };

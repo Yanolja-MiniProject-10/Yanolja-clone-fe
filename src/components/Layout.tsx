@@ -1,5 +1,5 @@
+import MainHeader from "../feature/home/components/MainHeader.tsx";
 import { Wrapper, Box } from "../styles/layout";
-import MainHeader from "../feature/home/MainHeader.tsx";
 import CommonHeader from "./commonHeader/CommonHeader.tsx";
 import { useLocation } from "react-router-dom";
 
