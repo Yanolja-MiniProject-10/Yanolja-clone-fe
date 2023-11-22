@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   * {
     box-sizing: border-box;
   }
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.color.brightGray};
 `;

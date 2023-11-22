@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const useAllAccommodations = () => {
   return useQuery({
-    queryKey: ["AllAccommodations"],
+    queryKey: ["allAccommodations"],
     queryFn: getAllAccommodations,
   });
 };

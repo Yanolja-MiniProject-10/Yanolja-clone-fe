@@ -8,19 +8,25 @@ import AllAndRelatedSwiper from "../feature/home/components/allAndRelatedSwiper"
 
 const Home = () => {
   return (
-    <>
-      <div style={{ paddingBottom: "50px" }}>
-        메인
-        <EventCarousel />
-        <CategoryArea />
-        <AllAndRelatedSwiper />
-        <RegionArea />
-        <RankingArea />
-        <Footer />
-        <NavBar />
-      </div>
-    </>
+    <HomeContainer>
+      메인
+      <EventCarousel />
+      <CategoryArea />
+      <AllAndRelatedSwiper />
+      <RegionArea />
+      <RankingArea />
+      <Footer />
+      <NavBar />
+    </HomeContainer>
   );
 };
 
 export default Home;
+
+import styled from "styled-components";
+
+const HomeContainer = styled.div`
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 50px;
+`;
