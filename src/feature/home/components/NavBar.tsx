@@ -1,7 +1,7 @@
 import React from "react";
 import { MdOutlineBook } from "react-icons/md";
 import { IoPersonOutline } from "react-icons/io5";
-import { Container, LinkedBox, IconLabel, CenterIcon } from "../style/navBar";
+import { Container, LinkedBox, IconLabel, CenterIcon } from "../styles/navBar";
 
 const NavBar = () => {
   const scrollToTop = () => {
