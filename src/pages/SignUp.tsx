@@ -1,99 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
-
-const Header = styled.div`
-  height: 90px;
-`;
-
-const Div = styled.div`
-  width: 90%;
-  margin: 30px auto 0 auto;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const FormItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  > div {
-    margin-bottom: 16px;
-    display: flex;
-    align-items: flex-end;
-    > div {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-item: center;
-    }
-    label {
-      width: 100%;
-      margin-right: 10px;
-      color: ${({ theme }) => theme.color.darkGray};
-      font-size: ${({ theme }) => theme.fontSize.sm};
-      white-spacing: nowrap;
-    }
-  }
-  > input {
-    padding: 8px 5px;
-    border: none;
-    border-bottom: 2px solid ${({ theme }) => theme.color.darkGray};
-    font-size: ${({ theme }) => theme.fontSize.xs};
-
-    &:focus {
-      outline: none;
-      border-bottom: 2px solid ${({ theme }) => theme.color.black};
-    }
-    &::placeholder {
-      color: ${({ theme }) => theme.color.darkGray};
-      font-weight: 400;
-    }
-  }
-  button {
-    padding: 8px 18px 6px 18px;
-    color: ${({ theme }) => theme.color.mainPink};
-    border-radius: ${({ theme }) => theme.box.radius};
-    border: 1px solid ${({ theme }) => theme.color.mainPink};
-    background-color: ${({ theme }) => theme.color.white};
-    font-size: ${({ theme }) => theme.fontSize.xs};
-    font-weight: 600;
-    white-space: nowrap;
-    &:hover {
-      color: ${({ theme }) => theme.color.white};
-      background-color: ${({ theme }) => theme.color.mainPink};
-    }
-  }
-`;
-
-const Message = styled.div`
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  color: ${({ theme }) => theme.color.red};
-`;
-
-const Button = styled.button<Props>`
-  margin-top: 20px;
-  padding: 18px;
-  color: ${({ theme }) => theme.color.white};
-  border: none;
-  border-radius: ${({ theme }) => theme.box.radius};
-  background-color: ${props =>
-    props.disabled ? ({ theme }) => theme.color.middleGray : ({ theme }) => theme.color.mainPink};
-  font-size: ${({ theme }) => theme.fontSize.md};
-`;
-
-interface FormData {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
-
-interface Props {
-  disabled: boolean;
-}
+import { FormData } from "../feature/signUp/signUp.types";
+import { Button, Div, EmailButton, Form, FormItem, Message } from "../feature/signUp/styles/signUp";
 
 const SignUp = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -103,10 +10,17 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
+  // 에러 메시지
   const [errors, setErrors] = useState({
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
+  });
+
+  // 성공 메시지
+  const [success, setSuccess] = useState({
+    email: "",
     confirmPassword: "",
   });
 
@@ -118,11 +32,16 @@ const SignUp = () => {
   });
 
   const [isValid, setIsValid] = useState<boolean>(false);
+  const [isConfirmEmail, setIsConfirmEmail] = useState<boolean>(false);
+  const [isConfirmPassword, setIsConfirmAPassword] = useState<boolean>(false);
+  const [hasCheckedEmail, setHasCheckedEmail] = useState<boolean>(false); // 이메일 체크 여부
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
     setIsChanged({ ...isChanged, [id]: true });
+    setHasCheckedEmail(false);
+    setIsConfirmEmail(false);
     setIsValid(validateForm());
   };
 
@@ -136,8 +55,13 @@ const SignUp = () => {
       confirmPassword: "",
     };
 
+    const newSuccess = {
+      email: "",
+      confirmPassword: "",
+    };
+
     // 모든 값 입력 여부 확인
-    if (formData.name && formData.email && formData.password && formData.confirmPassword) {
+    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
       isValid = false;
     }
 
@@ -153,94 +77,132 @@ const SignUp = () => {
     }
 
     // 이메일 유효성 검사
-    // if (// 중복체크) {
-    //   newErrors.email = "* 이미 사용중인 이메일입니다.";
-    //   isValid = false;
-    // }
+    if (formData.email) {
+      if (isConfirmEmail) {
+        newErrors.email = "";
+        newSuccess.email = "* 사용가능한 이메일입니다.";
+      } else {
+        newErrors.email = "* 이미 사용중인 이메일입니다.";
+        isValid = false;
+      }
+    }
 
     // 비밀번호 유효성 검사
     if (formData.password.trim() !== "") {
-      if (formData.password.length < 6) {
+      if (formData.password.length < 5) {
         newErrors.password = "* 비밀번호는 5자 이상으로 입력해주세요.";
         isValid = false;
       }
     }
 
     // 비밀번호 일치 검사
-    if (formData.confirmPassword !== formData.password) {
-      newErrors.confirmPassword = "* 비밀번호가 일치하지 않습니다.";
-      isValid = false;
+    if (formData.confirmPassword) {
+      if (formData.confirmPassword !== formData.password) {
+        newErrors.confirmPassword = "* 비밀번호가 일치하지 않습니다.";
+        isValid = false;
+        setIsConfirmAPassword(false);
+      } else {
+        newErrors.confirmPassword = "";
+        newSuccess.confirmPassword = "* 비밀번호가 일치합니다.";
+        setIsConfirmAPassword(true);
+      }
     }
 
     setErrors(newErrors);
+    setSuccess(newSuccess);
     setIsValid(isValid);
     return isValid;
-  }, [formData]);
+  }, [formData, isConfirmEmail]);
 
   useEffect(() => {
     validateForm();
   }, [validateForm]);
 
+  // 이메일 중복 확인
+  const handleDuplicateEmail = (email: string) => {
+    setHasCheckedEmail(true);
+    // 중복 확인 로직
+    if (email) {
+      setIsConfirmEmail(true);
+    } else {
+      setIsConfirmEmail(false);
+    }
+  };
+
   // 회원가입
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isValid) {
-      try {
-        // 회원가입 로직
-      } catch {
-        // 회원가입 실패 로직
-      }
+    try {
+      console.log(formData);
+      // 회원가입 로직
+    } catch (error) {
+      console.log(error);
+      // 회원가입 실패 로직
     }
   };
 
   return (
-    <>
-      <Header>회원가입</Header>
-      <Div>
-        <Form onSubmit={handleSignup}>
-          <FormItem>
+    <Div>
+      <Form onSubmit={handleSignup}>
+        <FormItem>
+          <div>
+            <label htmlFor="name">이름</label>
+            <Message>{errors.name}</Message>
+          </div>
+          <input type="text" id="name" placeholder="ex) 야놀자" value={formData.name} onChange={handleInputChange} />
+        </FormItem>
+        <FormItem>
+          <div>
             <div>
-              <label htmlFor="name">이름</label>
-              <Message>{errors.name}</Message>
+              <label htmlFor="email">이메일</label>
+              {hasCheckedEmail &&
+                (isConfirmEmail ? (
+                  <Message $isconfirm={isConfirmEmail}>{success.email}</Message>
+                ) : (
+                  <Message>{errors.email}</Message>
+                ))}
             </div>
-            <input type="text" id="name" placeholder="ex) 야놀자" value={formData.name} onChange={handleInputChange} />
-          </FormItem>
-          <FormItem>
-            <div>
-              <div>
-                <label htmlFor="email">이메일</label>
-                <Message>{errors.email}</Message>
-              </div>
-              <button type="button">중복확인</button>
-            </div>
-            <input
-              type="email"
-              id="email"
-              placeholder="ex) yanolja@yanolja.com"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-          </FormItem>
-          <FormItem>
-            <div>
-              <label htmlFor="password">비밀번호</label>
-              <Message>{errors.password}</Message>
-            </div>
-            <input type="password" id="password" value={formData.password} onChange={handleInputChange} />
-          </FormItem>
-          <FormItem>
-            <div>
-              <label htmlFor="confirmPassword">비밀번호 확인</label>
+            <EmailButton
+              type="button"
+              $isconfirm={hasCheckedEmail}
+              onClick={() => {
+                void handleDuplicateEmail(formData.email);
+              }}
+            >
+              중복확인
+            </EmailButton>
+          </div>
+          <input
+            type="email"
+            id="email"
+            placeholder="ex) yanolja@yanolja.com"
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+        </FormItem>
+        <FormItem>
+          <div>
+            <label htmlFor="password">비밀번호</label>
+            <Message>{errors.password}</Message>
+          </div>
+          <input type="password" id="password" value={formData.password} onChange={handleInputChange} />
+        </FormItem>
+        <FormItem>
+          <div>
+            <label htmlFor="confirmPassword">비밀번호 확인</label>
+            {isConfirmPassword ? (
+              <Message $isconfirm={isConfirmPassword}>{success.confirmPassword}</Message>
+            ) : (
               <Message>{errors.confirmPassword}</Message>
-            </div>
-            <input type="password" id="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} />
-          </FormItem>
-          <Button type="submit" disabled={!isValid}>
-            회원가입
-          </Button>
-        </Form>
-      </Div>
-    </>
+            )}
+          </div>
+          <input type="password" id="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} />
+        </FormItem>
+        <Button type="submit" disabled={!isValid}>
+          회원가입
+        </Button>
+      </Form>
+    </Div>
   );
 };
 
