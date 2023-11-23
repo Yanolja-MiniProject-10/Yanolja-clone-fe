@@ -8,6 +8,9 @@ import AllAndRelatedSwiper from "../feature/home/components/allAndRelatedSwiper"
 import { responseMock } from "../feature/home/homeMockdata";
 //import { useAllAccommodations, useRelatedAccommodations } from "../feature/home/home.hooks";
 
+{
+  /* 이곳의 주석들은 API 최종 완성 후 주석 해제 예정입니다 */
+}
 const Home = () => {
   //const { data: allAccommodations } = useAllAccommodations();
   //const { data: relatedAccommodations } = useRelatedAccommodations('SEOUL');
@@ -33,12 +36,13 @@ const Home = () => {
 
 export default Home;
 
+// 나중에 파일로 분리하겠습니다!
 import styled from "styled-components";
 
 const HomeContainer = styled.div`
   width: 90%;
   margin: 0 auto;
-  padding-bottom: 50px;
+  padding-bottom: 60px;
 
   a {
     text-decoration: none;

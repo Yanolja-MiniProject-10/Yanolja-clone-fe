@@ -20,10 +20,10 @@ export const useRelatedAccommodations = () => {
   });
 };
 
-export const useRegionAccommodations = () => {
+export const useRegionAccommodations = ({ region }) => {
   return useQuery({
-    queryKey: ["regionAccommodations"],
-    queryFn: getRegionAccommodations,
+    queryKey: ["regionAccommodations", region],
+    queryFn: () => getRegionAccommodations(region),
   });
 };
 

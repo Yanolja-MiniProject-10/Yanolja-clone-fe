@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 52.5rem;
-  height: 50px;
+  height: 60px;
 
   position: fixed;
   top: 0;
@@ -17,21 +17,20 @@ const Container = styled.div`
 
   background-color: white;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-size: ${({ theme }) => theme.fontSize.md};
 
   vertical-align: middle;
   * {
     transition: 0.4s;
     color: black;
   }
-  //z-index??
 `;
 
 const ArrowBox = styled.div`
   cursor: pointer;
 
-  * {
-    &:hover {
+  &:hover {
+    * {
       color: ${({ theme }) => theme.color.mainPink};
     }
   }
@@ -48,6 +47,7 @@ const RightIcons = styled.div`
   gap: 1rem;
 
   cursor: pointer;
+
   * {
     &:hover {
       color: ${({ theme }) => theme.color.mainPink};

@@ -13,7 +13,7 @@ const AllAndRelatedSwiper = ({ title, accommodations }) => {
     <div>
       <h1>{title}</h1>
       <Swiper
-        slidesPerView={3}
+        slidesPerView={5}
         spaceBetween={100}
         loop={true}
         navigation={{

@@ -14,7 +14,7 @@ export const Box = styled.div`
   height: 100%;
   min-height: 100vh;
   max-width: 52.5rem;
-  padding-top: 50px;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.white};

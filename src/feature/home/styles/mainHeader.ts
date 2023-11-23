@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: fixed;
-  height: 50px;
+  height: 60px;
   top: 0;
   width: 100%;
   max-width: 52.5rem;
@@ -23,7 +23,7 @@ const Container = styled.div`
 
 const LinkedBox = styled(Link)`
   width: 90%;
-  height: 60%;
+  height: 70%;
   padding: 0 1.8rem;
   border-radius: 1rem;
   border: 1px solid ${({ theme }) => theme.color.middleGray};
