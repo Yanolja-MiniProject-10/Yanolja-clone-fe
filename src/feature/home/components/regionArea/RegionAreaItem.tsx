@@ -7,7 +7,7 @@ const RegionAreaItem = ({ name, thumbnail, minPrice, maxPrice }) => {
         <img src={thumbnail} alt={name} />
       </ImgBox>
       <Description>
-        <b>{name}</b>
+        <Title>{name}</Title>
         <Price>
           {minPrice.toLocaleString()} ~ {maxPrice.toLocaleString()}
         </Price>
@@ -21,9 +21,10 @@ export default RegionAreaItem;
 import styled from "styled-components";
 
 const ItemContainer = styled.div`
-  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  width: 11rem;
+  /* box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15); */
   border-radius: 10px;
-  margin: 1rem;
+
   display: flex;
   flex-direction: column;
 
@@ -38,17 +39,22 @@ const ImgBox = styled.div`
 
   & > img {
     width: 100%;
-    height: 5rem;
-    border-radius: 10px 10px 0 0;
+    height: 8rem;
+    border-radius: 3px;
   }
 `;
 
 const Description = styled.div`
-  padding: 10px 1rem;
+  padding: 10px 5px;
   display: flex;
   flex-direction: column;
 `;
 
-const Price = styled.p`
+const Title = styled.p`
+  margin-bottom: 10px;
+  font-weight: 400;
+`;
+
+const Price = styled.b`
   text-align: right;
 `;
