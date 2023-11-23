@@ -21,6 +21,7 @@ export const LinkWrapper = styled.div`
   span:not(:nth-of-type(2)) {
     transition: 0.4s;
     cursor: pointer;
+    white-space: nowrap;
 
     &:hover {
       color: ${({ theme }) => theme.color.mainPink};
