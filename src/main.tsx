@@ -7,6 +7,7 @@ import { GlobalStyles } from "./styles/globalStyles";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import { BrowserRouter } from "react-router-dom";
+import ScrollToTop from "./util/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ root.render(
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
+          <ScrollToTop />
           <App />
         </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />

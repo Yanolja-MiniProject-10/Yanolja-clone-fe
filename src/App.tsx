@@ -8,6 +8,8 @@ import Accommodation from "./pages/Accommodation";
 import Reservation from "./pages/Reservation";
 import Profile from "./pages/Profile";
 import Layout from "./components/Layout";
+import AccommodationRoom from "./pages/AccommodationRoom";
+import AccommodationInformation from "./pages/AccommodationInformation";
 
 function App() {
   return (
@@ -19,7 +21,8 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/accommodation" element={<Accommodation />} />
-        <Route path="/accommodation/:id" element={<Accommodation />} />
+        <Route path="/accommodation/:id" element={<AccommodationInformation />} />
+        <Route path="/accommodation/:id/room/:id" element={<AccommodationRoom />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
