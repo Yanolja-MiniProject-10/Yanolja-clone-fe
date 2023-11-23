@@ -1,5 +1,7 @@
+import { useRegionAccommodations } from "../../home.hooks";
 import RegionAreaItem from "./RegionAreaItem";
 import { Link } from "react-router-dom";
+import { RegionListBox } from "../../styles/regionArea/regionArea.ts";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -28,11 +30,3 @@ const RegionAreaSlide = ({ region }: SlideProps) => {
 };
 
 export default RegionAreaSlide;
-
-import styled from "styled-components";
-import { useRegionAccommodations } from "../../home.hooks";
-
-const RegionListBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
