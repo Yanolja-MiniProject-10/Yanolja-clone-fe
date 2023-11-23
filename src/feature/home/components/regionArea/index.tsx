@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRegionAccommodations } from "../../home.hooks";
 import RegionAreaItem from "./RegionAreaItem";
 import { Link } from "react-router-dom";
 
 const RegionArea = ({ accommodations }) => {
+  const [region, setRegion] = useState("SEOUL");
   //const { data: accommodations } = useRegionAccommodations();
   //console.log("accommodations", accommodations);
 
