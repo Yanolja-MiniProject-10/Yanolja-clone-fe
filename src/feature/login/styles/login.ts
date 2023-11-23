@@ -5,7 +5,7 @@ import styled from "styled-components";
 // `;
 
 export const LinkWrapper = styled.div`
-  margin-right: 35px;
+  margin-right: 34px;
   padding: 30px 0;
   display: flex;
   justify-content: center;
@@ -20,6 +20,7 @@ export const LinkWrapper = styled.div`
 
   span:not(:nth-of-type(2)) {
     transition: 0.4s;
+    cursor: pointer;
 
     &:hover {
       color: ${({ theme }) => theme.color.mainPink};
