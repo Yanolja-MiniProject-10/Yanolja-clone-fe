@@ -9,6 +9,7 @@ const Container = styled.div`
   top: 0;
   width: 100%;
   max-width: 52.5rem;
+  z-index: 100;
 
   display: flex;
   justify-content: center;

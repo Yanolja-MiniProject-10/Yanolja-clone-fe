@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const Container = styled.div`
   position: fixed;
   bottom: 0;
-  height: 50px;
+  height: 60px;
   width: 100%;
   max-width: 52.5rem;
-  padding: 2px 0;
+  padding: 5px 0;
 
   display: flex;
   justify-content: space-evenly;

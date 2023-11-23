@@ -5,16 +5,13 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import AllAndRelatedSwiperItem from "./AllAndRelatedSwiperItem";
 import { CustomNavigation } from "../../styles/allAndRelatedSwiper";
-import { responseMock } from "../../homeMockdata";
-import { useAllAccommodations } from "../../../../hooks/queries/accommodation";
+
 import { Link } from "react-router-dom";
 
-const AllAndRelatedSwiper = () => {
-  //const { data: accommodations } = useAllAccommodations();
-  const accommodations = responseMock.data.content;
+const AllAndRelatedSwiper = ({ title, accommodations }) => {
   return (
     <div>
-      <h1>모든 숙소 둘러보기</h1>
+      <h1>{title}</h1>
       <Swiper
         slidesPerView={3}
         spaceBetween={100}
