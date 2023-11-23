@@ -37,10 +37,10 @@ export const RoomInfo = styled.div`
   flex-direction: column;
   gap: 1rem;
 
-  width: 100%;
+  width: 410px;
 
   @media screen and (width < 840px) {
-    align-items: center;
+    justify-content: flex-start;
   }
 `;
 
@@ -77,10 +77,6 @@ export const RoomCheckInOut = styled.div`
   span {
     color: ${({ theme }) => theme.color.darkGray};
   }
-
-  @media screen and (width < 840px) {
-    margin-right: 12rem;
-  }
 `;
 
 export const RoomCheckIn = styled.p`
@@ -95,12 +91,9 @@ export const RoomCheckOut = styled.p`
 
 export const RoomBottomWrapper = styled.div`
   display: flex;
-  gap: 45%;
+  justify-content: space-between;
 
   @media screen and (width < 840px) {
-    width: 100%;
-    gap: 39%;
-
     width: 410px;
   }
 `;
