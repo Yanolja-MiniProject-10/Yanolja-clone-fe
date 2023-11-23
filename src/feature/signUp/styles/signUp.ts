@@ -7,6 +7,7 @@ export const Div = styled.div`
 `;
 
 export const Form = styled.form`
+  padding: 20px;
   display: flex;
   flex-direction: column;
 `;
@@ -34,6 +35,7 @@ export const FormItem = styled.div`
 
       color: ${({ theme }) => theme.color.darkGray};
       font-size: ${({ theme }) => theme.fontSize.sm};
+      white-space: nowrap;
     }
   }
   > input {
@@ -73,7 +75,20 @@ export const EmailButton = styled.button<MessageProps>`
   &:hover {
     color: ${({ $isconfirm, theme }) => ($isconfirm ? theme.color.white : theme.color.hoverPink)};
     border: ${({ $isconfirm, theme }) =>
-      $isconfirm ? `2px solid ${theme.color.mainPink}` : `2px solid ${theme.color.hoverPink}`};`;
+      $isconfirm ? `2px solid ${theme.color.mainPink}` : `2px solid ${theme.color.hoverPink}`};
+  }
+
+  &:disabled {
+    color: ${({ theme }) => theme.color.middleGray};
+    border: 2px solid ${({ theme }) => theme.color.middleGray};
+    cursor: auto;
+
+    &:hover {
+      color: ${({ theme }) => theme.color.middleGray};
+      border: 2px solid ${({ theme }) => theme.color.middleGray};
+    }
+  }
+`;
 
 export const Message = styled.p<MessageProps>`
   font-size: ${({ theme }) => theme.fontSize.xs};
@@ -94,6 +109,10 @@ export const Button = styled.button`
   &:disabled {
     background-color: ${({ theme }) => theme.color.middleGray};
     cursor: auto;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.color.middleGray};
+    }
   }
 
   &:hover {

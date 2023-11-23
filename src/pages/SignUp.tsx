@@ -32,16 +32,23 @@ const SignUp = () => {
   });
 
   const [isValid, setIsValid] = useState<boolean>(false);
-  const [isConfirmEmail, setIsConfirmEmail] = useState<boolean>(false);
-  const [isConfirmPassword, setIsConfirmAPassword] = useState<boolean>(false);
-  const [hasCheckedEmail, setHasCheckedEmail] = useState<boolean>(false); // 이메일 체크 여부
+  const [isConfirmEmail, setIsConfirmEmail] = useState<boolean>(false); // 이메일 유효성 여부
+  const [isEmailUnique, setIsEmailUnique] = useState<boolean>(false); // 이메일 중복 여부
+  const [hasEmailCheck, setHasEmailCheck] = useState<boolean>(false); // 이메일 중복 확인 여부
+  const [isConfirmPassword, setIsConfirmPassword] = useState<boolean>(false); // 비밀번호 일치 여부
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
     setIsChanged({ ...isChanged, [id]: true });
-    setHasCheckedEmail(false);
-    setIsConfirmEmail(false);
+
+    if (id === "email") {
+      setIsValid(false);
+      setIsConfirmEmail(false);
+      setIsEmailUnique(false);
+      setHasEmailCheck(false);
+    }
+
     setIsValid(validateForm());
   };
 
@@ -78,12 +85,27 @@ const SignUp = () => {
 
     // 이메일 유효성 검사
     if (formData.email) {
-      if (isConfirmEmail) {
-        newErrors.email = "";
-        newSuccess.email = "* 사용가능한 이메일입니다.";
-      } else {
-        newErrors.email = "* 이미 사용중인 이메일입니다.";
+      // 이메일 중복 검사
+      if (!isEmailUnique) {
         isValid = false;
+      }
+
+      if (!/^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]{2,3}$/.test(formData.email)) {
+        setIsConfirmEmail(false);
+        newErrors.email = "* 올바른 이메일 형식이 아닙니다.";
+        isValid = false;
+      } else {
+        setIsConfirmEmail(true);
+
+        if (hasEmailCheck) {
+          if (isEmailUnique === false) {
+            newErrors.email = "* 이미 사용중인 이메일입니다.";
+            setIsEmailUnique(false);
+            isValid = false;
+          } else {
+            newSuccess.email = "* 사용 가능한 이메일입니다.";
+          }
+        }
       }
     }
 
@@ -92,6 +114,7 @@ const SignUp = () => {
       if (formData.password.length < 5) {
         newErrors.password = "* 비밀번호는 5자 이상으로 입력해주세요.";
         isValid = false;
+        setIsConfirmPassword(false);
       }
     }
 
@@ -100,11 +123,11 @@ const SignUp = () => {
       if (formData.confirmPassword !== formData.password) {
         newErrors.confirmPassword = "* 비밀번호가 일치하지 않습니다.";
         isValid = false;
-        setIsConfirmAPassword(false);
+        setIsConfirmPassword(false);
       } else {
         newErrors.confirmPassword = "";
         newSuccess.confirmPassword = "* 비밀번호가 일치합니다.";
-        setIsConfirmAPassword(true);
+        setIsConfirmPassword(true);
       }
     }
 
@@ -112,7 +135,7 @@ const SignUp = () => {
     setSuccess(newSuccess);
     setIsValid(isValid);
     return isValid;
-  }, [formData, isConfirmEmail]);
+  }, [formData, isEmailUnique, hasEmailCheck]);
 
   useEffect(() => {
     validateForm();
@@ -120,13 +143,12 @@ const SignUp = () => {
 
   // 이메일 중복 확인
   const handleDuplicateEmail = (email: string) => {
-    setHasCheckedEmail(true);
     // 중복 확인 로직
-    if (email) {
-      setIsConfirmEmail(true);
-    } else {
-      setIsConfirmEmail(false);
-    }
+    const isDuplicate = email === "test@example.com"; // 임시 중복 확인
+
+    setIsConfirmEmail(true);
+    setIsEmailUnique(!isDuplicate);
+    setHasEmailCheck(true);
   };
 
   // 회원가입
@@ -155,16 +177,20 @@ const SignUp = () => {
           <div>
             <div>
               <label htmlFor="email">이메일</label>
-              {hasCheckedEmail &&
-                (isConfirmEmail ? (
-                  <Message $isconfirm={isConfirmEmail}>{success.email}</Message>
+              {hasEmailCheck ? (
+                isEmailUnique ? (
+                  <Message $isconfirm={true}>{success.email}</Message>
                 ) : (
                   <Message>{errors.email}</Message>
-                ))}
+                )
+              ) : (
+                <Message>{errors.email}</Message>
+              )}
             </div>
             <EmailButton
               type="button"
-              $isconfirm={hasCheckedEmail}
+              $isconfirm={isEmailUnique}
+              disabled={!isConfirmEmail}
               onClick={() => {
                 void handleDuplicateEmail(formData.email);
               }}
