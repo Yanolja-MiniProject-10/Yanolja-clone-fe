@@ -1,49 +1,33 @@
 import React, { useState } from "react";
-import { HomeInnerContainer } from "../../styles/homeCommon";
-//import { useRegionAccommodations } from "../../home.hooks";
-import RegionAreaItem from "./RegionAreaItem";
-import { Link } from "react-router-dom";
+import { HomeInnerContainer, Title } from "../../styles/homeCommon";
+import RegionAreaTabs from "./RegionAreaTabs";
+import RegionAreaSlide from "./RegionAreaSlide";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperCore } from "swiper/types";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
-//여기 주석도 나중에 api 모두 완성 되면 활성화 합니다!
-const RegionArea = ({ accommodations }) => {
-  const [region, setRegion] = useState("SEOUL");
-  //const { data: accommodations } = useRegionAccommodations();
-  //console.log("accommodations", accommodations);
-
-  const fourAccommodations = accommodations.slice(0, 4);
+const RegionArea = () => {
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null);
+  const regions = ["SEOUL", "GANGWON", "GYEONGGI", "JEJU"];
 
   return (
     <HomeInnerContainer>
-      <StyledSpan>지역 별 상품 추천</StyledSpan>
-      {/* nav */}
+      <Title>지역 별 상품 추천</Title>
+      <RegionAreaTabs setThumbsSwiper={setThumbsSwiper} />
 
-      <RegionListBox>
-        {fourAccommodations?.map(accommodation => (
-          <Link key={accommodation.id} to={`/accommodation/${accommodation.id}`}>
-            <RegionAreaItem
-              name={accommodation.name}
-              thumbnail={accommodation.thumbnailImageUrl}
-              minPrice={accommodation.minimumPrice}
-              maxPrice={accommodation.maximumPrice}
-            />
-          </Link>
+      <Swiper navigation={true} loop={true} thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]}>
+        {regions.map((region, i) => (
+          <SwiperSlide key={i}>
+            <RegionAreaSlide region={region} />
+          </SwiperSlide>
         ))}
-      </RegionListBox>
+      </Swiper>
     </HomeInnerContainer>
   );
 };
 
 export default RegionArea;
-
-import styled from "styled-components";
-
-const RegionListBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  margin-top: 1rem;
-`;
-
-const StyledSpan = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.md};
-`;

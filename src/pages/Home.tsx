@@ -24,9 +24,7 @@ const Home = () => {
         <CategoryArea />
         <AllAndRelatedSwiper title={"모든 숙소 둘러보기"} accommodations={allAccommodations} />
         {/* <AllAndRelatedSwiper title={"최근 본 상품의 연관 상품"} accommodations={relatedAccommodations} /> */}
-        <RegionArea accommodations={allAccommodations} />
-        <RegionAreaTabs />
-
+        <RegionArea />
         <RankingArea />
         <Footer />
       </HomeContainer>
@@ -40,7 +38,6 @@ export default Home;
 
 // 나중에 파일로 분리하겠습니다!
 import styled from "styled-components";
-import RegionAreaTabs from "../feature/home/components/regionArea/RegionAreaTabs";
 
 const HomeContainer = styled.div`
   width: 90%;

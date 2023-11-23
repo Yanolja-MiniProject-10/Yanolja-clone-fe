@@ -29,8 +29,8 @@ export const getRelatedAccommodations = async () => {
 //     size: 3,
 //   },
 //region:string
-export const getRegionAccommodations = async ({ region }) => {
-  const response = await instance.get(`/accommodations/region?page=0&size=3&region=${region}`);
+export const getRegionAccommodations = async (region: string) => {
+  const response = await instance.get(`/accommodations/region?page=0&size=4&region=${region}`);
   return response.data.data.content;
 };
 
@@ -39,5 +39,3 @@ export const getRankingAccommodations = async () => {
   console.log("response", response);
   return response.data.data.content;
 };
-
-//console.log("response", response.data.data.content);

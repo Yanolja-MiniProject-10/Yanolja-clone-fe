@@ -20,7 +20,7 @@ export const useRelatedAccommodations = () => {
   });
 };
 
-export const useRegionAccommodations = ({ region }) => {
+export const useRegionAccommodations = (region: string) => {
   return useQuery({
     queryKey: ["regionAccommodations", region],
     queryFn: () => getRegionAccommodations(region),
