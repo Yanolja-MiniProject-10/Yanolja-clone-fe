@@ -19,7 +19,7 @@ Command: 주석
 Doc: 문서, 이슈 템플릿
 Chore: npm 설치
 
-ex) Feat: 로그인 구현 (#22)
+ex) Feat: 로그인 구현 (이슈번호 안붙여도 됨)
 
 ### 브랜치관리
 `main`

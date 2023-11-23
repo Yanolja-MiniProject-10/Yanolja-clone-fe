@@ -1,23 +1,25 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  position: fixed;
-  height: 50px;
-  top: 0;
   width: 100%;
   max-width: 52.5rem;
-  padding: 0 1rem;
+  height: 50px;
+
+  position: fixed;
+  top: 0;
+  z-index: 1;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  vertical-align: middle;
+
+  padding: 0 1rem;
 
   background-color: white;
-
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.xl};
 
+  vertical-align: middle;
   * {
     transition: 0.4s;
     color: black;
