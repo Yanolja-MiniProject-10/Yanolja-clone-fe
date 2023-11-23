@@ -37,10 +37,12 @@ export const RoomInfo = styled.div`
   flex-direction: column;
   gap: 1rem;
 
-  width: 410px;
+  width: 100%;
 
   @media screen and (width < 840px) {
     justify-content: flex-start;
+
+    width: 410px;
   }
 `;
 
