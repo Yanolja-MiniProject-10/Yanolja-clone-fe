@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { HomeInnerContainer } from "../../styles/homeCommon";
 //import { useRegionAccommodations } from "../../home.hooks";
 import RegionAreaItem from "./RegionAreaItem";
 import { Link } from "react-router-dom";
@@ -12,8 +13,8 @@ const RegionArea = ({ accommodations }) => {
   const fourAccommodations = accommodations.slice(0, 4);
 
   return (
-    <Container>
-      <h1>지역 별 상품 추천</h1>
+    <HomeInnerContainer>
+      <StyledSpan>지역 별 상품 추천</StyledSpan>
       {/* nav */}
 
       <RegionListBox>
@@ -28,7 +29,7 @@ const RegionArea = ({ accommodations }) => {
           </Link>
         ))}
       </RegionListBox>
-    </Container>
+    </HomeInnerContainer>
   );
 };
 
@@ -36,11 +37,13 @@ export default RegionArea;
 
 import styled from "styled-components";
 
-const Container = styled.div`
-  margin: 4rem 0;
-`;
-
 const RegionListBox = styled.div`
   display: flex;
   justify-content: space-between;
+
+  margin-top: 1rem;
+`;
+
+const StyledSpan = styled.span`
+  font-size: ${({ theme }) => theme.fontSize.md};
 `;

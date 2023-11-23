@@ -22,7 +22,6 @@ import styled from "styled-components";
 
 const ItemContainer = styled.div`
   width: 11rem;
-  /* box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15); */
   border-radius: 10px;
 
   display: flex;
@@ -52,7 +51,6 @@ const Description = styled.div`
 
 const Title = styled.p`
   margin-bottom: 10px;
-  font-weight: 400;
 `;
 
 const Price = styled.b`
