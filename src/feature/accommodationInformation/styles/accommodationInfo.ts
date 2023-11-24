@@ -4,6 +4,13 @@ export const Wrapper = styled.div`
   max-width: 840px;
 `;
 
+export const SkeletonImgWrapper = styled.div`
+  max-width: 52.5rem;
+  width: 100%;
+  max-height: 35rem;
+  height: 100%;
+`;
+
 export const AccomodationImg = styled.img`
   max-width: 52.5rem;
   width: 100%;
