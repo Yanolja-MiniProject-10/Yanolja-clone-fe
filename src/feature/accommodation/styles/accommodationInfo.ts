@@ -15,6 +15,7 @@ export const AccommodationInfoCalenderBox = styled.div`
   padding-left: 1rem;
   border: 1px solid #e7497a;
   border-radius: ${({ theme }) => theme.box.radius};
+  cursor: pointer;
 
   > svg {
     width: 1.5rem;
@@ -38,6 +39,7 @@ export const AccommodationInfoMemberBox = styled.div`
   padding-left: 1rem;
   border: 1px solid #e7497a;
   border-radius: ${({ theme }) => theme.box.radius};
+  cursor: pointer;
 
   > svg {
     width: 1.5rem;

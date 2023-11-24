@@ -9,7 +9,7 @@ import { AccommodationProps } from "../feature/accommodation/accommodation.types
 import { useNavigate } from "react-router-dom";
 import instance from "../api/instance";
 import { handleDateShow } from "../feature/accommodation/accommodation.utils.ts";
-import { AccommodationLayout } from "../feature/accommodation/styles/AccommodationLayout.ts";
+import { AccommodationLayout } from "../feature/accommodation/styles/accommodationLayout.ts";
 import {
   AccommodationInfoBox,
   AccommodationInfoCalenderBox,
