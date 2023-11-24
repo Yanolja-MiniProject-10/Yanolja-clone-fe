@@ -1,6 +1,5 @@
 import React from "react";
-import { MdOutlineBook } from "react-icons/md";
-import { IoPersonOutline } from "react-icons/io5";
+import { MdOutlineBook, MdOutlinePersonOutline } from "react-icons/md";
 import { Container, LinkedBox, IconLabel, CenterIcon } from "../styles/navBar";
 
 const NavBar = () => {
@@ -18,7 +17,7 @@ const NavBar = () => {
       </LinkedBox>
       <CenterIcon onClick={scrollToTop} />
       <LinkedBox to="/profile">
-        <IoPersonOutline />
+        <MdOutlinePersonOutline />
         <IconLabel>마이</IconLabel>
       </LinkedBox>
     </Container>
