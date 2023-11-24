@@ -8,53 +8,47 @@ export const ModalBackground = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
+
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 98;
 `;
 
 export const Modal = styled.div`
-  padding: 1.8rem 2.8rem;
   margin: 0 auto;
+  padding: 1.5rem 2rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   background-color: ${({ theme }) => theme.color.white};
   border-radius: ${({ theme }) => theme.box.radius};
 `;
 
-export const CloseIcon = styled.div`
-  width: 30px;
-  display: flex;
-  margin-left: auto;
-  transition: 0.4s;
-  cursor: pointer;
-
-  &:hover {
-    color: ${({ theme }) => theme.color.mainPink};
-    transition: 0.4s;
-  }
-`;
-
 export const Form = styled.form`
-  padding-top: 1rem;
+  padding: 1rem;
+
   > div {
     margin-bottom: 1.5rem;
-    display: flex;
-    align-items: flex-end;
   }
+
   label {
     margin-right: 10px;
     color: ${({ theme }) => theme.color.darkGray};
     font-size: ${({ theme }) => theme.fontSize.sm};
     white-space: nowrap;
   }
+
   p {
+    padding-top: 15px;
     color: ${({ theme }) => theme.color.darkGray};
     font-size: ${({ theme }) => theme.fontSize.xxs};
   }
+
   input {
     width: 100%;
     padding: 5px;
+
     border: none;
     border-bottom: 2px solid ${({ theme }) => theme.color.darkGray};
     font-size: ${({ theme }) => theme.fontSize.sm};
@@ -64,24 +58,41 @@ export const Form = styled.form`
       outline: none;
     }
   }
+
+  &:focus-within label {
+    color: ${({ theme }) => theme.color.black};
+  }
 `;
 
-export const Button = styled.button`
+export const ButtonWrapper = styled.div`
+  width: 65%;
+  margin: 15px auto 10px auto;
   display: flex;
-  margin: 1.5rem auto 0 auto;
-  padding: 0.8rem 1.7rem;
+  justify-content: space-between;
 
-  color: ${({ theme }) => theme.color.white};
-  background-color: ${({ theme }) => theme.color.mainPink};
-  border: none;
-  border-radius: ${({ theme }) => theme.box.radius};
+  > button {
+    background-color: inherit;
+    border: none;
+    transition: 0.4s;
 
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  transition: 0.4s;
-  white-space: nowrap;
+    font-size: ${({ theme }) => theme.fontSize.sm};
+    font-weight: 600;
+    white-space: nowrap;
+  }
+`;
+
+export const CancelButton = styled.button`
+  color: ${({ theme }) => theme.color.darkGray};
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.hoverPink};
-    transition: 0.4s;
+    color: ${({ theme }) => theme.color.black};
+  }
+`;
+
+export const ConfirmButton = styled.button`
+  color: ${({ theme }) => theme.color.mainPink};
+
+  &:hover {
+    color: ${({ theme }) => theme.color.hoverPink};
   }
 `;

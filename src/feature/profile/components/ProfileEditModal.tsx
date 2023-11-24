@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
-import { IoClose } from "react-icons/io5";
-import { Button, CloseIcon, Form, Modal, ModalBackground } from "../styles/profileEditModal";
+import { ButtonWrapper, CancelButton, ConfirmButton, Form, Modal, ModalBackground } from "../styles/profileEditModal";
 
 const ProfileEditModal = ({ onClose }) => {
   const [name, setName] = useState("야놀자");
@@ -17,13 +16,11 @@ const ProfileEditModal = ({ onClose }) => {
     console.log(name);
     onClose();
   };
+
   return (
     <ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
       <Modal>
         <div>
-          <CloseIcon onClick={onClose}>
-            <IoClose size={30} />
-          </CloseIcon>
           <Form onSubmit={handleEdit}>
             <div>
               <label htmlFor="name">이름</label>
@@ -32,7 +29,10 @@ const ProfileEditModal = ({ onClose }) => {
             <input type="text" id="name" value={name} onChange={e => setName(e.target.value)} />
           </Form>
 
-          <Button type="submit">수정완료</Button>
+          <ButtonWrapper>
+            <CancelButton onClick={onClose}>취소</CancelButton>
+            <ConfirmButton type="submit">완료</ConfirmButton>
+          </ButtonWrapper>
         </div>
       </Modal>
     </ModalBackground>
