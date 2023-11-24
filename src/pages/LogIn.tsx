@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { FormData } from "../feature/login/login.types";
-import { Button, Div, Form, FormItem } from "../feature/signUp/styles/signUp";
 import { useNavigate } from "react-router-dom";
+import { FormData } from "../feature/login/login.types";
 import { LinkWrapper } from "../feature/login/styles/login";
+import { Button, Div, Form, FormItem } from "../feature/signUp/styles/signUp";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -52,8 +52,7 @@ const LogIn = () => {
         </Button>
 
         <LinkWrapper>
-          <span>비밀번호찾기</span>
-          <span>|</span>
+          <span>야놀자 계정이 없다면?</span>
           <span onClick={() => navigate("/signup")}>회원가입</span>
         </LinkWrapper>
       </Form>
