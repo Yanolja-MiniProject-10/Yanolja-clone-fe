@@ -8,6 +8,7 @@ import AccommodationMember from "../components/accommodationMember/Accommodation
 import { AccommodationProps } from "../feature/accommodation/accommodation.types.ts";
 import { useNavigate } from "react-router-dom";
 import instance from "../api/instance";
+import { handleDateShow } from "../feature/accommodation/accommodation.utils.ts";
 import { AccommodationLayout } from "../feature/accommodation/styles/AccommodationLayout.ts";
 import {
   AccommodationInfoBox,
@@ -37,7 +38,7 @@ const Accommodation = () => {
   const [memberNumber, setMemberNumber] = useState(2);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [dateRange, setDateRange] = useState("");
+  const [dateRange, setDateRange] = useState<string | undefined>("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,37 +50,25 @@ const Accommodation = () => {
   }, []);
 
   useEffect(() => {
-    handleDateShow();
+    if (startDate && endDate) {
+      setDateRange(handleDateShow(startDate, endDate));
+    }
   }, [startDate, endDate]);
 
-  const fetchData = async () => {
-    try {
+  const getData = useQuery({
+    queryKey: ["Accommodation"],
+    queryFn: async () => {
       await instance
-        .get("/accommodations", {
-          params: { startDate: "2023-11-24", endDate: "2023-12-01", guest: 3 },
+        .get(`/accommodations`, {
+          params: { startDate: "2023-11-24", endDate: "2023-11-25", guest: 2 },
         })
-        .then(response => setAccommodations(response.data?.data.content));
-    } catch (e) {
-      console.log(e);
-    }
-  };
+        .then(response => setAccommodations(response.data.data.content));
+    },
+  });
 
-  useQuery({ queryKey: ["Accommodation"], queryFn: fetchData });
-
-  const handleDateShow = () => {
-    const targetDate = [startDate, endDate];
-    if (!startDate || !endDate) return;
-
-    let returnString = "";
-    targetDate.map((singleDate: Date, index: number) => {
-      const month = ("0" + (singleDate.getMonth() + 1).toString()).slice(-2);
-      const day = ("0" + singleDate.getDate().toString()).slice(-2);
-      returnString += month + "." + day;
-      if (!index) returnString += " ~ ";
-    });
-
-    setDateRange(returnString);
-  };
+  if (getData.isError) {
+    console.log(getData.error.message, ": 알 수 없는 오류입니다.");
+  }
 
   return (
     <AccommodationLayout>
@@ -121,7 +110,7 @@ const Accommodation = () => {
                     }
                   />
                   <AccommodationContentGridInnerBox>
-                    <div>
+                    <div style={{ paddingTop: "0.5rem" }}>
                       <AccommodationContentGridInnerTitle>
                         {singleAccommodation.name}
                       </AccommodationContentGridInnerTitle>
@@ -131,7 +120,7 @@ const Accommodation = () => {
                     </div>
                     <AccommodationContentGridInnerParagraph>
                       {`${singleAccommodation.minimumPrice.toLocaleString()} ~
-                      ${singleAccommodation.maximumPrice.toLocaleString()}`}
+                      ${singleAccommodation.maximumPrice.toLocaleString()} 원`}
                     </AccommodationContentGridInnerParagraph>
                   </AccommodationContentGridInnerBox>
                 </AccommodationContentGridContainer>

@@ -28,6 +28,10 @@ export const AccommodationContentGrid = styled.div`
   > div:nth-child(odd) {
     border-right: 1px solid #d9d9d9;
   }
+
+  > div:nth-child(-n + 2) {
+    border-top: none;
+  }
 `;
 
 export const AccommodationContentGridContainer = styled.div`
@@ -35,7 +39,7 @@ export const AccommodationContentGridContainer = styled.div`
   align-items: center;
   width: auto;
   height: 9rem;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
   border-top: 1px solid #d9d9d9;
   border-bottom: 1px solid #d9d9d9;
   cursor: pointer;
