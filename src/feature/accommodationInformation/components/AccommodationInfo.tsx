@@ -12,6 +12,7 @@ const AccommodationInfo = () => {
   const [toast, setToast] = useRecoilState(toastState);
   const { id } = useParams();
 
+  // 날짜, 게스트 임의 지정
   const startDate = "2023-11-21";
   const endDate = "2023-11-22";
   const guest = 2;
