@@ -87,7 +87,7 @@ const Accommodation = () => {
           }}
         >
           <IoPeople />
-          <AccommodationInfoMemberParagraph>성인 {memberNumber}</AccommodationInfoMemberParagraph>
+          <AccommodationInfoMemberParagraph>인원 {memberNumber}</AccommodationInfoMemberParagraph>
         </AccommodationInfoMemberBox>
         <AccommodationInfoRegionBox>
           <AccommodationInfoRegionSelect />
