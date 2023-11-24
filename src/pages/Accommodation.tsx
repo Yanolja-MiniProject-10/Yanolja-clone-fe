@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { CiCalendar } from "react-icons/ci";
 import { IoPeople } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import accommmodationSample from "../assets/images/accommodationSample.svg";
@@ -33,6 +33,11 @@ const AccommodationInfoCalenderBox = styled.div`
   padding-left: 1rem;
   border: 1px solid #e7497a;
   border-radius: ${({ theme }) => theme.box.radius};
+
+  > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 `;
 
 const AccommodationInfoCalenderParagraph = styled.p`
@@ -51,6 +56,11 @@ const AccommodationInfoMemberBox = styled.div`
   padding-left: 1rem;
   border: 1px solid #e7497a;
   border-radius: ${({ theme }) => theme.box.radius};
+
+  > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 `;
 const AccommodationInfoMemberParagraph = styled.p`
   width: 100%;
@@ -139,11 +149,30 @@ const Accommodation = () => {
   const [isCalendarShow, setIsCalendarShow] = useState<boolean>(false);
   const [isMemberShow, setIsMemberShow] = useState<boolean>(false);
   const [memberNumber, setMemberNumber] = useState(2);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [dateRange, setDateRange] = useState("");
   const navigate = useNavigate();
+
+  console.log("날짜 정보", startDate, endDate);
+
+  useEffect(() => {
+    if (startDate) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      setEndDate(tomorrow);
+    }
+  }, []);
+
+  useEffect(() => {
+    handleDateShow();
+  }, [startDate, endDate]);
   const fetchData = async () => {
     try {
       await instance
-        .get("/accommodations", { params: { startDate: "2023-11-23", endDate: "2023-12-24", guest: 2 } })
+        .get("/accommodations", {
+          params: { startDate: "2023-11-24", endDate: "2023-12-01", guest: 3 },
+        })
         .then(response => setAccommodations(response.data?.data.content));
     } catch (e) {
       console.log(e);
@@ -151,6 +180,21 @@ const Accommodation = () => {
   };
 
   useQuery({ queryKey: ["Accommodation"], queryFn: fetchData });
+
+  const handleDateShow = () => {
+    const targetDate = [startDate, endDate];
+    if (!startDate || !endDate) return;
+
+    let returnString = "";
+    targetDate.map((singleDate: Date, index: number) => {
+      const month = ("0" + (singleDate.getMonth() + 1).toString()).slice(-2);
+      const day = ("0" + singleDate.getDate().toString()).slice(-2);
+      returnString += month + "." + day;
+      if (!index) returnString += " ~ ";
+    });
+
+    setDateRange(returnString);
+  };
 
   return (
     <AccommodationLayout>
@@ -161,7 +205,7 @@ const Accommodation = () => {
           }}
         >
           <CiCalendar />
-          <AccommodationInfoCalenderParagraph>날짜를 선택해주세요.</AccommodationInfoCalenderParagraph>
+          <AccommodationInfoCalenderParagraph>{dateRange}</AccommodationInfoCalenderParagraph>
         </AccommodationInfoCalenderBox>
         <AccommodationInfoMemberBox
           onClick={() => {
@@ -215,7 +259,16 @@ const Accommodation = () => {
             : "해당 숙소가 없습니다."}
         </AccommodationContentGrid>
       </AccommodationContentBox>
-      {<AccommodationCalender isCalendarShow={isCalendarShow} setIsCalendarShow={setIsCalendarShow} />}
+      {
+        <AccommodationCalender
+          isCalendarShow={isCalendarShow}
+          setIsCalendarShow={setIsCalendarShow}
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+        />
+      }
       {
         <AccommodationMember
           isMemberShow={isMemberShow}

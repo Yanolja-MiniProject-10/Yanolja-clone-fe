@@ -33,6 +33,7 @@ const MemberContainer = styled.div`
 const MemberContentBox = styled.div`
   padding-top: 30px;
   font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-weight: 300;
 `;
 
 const MemberContentPeopleContainer = styled.div`
@@ -48,7 +49,6 @@ const MemberContentPeopleContainer = styled.div`
 const MemberContentPeoplePick = styled.div`
   display: flex;
   gap: 1rem;
-  // justify-content: space-between;
 `;
 
 const MemberNav = styled.nav`
@@ -83,7 +83,7 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber, setM
         <MemberContentBox>
           정확한 숙소검색 결과를 확인하려면 인원수를 선택해주세요.
           <MemberContentPeopleContainer>
-            성인
+            인원
             <MemberContentPeoplePick>
               <button onClick={() => setMemberNumber(prev => prev - 1)}> - </button>
               {memberNumber}
@@ -94,7 +94,7 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber, setM
         <MemberNav>
           <MemberButton
             onClick={() => setIsMemberShow(prev => !prev)}
-          >{`성인 ${memberNumber} · 적용하기`}</MemberButton>
+          >{`인원 ${memberNumber} · 적용하기`}</MemberButton>
         </MemberNav>
       </MemberContainer>
     </MemberLayout>
