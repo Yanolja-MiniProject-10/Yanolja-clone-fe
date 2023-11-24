@@ -1,9 +1,9 @@
 import React from "react";
-import { Container, ArrowBox, RightIcons, HeadingText } from "./CommonHeader.ts";
+import { Container, ArrowBox, RightIcons, HeadingText } from "./commonHeader.ts";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { BiHome } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
-import { IoIosArrowBack } from "react-icons/io";
+import { MdOutlineArrowBackIos } from "react-icons/md";
 
 const CommonHeader = () => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const CommonHeader = () => {
           navigate(-1);
         }}
       >
-        <IoIosArrowBack />
+        <MdOutlineArrowBackIos />
       </ArrowBox>
       <div>
         <HeadingText>{getPageName()}</HeadingText>
