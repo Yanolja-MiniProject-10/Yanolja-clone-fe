@@ -49,7 +49,7 @@ const AccommodationRoomList = () => {
           img={room.roomOptionImage.mainImageUrls[0]}
           checkIn={room.checkInTime}
           checkOut={room.checkOutTime}
-          price={room.price}
+          price={room.totalPrice}
         />
       ))}
     </Wrapper>
