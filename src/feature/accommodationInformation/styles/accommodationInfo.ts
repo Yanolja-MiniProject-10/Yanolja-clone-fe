@@ -4,6 +4,13 @@ export const Wrapper = styled.div`
   max-width: 840px;
 `;
 
+export const SkeletonImgWrapper = styled.div`
+  max-width: 52.5rem;
+  width: 100%;
+  max-height: 35rem;
+  height: 100%;
+`;
+
 export const AccomodationImg = styled.img`
   max-width: 52.5rem;
   width: 100%;
@@ -13,6 +20,10 @@ export const AccomodationImg = styled.img`
 
 export const TextInfo = styled.div`
   padding: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const AccommodationName = styled.h1`
@@ -22,12 +33,11 @@ export const AccommodationName = styled.h1`
 export const AccommodationAddress = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
   font-size: ${({ theme }) => theme.fontSize.xs};
-
-  margin: 1rem 0 2rem;
 `;
 
 export const DivideLine = styled.hr`
   border: 1px solid ${({ theme }) => theme.color.middleGray};
+  width: 100%;
 `;
 
 export const AccommodationStaticDescWrap = styled.div`
@@ -35,7 +45,7 @@ export const AccommodationStaticDescWrap = styled.div`
   flex-direction: column;
   gap: 1rem;
 
-  margin: 2rem 0;
+  margin: 1rem 0;
 
   font-size: ${({ theme }) => theme.fontSize.md};
 `;
