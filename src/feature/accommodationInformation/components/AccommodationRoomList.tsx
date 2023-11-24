@@ -1,36 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
 import { Wrapper } from "../styles/accommodationRoomList";
 import AccommodationRoomItem from "./AccommodationRoomItem";
 import { useParams } from "react-router-dom";
-import instance from "../../../api/instance";
 import * as style from "../styles/accommodationRoomItem";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
 
 const AccommodationRoomList = () => {
   const { id } = useParams();
 
-  {
-    /* 추후 분리 */
-  }
-  const { status, data, error } = useQuery({
-    queryKey: ["getAccommodationInfoData"],
-    queryFn: async () => {
-      const startDate = "2023-11-21";
-      const endDate = "2023-11-22";
-      const guest = 2;
+  const startDate = "2023-11-21";
+  const endDate = "2023-11-22";
+  const guest = 2;
 
-      const { data } = await instance.get(`/accommodations/${id}`, {
-        params: {
-          startDate,
-          endDate,
-          guest,
-          accommodationId: id,
-        },
-      });
-      return data;
-    },
-  });
+  const { status, data, error } = useAccommodationInfoQuery({ id, startDate, endDate, guest });
 
   if (status === "pending") {
     return (
