@@ -56,11 +56,11 @@ export const List = styled.div`
     font-size: ${({ theme }) => theme.fontSize.sm};
     font-weight: 300;
     transition: 0.4s;
+    cursor: pointer;
 
     &:hover {
       color: ${({ theme }) => theme.color.mainPink};
       transition: 0.4s;
-      cursor: pointer;
     }
   }
 `;
