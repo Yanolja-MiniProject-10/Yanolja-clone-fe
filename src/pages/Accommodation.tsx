@@ -173,13 +173,13 @@ const Accommodation = () => {
         </AccommodationInfoMemberBox>
         <AccommodationInfoRegionBox>
           <AccommodationInfoRegionSelect>
-            <option value="" className="default" disabled selected>
+            {/* <option value="" className="default" disabled selected>
               지역을 선택해주세요.
             </option>
             <option value="seoul">서울</option>
             <option value="gangwon">강원</option>
             <option value="gyeonggi">경기</option>
-            <option value="jeju">제주</option>
+            <option value="jeju">제주</option> */}
           </AccommodationInfoRegionSelect>
         </AccommodationInfoRegionBox>
       </AccommodationInfoBox>
@@ -215,7 +215,7 @@ const Accommodation = () => {
             : "해당 숙소가 없습니다."}
         </AccommodationContentGrid>
       </AccommodationContentBox>
-      {isCalendarShow && <AccommodationCalender />}
+      {<AccommodationCalender isCalendarShow={isCalendarShow} setIsCalendarShow={setIsCalendarShow} />}
       {
         <AccommodationMember
           isMemberShow={isMemberShow}
