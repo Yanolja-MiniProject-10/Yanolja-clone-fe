@@ -1,9 +1,9 @@
 import React from "react";
-import { SwiperItemContainer, ImgBox, Description, Title, Price } from "../../styles/allAndRelatedSwiper";
+import { ItemContainer, ImgBox, Description, Title, Price } from "../../styles/regionArea/regionArea.ts";
 
-const AllAndRelatedSwiperItem = ({ name, thumbnail, minPrice, maxPrice }) => {
+const RegionAreaItem = ({ name, thumbnail, minPrice, maxPrice }) => {
   return (
-    <SwiperItemContainer>
+    <ItemContainer>
       <ImgBox>
         <img src={thumbnail} alt={name} />
       </ImgBox>
@@ -13,8 +13,8 @@ const AllAndRelatedSwiperItem = ({ name, thumbnail, minPrice, maxPrice }) => {
           {minPrice.toLocaleString()} ~ {maxPrice.toLocaleString()}원
         </Price>
       </Description>
-    </SwiperItemContainer>
+    </ItemContainer>
   );
 };
 
-export default AllAndRelatedSwiperItem;
+export default RegionAreaItem;
