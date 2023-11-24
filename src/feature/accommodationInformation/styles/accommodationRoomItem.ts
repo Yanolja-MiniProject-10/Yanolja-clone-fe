@@ -57,6 +57,26 @@ export const RoomInfo = styled.div`
   }
 `;
 
+export const SkeletonRoomInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 100%;
+
+  @media screen and (width < 840px) {
+    justify-content: flex-start;
+
+    width: 410px;
+  }
+`;
+
+export const SkeletonRoomTopWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
 export const RoomTopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
