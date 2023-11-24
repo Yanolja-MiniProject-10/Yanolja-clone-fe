@@ -5,28 +5,36 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: fixed;
-  height: 50px;
+  height: 60px;
   top: 0;
   width: 100%;
   max-width: 52.5rem;
+  z-index: 100;
+
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  * {
+    transition: 0.4s;
+  }
 `;
+
 const LinkedBox = styled(Link)`
-  cursor: pointer;
+  width: 90%;
+  height: 70%;
+  padding: 0 1.8rem;
   border-radius: 1rem;
   border: 1px solid ${({ theme }) => theme.color.middleGray};
-  width: 90%;
-  height: 60%;
-  padding: 0 1.8rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
+  cursor: pointer;
 `;
+
 const InputText = styled.p`
   color: ${({ theme }) => theme.color.middleGray};
   vertical-align: middle;
@@ -38,11 +46,13 @@ const SearchIcon = styled(IoSearch)`
 `;
 
 const CartIcon = styled(LuShoppingCart)`
-  font-size: ${({ theme }) => theme.fontSize.lg};
-  color: black;
   margin-left: 1rem;
+
+  font-size: ${({ theme }) => theme.fontSize.md};
+  color: black;
+
   &:hover {
-    color: ${({ theme }) => theme.color.hoverPink};
+    color: ${({ theme }) => theme.color.mainPink};
   }
 `;
 

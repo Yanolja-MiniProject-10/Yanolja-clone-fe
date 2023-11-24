@@ -13,22 +13,33 @@ export const Box = styled.div`
     height: 28rem;
 
     flex-direction: column;
+    justify-content: center;
 
     padding: 1rem 0;
   }
 `;
 
+export const RoomImgWrapper = styled.div`
+  width: 450px;
+  height: 200px;
+
+  display: flex;
+  align-items: center;
+
+  @media screen and (width < 840px) {
+    height: 300px;
+  }
+`;
+
 export const RoomImg = styled.img`
-  width: 15.625rem;
-  height: 9.375rem;
+  width: 100%;
+  height: 80%;
 
   border-radius: 10px;
 
   @media screen and (width < 840px) {
-    width: 400px;
-    height: 200px;
-
-    flex-direction: column;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -40,8 +51,30 @@ export const RoomInfo = styled.div`
   width: 100%;
 
   @media screen and (width < 840px) {
-    align-items: center;
+    justify-content: flex-start;
+
+    width: 410px;
   }
+`;
+
+export const SkeletonRoomInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 100%;
+
+  @media screen and (width < 840px) {
+    justify-content: flex-start;
+
+    width: 410px;
+  }
+`;
+
+export const SkeletonRoomTopWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const RoomTopWrapper = styled.div`
@@ -77,10 +110,6 @@ export const RoomCheckInOut = styled.div`
   span {
     color: ${({ theme }) => theme.color.darkGray};
   }
-
-  @media screen and (width < 840px) {
-    margin-right: 12rem;
-  }
 `;
 
 export const RoomCheckIn = styled.p`
@@ -95,18 +124,15 @@ export const RoomCheckOut = styled.p`
 
 export const RoomBottomWrapper = styled.div`
   display: flex;
-  gap: 45%;
+  justify-content: space-between;
 
   @media screen and (width < 840px) {
-    width: 100%;
-    gap: 39%;
-
     width: 410px;
   }
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 
   margin-top: 1.8rem;
 `;

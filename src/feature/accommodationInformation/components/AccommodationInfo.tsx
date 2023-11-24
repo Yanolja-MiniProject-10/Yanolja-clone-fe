@@ -2,25 +2,72 @@ import { useRecoilState } from "recoil";
 import * as style from "../styles/accommodationInfo";
 import Toast from "../../../components/Toast/Toast";
 import { toastState } from "../../../recoil/toast";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import instance from "../../../api/instance";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const AccommodationInfo = () => {
   const [toast, setToast] = useRecoilState(toastState);
+  const { id } = useParams();
 
-  /**url 데이터 받아오면 수정 필요 (숙소 id에 맞춰서) */
+  {
+    /* 추후 분리 */
+  }
+  const { status, data, error } = useQuery({
+    queryKey: ["getAccommodationInfoData"],
+    queryFn: async () => {
+      const startDate = "2023-11-21";
+      const endDate = "2023-11-22";
+      const guest = 2;
+
+      const { data } = await instance.get(`/accommodations/${id}`, {
+        params: {
+          startDate,
+          endDate,
+          guest,
+          accommodationId: id,
+        },
+      });
+      return data;
+    },
+  });
+
+  if (status === "pending") {
+    return (
+      <style.Wrapper>
+        <style.SkeletonImgWrapper>
+          <Skeleton height={560} />
+        </style.SkeletonImgWrapper>
+        <style.TextInfo>
+          <Skeleton height={30} width={200} />
+          <Skeleton width={300} height={25} />
+          <style.DivideLine />
+          <style.AccommodationStaticDescWrap>
+            <style.StaticDesc>숙소 소개</style.StaticDesc>
+            <Skeleton />
+            <Skeleton />
+            <Skeleton width={200} />
+          </style.AccommodationStaticDescWrap>
+          <style.DivideLine />
+        </style.TextInfo>
+      </style.Wrapper>
+    );
+  } else if (status === "error") {
+    console.log(error.message, ": 알 수 없는 오류입니다.");
+  }
+
   return (
     <style.Wrapper>
-      <style.AccomodationImg src="https://yaimg.yanolja.com/v5/2022/09/01/13/1280/6310b57ea38718.17915397.jpg" />
+      <style.AccomodationImg src={data.data.thumbnailImageUrl} />
       <style.TextInfo>
-        <style.AccommodationName>파크 하얏트 부산</style.AccommodationName>
-        <style.AccommodationAddress>부산광역시 해운대구 마린시티1로 51</style.AccommodationAddress>
+        <style.AccommodationName>{data.data.name}</style.AccommodationName>
+        <style.AccommodationAddress>{data.data.address}</style.AccommodationAddress>
         <style.DivideLine />
         <style.AccommodationStaticDescWrap>
           <style.StaticDesc>숙소 소개</style.StaticDesc>
-          <style.AccommodationDesc>
-            이 숙소는 영국에서 시작되어...................행운을 가져다주는............ 당장 이 숙소를 선택하지 않는다면
-            당신은 우산을 안가져왔는데 갑자기 비가 오는 저주를...............받게될.........수도 있음.........1시간
-            이내에 선택하십시오.........
-          </style.AccommodationDesc>
+          <style.AccommodationDesc>{data.data.description}</style.AccommodationDesc>
         </style.AccommodationStaticDescWrap>
         <style.DivideLine />
       </style.TextInfo>
