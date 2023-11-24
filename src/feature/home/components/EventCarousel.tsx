@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const EventCarousel = () => {
+  useEffect(() => {}, []);
+
   return <div style={{ height: "200px" }}>EventCarousel</div>;
 };
 

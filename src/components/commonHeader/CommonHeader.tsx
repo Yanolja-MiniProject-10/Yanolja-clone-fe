@@ -26,8 +26,15 @@ const CommonHeader = () => {
         return "예약";
       case "/profile":
         return "마이 페이지";
+      case "/category/hotel":
+        return "호텔/리조트";
+      case "/category/pension":
+        return "펜션/풀빌라";
+      case "/category/motel":
+        return "모텔";
       default:
         return " ";
+      //예약 내역,
     }
   };
 
