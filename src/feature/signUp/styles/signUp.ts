@@ -3,17 +3,17 @@ import { MessageProps } from "../signUp.types";
 
 export const Div = styled.div`
   width: 90%;
-  margin: 30px auto 0 auto;
+  margin: 1rem auto 0 auto;
 `;
 
 export const Form = styled.form`
-  padding: 20px;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
 `;
 
 export const FormItem = styled.div`
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   display: flex;
   flex-direction: column;
 
@@ -34,7 +34,7 @@ export const FormItem = styled.div`
       margin-right: 10px;
 
       color: ${({ theme }) => theme.color.darkGray};
-      font-size: ${({ theme }) => theme.fontSize.sm};
+      font-size: ${({ theme }) => theme.fontSize.xs};
       white-space: nowrap;
     }
   }
@@ -68,14 +68,15 @@ export const EmailButton = styled.button<MessageProps>`
   border-radius: ${({ theme }) => theme.box.radius};
   border: 2px solid ${({ theme }) => theme.color.mainPink};
 
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  font-weight: 600;
+  font-size: ${({ theme }) => theme.fontSize.xxs};
   white-space: nowrap;
+  transition: 0.4s;
 
   &:hover {
     color: ${({ $isconfirm, theme }) => ($isconfirm ? theme.color.white : theme.color.hoverPink)};
     border: ${({ $isconfirm, theme }) =>
       $isconfirm ? `2px solid ${theme.color.mainPink}` : `2px solid ${theme.color.hoverPink}`};
+    transition: 0.4s;
   }
 
   &:disabled {
@@ -91,7 +92,7 @@ export const EmailButton = styled.button<MessageProps>`
 `;
 
 export const Message = styled.p<MessageProps>`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ $isconfirm, theme }) => ($isconfirm ? theme.color.green : theme.color.red)};
   white-space: nowrap;
 `;
@@ -104,7 +105,8 @@ export const Button = styled.button`
   background-color: ${({ theme }) => theme.color.mainPink};
   border: none;
   border-radius: ${({ theme }) => theme.box.radius};
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  transition: 0.4s;
 
   &:disabled {
     background-color: ${({ theme }) => theme.color.middleGray};
@@ -112,10 +114,12 @@ export const Button = styled.button`
 
     &:hover {
       background-color: ${({ theme }) => theme.color.middleGray};
+      transition: 0.4s;
     }
   }
 
   &:hover {
     background-color: ${({ theme }) => theme.color.hoverPink};
+    transition: 0.4s;
   }
 `;
