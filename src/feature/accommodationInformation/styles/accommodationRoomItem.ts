@@ -13,22 +13,33 @@ export const Box = styled.div`
     height: 28rem;
 
     flex-direction: column;
+    justify-content: center;
 
     padding: 1rem 0;
   }
 `;
 
+export const RoomImgWrapper = styled.div`
+  width: 450px;
+  height: 200px;
+
+  display: flex;
+  align-items: center;
+
+  @media screen and (width < 840px) {
+    height: 300px;
+  }
+`;
+
 export const RoomImg = styled.img`
-  width: 15.625rem;
-  height: 9.375rem;
+  width: 100%;
+  height: 80%;
 
   border-radius: 10px;
 
   @media screen and (width < 840px) {
-    width: 400px;
-    height: 200px;
-
-    flex-direction: column;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -101,7 +112,7 @@ export const RoomBottomWrapper = styled.div`
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 
   margin-top: 1.8rem;
 `;
