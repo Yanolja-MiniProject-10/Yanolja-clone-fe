@@ -19,10 +19,14 @@ const IconBox = styled.div`
     color: ${({ theme }) => theme.color.mainPink};
   }
   cursor: pointer;
+
+  * img {
+    width: 60px;
+  }
 `;
 
 const XSsizeP = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
 export { InnerWrapper, IconBox, XSsizeP };

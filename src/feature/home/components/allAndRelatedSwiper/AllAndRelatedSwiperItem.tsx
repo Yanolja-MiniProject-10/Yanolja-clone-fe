@@ -10,7 +10,7 @@ const AllAndRelatedSwiperItem = ({ name, thumbnail, minPrice, maxPrice }) => {
       <Description>
         <Title>{name}</Title>
         <Price>
-          {minPrice.toLocaleString()} ~ {maxPrice.toLocaleString()}
+          {minPrice.toLocaleString()} ~ {maxPrice.toLocaleString()}원
         </Price>
       </Description>
     </SwiperItemContainer>

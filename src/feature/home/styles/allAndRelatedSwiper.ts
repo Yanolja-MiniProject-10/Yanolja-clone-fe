@@ -9,7 +9,7 @@ const CustomNavigation = styled.div`
 
 //Item style
 const SwiperItemContainer = styled.div`
-  width: 10rem;
+  width: 12rem;
   margin-bottom: 2rem;
   box-shadow: ${({ theme }) => theme.box.shadow};
   border-radius: 5px;

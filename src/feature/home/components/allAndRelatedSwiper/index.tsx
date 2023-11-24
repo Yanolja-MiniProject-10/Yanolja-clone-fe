@@ -10,7 +10,7 @@ const AllAndRelatedSwiper = ({ title, accommodations }) => {
   return (
     <HomeInnerContainer>
       <Title>{title}</Title>
-      <Swiper slidesPerView={5} spaceBetween={100} loop={true} navigation={true} modules={[Navigation]}>
+      <Swiper slidesPerView={4} spaceBetween={100} loop={true} navigation={true} modules={[Navigation]}>
         {accommodations?.map(accommodation => (
           <SwiperSlide key={accommodation.id}>
             <Link to={`/accommodation/${accommodation.id}`}>
