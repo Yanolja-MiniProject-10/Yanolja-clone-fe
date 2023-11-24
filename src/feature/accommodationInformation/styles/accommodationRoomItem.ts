@@ -3,14 +3,14 @@ import { LuShoppingCart } from "react-icons/lu";
 
 export const Box = styled.div`
   width: 100%;
-  height: 12rem;
+  height: 15rem;
 
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
 
   @media screen and (width < 840px) {
-    height: 28rem;
+    height: 35rem;
 
     flex-direction: column;
     justify-content: center;
@@ -20,8 +20,8 @@ export const Box = styled.div`
 `;
 
 export const RoomImgWrapper = styled.div`
-  width: 450px;
-  height: 200px;
+  width: 500px;
+  height: 230px;
 
   display: flex;
   align-items: center;
@@ -51,9 +51,11 @@ export const RoomInfo = styled.div`
   width: 100%;
 
   @media screen and (width < 840px) {
-    justify-content: flex-start;
+    justify-content: center;
 
-    width: 410px;
+    padding: 1rem 2rem;
+
+    width: 500px;
   }
 `;
 
@@ -82,7 +84,7 @@ export const RoomTopWrapper = styled.div`
   justify-content: space-between;
 
   @media screen and (width < 840px) {
-    width: 400px;
+    width: 430px;
   }
 `;
 
@@ -122,26 +124,14 @@ export const RoomCheckOut = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
-export const RoomBottomWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  @media screen and (width < 840px) {
-    width: 410px;
-  }
-`;
-
 export const RoomPrice = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.sm};
-
-  margin-top: 1.8rem;
 `;
 
 export const ButtonWraper = styled.div`
   display: flex;
   gap: 1rem;
-
-  margin-top: 1rem;
+  margin-left: 265px;
 `;
 
 export const CartIcon = styled(LuShoppingCart)`
