@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { Message } from "../../signUp/styles/signUp";
 
-// export const LoginMessage = styled(Message)`
-//   padding: 10px 0;
-// `;
+export const LoginMessage = styled(Message)`
+  padding-bottom: 10px;
+`;
 
 export const LinkWrapper = styled.div`
   margin-right: 34px;
@@ -12,15 +13,16 @@ export const LinkWrapper = styled.div`
   align-items: center;
 
   color: ${({ theme }) => theme.color.darkGray};
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 
-  span:nth-of-type(2) {
-    padding: 0 20px;
+  span:first-of-type {
+    padding-right: 10px;
   }
 
-  span:not(:nth-of-type(2)) {
+  span:last-of-type {
     transition: 0.4s;
     cursor: pointer;
+    white-space: nowrap;
 
     &:hover {
       color: ${({ theme }) => theme.color.mainPink};
