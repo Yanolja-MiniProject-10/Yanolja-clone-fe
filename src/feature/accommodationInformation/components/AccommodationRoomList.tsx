@@ -9,8 +9,9 @@ import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
 const AccommodationRoomList = () => {
   const { id } = useParams();
 
+  //날짜, 게스트 임의 지정
   const startDate = "2023-11-21";
-  const endDate = "2023-11-22";
+  const endDate = "2023-12-05";
   const guest = 2;
 
   const { status, data, error } = useAccommodationInfoQuery({ id, startDate, endDate, guest });
@@ -50,6 +51,7 @@ const AccommodationRoomList = () => {
           checkIn={room.checkInTime}
           checkOut={room.checkOutTime}
           price={room.totalPrice}
+          stayDuration={room.stayDuration}
         />
       ))}
     </Wrapper>

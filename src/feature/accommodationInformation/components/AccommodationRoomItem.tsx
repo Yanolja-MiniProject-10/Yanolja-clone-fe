@@ -4,7 +4,7 @@ import { toastState } from "../../../recoil/toast";
 import * as style from "../styles/accommodationRoomItem";
 
 /**실제 데이터 받아올 때 타입 지정해줘야 함 */
-const AccommodationRoomItem = ({ id, name, img, checkIn, checkOut, price, accommodationId }) => {
+const AccommodationRoomItem = ({ id, name, img, checkIn, checkOut, price, accommodationId, stayDuration }) => {
   const setToast = useSetRecoilState(toastState);
 
   return (
@@ -30,17 +30,17 @@ const AccommodationRoomItem = ({ id, name, img, checkIn, checkOut, price, accomm
             {checkOut.slice(0, 5)}
           </style.RoomCheckOut>
         </style.RoomCheckInOut>
-        <style.RoomBottomWrapper>
-          <style.RoomPrice>{price.toLocaleString()}원</style.RoomPrice>
-          <style.ButtonWraper>
-            <style.CartButton onClick={() => setToast({ open: true, message: "장바구니에 상품이 담겼습니다." })}>
-              <style.CartIcon />
-            </style.CartButton>
-            <Link to="/reservation">
-              <style.ReservationButton>예약하기</style.ReservationButton>
-            </Link>
-          </style.ButtonWraper>
-        </style.RoomBottomWrapper>
+        <style.RoomPrice>
+          {price.toLocaleString()}원/{stayDuration}박
+        </style.RoomPrice>
+        <style.ButtonWraper>
+          <style.CartButton onClick={() => setToast({ open: true, message: "장바구니에 상품이 담겼습니다." })}>
+            <style.CartIcon />
+          </style.CartButton>
+          <Link to="/reservation">
+            <style.ReservationButton>예약하기</style.ReservationButton>
+          </Link>
+        </style.ButtonWraper>
       </style.RoomInfo>
     </style.Box>
   );
