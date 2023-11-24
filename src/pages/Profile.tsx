@@ -7,16 +7,17 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const [isModal, setIsModal] = useState<boolean>(false);
+  const [currentUser, setCurrentUser] = useState<boolean>(true); // 로그인 UI 전환 위한 임시 state
 
   return (
     <>
       <Div>
         <MyProfile>
           <div>
-            <Name>야놀자님</Name>
-            <Email>yanolja@yanolja.com</Email>
+            <Name>{currentUser ? "야놀자님" : "로그인이 필요합니다."}</Name>
+            {currentUser && <Email>yanolja@yanolja.com</Email>}
           </div>
-          <Button>로그아웃</Button>
+          <Button onClick={() => setCurrentUser(false)}>{currentUser ? "로그아웃" : "로그인"}</Button>
         </MyProfile>
 
         <p>프로필</p>
