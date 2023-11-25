@@ -23,21 +23,29 @@ const BannerContainer = styled.div`
 `;
 
 const BackgroundImg = styled.div`
+  position: relative;
+
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+
+  border-radius: ${({ theme }) => theme.box.radius};
+
   object-fit: cover;
 `;
 const ColorTitleBox = styled.div`
+  position: absolute;
+  left: -15px;
+
   width: 70%;
   height: 101%;
   padding-left: 1rem;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  box-shadow: ${({ theme }) => theme.box.shadow};
+
+  border-radius: 10px 0 0 10px;
+  background-color: #d4e4e7;
+
   display: flex;
   align-items: center;
-  background-color: #d4e4e7;
+
   clip-path: polygon(0 0, 60% 0%, 100% 100%, 0% 100%);
 `;
 

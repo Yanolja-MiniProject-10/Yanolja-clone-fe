@@ -19,7 +19,7 @@ const FestivalCarousel = ({ festivalsData }) => {
         slidesPerView={2.5}
         navigation={true}
         pagination={{ clickable: true }}
-        spaceBetween={10}
+        // spaceBetween={10}
         loop={true}
         autoplay={{ delay: 2500 }}
         modules={[Navigation, Pagination, Autoplay]}

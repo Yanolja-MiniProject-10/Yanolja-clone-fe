@@ -4,7 +4,25 @@ const HomeInnerContainer = styled.div`
   margin-bottom: 4rem;
 
   * {
-    --swiper-navigation-color: ${({ theme }) => theme.color.middleGray};
+    transition: 0.4s;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: ${({ theme }) => theme.color.middleGray};
+      &:hover {
+        color: ${({ theme }) => theme.color.black};
+      }
+    }
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background: ${({ theme }) => theme.color.darkGray};
+      opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+      /* border-radius: 5px; */
+      background: ${({ theme }) => theme.color.mainPink};
+    }
   }
 `;
 
@@ -26,28 +44,4 @@ const HomeContainer = styled.div`
   }
 `;
 
-const ToTopButton = styled.div`
-  width: 4rem;
-  height: 4rem;
-
-  border-radius: 50%;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.16);
-  border: 0.05rem solid rgba(0, 0, 0, 0.16);
-  background: #fff;
-  opacity: 0.4;
-
-  position: fixed;
-  z-index: 10;
-  bottom: 6rem;
-  right: calc(50% - 25rem);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: ${({ theme }) => theme.fontSize.md};
-
-  cursor: pointer;
-`;
-
-export { HomeInnerContainer, Title, HomeContainer, ToTopButton };
+export { HomeInnerContainer, Title, HomeContainer };

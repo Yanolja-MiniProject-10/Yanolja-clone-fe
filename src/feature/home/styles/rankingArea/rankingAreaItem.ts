@@ -11,18 +11,16 @@ const RankingItemWrapper = styled.div`
 const NumberBox = styled.div`
   width: 2rem;
   height: 2rem;
+  padding-bottom: 3px;
+
   background-color: ${({ theme }) => theme.color.mainPink};
   border-radius: ${({ theme }) => theme.box.radius};
 
   display: flex;
   justify-content: center;
+  align-items: center;
 
   & > p {
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-
     color: white;
     font-size: ${({ theme }) => theme.fontSize.sm};
   }
@@ -45,7 +43,7 @@ const ImageBox = styled.div`
   }
 `;
 const Description = styled.div`
-  height: 90%;
+  margin: 5% 0;
 
   display: flex;
   flex-direction: column;

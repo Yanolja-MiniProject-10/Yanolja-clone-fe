@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ArrowBox, RightIcons, HeadingText } from "./commonHeader.ts";
+import { Container, ArrowBox, RightIcons, HeadingText } from "./commonHeader.styles.ts";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { BiHome } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
