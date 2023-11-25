@@ -6,19 +6,19 @@ const CategoryArea = () => {
   return (
     <HomeInnerContainer>
       <InnerWrapper>
-        <IconBox>
+        <IconBox to="/category/hotel">
           <div>
             <img src="public/category/hotel.svg" alt="hotel" />
           </div>
           <XSsizeP>호텔/리조트</XSsizeP>
         </IconBox>
-        <IconBox>
+        <IconBox to="/category/pension">
           <div>
             <img src="public/category/pension.svg" alt="pension" />
           </div>
           <XSsizeP>펜션/풀빌라</XSsizeP>
         </IconBox>
-        <IconBox>
+        <IconBox to="/category/motel">
           <div>
             <img src="public/category/motel.svg" alt="motel" />
           </div>
