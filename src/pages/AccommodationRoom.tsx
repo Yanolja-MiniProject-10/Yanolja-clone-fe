@@ -10,7 +10,7 @@ const AccommodationRoom = () => {
   const { status, data, error } = useRoomInfoQuery({
     id,
     startDate: "2023-11-21",
-    endDate: "2023-11-25",
+    endDate: "2023-11-22",
     guest: 2,
   });
 
