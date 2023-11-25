@@ -1,5 +1,6 @@
 import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
 import { useRecoilState } from "recoil";
+import { RoomListProps } from "../cart.types";
 import { Checkbox } from "../../../styles/checkbox";
 import {
   RoomOptions,
@@ -10,7 +11,7 @@ import {
   RoomOptionsAmount,
 } from "../styles/roomList";
 
-const RoomList = ({ accomodations, roomOption, setIsSelectAll }) => {
+const RoomList = ({ accomodations, setIsSelectAll, roomOption }: RoomListProps) => {
   const [checkedRooms, setCheckedRooms] = useRecoilState(checkedCartRooms);
 
   // 체크 박스 선택 시

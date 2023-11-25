@@ -1,7 +1,7 @@
 import { useState } from "react";
 import RoomList from "./RoomList";
 import CartModal from "./CartModal";
-import { CartListProps, RoomOption } from "../cart.types";
+import { CartRoomProps, RoomOption } from "../cart.types";
 import {
   AccommodationList,
   Accommodation,
@@ -11,7 +11,7 @@ import {
 } from "../styles/cartRoom";
 import { IoClose } from "react-icons/io5";
 
-const CartRoom = ({ accomodations, setIsSelectAll }: CartListProps) => {
+const CartRoom = ({ accomodations, setIsSelectAll }: CartRoomProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<RoomOption | null>(null);
 
