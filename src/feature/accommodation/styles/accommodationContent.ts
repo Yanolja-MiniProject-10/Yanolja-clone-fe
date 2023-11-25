@@ -3,16 +3,19 @@ import styled from "styled-components";
 export const AccommodationContentBox = styled.div``;
 
 export const AccommodationContentTitleParagraph = styled.p`
+  padding: 1rem 0;
+
   font-size: ${({ theme }) => theme.fontSize.xs};
   font-weight: 600;
-  padding: 1rem 0;
 `;
 
 export const AccommodationContentGrid = styled.div`
+  max-height: 80vh;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+
   overflow: scroll;
-  max-height: 80vh;
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -35,13 +38,17 @@ export const AccommodationContentGrid = styled.div`
 `;
 
 export const AccommodationContentGridContainer = styled.div`
-  display: flex;
-  align-items: center;
   width: auto;
   height: 9rem;
+
   padding: 0.5rem 0.5rem 0.5rem 2rem;
+
   border-top: 1px solid #d9d9d9;
   border-bottom: 1px solid #d9d9d9;
+
+  display: flex;
+  align-items: center;
+
   cursor: pointer;
 `;
 
@@ -53,16 +60,20 @@ export const AccommodationContentGridImg = styled.img`
 export const AccommodationContentGridInnerBox = styled.div`
   width: 100%;
   height: 100%;
+
+  padding-left: 1rem;
+
   display: flex;
   flex-direction: column;
-  padding-left: 1rem;
+
   position: relative;
 `;
 
 export const AccommodationContentGridInnerTitle = styled.p`
+  padding-bottom: 0.5rem;
+
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: 700;
-  padding-bottom: 0.5rem;
 `;
 
 export const AccommodationContentGridInnerTag = styled.p`
@@ -71,8 +82,9 @@ export const AccommodationContentGridInnerTag = styled.p`
 `;
 
 export const AccommodationContentGridInnerParagraph = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xs};
   position: absolute;
   bottom: 1rem;
   right: 0;
+
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;

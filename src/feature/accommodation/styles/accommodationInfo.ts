@@ -7,14 +7,17 @@ export const AccommodationInfoBox = styled.div`
 `;
 
 export const AccommodationInfoCalenderBox = styled.div`
-  display: flex;
-  align-items: center;
-  color: #e7497a;
   height: 2rem;
-  gap: 0.5rem;
+
   padding-left: 1rem;
   border: 1px solid #e7497a;
   border-radius: ${({ theme }) => theme.box.radius};
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: ${({ theme }) => theme.color.mainPink};
   cursor: pointer;
 
   > svg {
@@ -25,20 +28,25 @@ export const AccommodationInfoCalenderBox = styled.div`
 
 export const AccommodationInfoCalenderParagraph = styled.p`
   width: 100%;
+
+  padding-left: 0.5rem;
   border: none;
+
   font-size: ${({ theme }) => theme.fontSize.xxs};
   font-weight: 600;
-  padding-left: 0.5rem;
 `;
 export const AccommodationInfoMemberBox = styled.div`
-  display: flex;
-  align-items: center;
-  color: #e7497a;
   height: 2rem;
-  gap: 0.5rem;
+
   padding-left: 1rem;
   border: 1px solid #e7497a;
   border-radius: ${({ theme }) => theme.box.radius};
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: ${({ theme }) => theme.color.mainPink};
   cursor: pointer;
 
   > svg {
@@ -48,26 +56,32 @@ export const AccommodationInfoMemberBox = styled.div`
 `;
 export const AccommodationInfoMemberParagraph = styled.p`
   width: 100%;
+
+  padding-left: 0.5rem;
   border: none;
+
   font-size: ${({ theme }) => theme.fontSize.xxs};
   font-weight: 600;
-  padding-left: 0.5rem;
 `;
 
 export const AccommodationInfoRegionBox = styled.div`
-  display: flex;
-  align-items: center;
-  color: #e7497a;
   height: 2rem;
-  gap: 0.5rem;
+
   padding-left: 1rem;
   border: 1px solid #e7497a;
   border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: ${({ theme }) => theme.color.mainPink};
 `;
 
 export const AccommodationInfoRegionSelect = styled.select`
+  padding: 0 0.5rem;
   border: none;
+
   font-size: ${({ theme }) => theme.fontSize.xxs};
   font-weight: 600;
-  padding: 0 0.5rem;
 `;
