@@ -15,7 +15,7 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
   if (status == "pending") {
     return (
       <style.Wrapper>
-        <Skeleton height={560} />
+        <Skeleton height={560} style={{ zIndex: 0 }} />
         <style.TextInfo>
           <Skeleton height={30} width={200} />
           <Skeleton width={300} height={15} />

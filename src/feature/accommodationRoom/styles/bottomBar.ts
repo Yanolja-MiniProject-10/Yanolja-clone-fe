@@ -6,6 +6,8 @@ export const Wrapper = styled.div`
   height: 120px;
   width: 100%;
 
+  z-index: 1;
+
   max-width: 840px;
 
   bottom: 1px;
