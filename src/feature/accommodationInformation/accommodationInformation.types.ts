@@ -1,5 +1,5 @@
 export interface AccommodationInfoParams {
-  id: string | undefined | null;
+  id: string | undefined;
   startDate: string;
   endDate: string;
   guest: number;
