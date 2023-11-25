@@ -6,3 +6,14 @@ export interface AccommodationItemProps {
   minPrice: number;
   maxPrice: number;
 }
+
+export interface RelatedProps {
+  category: string;
+  region: string;
+}
+
+export interface FestivalResponse {
+  id?: number;
+  title: string;
+  thumbnailImageUrl: string;
+}

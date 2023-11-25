@@ -1,5 +1,5 @@
 import CategoryArea from "../feature/home/components/CategoryArea";
-import EventCarousel from "../feature/home/components/EventCarousel";
+import FestivalCarousel from "../feature/home/components/festivalCarousel";
 import Footer from "../feature/home/components/Footer";
 import NavBar from "../feature/home/components/NavBar";
 import RankingArea from "../feature/home/components/rankingArea";
@@ -31,8 +31,8 @@ const Home = () => {
   // }
   return (
     <>
+      <FestivalCarousel festivalsData={allAccommodations} />
       <HomeContainer>
-        <EventCarousel />
         <CategoryArea />
         <AllAndRelatedSwiper title={"모든 숙소 둘러보기"} accommodations={allAccommodations} />
         {/* <AllAndRelatedSwiper title={"최근 본 상품의 연관 상품"} accommodations={relatedAccommodations} /> */}
