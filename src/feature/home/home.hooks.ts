@@ -3,8 +3,10 @@ import {
   getRelatedAccommodations,
   getRegionAccommodations,
   getRankingAccommodations,
+  getFestivalInfo,
 } from "./home.api";
 import { useQuery } from "@tanstack/react-query";
+import { RelatedProps } from "./home.types";
 
 export const useAllAccommodations = () => {
   return useQuery({
@@ -13,10 +15,11 @@ export const useAllAccommodations = () => {
   });
 };
 
-export const useRelatedAccommodations = () => {
+export const useRelatedAccommodations = ({ category, region }: RelatedProps) => {
+  const relatedRequest = { category, region };
   return useQuery({
-    queryKey: ["relatedAccommodations"],
-    queryFn: getRelatedAccommodations,
+    queryKey: ["relatedAccommodations", category, region],
+    queryFn: () => getRelatedAccommodations(relatedRequest),
   });
 };
 
@@ -31,5 +34,12 @@ export const useRankingAccommodations = () => {
   return useQuery({
     queryKey: ["rankingAccommodations"],
     queryFn: getRankingAccommodations,
+  });
+};
+
+export const useFestivalInfo = () => {
+  return useQuery({
+    queryKey: ["festivalInfo"],
+    queryFn: getFestivalInfo,
   });
 };

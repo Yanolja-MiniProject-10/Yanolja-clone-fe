@@ -21,7 +21,7 @@ const SwiperTab = styled(SwiperSlide)`
 `;
 
 const SpanTab = styled.span`
-  padding: 0 4px 1rem;
+  padding: 0 4px 10px;
 
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: bold;

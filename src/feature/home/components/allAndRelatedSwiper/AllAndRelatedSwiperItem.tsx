@@ -1,7 +1,8 @@
 import React from "react";
 import { SwiperItemContainer, ImgBox, Description, Title, Price } from "../../styles/allAndRelatedSwiper";
+import { AccommodationItemProps } from "../../home.types";
 
-const AllAndRelatedSwiperItem = ({ name, thumbnail, minPrice, maxPrice }) => {
+const AllAndRelatedSwiperItem = ({ name, thumbnail, minPrice, maxPrice }: AccommodationItemProps) => {
   return (
     <SwiperItemContainer>
       <ImgBox>
