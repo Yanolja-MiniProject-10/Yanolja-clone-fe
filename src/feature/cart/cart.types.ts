@@ -23,7 +23,7 @@ export interface CartData {
   accommodations: Accommodations[];
 }
 
-export interface CartResponse {
+export interface FetchCartResult {
   status: number;
   message: string;
   data: CartData;
@@ -39,10 +39,20 @@ export interface PayCartRooms {
 }
 
 export interface SelectRoomProps {
-  accomodations: Accommodations[] | null;
+  accomodations: Accommodations[] | undefined | null;
 }
 
-export interface CartListProps extends SelectRoomProps {
+export interface CartRoomProps extends SelectRoomProps {
   accomodations: Accommodations[];
   setIsSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface RoomListProps extends CartRoomProps {
+  roomOption: RoomOption;
+}
+
+export interface CartModalProps {
+  selectedItem: RoomOption | null;
+  setSelectedItem: React.Dispatch<React.SetStateAction<RoomOption | null>>;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -1,3 +1,4 @@
+import { CartModalProps } from "../cart.types";
 import {
   ModalWrapper,
   ModalInner,
@@ -9,7 +10,7 @@ import {
   ModalRoomDelete,
 } from "../styles/cartModal";
 
-const CartModal = ({ selectedItem, setSelectedItem, setIsModalOpen }) => {
+const CartModal = ({ selectedItem, setSelectedItem, setIsModalOpen }: CartModalProps) => {
   const closeModal = () => {
     setSelectedItem(null);
     setIsModalOpen(false);
