@@ -1,8 +1,5 @@
 import { atom } from "recoil";
-
-interface accommodationMemberDefault {
-  memberNumber: number;
-}
+import { accommodationMemberDefault } from "../../feature/accommodation/accommodation.types";
 
 const defaultValue: accommodationMemberDefault = {
   memberNumber: 2,

@@ -1,9 +1,5 @@
 import { atom } from "recoil";
-
-interface accommodationDateDefault {
-  startDate: Date;
-  endDate: Date;
-}
+import { accommodationDateDefault } from "../../feature/accommodation/accommodation.types";
 
 const tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);
