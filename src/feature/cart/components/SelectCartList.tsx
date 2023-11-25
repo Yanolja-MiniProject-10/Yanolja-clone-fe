@@ -1,54 +1,63 @@
 import { useState } from "react";
-import { SelectRoomProps } from "../cart.types";
-import CartList from "./CartList";
+import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
+import { useRecoilState } from "recoil";
+import CartRoom from "./CartRoom";
 import EmptyCart from "./EmptyCart";
-import { SelectCartListWrapper, ControlCartList, CartListUl } from "../styles/selectCartList";
+import { SelectRoomProps } from "../cart.types";
+import { SelectCartListWrapper, SelectCartListHeader, DeleteCheckedbox, CartList } from "../styles/selectCartList";
+import { Checkbox } from "../../../styles/checkbox";
 
-const SelectCartList = ({ rooms, selectedRooms, setSelectedRooms }: SelectRoomProps) => {
+const SelectCartList = ({ accomodations }: SelectRoomProps) => {
+  const [checkedRooms, setCheckedRooms] = useRecoilState(checkedCartRooms);
+
   const [isSelectAll, setIsSelectAll] = useState(false);
 
+  // 전체 선택 시
   const handleIsSelectAll = () => {
     setIsSelectAll(preIsSelectAll => !preIsSelectAll);
 
+    setCheckedRooms([]);
+
     if (!isSelectAll) {
-      const newRooms = rooms?.flatMap(room => room.roomOptions);
+      const newRooms = accomodations?.flatMap(room => room.roomOptions);
 
       if (newRooms) {
-        setSelectedRooms([...selectedRooms, ...newRooms]);
+        setCheckedRooms([...newRooms]);
       }
-    } else {
-      setSelectedRooms([]);
+    }
+  };
+
+  // 선택 숙소 삭제 시
+  const handleDeleteCartRoom = () => {
+    if (window.confirm("정말 선택한 숙소들을 장바구니에서 삭제하시겠습니까?")) {
+      alert("삭제되었습니다, 장바구니 삭제 API");
     }
   };
 
   return (
     <SelectCartListWrapper>
-      <ControlCartList $selectedRooms={selectedRooms.length}>
-        <div className="all-check-box">
-          <input type="checkbox" checked={rooms ? isSelectAll : true} onChange={handleIsSelectAll} id="all-check" />
+      <SelectCartListHeader>
+        <Checkbox>
+          <input
+            type="checkbox"
+            checked={accomodations ? isSelectAll : true}
+            onChange={handleIsSelectAll}
+            id="all-check"
+          />
           <label htmlFor="all-check">전체 선택</label>
-        </div>
+        </Checkbox>
 
-        <button
-          onClick={selectedRooms.length ? () => console.log("선택 숙소 삭제 API") : undefined}
-          className="delete-checked-box"
+        <DeleteCheckedbox
+          $selectedRooms={checkedRooms.length}
+          onClick={checkedRooms.length ? handleDeleteCartRoom : undefined}
         >
           선택 숙소 삭제
-        </button>
-      </ControlCartList>
+        </DeleteCheckedbox>
+      </SelectCartListHeader>
 
-      {rooms ? (
-        <CartListUl>
-          <CartList
-            rooms={rooms}
-            setIsSelectAll={setIsSelectAll}
-            selectedRooms={selectedRooms}
-            setSelectedRooms={setSelectedRooms}
-          />
-        </CartListUl>
-      ) : (
-        <EmptyCart />
-      )}
+      <CartList>
+        {accomodations ? <CartRoom accomodations={accomodations} setIsSelectAll={setIsSelectAll} /> : <EmptyCart />}
+      </CartList>
     </SelectCartListWrapper>
   );
 };
