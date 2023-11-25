@@ -1,4 +1,4 @@
-import instance from "../../api/axios";
+import instance from "../../api/instance";
 import * as dayjs from "dayjs";
 import { RelatedProps } from "./home.types";
 
@@ -52,6 +52,5 @@ export const getRankingAccommodations = async () => {
 
 export const getFestivalInfo = async () => {
   const response = await instance.get("/accommodations/festival", { params: festivalRequiredParams });
-  console.log("festival", response);
   return response.data.data.content;
 };

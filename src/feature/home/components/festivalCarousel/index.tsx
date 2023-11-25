@@ -11,7 +11,6 @@ import { FestivalResponse } from "../../home.types";
 
 const FestivalCarousel = ({ festivalsData }) => {
   const festivals = festivalsData.slice(0, 6);
-  console.log("festivals", festivals);
 
   return (
     <HomeInnerContainer style={{ marginTop: "3rem" }}>
