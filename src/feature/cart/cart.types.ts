@@ -1,30 +1,48 @@
 export interface RoomOption {
+  cartProductId: number;
   roomOptionId: number;
   name: string;
-  description?: string;
   thumbnailImage: string;
   capacity: number;
+  pricePerNight: number;
   reservationStartDate: string;
   reservationEndDate: string;
   stayDuration: number;
-  pricePerNight: number;
-  paymentAmount: number;
 }
 
-export interface Accommodation {
+export interface Accommodations {
   accommodationId: number;
   name: string;
   address: string;
+  thumbnailImageUrl: string;
   roomOptions: RoomOption[];
 }
 
+export interface CartData {
+  cartId: number;
+  accommodations: Accommodations[];
+}
+
+export interface CartResponse {
+  status: number;
+  message: string;
+  data: CartData;
+}
+
+export interface DeleteCartRooms {
+  roomOptionId: RoomOption["roomOptionId"][];
+}
+
+export interface PayCartRooms {
+  cartId: number;
+  cartProductId: RoomOption["cartProductId"][];
+}
+
 export interface SelectRoomProps {
-  rooms: Accommodation[] | null; // 데이터 fetch 실패 시 받아오는 값 null로 받을 수 있게 합의하기
-  selectedRooms: RoomOption[];
-  setSelectedRooms: React.Dispatch<React.SetStateAction<RoomOption[]>>;
+  accomodations: Accommodations[] | null;
 }
 
 export interface CartListProps extends SelectRoomProps {
-  rooms: Accommodation[];
+  accomodations: Accommodations[];
   setIsSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
 }

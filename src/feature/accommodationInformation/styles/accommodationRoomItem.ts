@@ -3,32 +3,43 @@ import { LuShoppingCart } from "react-icons/lu";
 
 export const Box = styled.div`
   width: 100%;
-  height: 12rem;
+  height: 15rem;
 
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
 
   @media screen and (width < 840px) {
-    height: 28rem;
+    height: 35rem;
 
     flex-direction: column;
+    justify-content: center;
 
     padding: 1rem 0;
   }
 `;
 
+export const RoomImgWrapper = styled.div`
+  width: 500px;
+  height: 230px;
+
+  display: flex;
+  align-items: center;
+
+  @media screen and (width < 840px) {
+    height: 300px;
+  }
+`;
+
 export const RoomImg = styled.img`
-  width: 15.625rem;
-  height: 9.375rem;
+  width: 100%;
+  height: 80%;
 
   border-radius: 10px;
 
   @media screen and (width < 840px) {
-    width: 400px;
-    height: 200px;
-
-    flex-direction: column;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -40,8 +51,32 @@ export const RoomInfo = styled.div`
   width: 100%;
 
   @media screen and (width < 840px) {
-    align-items: center;
+    justify-content: center;
+
+    padding: 1rem 2rem;
+
+    width: 500px;
   }
+`;
+
+export const SkeletonRoomInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  width: 100%;
+
+  @media screen and (width < 840px) {
+    justify-content: flex-start;
+
+    width: 410px;
+  }
+`;
+
+export const SkeletonRoomTopWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const RoomTopWrapper = styled.div`
@@ -49,7 +84,7 @@ export const RoomTopWrapper = styled.div`
   justify-content: space-between;
 
   @media screen and (width < 840px) {
-    width: 400px;
+    width: 430px;
   }
 `;
 
@@ -77,10 +112,6 @@ export const RoomCheckInOut = styled.div`
   span {
     color: ${({ theme }) => theme.color.darkGray};
   }
-
-  @media screen and (width < 840px) {
-    margin-right: 12rem;
-  }
 `;
 
 export const RoomCheckIn = styled.p`
@@ -93,29 +124,14 @@ export const RoomCheckOut = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
-export const RoomBottomWrapper = styled.div`
-  display: flex;
-  gap: 45%;
-
-  @media screen and (width < 840px) {
-    width: 100%;
-    gap: 39%;
-
-    width: 410px;
-  }
-`;
-
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.md};
-
-  margin-top: 1.8rem;
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const ButtonWraper = styled.div`
   display: flex;
   gap: 1rem;
-
-  margin-top: 1rem;
+  margin-left: 265px;
 `;
 
 export const CartIcon = styled(LuShoppingCart)`

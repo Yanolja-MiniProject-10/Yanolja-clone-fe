@@ -1,23 +1,17 @@
-import { useState } from "react";
-import { RoomOption } from "../feature/cart/cart.types";
 import SelectCartList from "../feature/cart/components/SelectCartList";
-import TotalSelectedPay from "../feature/cart/components/TotalSelectedPay";
-import ConfirmSelectedPay from "../feature/cart/components/ConfirmSelectedPay";
+import TotalSelectedPrice from "../feature/cart/components/TotalSelectedPrice";
+import CartPay from "../feature/cart/components/CartPay";
 import { CartWrapper } from "../styles/cart";
 
 // mock data
-import { accommodationsNull, accommodations } from "../feature/cart/cart.constants";
+import { accommodations } from "../feature/cart/cart.constants";
 
 const Cart = () => {
-  const [selectedRooms, setSelectedRooms] = useState<RoomOption[]>([]);
-
-  // react-query를 활용한 accommodations fetch
-
   return (
     <CartWrapper>
-      <SelectCartList rooms={accommodations} selectedRooms={selectedRooms} setSelectedRooms={setSelectedRooms} />
-      <TotalSelectedPay selectedRooms={selectedRooms} />
-      <ConfirmSelectedPay selectedRooms={selectedRooms} />
+      <SelectCartList accomodations={accommodations} />
+      <TotalSelectedPrice />
+      <CartPay />
     </CartWrapper>
   );
 };

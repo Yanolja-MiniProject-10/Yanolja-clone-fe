@@ -1,21 +1,20 @@
-import { EmptyCartWrapper, EmptyCartIcon } from "../styles/emptyCart";
+import { EmptyCartWrapper, EmptyCartIcon, EmptyCartText, EmptyHoneBtn } from "../styles/emptyCart";
+import { Link } from "react-router-dom";
 
 const EmptyCart = () => {
   return (
     <EmptyCartWrapper>
       <EmptyCartIcon />
 
-      <strong className="empty-strong">장바구니에 담긴 상품이 없습니다.</strong>
-      <span className="empty-span">원하는 상품을 담아보세요.</span>
+      <EmptyCartText>
+        <strong>장바구니에 담긴 상품이 없습니다.</strong>
+        <br />
+        <span>원하는 상품을 담아보세요.</span>
+      </EmptyCartText>
 
-      <button
-        onClick={() => {
-          console.log("홈으로 이동");
-        }}
-        className="empty-home-btn"
-      >
-        홈으로 이동하기
-      </button>
+      <Link to="/">
+        <EmptyHoneBtn>홈으로 이동하기</EmptyHoneBtn>
+      </Link>
     </EmptyCartWrapper>
   );
 };
