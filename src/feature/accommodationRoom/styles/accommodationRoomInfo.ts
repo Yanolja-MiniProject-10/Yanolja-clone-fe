@@ -1,47 +1,33 @@
 import styled from "styled-components";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
 
 export const Wrapper = styled.div`
   max-width: 840px;
   position: relative;
-`;
 
-export const CustomPrevArrow = styled(IoIosArrowBack)`
-  width: 50px;
-  height: 50px;
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: ${({ theme }) => theme.color.middleGray};
 
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-
-  z-index: 10;
-
-  color: ${({ theme }) => theme.color.middleGray};
-
-  &:hover {
-    color: ${({ theme }) => theme.color.black};
-    transition: 0.4s;
+    &:hover {
+      color: ${({ theme }) => theme.color.black};
+      transition: 0.4s;
+    }
   }
-`;
 
-export const CustomNextArrow = styled(IoIosArrowForward)`
-  width: 50px;
-  height: 50px;
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
 
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
+    background: ${({ theme }) => theme.color.darkGray};
 
-  z-index: 10;
+    opacity: 1;
+  }
 
-  color: ${({ theme }) => theme.color.middleGray};
+  .swiper-pagination-bullet-active {
+    transition: width 0.4s;
+    border-radius: 5px;
 
-  &:hover {
-    color: ${({ theme }) => theme.color.black};
-    transition: 0.4s;
+    background: ${({ theme }) => theme.color.mainPink};
   }
 `;
 
