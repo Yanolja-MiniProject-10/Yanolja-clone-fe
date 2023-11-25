@@ -29,7 +29,7 @@ const HomeInnerContainer = styled.div`
 const Title = styled.p`
   margin-bottom: 2rem;
 
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: bold;
 `;
 

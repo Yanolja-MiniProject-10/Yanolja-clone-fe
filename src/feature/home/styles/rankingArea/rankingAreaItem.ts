@@ -22,7 +22,7 @@ const NumberBox = styled.div`
 
   & > p {
     color: white;
-    font-size: ${({ theme }) => theme.fontSize.sm};
+    font-size: ${({ theme }) => theme.fontSize.xs};
   }
 `;
 
@@ -49,7 +49,7 @@ const Description = styled.div`
   flex-direction: column;
   justify-content: space-between;
   * {
-    font-size: ${({ theme }) => theme.fontSize.xs};
+    font-size: ${({ theme }) => theme.fontSize.xxs};
   }
 `;
 
