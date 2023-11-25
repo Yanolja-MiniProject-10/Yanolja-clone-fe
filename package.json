@@ -22,7 +22,6 @@
     "react-loading-skeleton": "^3.3.1",
     "react-router-dom": "^6.19.0",
     "recoil": "^0.7.7",
-    "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.1",
     "swiper": "^11.0.4"
   },
