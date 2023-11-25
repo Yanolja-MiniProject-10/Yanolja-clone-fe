@@ -18,7 +18,8 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
         <Skeleton height={560} />
         <style.TextInfo>
           <Skeleton height={30} width={200} />
-          <Skeleton width={300} height={25} />
+          <Skeleton width={300} height={15} />
+          <Skeleton width={100} height={15} />
           <style.DivideLine />
           <style.StaticDesc>상세 소개</style.StaticDesc>
           <Skeleton />
@@ -31,6 +32,7 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
     console.log(error.message);
   } else {
     const room = data.data;
+    const availableRoomCount = room.totalRoomCount - room.reservedRoomCount;
     return (
       <style.Wrapper>
         {room.roomOptionImage.mainImageUrls.length > 1 ? (
@@ -63,6 +65,7 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
               {room.checkOutTime.slice(0, 5)}
             </style.RoomCheckOut>
           </style.RoomCheckInOut>
+          {availableRoomCount > 0 && <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>}
           <style.RoomPrice>
             {room.totalPrice.toLocaleString()} 원 / {room.stayDuration}박
           </style.RoomPrice>

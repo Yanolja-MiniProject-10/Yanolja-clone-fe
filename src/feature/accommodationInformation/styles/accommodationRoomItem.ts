@@ -62,7 +62,7 @@ export const RoomInfo = styled.div`
 export const SkeletonRoomInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 
   width: 100%;
 
@@ -122,6 +122,10 @@ export const RoomCheckIn = styled.p`
 export const RoomCheckOut = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.darkGray};
+`;
+
+export const RoomCount = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
 export const RoomPrice = styled.h2`
