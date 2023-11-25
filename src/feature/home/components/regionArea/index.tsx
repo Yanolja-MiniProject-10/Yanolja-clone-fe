@@ -12,7 +12,7 @@ import "swiper/css/thumbs";
 
 const RegionArea = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null);
-  const regions = ["SEOUL", "GANGWON", "GYEONGGI", "JEJU"];
+  const regions = ["서울", "강원", "경기", "제주"];
 
   return (
     <HomeInnerContainer>

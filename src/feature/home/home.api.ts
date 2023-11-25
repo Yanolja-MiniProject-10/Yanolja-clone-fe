@@ -36,6 +36,8 @@ export const getRelatedAccommodations = async (relatedRequest: RelatedProps) => 
   const response = await instance.get(`/accommodations/related?category=${category}&region=${region}`, {
     params: requiredParams,
   });
+  console.log("startDate", startDate);
+  console.log("relatedRequest", category);
   return response.data.data.content;
 };
 

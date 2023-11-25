@@ -6,8 +6,16 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { TitleAndLinkBox, LinkToOthers } from "../../styles/allAndRelatedSwiper";
+import { AccommodationItemProps } from "../../home.types";
 
-const AllAndRelatedSwiper = ({ title, accommodations }) => {
+interface AllAndRelatedProps {
+  title: string;
+  accommodations: AccommodationItemProps;
+  category?: string;
+  region?: string;
+}
+
+const AllAndRelatedSwiper = ({ title, accommodations, category, region }: AllAndRelatedProps) => {
   //Link to 카테고리 조건 넣기
 
   return (
