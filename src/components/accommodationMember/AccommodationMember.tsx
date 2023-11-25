@@ -9,8 +9,11 @@ import {
   MemberButton,
 } from "./AccommodationMember";
 import { MemberProps } from "./accommodationMember.types";
+import { useSetRecoilState } from "recoil";
+import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember";
 
-const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber, setMemberNumber }: MemberProps) => {
+const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: MemberProps) => {
+  const setAccommodationMemberState = useSetRecoilState(accommodationMemberState);
   return (
     <MemberLayout $isMemberShow={isMemberShow}>
       <MemberContainer>
@@ -19,9 +22,9 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber, setM
           <MemberContentPeopleContainer>
             인원
             <MemberContentPeoplePick>
-              <button onClick={() => setMemberNumber(prev => prev - 1)}> - </button>
+              <button onClick={() => setAccommodationMemberState({ memberNumber: memberNumber - 1 })}> - </button>
               {memberNumber}
-              <button onClick={() => setMemberNumber(prev => prev + 1)}> + </button>
+              <button onClick={() => setAccommodationMemberState({ memberNumber: memberNumber + 1 })}> + </button>
             </MemberContentPeoplePick>
           </MemberContentPeopleContainer>
         </MemberContentBox>

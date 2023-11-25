@@ -1,14 +1,16 @@
-import { CiCalendar } from "react-icons/ci";
-import { IoPeople } from "react-icons/io5";
+import { IoPeople, IoCalendarClearOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useRecoilValue } from "recoil";
+import { accommodationDateState } from "../recoil/accommodation/accommodationDate.ts";
+import { accommodationMemberState } from "../recoil/accommodation/accommodationMember.ts";
 import accommmodationSample from "../assets/images/accommodationSample.svg";
 import AccommodationCalendar from "../components/accommodationCalendar/AccommodationCalendar.tsx";
 import AccommodationMember from "../components/accommodationMember/AccommodationMember.tsx";
 import { AccommodationProps } from "../feature/accommodation/accommodation.types.ts";
 import { useNavigate } from "react-router-dom";
 import instance from "../api/instance";
-import { handleDateShow } from "../feature/accommodation/accommodation.utils.ts";
+import { handleDateString, handleDateParam } from "../feature/accommodation/accommodation.utils.ts";
 import { AccommodationLayout } from "../feature/accommodation/styles/accommodationLayout.ts";
 import {
   AccommodationInfoBox,
@@ -35,32 +37,24 @@ const Accommodation = () => {
   const [accommodations, setAccommodations] = useState<AccommodationProps[]>([]);
   const [isCalendarShow, setIsCalendarShow] = useState<boolean>(false);
   const [isMemberShow, setIsMemberShow] = useState<boolean>(false);
-  const [memberNumber, setMemberNumber] = useState(2);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
   const [dateRange, setDateRange] = useState<string | undefined>("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (startDate) {
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      setEndDate(tomorrow);
-    }
-  }, []);
+  const { startDate, endDate } = useRecoilValue(accommodationDateState);
+  const { memberNumber } = useRecoilValue(accommodationMemberState);
 
   useEffect(() => {
     if (startDate && endDate) {
-      setDateRange(handleDateShow(startDate, endDate));
+      setDateRange(handleDateString(startDate, endDate));
     }
   }, [startDate, endDate]);
 
   const getData = useQuery({
     queryKey: ["Accommodation"],
     queryFn: async () => {
+      // const setData = handleDateParam(startDate, endDate);
       await instance
         .get(`/accommodations`, {
-          params: { startDate: "2023-11-24", endDate: "2023-11-25", guest: 2 },
+          params: { startDate: "2023-11-25", endDate: "2023-11-26", guest: 2 },
         })
         .then(response => setAccommodations(response.data.data.content));
     },
@@ -78,7 +72,7 @@ const Accommodation = () => {
             setIsCalendarShow(prev => !prev);
           }}
         >
-          <CiCalendar />
+          <IoCalendarClearOutline />
           <AccommodationInfoCalenderParagraph>{dateRange}</AccommodationInfoCalenderParagraph>
         </AccommodationInfoCalenderBox>
         <AccommodationInfoMemberBox
@@ -133,9 +127,7 @@ const Accommodation = () => {
           isCalendarShow={isCalendarShow}
           setIsCalendarShow={setIsCalendarShow}
           startDate={startDate}
-          setStartDate={setStartDate}
           endDate={endDate}
-          setEndDate={setEndDate}
         />
       }
       {
@@ -143,7 +135,6 @@ const Accommodation = () => {
           isMemberShow={isMemberShow}
           setIsMemberShow={setIsMemberShow}
           memberNumber={memberNumber}
-          setMemberNumber={setMemberNumber}
         />
       }
     </AccommodationLayout>
