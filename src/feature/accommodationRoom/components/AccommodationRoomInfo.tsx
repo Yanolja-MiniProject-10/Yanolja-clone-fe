@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import Toast from "../../../components/Toast/Toast";
 import { useRecoilState } from "recoil";
 import { toastState } from "../../../recoil/toast";
@@ -12,7 +11,6 @@ import { Navigation, Pagination } from "swiper/modules";
 
 const AccommodationRoomInfo = ({ status, data, error }) => {
   const [toast, setToast] = useRecoilState(toastState);
-  const { id } = useParams<Record<string, string | undefined>>();
 
   if (status == "pending") {
     return (
@@ -32,8 +30,7 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
   } else if (status == "error") {
     console.log(error.message);
   } else {
-    const room = data.data.roomOptions.find(option => option.id === parseInt(id as string));
-
+    const room = data.data;
     return (
       <style.Wrapper>
         {room.roomOptionImage.mainImageUrls.length > 1 ? (
@@ -67,7 +64,6 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
             </style.RoomCheckOut>
           </style.RoomCheckInOut>
           <style.RoomPrice>
-            {" "}
             {room.totalPrice.toLocaleString()} 원 / {room.stayDuration}박
           </style.RoomPrice>
           <style.DivideLine />
