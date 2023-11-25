@@ -27,9 +27,10 @@ const AccommodationRoomList = () => {
             <style.SkeletonRoomInfo>
               <style.SkeletonRoomTopWrapper>
                 <Skeleton height={30} width={180} />
-                <Skeleton width={280} height={20} />
+                <Skeleton width={240} height={20} />
               </style.SkeletonRoomTopWrapper>
               <Skeleton height={25} width={170} />
+              <Skeleton height={15} width={100} />
             </style.SkeletonRoomInfo>
           </style.Box>
         ))}
@@ -52,6 +53,8 @@ const AccommodationRoomList = () => {
           checkOut={room.checkOutTime}
           price={room.totalPrice}
           stayDuration={room.stayDuration}
+          totalRoomCount={room.totalRoomCount}
+          reservedRoomCount={room.reservedRoomCount}
         />
       ))}
     </Wrapper>

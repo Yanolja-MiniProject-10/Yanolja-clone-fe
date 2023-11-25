@@ -1,19 +1,16 @@
 import styled from "styled-components";
 import AccommodationRoomInfo from "../feature/accommodationRoom/components/AccommodationRoomInfo";
 import BottomBar from "../feature/accommodationRoom/components/BottomBar";
-import { useLocation } from "react-router-dom";
-import { useAccommodationInfoQuery } from "../feature/accommodationInformation/hooks/queries/fetchData";
+import { useParams } from "react-router-dom";
+import { useRoomInfoQuery } from "../feature/accommodationRoom/hooks/queries/fetchData";
 
 const AccommodationRoom = () => {
-  const { pathname } = useLocation();
-  const match = pathname.match(/\/accommodation\/(\d+)\/room/);
-  const accommodationId = match ? match[1] : null;
+  const { id } = useParams();
 
-  //날짜 임의 지정
-  const { status, data, error } = useAccommodationInfoQuery({
-    id: accommodationId,
+  const { status, data, error } = useRoomInfoQuery({
+    id,
     startDate: "2023-11-21",
-    endDate: "2023-11-25",
+    endDate: "2023-11-22",
     guest: 2,
   });
 
