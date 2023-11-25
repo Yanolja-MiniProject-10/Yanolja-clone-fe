@@ -37,6 +37,7 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
       <style.Wrapper>
         {room.roomOptionImage.mainImageUrls.length > 1 ? (
           <Swiper
+            style={{ zIndex: 0 }}
             slidesPerView={1}
             navigation={true}
             loop={true}
