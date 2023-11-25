@@ -31,7 +31,7 @@ const AccommodationRoomItem = ({ id, name, img, checkIn, checkOut, price, accomm
           </style.RoomCheckOut>
         </style.RoomCheckInOut>
         <style.RoomPrice>
-          {price.toLocaleString()}원/{stayDuration}박
+          {price.toLocaleString()}원 / {stayDuration}박
         </style.RoomPrice>
         <style.ButtonWraper>
           <style.CartButton onClick={() => setToast({ open: true, message: "장바구니에 상품이 담겼습니다." })}>
