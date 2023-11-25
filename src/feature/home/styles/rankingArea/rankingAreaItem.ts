@@ -35,8 +35,8 @@ const StyledLink = styled(Link)`
 
 const ImageBox = styled.div`
   & > img {
-    width: 7rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 5px;
 
     object-fit: cover;
@@ -53,6 +53,7 @@ const Description = styled.div`
   }
 `;
 
+//야놀자에서는 제목보다 가격에 bold처리해서 상의 해보기
 const Name = styled.b`
   //font-size: ${({ theme }) => theme.fontSize.xs};
 `;
