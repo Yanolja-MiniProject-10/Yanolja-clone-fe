@@ -10,7 +10,7 @@ import AccommodationMember from "../components/accommodationMember/Accommodation
 import { AccommodationProps } from "../feature/accommodation/accommodation.types.ts";
 import { useNavigate } from "react-router-dom";
 import instance from "../api/instance";
-import { handleDateString, handleDateParam } from "../feature/accommodation/accommodation.utils.ts";
+import { handleDateString } from "../feature/accommodation/accommodation.utils.ts";
 import { AccommodationLayout } from "../feature/accommodation/styles/accommodationLayout.ts";
 import {
   AccommodationInfoBox,
