@@ -3,12 +3,19 @@ export interface AccommodationProps {
   name: string;
   category: string;
   thumbnailImageUrl: string;
+  region: string;
   minimumPrice: number;
   maximumPrice: number;
 }
 
+export interface AccommodationListParams {
+  startDate: Date;
+  endDate: Date;
+  guest: number;
+}
+
 export interface accommodationMemberDefault {
-  memberNumber: number;
+  guest: number;
 }
 
 export interface accommodationDateDefault {
