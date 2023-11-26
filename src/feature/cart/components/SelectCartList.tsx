@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
 import { useRecoilState } from "recoil";
+import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
 import CartRoom from "./CartRoom";
 import EmptyCart from "./EmptyCart";
 import { SelectRoomProps } from "../cart.types";
@@ -9,7 +9,6 @@ import { Checkbox } from "../../../styles/checkbox";
 
 const SelectCartList = ({ accomodations }: SelectRoomProps) => {
   const [checkedRooms, setCheckedRooms] = useRecoilState(checkedCartRooms);
-
   const [isSelectAll, setIsSelectAll] = useState(false);
 
   // 전체 선택 시

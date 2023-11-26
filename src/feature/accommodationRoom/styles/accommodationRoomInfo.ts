@@ -69,6 +69,10 @@ export const RoomCheckOut = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
+export const RoomCount = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+`;
+
 export const RoomPrice = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.md};
 

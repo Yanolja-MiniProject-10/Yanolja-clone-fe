@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import Layout from "./components/Layout";
 import AccommodationRoom from "./pages/AccommodationRoom";
 import AccommodationInformation from "./pages/AccommodationInformation";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/accommodation/:id/room/:id" element={<AccommodationRoom />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </Layout>
   );

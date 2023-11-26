@@ -1,14 +1,11 @@
 import { useRecoilState } from "recoil";
 import { toastState } from "../../../recoil/toast";
 import * as style from "../styles/bottomBar";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BottomBar = ({ status, data, error }) => {
   const [, setToast] = useRecoilState(toastState);
-
-  const { id } = useParams<Record<string, string | undefined>>();
 
   if (status == "pending") {
     return (
@@ -19,7 +16,7 @@ const BottomBar = ({ status, data, error }) => {
   } else if (status == "error") {
     console.log(error.message);
   } else {
-    const room = data.data.roomOptions.find(option => option.id === parseInt(id as string));
+    const room = data.data;
     return (
       <style.Wrapper>
         <style.RoomPrice>
