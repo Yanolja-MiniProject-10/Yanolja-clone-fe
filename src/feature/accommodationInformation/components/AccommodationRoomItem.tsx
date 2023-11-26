@@ -27,24 +27,26 @@ const AccommodationRoomItem = ({
 
   return (
     <style.Box>
-      {roomOptionImage.mainImageUrls.length > 1 ? (
-        <Swiper
-          style={{ zIndex: 0 }}
-          slidesPerView={1}
-          navigation={true}
-          loop={true}
-          modules={[Navigation, Pagination]}
-          pagination={{ clickable: true }}
-        >
-          {roomOptionImage.mainImageUrls.map((img, index) => (
-            <SwiperSlide key={index}>
-              <style.RoomImg src={img} alt={name} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      ) : (
-        <style.RoomImg src={roomOptionImage.mainImageUrls[0]} alt={name} />
-      )}
+      <style.RoomImgWrapper>
+        {roomOptionImage.mainImageUrls.length > 1 ? (
+          <Swiper
+            style={{ zIndex: 0 }}
+            slidesPerView={1}
+            navigation={true}
+            loop={true}
+            modules={[Navigation, Pagination]}
+            pagination={{ clickable: true }}
+          >
+            {roomOptionImage.mainImageUrls.map((img, index) => (
+              <SwiperSlide key={index}>
+                <style.RoomImg src={img} alt={name} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <style.RoomImg src={roomOptionImage.mainImageUrls[0]} alt={name} />
+        )}
+      </style.RoomImgWrapper>
       <style.RoomInfo>
         <style.RoomTopWrapper>
           <style.RoomName>{name.length >= 16 ? name.slice(0, 15) + "..." : name}</style.RoomName>
@@ -53,15 +55,7 @@ const AccommodationRoomItem = ({
           </Link>
         </style.RoomTopWrapper>
         <style.RoomCheckInOut>
-          <style.RoomCheckIn>
-            <span>체크인: </span>
-            {checkInTime.slice(0, 5)}
-          </style.RoomCheckIn>
-          <span>~</span>
-          <style.RoomCheckOut>
-            <span>체크아웃: </span>
-            {checkOutTime.slice(0, 5)}
-          </style.RoomCheckOut>
+          체크인: {checkInTime.slice(0, 5)} ~ 체크아웃: {checkOutTime.slice(0, 5)}
         </style.RoomCheckInOut>
         <style.RoomPrice>
           {totalPrice.toLocaleString()}원 / {stayDuration}박
