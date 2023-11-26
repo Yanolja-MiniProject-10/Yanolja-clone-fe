@@ -20,7 +20,6 @@ const HomeInnerContainer = styled.div`
       opacity: 1;
     }
     .swiper-pagination-bullet-active {
-      /* border-radius: 5px; */
       background: ${({ theme }) => theme.color.mainPink};
     }
   }

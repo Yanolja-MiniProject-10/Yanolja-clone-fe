@@ -1,4 +1,7 @@
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
 
 export const relatedAccommodationsState = atom({
   key: "relatedAccommodationsState",
@@ -6,4 +9,5 @@ export const relatedAccommodationsState = atom({
     category: "",
     region: "",
   },
+  effects_UNSTABLE: [persistAtom],
 });

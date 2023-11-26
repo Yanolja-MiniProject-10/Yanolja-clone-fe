@@ -6,34 +6,33 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { TitleAndLinkBox, LinkToOthers } from "../../styles/allAndRelatedSwiper";
-import { AccommodationItemProps } from "../../home.types";
+import { AccommodationResponse } from "../../home.types";
 
 interface AllAndRelatedProps {
   title: string;
-  accommodations: AccommodationItemProps;
+  accommodations: AccommodationResponse[];
   category?: string;
   region?: string;
 }
 
+//Home에서 리코일 받아서 뿌리고,
 const AllAndRelatedSwiper = ({ title, accommodations, category, region }: AllAndRelatedProps) => {
   //Link to 카테고리 조건 넣기
+  // if(category){
+  //   const encodedCategory = encodeURIComponent(category);
+  //에러 확인
 
   return (
     <HomeInnerContainer>
       <TitleAndLinkBox>
         <Title>{title}</Title>
-        <LinkToOthers to="/accommodation">전체보기 &gt; </LinkToOthers>
+        <LinkToOthers to={category ? `/category/${category}` : `/accommodation`}>전체보기 &gt;</LinkToOthers>
       </TitleAndLinkBox>
-      <Swiper slidesPerView={3.5} navigation={true} modules={[Navigation]}>
+      <Swiper slidesPerView={3} navigation={true} modules={[Navigation]}>
         {accommodations?.map(accommodation => (
           <SwiperSlide key={accommodation.id}>
             <Link to={`/accommodation/${accommodation.id}`}>
-              <AllAndRelatedSwiperItem
-                name={accommodation.name}
-                thumbnail={accommodation.thumbnailImageUrl}
-                minPrice={accommodation.minimumPrice}
-                maxPrice={accommodation.maximumPrice}
-              />
+              <AllAndRelatedSwiperItem accommodation={accommodation} />
             </Link>
           </SwiperSlide>
         ))}

@@ -27,7 +27,6 @@ const NumberBox = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  /* background-color: skyblue; */
   display: flex;
   height: 100%;
   gap: 1rem;

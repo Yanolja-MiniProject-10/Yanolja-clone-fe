@@ -1,6 +1,6 @@
 import instance from "../../api/instance";
 import * as dayjs from "dayjs";
-import { RelatedProps } from "./home.types";
+import { FestivalResponse, RelatedProps } from "./home.types";
 
 const startDate = dayjs().format("YYYY-MM-DD");
 const endDate = dayjs().add(1, "day").format("YYYY-MM-DD");
@@ -28,20 +28,14 @@ export const getAllAccommodations = async () => {
   return response.data.data.content;
 };
 
-// {category,region}:RelatedProps 받기
-// const category = "HOTEL_RESORT";
-// const region = "SEOUL";
 export const getRelatedAccommodations = async (relatedRequest: RelatedProps) => {
   const { category, region } = relatedRequest;
   const response = await instance.get(`/accommodations/related?category=${category}&region=${region}`, {
     params: requiredParams,
   });
-  console.log("startDate", startDate);
-  console.log("relatedRequest", category);
   return response.data.data.content;
 };
 
-//region:string 받기
 export const getRegionAccommodations = async (region: string) => {
   const response = await instance.get(`/accommodations/region?region=${region}`, { params: regionRequiredParams });
   return response.data.data.content;
@@ -52,7 +46,13 @@ export const getRankingAccommodations = async () => {
   return response.data.data.content;
 };
 
+interface realType {
+  data: {
+    content: FestivalResponse[];
+  };
+}
+
 export const getFestivalInfo = async () => {
-  const response = await instance.get("/accommodations/festival", { params: festivalRequiredParams });
+  const response = await instance.get<realType>("/festival", { params: festivalRequiredParams });
   return response.data.data.content;
 };

@@ -18,10 +18,9 @@ export interface FestivalResponse {
   thumbnailImageUrl: string;
 }
 
-export interface Accommodation2 {
-  id?: string;
-  index?: number;
-  category?: string;
+export interface AccommodationResponse {
+  id: string;
+  category: string;
   region?: string;
   name: string;
   thumbnailImageUrl: string;
