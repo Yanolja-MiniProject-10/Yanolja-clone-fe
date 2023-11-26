@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { useDeleteCarts } from "../hooks/queries/useDeleteCars";
+import { useDeleteCarts } from "../hooks/queries/useDeleteCarts";
 import { CartModalProps } from "../cart.types";
 import * as style from "../styles/cartModal";
 
