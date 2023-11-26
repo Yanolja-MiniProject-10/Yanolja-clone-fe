@@ -8,10 +8,11 @@ const Cart = () => {
   const { data: cartData, isLoading, isError } = useFetchCarts();
 
   isLoading ? console.log("로딩중") : console.log("로딩끝");
+  isError ? console.log("에러 페이지로") : console.log("에러 없음");
 
   return (
     <style.CartWrapper>
-      <SelectCartList accomodations={isError ? null : cartData?.accommodations} />
+      <SelectCartList accomodations={cartData?.accommodations} />
       <TotalSelectedPrice />
       <CartPay />
     </style.CartWrapper>

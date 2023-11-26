@@ -19,7 +19,7 @@ const SelectCartList = ({ accomodations }: SelectRoomProps) => {
     setAllCheked(accomodations, setCheckedRooms);
   }, [accomodations, setCheckedRooms]);
 
-  // 전체 선택 시
+  // 전체 선택
   const handleIsSelectAll = () => {
     setIsSelectAll(preIsSelectAll => !preIsSelectAll);
     setCheckedRooms([]);
@@ -29,7 +29,7 @@ const SelectCartList = ({ accomodations }: SelectRoomProps) => {
     }
   };
 
-  // 선택 숙소 삭제 시
+  // 선택 숙소 삭제 모달 생성
   const handleDeleteCartRoom = () => {
     setIsModalOpen(true);
   };
@@ -57,11 +57,15 @@ const SelectCartList = ({ accomodations }: SelectRoomProps) => {
         </style.SelectCartListHeader>
 
         <style.CartList>
-          {accomodations ? <CartRoom accomodations={accomodations} setIsSelectAll={setIsSelectAll} /> : <EmptyCart />}
+          {accomodations !== undefined ? (
+            <CartRoom accomodations={accomodations} setIsSelectAll={setIsSelectAll} />
+          ) : (
+            <EmptyCart />
+          )}
         </style.CartList>
       </style.SelectCartListWrapper>
 
-      {isModalOpen ? <CartModal selectedItem={checkedRooms} setIsModalOpen={setIsModalOpen} /> : null}
+      {isModalOpen ? <CartModal selectedRooms={checkedRooms} setIsModalOpen={setIsModalOpen} /> : null}
     </>
   );
 };
