@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 3rem;
+  padding: 1rem 3rem;
 
   display: flex;
   flex-direction: column;
@@ -9,7 +9,5 @@ export const Wrapper = styled.div`
 
   @media screen and (width < 840px) {
     gap: 3rem;
-
-    padding: 2rem;
   }
 `;
