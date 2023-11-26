@@ -1,4 +1,4 @@
-import { CartResponse, Accommodations } from "./cart.types";
+import { FetchCartResult, Accommodations } from "./cart.types";
 
 export const accommodationsNull = {
   status: 200,
@@ -9,7 +9,7 @@ export const accommodationsNull = {
   },
 };
 
-export const cartResponse: CartResponse = {
+export const cartResponse: FetchCartResult = {
   status: 200,
   message: "SUCCESS",
   data: {
