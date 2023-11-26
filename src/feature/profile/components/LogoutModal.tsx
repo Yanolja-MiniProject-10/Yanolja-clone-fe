@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import { CancelButton, ConfirmButton, Modal, ModalBackground } from "../styles/profileEditModal";
 import { StyledButtonWrapper, Title } from "../styles/logoutModal";
+import { ModalProps } from "../../../components/loginModal/loginModal.types";
 
-const LogoutModal = ({ onClose, onConfirmLogout }) => {
+const LogoutModal = ({ onClose, onConfirmLogout }: ModalProps) => {
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
 
   const handleClickBackground = async (e: React.MouseEvent<HTMLDivElement>): Promise<void> => {

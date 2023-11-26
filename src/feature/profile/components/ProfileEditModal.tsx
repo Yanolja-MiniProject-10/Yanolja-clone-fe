@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { ButtonWrapper, CancelButton, ConfirmButton, Form, Modal, ModalBackground } from "../styles/profileEditModal";
+import { ModalProps } from "../../../components/loginModal/loginModal.types";
 
-const ProfileEditModal = ({ onClose }) => {
+const ProfileEditModal = ({ onClose }: ModalProps) => {
   const [name, setName] = useState("야놀자");
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
 

@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { ButtonWrapper, CancelButton, ConfirmButton, Modal, ModalBackground, Title } from "./loginModal.styles";
+import { ModalProps } from "./loginModal.types";
 
-const LoginModal = ({ onClose }) => {
+const LoginModal = ({ onClose }: ModalProps) => {
   const navigate = useNavigate();
 
   return (
