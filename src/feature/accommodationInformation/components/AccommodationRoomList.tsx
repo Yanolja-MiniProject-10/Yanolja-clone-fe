@@ -19,7 +19,7 @@ const AccommodationRoomList = () => {
 
   if (status === "pending") {
     return (
-      <Wrapper>
+      <Wrapper style={{ zIndex: 0 }}>
         {[...Array(4)].map((_, index) => (
           <style.Box key={index}>
             <style.RoomImgWrapper>

@@ -21,7 +21,7 @@ const AccommodationInfo = () => {
 
   if (status === "pending") {
     return (
-      <style.Wrapper>
+      <style.Wrapper style={{ zIndex: 0 }}>
         <style.SkeletonImgWrapper>
           <Skeleton height={560} />
         </style.SkeletonImgWrapper>
