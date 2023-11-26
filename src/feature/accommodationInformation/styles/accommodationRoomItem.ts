@@ -17,6 +17,32 @@ export const Box = styled.div`
 
     padding: 1rem 0;
   }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: ${({ theme }) => theme.color.middleGray};
+
+    &:hover {
+      color: ${({ theme }) => theme.color.black};
+      transition: 0.4s;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+
+    background: ${({ theme }) => theme.color.darkGray};
+
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    transition: width 0.4s;
+    border-radius: 5px;
+
+    background: ${({ theme }) => theme.color.mainPink};
+  }
 `;
 
 export const RoomImgWrapper = styled.div`

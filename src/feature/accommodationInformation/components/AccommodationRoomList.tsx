@@ -5,6 +5,7 @@ import * as style from "../styles/accommodationRoomItem";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
+import { RoomListProps } from "../accommodationInformation.types";
 
 const AccommodationRoomList = () => {
   const { id } = useParams();
@@ -45,16 +46,16 @@ const AccommodationRoomList = () => {
 
   return (
     <Wrapper>
-      {data.data.roomOptions.map(room => (
+      {data.data.roomOptions.map((room: RoomListProps) => (
         <AccommodationRoomItem
           key={room.id}
           id={room.id}
           accommodationId={id}
           name={room.name}
-          img={room.roomOptionImage.mainImageUrls[0]}
-          checkIn={room.checkInTime}
-          checkOut={room.checkOutTime}
-          price={room.totalPrice}
+          roomOptionImage={room.roomOptionImage}
+          checkInTime={room.checkInTime}
+          checkOutTime={room.checkOutTime}
+          totalPrice={room.totalPrice}
           stayDuration={room.stayDuration}
           totalRoomCount={room.totalRoomCount}
           reservedRoomCount={room.reservedRoomCount}
