@@ -6,7 +6,7 @@ const RankingWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  grid-row-gap: 3rem;
+  grid-row-gap: 2rem;
 `;
 
 export { RankingWrapper };

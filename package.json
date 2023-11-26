@@ -23,6 +23,7 @@
     "react-loading-skeleton": "^3.3.1",
     "react-router-dom": "^6.19.0",
     "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
     "styled-components": "^6.1.1",
     "swiper": "^11.0.4"
   },

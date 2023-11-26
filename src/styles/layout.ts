@@ -13,7 +13,7 @@ export const Box = styled.div`
   margin: 0 auto;
   height: 100%;
   min-height: 100vh;
-  max-width: 52.5rem;
+  max-width: 750px;
   padding-top: 60px;
   display: flex;
   flex-direction: column;
