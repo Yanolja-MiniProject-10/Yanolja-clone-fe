@@ -28,20 +28,14 @@ export const getAllAccommodations = async () => {
   return response.data.data.content;
 };
 
-// {category,region}:RelatedProps 받기
-// const category = "HOTEL_RESORT";
-// const region = "SEOUL";
 export const getRelatedAccommodations = async (relatedRequest: RelatedProps) => {
   const { category, region } = relatedRequest;
   const response = await instance.get(`/accommodations/related?category=${category}&region=${region}`, {
     params: requiredParams,
   });
-  console.log("startDate", startDate);
-  console.log("relatedRequest", category);
   return response.data.data.content;
 };
 
-//region:string 받기
 export const getRegionAccommodations = async (region: string) => {
   const response = await instance.get(`/accommodations/region?region=${region}`, { params: regionRequiredParams });
   return response.data.data.content;
