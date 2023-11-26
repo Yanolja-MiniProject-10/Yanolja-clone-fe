@@ -3,11 +3,13 @@ import { LuShoppingCart } from "react-icons/lu";
 
 export const Box = styled.div`
   width: 100%;
-  height: 15rem;
+  height: 220px;
 
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
+
+  padding: 1rem;
 
   @media screen and (width < 840px) {
     height: 35rem;
@@ -15,7 +17,9 @@ export const Box = styled.div`
     flex-direction: column;
     justify-content: center;
 
-    padding: 1rem 0;
+    padding: 2rem 0 1rem;
+
+    background-color: pink;
   }
 
   .swiper-button-next,
@@ -26,6 +30,11 @@ export const Box = styled.div`
       color: ${({ theme }) => theme.color.black};
       transition: 0.4s;
     }
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: ${({ theme }) => theme.fontSize.md} !important;
   }
 
   .swiper-pagination-bullet {
@@ -46,14 +55,14 @@ export const Box = styled.div`
 `;
 
 export const RoomImgWrapper = styled.div`
-  width: 500px;
-  height: 230px;
+  width: 270px;
 
   display: flex;
   align-items: center;
 
   @media screen and (width < 840px) {
-    height: 300px;
+    width: 80%;
+    min-width: 460px;
   }
 `;
 
@@ -74,28 +83,13 @@ export const RoomInfo = styled.div`
   flex-direction: column;
   gap: 1rem;
 
-  width: 100%;
+  width: 60%;
 
   @media screen and (width < 840px) {
-    justify-content: center;
+    padding: 1rem;
 
-    padding: 1rem 2rem;
-
-    width: 500px;
-  }
-`;
-
-export const SkeletonRoomInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  width: 100%;
-
-  @media screen and (width < 840px) {
-    justify-content: flex-start;
-
-    width: 410px;
+    width: 80%;
+    min-width: 460px;
   }
 `;
 
@@ -110,7 +104,7 @@ export const RoomTopWrapper = styled.div`
   justify-content: space-between;
 
   @media screen and (width < 840px) {
-    width: 430px;
+    width: 100%;
   }
 `;
 
@@ -131,23 +125,11 @@ export const RoomDetailButton = styled.button`
   }
 `;
 
-export const RoomCheckInOut = styled.div`
+export const RoomCheckInOut = styled.p`
   display: flex;
-  gap: 0.4rem;
 
-  span {
-    color: ${({ theme }) => theme.color.darkGray};
-  }
-`;
-
-export const RoomCheckIn = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.darkGray};
-`;
-
-export const RoomCheckOut = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
-  color: ${({ theme }) => theme.color.darkGray};
 `;
 
 export const RoomCount = styled.p`
@@ -160,8 +142,10 @@ export const RoomPrice = styled.h2`
 
 export const ButtonWraper = styled.div`
   display: flex;
+  justify-content: flex-end;
   gap: 1rem;
-  margin-left: 265px;
+
+  width: 100%;
 `;
 
 export const CartIcon = styled(LuShoppingCart)`
@@ -175,8 +159,8 @@ export const CartButton = styled.button`
 
   background-color: ${({ theme }) => theme.color.white};
 
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.mainPink};
@@ -194,8 +178,8 @@ export const CartButton = styled.button`
 `;
 
 export const ReservationButton = styled.button`
-  width: 110px;
-  height: 40px;
+  width: 100px;
+  height: 35px;
 
   border-radius: 10px;
   border: none;
@@ -203,8 +187,7 @@ export const ReservationButton = styled.button`
   background-color: ${({ theme }) => theme.color.mainPink};
 
   color: ${({ theme }) => theme.color.white};
-  font-size: ${({ theme }) => theme.fontSize.xxs};
-  font-weight: bold;
+  font-size: 14px;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.hoverPink};

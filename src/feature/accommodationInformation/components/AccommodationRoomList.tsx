@@ -24,16 +24,16 @@ const AccommodationRoomList = () => {
         {[...Array(4)].map((_, index) => (
           <style.Box key={index}>
             <style.RoomImgWrapper>
-              <Skeleton width={300} height={150} />
+              <Skeleton width={270} height={150} />
             </style.RoomImgWrapper>
-            <style.SkeletonRoomInfo>
+            <style.RoomInfo>
               <style.SkeletonRoomTopWrapper>
                 <Skeleton height={30} width={180} />
                 <Skeleton width={240} height={20} />
               </style.SkeletonRoomTopWrapper>
               <Skeleton height={25} width={170} />
               <Skeleton height={15} width={100} />
-            </style.SkeletonRoomInfo>
+            </style.RoomInfo>
           </style.Box>
         ))}
       </Wrapper>
