@@ -6,7 +6,7 @@ export const Box = styled.div`
   height: 220px;
 
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   align-items: center;
 
   padding: 1rem;
@@ -18,8 +18,6 @@ export const Box = styled.div`
     justify-content: center;
 
     padding: 2rem 0 1rem;
-
-    background-color: pink;
   }
 
   .swiper-button-next,
@@ -81,7 +79,7 @@ export const RoomImg = styled.img`
 export const RoomInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
 
   width: 60%;
 
