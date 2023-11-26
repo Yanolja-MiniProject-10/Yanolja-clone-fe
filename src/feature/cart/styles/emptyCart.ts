@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import { LuShoppingCart } from "react-icons/lu";
 
-export const EmptyCartIcon = styled(LuShoppingCart)`
-  font-size: ${({ theme }) => theme.fontSize.xxl};
-  color: ${({ theme }) => theme.color.middleGray};
-`;
-
 export const EmptyCartWrapper = styled.div`
   width: 100%;
   height: 200px;
@@ -20,28 +15,39 @@ export const EmptyCartWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
 
-  .empty-strong {
+export const EmptyCartIcon = styled(LuShoppingCart)`
+  font-size: ${({ theme }) => theme.fontSize.xxl};
+  color: ${({ theme }) => theme.color.middleGray};
+`;
+
+export const EmptyCartText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  strong {
     font-size: ${({ theme }) => theme.fontSize.xs};
   }
 
-  .empty-span {
+  span {
     font-size: ${({ theme }) => theme.fontSize.xxs};
   }
+`;
 
-  .empty-home-btn {
-    border: 1px solid ${({ theme }) => theme.color.mainPink};
-    border-radius: ${({ theme }) => theme.box.radius};
-    padding: 12px 70px;
+export const EmptyHoneBtn = styled.button`
+  border: 1px solid ${({ theme }) => theme.color.mainPink};
+  border-radius: ${({ theme }) => theme.box.radius};
+  padding: 12px 70px;
 
-    color: ${({ theme }) => theme.color.mainPink};
-    background-color: white;
+  color: ${({ theme }) => theme.color.mainPink};
+  background-color: white;
 
-    transition: 0.5s;
+  transition: 0.5s;
 
-    &:hover {
-      color: white;
-      background-color: ${({ theme }) => theme.color.mainPink};
-    }
+  &:hover {
+    color: white;
+    background-color: ${({ theme }) => theme.color.mainPink};
   }
 `;

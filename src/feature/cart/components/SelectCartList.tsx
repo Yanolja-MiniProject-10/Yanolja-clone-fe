@@ -1,55 +1,68 @@
-import { useState } from "react";
-import { SelectRoomProps } from "../cart.types";
-import CartList from "./CartList";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
+import CartRoom from "./CartRoom";
 import EmptyCart from "./EmptyCart";
-import { SelectCartListWrapper, ControlCartList, CartListUl } from "../styles/selectCartList";
+import CartModal from "./CartModal";
+import { setAllCheked } from "../cart.utils";
+import { SelectRoomProps } from "../cart.types";
+import * as style from "../styles/selectCartList";
+import * as commonStyle from "../../../styles/checkbox";
 
-const SelectCartList = ({ rooms, selectedRooms, setSelectedRooms }: SelectRoomProps) => {
-  const [isSelectAll, setIsSelectAll] = useState(false);
+const SelectCartList = ({ accomodations }: SelectRoomProps) => {
+  const [checkedRooms, setCheckedRooms] = useRecoilState(checkedCartRooms);
+  const [isSelectAll, setIsSelectAll] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // 최초 및 재입장 시 전체 선택 상태 기본값
+  useEffect(() => {
+    setAllCheked(accomodations, setCheckedRooms);
+  }, [accomodations, setCheckedRooms]);
+
+  // 전체 선택 시
   const handleIsSelectAll = () => {
     setIsSelectAll(preIsSelectAll => !preIsSelectAll);
+    setCheckedRooms([]);
 
     if (!isSelectAll) {
-      const newRooms = rooms?.flatMap(room => room.roomOptions);
-
-      if (newRooms) {
-        setSelectedRooms([...selectedRooms, ...newRooms]);
-      }
-    } else {
-      setSelectedRooms([]);
+      setAllCheked(accomodations, setCheckedRooms);
     }
   };
 
+  // 선택 숙소 삭제 시
+  const handleDeleteCartRoom = () => {
+    setIsModalOpen(true);
+  };
+
   return (
-    <SelectCartListWrapper>
-      <ControlCartList $selectedRooms={selectedRooms.length}>
-        <div className="all-check-box">
-          <input type="checkbox" checked={rooms ? isSelectAll : true} onChange={handleIsSelectAll} id="all-check" />
-          <label htmlFor="all-check">전체 선택</label>
-        </div>
+    <>
+      <style.SelectCartListWrapper>
+        <style.SelectCartListHeader>
+          <commonStyle.Checkbox>
+            <input
+              type="checkbox"
+              checked={accomodations ? isSelectAll : true}
+              onChange={handleIsSelectAll}
+              id="all-check"
+            />
+            <label htmlFor="all-check">전체 선택</label>
+          </commonStyle.Checkbox>
 
-        <button
-          onClick={selectedRooms.length ? () => console.log("선택 숙소 삭제 API") : undefined}
-          className="delete-checked-box"
-        >
-          선택 숙소 삭제
-        </button>
-      </ControlCartList>
+          <style.DeleteCheckedbox
+            $selectedRooms={checkedRooms.length}
+            onClick={checkedRooms.length ? handleDeleteCartRoom : undefined}
+          >
+            선택 숙소 삭제
+          </style.DeleteCheckedbox>
+        </style.SelectCartListHeader>
 
-      {rooms ? (
-        <CartListUl>
-          <CartList
-            rooms={rooms}
-            setIsSelectAll={setIsSelectAll}
-            selectedRooms={selectedRooms}
-            setSelectedRooms={setSelectedRooms}
-          />
-        </CartListUl>
-      ) : (
-        <EmptyCart />
-      )}
-    </SelectCartListWrapper>
+        <style.CartList>
+          {accomodations ? <CartRoom accomodations={accomodations} setIsSelectAll={setIsSelectAll} /> : <EmptyCart />}
+        </style.CartList>
+      </style.SelectCartListWrapper>
+
+      {isModalOpen ? <CartModal selectedItem={checkedRooms} setIsModalOpen={setIsModalOpen} /> : null}
+    </>
   );
 };
 

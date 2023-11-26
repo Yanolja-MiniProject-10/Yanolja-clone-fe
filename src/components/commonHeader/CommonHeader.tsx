@@ -1,5 +1,4 @@
-import React from "react";
-import { Container, ArrowBox, RightIcons, HeadingText } from "./commonHeader.ts";
+import { Container, ArrowBox, RightIcons, HeadingText } from "./commonHeader.styles.ts";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { BiHome } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
@@ -26,8 +25,15 @@ const CommonHeader = () => {
         return "예약";
       case "/profile":
         return "마이 페이지";
+      case "/category/호텔_리조트":
+        return "호텔/리조트";
+      case "/category/펜션_풀빌라":
+        return "펜션/풀빌라";
+      case "/category/모텔":
+        return "모텔";
       default:
         return " ";
+      //예약 내역,
     }
   };
 

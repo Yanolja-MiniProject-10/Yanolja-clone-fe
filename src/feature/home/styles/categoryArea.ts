@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const InnerWrapper = styled.div`
@@ -8,17 +9,18 @@ const InnerWrapper = styled.div`
   align-items: center;
 `;
 
-const IconBox = styled.div`
+const IconBox = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 
+  cursor: pointer;
+
   transition: 0.4s;
   &:hover {
     color: ${({ theme }) => theme.color.mainPink};
   }
-  cursor: pointer;
 
   * img {
     width: 60px;

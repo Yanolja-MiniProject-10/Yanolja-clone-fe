@@ -1,24 +1,20 @@
-import { useState } from "react";
-import { RoomOption } from "../feature/cart/cart.types";
 import SelectCartList from "../feature/cart/components/SelectCartList";
-import TotalSelectedPay from "../feature/cart/components/TotalSelectedPay";
-import ConfirmSelectedPay from "../feature/cart/components/ConfirmSelectedPay";
-import { CartWrapper } from "../styles/cart";
-
-// mock data
-import { accommodationsNull, accommodations } from "../feature/cart/cart.constants";
+import TotalSelectedPrice from "../feature/cart/components/TotalSelectedPrice";
+import CartPay from "../feature/cart/components/CartPay";
+import { useFetchCarts } from "../feature/cart/hooks/queries/useFetchCarts";
+import * as style from "../styles/cart";
 
 const Cart = () => {
-  const [selectedRooms, setSelectedRooms] = useState<RoomOption[]>([]);
+  const { data: cartData, isLoading, isError } = useFetchCarts();
 
-  // react-query를 활용한 accommodations fetch
+  isLoading ? console.log("로딩중") : console.log("로딩끝");
 
   return (
-    <CartWrapper>
-      <SelectCartList rooms={accommodations} selectedRooms={selectedRooms} setSelectedRooms={setSelectedRooms} />
-      <TotalSelectedPay selectedRooms={selectedRooms} />
-      <ConfirmSelectedPay selectedRooms={selectedRooms} />
-    </CartWrapper>
+    <style.CartWrapper>
+      <SelectCartList accomodations={isError ? null : cartData?.accommodations} />
+      <TotalSelectedPrice />
+      <CartPay />
+    </style.CartWrapper>
   );
 };
 

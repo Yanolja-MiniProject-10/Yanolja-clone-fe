@@ -1,31 +1,53 @@
 import CategoryArea from "../feature/home/components/CategoryArea";
-import EventCarousel from "../feature/home/components/EventCarousel";
+import FestivalCarousel from "../feature/home/components/festivalCarousel";
 import Footer from "../feature/home/components/Footer";
+import ToTopButton from "../components/toTopButton/ToTopButton";
 import NavBar from "../feature/home/components/NavBar";
-import RankingArea from "../feature/home/components/RankingArea";
+import RankingArea from "../feature/home/components/rankingArea";
 import RegionArea from "../feature/home/components/regionArea";
 import AllAndRelatedSwiper from "../feature/home/components/allAndRelatedSwiper";
-import { responseMock } from "../feature/home/homeMockdata";
-//import { useAllAccommodations, useRelatedAccommodations } from "../feature/home/home.hooks";
+import { useAllAccommodations, useRelatedAccommodations } from "../feature/home/hooks/queries/home.hooks";
+import { HomeContainer } from "../feature/home/styles/homeCommon";
+import { useRecoilValue } from "recoil";
+import { relatedAccommodationsState } from "../recoil/home/clickedData";
 
-{
-  /* 이곳의 주석들은 API 최종 완성 후 주석 해제 예정입니다 */
-}
+//const allAccommodations = responseMock.data.content;
+// useRelatedAccommodations({ category, region });
+
 const Home = () => {
-  //const { data: allAccommodations } = useAllAccommodations();
-  //const { data: relatedAccommodations } = useRelatedAccommodations('SEOUL');
+  const { data: allAccommodations } = useAllAccommodations();
 
-  const allAccommodations = responseMock.data.content;
+  const relatedCateRegion = useRecoilValue(relatedAccommodationsState);
+  const { category: category } = relatedCateRegion; //, region: realRegi
+  //realRegi ? console.log("잇음", realRegi, category) : console.log("읭 업는듯", relatedCateRegion, realRegi);
+
+  //accommodation에 category가 있어야 제대로 사용 가능
+  // 로그인 여부 판단해서 로그인 안했을 때는 연관숙소 보여주지 않음
+  const region = "경기";
+  //const category = "모텔";
+  const { data: relatedAccommodations } = useRelatedAccommodations({ category, region });
 
   return (
     <>
+      <FestivalCarousel />
       <HomeContainer>
-        <EventCarousel />
         <CategoryArea />
-        <AllAndRelatedSwiper title={"모든 숙소 둘러보기"} accommodations={allAccommodations} />
-        {/* <AllAndRelatedSwiper title={"최근 본 상품의 연관 상품"} accommodations={relatedAccommodations} /> */}
+        {allAccommodations && <AllAndRelatedSwiper title={"모든 숙소 둘러보기"} accommodations={allAccommodations} />}
+
+        {relatedAccommodations ? (
+          <AllAndRelatedSwiper
+            title={"최근 본 상품의 연관 상품"}
+            accommodations={relatedAccommodations}
+            category={category}
+            //region={region}
+          />
+        ) : (
+          <div>아직없음</div>
+        )}
+
         <RegionArea />
         <RankingArea />
+        <ToTopButton />
         <Footer />
       </HomeContainer>
 
@@ -35,17 +57,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// 나중에 파일로 분리하겠습니다!
-import styled from "styled-components";
-
-const HomeContainer = styled.div`
-  width: 90%;
-  margin: 0 auto;
-  padding-bottom: 60px;
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
-`;

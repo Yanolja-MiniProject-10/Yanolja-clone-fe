@@ -1,36 +1,20 @@
-import { useQuery } from "@tanstack/react-query";
 import { Wrapper } from "../styles/accommodationRoomList";
 import AccommodationRoomItem from "./AccommodationRoomItem";
 import { useParams } from "react-router-dom";
-import instance from "../../../api/instance";
 import * as style from "../styles/accommodationRoomItem";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
 
 const AccommodationRoomList = () => {
   const { id } = useParams();
 
-  {
-    /* 추후 분리 */
-  }
-  const { status, data, error } = useQuery({
-    queryKey: ["getAccommodationInfoData"],
-    queryFn: async () => {
-      const startDate = "2023-11-21";
-      const endDate = "2023-11-22";
-      const guest = 2;
+  //날짜, 게스트 임의 지정
+  const startDate = "2023-11-21";
+  const endDate = "2023-12-05";
+  const guest = 2;
 
-      const { data } = await instance.get(`/accommodations/${id}`, {
-        params: {
-          startDate,
-          endDate,
-          guest,
-          accommodationId: id,
-        },
-      });
-      return data;
-    },
-  });
+  const { status, data, error } = useAccommodationInfoQuery({ id, startDate, endDate, guest });
 
   if (status === "pending") {
     return (
@@ -43,9 +27,10 @@ const AccommodationRoomList = () => {
             <style.SkeletonRoomInfo>
               <style.SkeletonRoomTopWrapper>
                 <Skeleton height={30} width={180} />
-                <Skeleton width={280} height={20} />
+                <Skeleton width={240} height={20} />
               </style.SkeletonRoomTopWrapper>
               <Skeleton height={25} width={170} />
+              <Skeleton height={15} width={100} />
             </style.SkeletonRoomInfo>
           </style.Box>
         ))}
@@ -66,7 +51,10 @@ const AccommodationRoomList = () => {
           img={room.roomOptionImage.mainImageUrls[0]}
           checkIn={room.checkInTime}
           checkOut={room.checkOutTime}
-          price={room.price}
+          price={room.totalPrice}
+          stayDuration={room.stayDuration}
+          totalRoomCount={room.totalRoomCount}
+          reservedRoomCount={room.reservedRoomCount}
         />
       ))}
     </Wrapper>

@@ -1,16 +1,17 @@
-import React from "react";
 import { ItemContainer, ImgBox, Description, Title, Price } from "../../styles/regionArea/regionArea.ts";
+import { AccommodationProp } from "../../home.types.ts";
 
-const RegionAreaItem = ({ name, thumbnail, minPrice, maxPrice }) => {
+const RegionAreaItem = ({ accommodation }: AccommodationProp) => {
+  const { name, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
   return (
     <ItemContainer>
       <ImgBox>
-        <img src={thumbnail} alt={name} />
+        <img src={thumbnailImageUrl} alt={name} />
       </ImgBox>
       <Description>
         <Title>{name}</Title>
         <Price>
-          {minPrice.toLocaleString()} ~ {maxPrice.toLocaleString()}원
+          {minimumPrice.toLocaleString()} ~ {maximumPrice.toLocaleString()}원
         </Price>
       </Description>
     </ItemContainer>
