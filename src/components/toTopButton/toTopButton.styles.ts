@@ -13,7 +13,7 @@ const StyledToTopButton = styled.div`
   position: fixed;
   z-index: 10;
   bottom: 6rem;
-  right: calc(50% - 25rem);
+  right: calc(50% - 22rem);
 
   display: flex;
   justify-content: center;

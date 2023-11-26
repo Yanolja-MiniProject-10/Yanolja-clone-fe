@@ -36,7 +36,7 @@ const RegionListBox = styled.div`
 //Item
 
 const ItemContainer = styled.div`
-  width: 11rem;
+  width: 10rem;
   border-radius: 10px;
 
   display: flex;
@@ -60,8 +60,11 @@ const ImgBox = styled.div`
 
 const Description = styled.div`
   padding: 10px 5px;
+
   display: flex;
   flex-direction: column;
+
+  white-space: nowrap;
 `;
 
 const Title = styled.p`

@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 60px;
   top: 0;
   width: 100%;
-  max-width: 52.5rem;
+  max-width: 750px;
   z-index: 100;
 
   display: flex;

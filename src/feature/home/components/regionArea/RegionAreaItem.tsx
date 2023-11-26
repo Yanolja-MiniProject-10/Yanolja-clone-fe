@@ -1,4 +1,3 @@
-import React from "react";
 import { ItemContainer, ImgBox, Description, Title, Price } from "../../styles/regionArea/regionArea.ts";
 import { AccommodationItemProps } from "../../home.types.ts";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { FestivalResponse } from "../../home.types";
 
 const FestivalCarouselItem = ({ title, thumbnailImageUrl }: FestivalResponse) => {
