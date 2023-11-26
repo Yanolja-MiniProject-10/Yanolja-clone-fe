@@ -7,14 +7,10 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import { responseMock } from "../../homeMockdata.ts";
 
-// interface SlideProps {
-//   region: string;
-// }
 
 const RegionAreaSlide = ({ region }: string) => {
   const { data: accommodations } = useRegionAccommodations(region);
-  // const allAccommodations = responseMock.data.content;
-  // const accommodations = allAccommodations.slice(0, 4);
+
   return (
     <RegionListBox>
       {accommodations?.length == 0 ? (
