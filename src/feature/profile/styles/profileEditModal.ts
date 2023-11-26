@@ -65,7 +65,7 @@ export const Form = styled.form`
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 65%;
+  width: 60%;
   margin: 15px auto 10px auto;
   display: flex;
   justify-content: space-between;
