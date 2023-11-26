@@ -15,11 +15,12 @@ const IconBox = styled(Link)`
   align-items: center;
   gap: 10px;
 
+  cursor: pointer;
+
   transition: 0.4s;
   &:hover {
     color: ${({ theme }) => theme.color.mainPink};
   }
-  cursor: pointer;
 
   * img {
     width: 60px;

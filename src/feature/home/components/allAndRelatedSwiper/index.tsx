@@ -6,21 +6,17 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { TitleAndLinkBox, LinkToOthers } from "../../styles/allAndRelatedSwiper";
-import { AccommodationResponse } from "../../home.types";
+import { Accommodation } from "../../home.types";
 
 interface AllAndRelatedProps {
   title: string;
-  accommodations: AccommodationResponse[];
+  accommodations: Accommodation[];
   category?: string;
   region?: string;
 }
-
-//Home에서 리코일 받아서 뿌리고,
-const AllAndRelatedSwiper = ({ title, accommodations, category, region }: AllAndRelatedProps) => {
-  //Link to 카테고리 조건 넣기
-  // if(category){
-  //   const encodedCategory = encodeURIComponent(category);
-  //에러 확인
+//region props에 추가
+const AllAndRelatedSwiper = ({ title, accommodations, category }: AllAndRelatedProps) => {
+  //Link에 한글 있어서 이동 시 에러(디코 fe대화 스샷 참고)
 
   return (
     <HomeInnerContainer>

@@ -7,6 +7,7 @@ const SwiperNavTabs = styled(Swiper)`
 
   .swiper-slide-thumb-active {
     color: ${({ theme }) => theme.color.mainPink};
+
     span {
       border-bottom: 3px solid ${({ theme }) => theme.color.mainPink};
     }
@@ -54,6 +55,7 @@ const ImgBox = styled.div`
   & > img {
     width: 100%;
     height: 8rem;
+
     border-radius: 3px;
   }
 `;

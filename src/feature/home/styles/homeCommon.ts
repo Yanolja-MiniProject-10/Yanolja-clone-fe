@@ -9,6 +9,7 @@ const HomeInnerContainer = styled.div`
     .swiper-button-next,
     .swiper-button-prev {
       color: ${({ theme }) => theme.color.middleGray};
+
       &:hover {
         color: ${({ theme }) => theme.color.black};
       }
@@ -16,6 +17,7 @@ const HomeInnerContainer = styled.div`
     .swiper-pagination-bullet {
       width: 10px;
       height: 10px;
+
       background: ${({ theme }) => theme.color.darkGray};
       opacity: 1;
     }

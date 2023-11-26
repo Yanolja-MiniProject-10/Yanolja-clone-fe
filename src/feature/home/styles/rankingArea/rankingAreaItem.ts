@@ -27,8 +27,9 @@ const NumberBox = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  display: flex;
   height: 100%;
+
+  display: flex;
   gap: 1rem;
 `;
 

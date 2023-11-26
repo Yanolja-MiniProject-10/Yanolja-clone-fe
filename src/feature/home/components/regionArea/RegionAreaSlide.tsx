@@ -20,12 +20,7 @@ const RegionAreaSlide = ({ region }: SlideProps) => {
       ) : (
         accommodations?.map(accommodation => (
           <Link key={accommodation.id} to={`/accommodation/${accommodation.id}`}>
-            <RegionAreaItem
-              name={accommodation.name}
-              thumbnail={accommodation.thumbnailImageUrl}
-              minPrice={accommodation.minimumPrice}
-              maxPrice={accommodation.maximumPrice}
-            />
+            <RegionAreaItem accommodation={accommodation} />
           </Link>
         ))
       )}

@@ -3,7 +3,12 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-export const relatedAccommodationsState = atom({
+interface RelatedAccommodations {
+  category: string;
+  region: string;
+}
+
+export const relatedAccommodationsState = atom<RelatedAccommodations>({
   key: "relatedAccommodationsState",
   default: {
     category: "",

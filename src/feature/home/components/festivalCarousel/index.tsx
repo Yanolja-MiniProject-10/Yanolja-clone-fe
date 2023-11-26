@@ -28,7 +28,7 @@ const FestivalCarousel = () => {
       >
         {festivals?.map(festival => (
           <SwiperSlide key={festival.id}>
-            <FestivalCarouselItem title={festival.title} thumbnailImageUrl={festival.thumbnailImageUrl} />
+            <FestivalCarouselItem festival={festival} />
           </SwiperSlide>
         ))}
       </Swiper>
