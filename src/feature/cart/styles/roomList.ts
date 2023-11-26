@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RoomOptions = styled.div`
-  width: 95%;
+  width: 540px;
   height: 80px;
 
   display: flex;
@@ -22,7 +22,7 @@ export const RoomOptionImg = styled.img`
 `;
 
 export const RoomOptionsText = styled.div`
-  width: 65%;
+  width: 310px;
   height: 100%;
 
   display: flex;
@@ -44,6 +44,8 @@ export const RoomOptionsCapacity = styled.span`
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
-export const RoomOptionsAmount = styled.span`
+export const RoomOptionsPrice = styled.span`
+  width: 120px;
+
   font-size: ${({ theme }) => theme.fontSize.xs};
 `;

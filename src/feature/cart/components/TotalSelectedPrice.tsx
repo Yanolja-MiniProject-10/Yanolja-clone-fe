@@ -1,29 +1,25 @@
 import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
 import { useRecoilValue } from "recoil";
 import { calculateTotalPrice } from "../cart.utils";
-import {
-  TotalSelectedPriceWrapper,
-  TotalPrice,
-  TotalPriceTitle,
-  TotalPriceSum,
-  TotalPricePrice,
-} from "../styles/totalSelectedPrice";
+import * as style from "../styles/totalSelectedPrice";
 
 const TotalSelectedPrice = () => {
   const checkedRooms = useRecoilValue(checkedCartRooms);
 
   return (
-    <TotalSelectedPriceWrapper>
-      <TotalPriceTitle>총 상품 금액</TotalPriceTitle>
+    <style.TotalSelectedPriceWrapper>
+      <style.TotalPriceTitle>총 상품 금액</style.TotalPriceTitle>
 
-      <TotalPrice>
-        <TotalPriceSum>
+      <style.TotalPrice>
+        <style.TotalPriceSum>
           {checkedRooms.map(room => (room.pricePerNight * room.stayDuration).toLocaleString()).join(" + ")}
           {" = "}
-        </TotalPriceSum>
-        <TotalPricePrice>{checkedRooms.length ? `${calculateTotalPrice(checkedRooms)} 원` : "0 원"}</TotalPricePrice>
-      </TotalPrice>
-    </TotalSelectedPriceWrapper>
+        </style.TotalPriceSum>
+        <style.TotalPricePrice>
+          {checkedRooms.length ? `${calculateTotalPrice(checkedRooms)} 원` : "0 원"}
+        </style.TotalPricePrice>
+      </style.TotalPrice>
+    </style.TotalSelectedPriceWrapper>
   );
 };
 

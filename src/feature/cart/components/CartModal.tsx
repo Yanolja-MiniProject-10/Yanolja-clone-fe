@@ -1,43 +1,37 @@
 import { CartModalProps } from "../cart.types";
-import {
-  ModalWrapper,
-  ModalInner,
-  ModalContents,
-  ModalRoomName,
-  ModalQ,
-  ModalBtns,
-  ModalClose,
-  ModalRoomDelete,
-} from "../styles/cartModal";
+import * as style from "../styles/cartModal";
 
-const CartModal = ({ selectedItem, setSelectedItem, setIsModalOpen }: CartModalProps) => {
+const CartModal = ({ selectedItem, setIsModalOpen }: CartModalProps) => {
   const closeModal = () => {
-    setSelectedItem(null);
     setIsModalOpen(false);
   };
 
   return (
-    <ModalWrapper>
-      <ModalInner>
-        <ModalContents>
-          <ModalQ>상품을 삭제하시겠습니까?</ModalQ>
-          <ModalRoomName>{selectedItem?.name}</ModalRoomName>
-        </ModalContents>
+    <style.ModalWrapper>
+      <style.ModalInner>
+        <style.ModalContents>
+          <style.ModalQ>선택 숙소를 삭제하시겠습니까?</style.ModalQ>
+          <style.ModalRoomName>
+            {selectedItem.map((selectedItems, index) => (
+              <span key={`modal-room-name-${index}`}>{selectedItems.name}</span>
+            ))}
+          </style.ModalRoomName>
+        </style.ModalContents>
 
-        <ModalBtns>
-          <ModalClose onClick={closeModal}>아니요</ModalClose>
+        <style.ModalBtns>
+          <style.ModalClose onClick={closeModal}>아니요</style.ModalClose>
 
-          <ModalRoomDelete
+          <style.ModalRoomDelete
             onClick={() => {
               console.log("장바구니 삭제 API");
               closeModal();
             }}
           >
             삭제
-          </ModalRoomDelete>
-        </ModalBtns>
-      </ModalInner>
-    </ModalWrapper>
+          </style.ModalRoomDelete>
+        </style.ModalBtns>
+      </style.ModalInner>
+    </style.ModalWrapper>
   );
 };
 
