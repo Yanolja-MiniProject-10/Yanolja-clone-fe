@@ -1,4 +1,4 @@
-import * as style from "../styles/accommodationInfo";
+import * as style from "../../feature/accommodation/styles/accommodationInfo";
 
 const AccommodationInfoRegion = () => {
   return (

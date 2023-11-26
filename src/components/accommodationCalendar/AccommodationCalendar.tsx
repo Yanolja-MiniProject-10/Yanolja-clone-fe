@@ -1,4 +1,3 @@
-import React from "react";
 import { CalendarLayout, CalendarContainer, CalendarNav, CalendarButton } from "./AccommodationCalendar";
 import { CalendarProps } from "./accommodationCalendar.types";
 import DatePicker, { registerLocale } from "react-datepicker";

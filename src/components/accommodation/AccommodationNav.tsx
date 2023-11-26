@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import * as style from "../styles/accommodationInfo";
+import * as style from "../../feature/accommodation/styles/accommodationInfo";
 import AccommodationNavCalender from "./AccommodationNavCalendar";
 import AccommodationNavMember from "./AccommodationNavMember";
 import AccommodationNavRegion from "./AccommodationNavRegion";

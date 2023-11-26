@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate.ts";
+import { accommodationDateState } from "../../recoil/accommodation/accommodationDate.ts";
 import { useRecoilValue } from "recoil";
-import { handleDateString } from "../accommodation.utils.ts";
-import * as style from "../styles/accommodationInfo.ts";
+import { handleDateString } from "../../feature/accommodation/accommodation.utils.ts";
+import * as style from "../../feature/accommodation/styles/accommodationInfo.ts";
 import { IoCalendarClearOutline } from "react-icons/io5";
-import AccommodationCalendar from "../../../components/accommodationCalendar/AccommodationCalendar.tsx";
+import AccommodationCalendar from "../accommodationCalendar/AccommodationCalendar.tsx";
 
 const AccommodationInfoCalender = () => {
   const [isCalendarShow, setIsCalendarShow] = useState<boolean>(false);

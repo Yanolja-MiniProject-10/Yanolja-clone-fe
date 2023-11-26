@@ -16,7 +16,7 @@ import {
   AccommodationContentGridInnerTag,
   AccommodationContentGridInnerParagraph,
 } from "../feature/accommodation/styles/accommodationContent.ts";
-import AccommodationNav from "../feature/accommodation/components/AccommodationNav.tsx";
+import AccommodationNav from "../components/accommodation/AccommodationNav.tsx";
 
 const Accommodation = () => {
   const [accommodations, setAccommodations] = useState<AccommodationProps[]>([]);
