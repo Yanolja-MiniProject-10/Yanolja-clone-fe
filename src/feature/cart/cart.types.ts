@@ -52,7 +52,6 @@ export interface RoomListProps extends CartRoomProps {
 }
 
 export interface CartModalProps {
-  selectedItem: RoomOption | null;
-  setSelectedItem: React.Dispatch<React.SetStateAction<RoomOption | null>>;
+  selectedItem: RoomOption[] | [];
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

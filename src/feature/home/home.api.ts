@@ -1,6 +1,12 @@
 import instance from "../../api/instance";
 import * as dayjs from "dayjs";
-import { RelatedProps } from "./home.types";
+import { AccommodationResponse, Festival, RelatedProps } from "./home.types";
+
+interface FestivalResponse {
+  data: {
+    content: Festival[];
+  };
+}
 
 const startDate = dayjs().format("YYYY-MM-DD");
 const endDate = dayjs().add(1, "day").format("YYYY-MM-DD");
@@ -24,33 +30,36 @@ const festivalRequiredParams = {
 };
 
 export const getAllAccommodations = async () => {
-  const response = await instance.get("/accommodations", { params: requiredParams });
+  const response = await instance.get<AccommodationResponse>("/accommodations", { params: requiredParams });
   return response.data.data.content;
 };
 
-// {category,region}:RelatedProps 받기
-// const category = "HOTEL_RESORT";
-// const region = "SEOUL";
 export const getRelatedAccommodations = async (relatedRequest: RelatedProps) => {
   const { category, region } = relatedRequest;
-  const response = await instance.get(`/accommodations/related?category=${category}&region=${region}`, {
-    params: requiredParams,
+  const response = await instance.get<AccommodationResponse>(
+    `/accommodations/related?category=${category}&region=${region}`,
+    {
+      params: requiredParams,
+    },
+  );
+  return response.data.data.content;
+};
+
+export const getRegionAccommodations = async (region: string) => {
+  const response = await instance.get<AccommodationResponse>(`/accommodations/region?region=${region}`, {
+    params: regionRequiredParams,
   });
   return response.data.data.content;
 };
 
-//region:string 받기
-export const getRegionAccommodations = async (region: string) => {
-  const response = await instance.get(`/accommodations/region?region=${region}`, { params: regionRequiredParams });
-  return response.data.data.content;
-};
-
 export const getRankingAccommodations = async () => {
-  const response = await instance.get("/accommodations/ranking", { params: rankingRequiredParams });
+  const response = await instance.get<AccommodationResponse>("/accommodations/ranking", {
+    params: rankingRequiredParams,
+  });
   return response.data.data.content;
 };
 
 export const getFestivalInfo = async () => {
-  const response = await instance.get("/accommodations/festival", { params: festivalRequiredParams });
+  const response = await instance.get<FestivalResponse>("/festival", { params: festivalRequiredParams });
   return response.data.data.content;
 };

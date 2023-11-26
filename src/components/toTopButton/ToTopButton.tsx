@@ -1,4 +1,3 @@
-import React from "react";
 import StyledToTopButton from "./toTopButton.styles";
 import { FaArrowUp } from "react-icons/fa6";
 

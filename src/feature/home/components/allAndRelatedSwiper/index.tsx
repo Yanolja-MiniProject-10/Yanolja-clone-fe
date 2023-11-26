@@ -5,21 +5,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { TitleAndLinkBox, LinkToOthers } from "../../styles/allAndRelatedSwiper";
+import { Accommodation } from "../../home.types";
 
-const AllAndRelatedSwiper = ({ title, accommodations }) => {
+interface AllAndRelatedProps {
+  title: string;
+  accommodations: Accommodation[];
+  category?: string;
+  region?: string;
+}
+//region props에 추가
+const AllAndRelatedSwiper = ({ title, accommodations, category }: AllAndRelatedProps) => {
+  //Link에 한글 있어서 이동 시 에러(디코 fe대화 스샷 참고)
+
   return (
     <HomeInnerContainer>
-      <Title>{title}</Title>
-      <Swiper slidesPerView={3.5} navigation={true} modules={[Navigation]}>
+      <TitleAndLinkBox>
+        <Title>{title}</Title>
+        <LinkToOthers to={category ? `/category/${category}` : `/accommodation`}>전체보기 &gt;</LinkToOthers>
+      </TitleAndLinkBox>
+      <Swiper slidesPerView={3} navigation={true} modules={[Navigation]}>
         {accommodations?.map(accommodation => (
           <SwiperSlide key={accommodation.id}>
             <Link to={`/accommodation/${accommodation.id}`}>
-              <AllAndRelatedSwiperItem
-                name={accommodation.name}
-                thumbnail={accommodation.thumbnailImageUrl}
-                minPrice={accommodation.minimumPrice}
-                maxPrice={accommodation.maximumPrice}
-              />
+              <AllAndRelatedSwiperItem accommodation={accommodation} />
             </Link>
           </SwiperSlide>
         ))}

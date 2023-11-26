@@ -5,17 +5,20 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: fixed;
-  height: 60px;
   top: 0;
-  width: 100%;
-  max-width: 52.5rem;
   z-index: 100;
+
+  height: 60px;
+  width: 100%;
+  max-width: 750px;
+
+  background-color: white;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
 
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+
   * {
     transition: 0.4s;
   }
@@ -25,12 +28,14 @@ const LinkedBox = styled(Link)`
   width: 90%;
   height: 70%;
   padding: 0 1.8rem;
+
   border-radius: 1rem;
   border: 1px solid ${({ theme }) => theme.color.middleGray};
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   text-decoration: none;
   cursor: pointer;
 `;

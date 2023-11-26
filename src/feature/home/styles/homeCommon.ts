@@ -9,6 +9,7 @@ const HomeInnerContainer = styled.div`
     .swiper-button-next,
     .swiper-button-prev {
       color: ${({ theme }) => theme.color.middleGray};
+
       &:hover {
         color: ${({ theme }) => theme.color.black};
       }
@@ -16,11 +17,11 @@ const HomeInnerContainer = styled.div`
     .swiper-pagination-bullet {
       width: 10px;
       height: 10px;
+
       background: ${({ theme }) => theme.color.darkGray};
       opacity: 1;
     }
     .swiper-pagination-bullet-active {
-      /* border-radius: 5px; */
       background: ${({ theme }) => theme.color.mainPink};
     }
   }
@@ -29,7 +30,7 @@ const HomeInnerContainer = styled.div`
 const Title = styled.p`
   margin-bottom: 2rem;
 
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: bold;
 `;
 

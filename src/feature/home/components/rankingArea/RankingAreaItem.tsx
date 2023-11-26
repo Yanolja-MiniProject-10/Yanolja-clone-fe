@@ -1,5 +1,3 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import {
   RankingItemWrapper,
   NumberBox,
@@ -9,9 +7,16 @@ import {
   Name,
   Price,
 } from "../../styles/rankingArea/rankingAreaItem";
-import { AccommodationItemProps } from "../../home.types";
+import { Accommodation } from "../../home.types";
 
-const RankingAreaItem = ({ id, index, name, thumbnail, minPrice, maxPrice }: AccommodationItemProps) => {
+interface RankinItemProps {
+  index: number;
+  accommodation: Accommodation;
+}
+
+const RankingAreaItem = ({ index, accommodation }: RankinItemProps) => {
+  const { id, name, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
+
   return (
     <RankingItemWrapper>
       <NumberBox>
@@ -19,13 +24,13 @@ const RankingAreaItem = ({ id, index, name, thumbnail, minPrice, maxPrice }: Acc
       </NumberBox>
       <StyledLink to={`/accommodation/${id}`}>
         <ImageBox>
-          <img src={thumbnail} alt={name} />
+          <img src={thumbnailImageUrl} alt={name} />
         </ImageBox>
         <Description>
           <Name>{name}</Name>
           <Price>
-            {minPrice.toLocaleString()} ~<br />
-            {maxPrice.toLocaleString()}원
+            {minimumPrice.toLocaleString()} ~<br />
+            {maximumPrice.toLocaleString()}원
           </Price>
         </Description>
       </StyledLink>
