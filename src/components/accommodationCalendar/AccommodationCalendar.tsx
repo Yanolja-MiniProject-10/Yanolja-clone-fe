@@ -10,11 +10,11 @@ import { accommodationDateState } from "../../recoil/accommodation/accommodation
 const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow, startDate, endDate }: CalendarProps) => {
   registerLocale("ko", ko); // 달력 한국어로 세팅
   const setAccommodationDateState = useSetRecoilState(accommodationDateState);
-  const handleDatePick = dates => {
+  const handleDatePick = (dates: Array<Date | null>) => {
     const [start, end] = dates;
     setAccommodationDateState({
-      startDate: start,
-      endDate: end,
+      startDate: start!,
+      endDate: end!,
     });
   };
 
