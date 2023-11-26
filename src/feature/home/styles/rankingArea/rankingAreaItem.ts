@@ -22,21 +22,21 @@ const NumberBox = styled.div`
 
   & > p {
     color: white;
-    font-size: ${({ theme }) => theme.fontSize.sm};
+    font-size: ${({ theme }) => theme.fontSize.xs};
   }
 `;
 
 const StyledLink = styled(Link)`
-  /* background-color: skyblue; */
-  display: flex;
   height: 100%;
+
+  display: flex;
   gap: 1rem;
 `;
 
 const ImageBox = styled.div`
   & > img {
-    width: 7rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 5px;
 
     object-fit: cover;
@@ -49,10 +49,11 @@ const Description = styled.div`
   flex-direction: column;
   justify-content: space-between;
   * {
-    font-size: ${({ theme }) => theme.fontSize.xs};
+    font-size: ${({ theme }) => theme.fontSize.xxs};
   }
 `;
 
+//야놀자에서는 제목보다 가격에 bold처리해서 상의 해보기
 const Name = styled.b`
   //font-size: ${({ theme }) => theme.fontSize.xs};
 `;

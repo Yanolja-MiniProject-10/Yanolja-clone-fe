@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { HomeInnerContainer, Title } from "../../styles/homeCommon";
 import RegionAreaTabs from "./RegionAreaTabs";
 import RegionAreaSlide from "./RegionAreaSlide";
@@ -12,7 +12,7 @@ import "swiper/css/thumbs";
 
 const RegionArea = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null);
-  const regions = ["SEOUL", "GANGWON", "GYEONGGI", "JEJU"];
+  const regions = ["서울", "강원", "경기", "제주"];
 
   return (
     <HomeInnerContainer>
@@ -21,7 +21,6 @@ const RegionArea = () => {
 
       <Swiper
         effect="flip"
-        // navigation={true}
         spaceBetween={10}
         loop={true}
         thumbs={{ swiper: thumbsSwiper }}

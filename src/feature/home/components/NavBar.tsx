@@ -1,4 +1,3 @@
-import React from "react";
 import { MdOutlineBook, MdOutlinePersonOutline } from "react-icons/md";
 import { Container, LinkedBox, IconLabel, CenterIcon } from "../styles/navBar";
 

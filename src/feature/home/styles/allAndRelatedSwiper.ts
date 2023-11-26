@@ -1,9 +1,21 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const CustomNavigation = styled.div`
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: ${({ theme }) => theme.color.middleGray};
+const TitleAndLinkBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const LinkToOthers = styled(Link)`
+  margin-top: 10px;
+
+  color: ${({ theme }) => theme.color.mainPink} !important;
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+
+  transition: 0.4s;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.hoverPink};
   }
 `;
 
@@ -11,6 +23,7 @@ const CustomNavigation = styled.div`
 const SwiperItemContainer = styled.div`
   width: 12rem;
   margin-bottom: 2rem;
+
   box-shadow: ${({ theme }) => theme.box.shadow};
   border-radius: 5px;
 
@@ -29,12 +42,14 @@ const ImgBox = styled.div`
   & > img {
     width: 100%;
     height: 10rem;
+
     border-radius: 5px 5px 0 0;
   }
 `;
 
 const Description = styled.div`
   margin: 10px;
+
   display: flex;
   flex-direction: column;
 `;
@@ -47,4 +62,4 @@ const Price = styled.b`
   text-align: right;
 `;
 
-export { CustomNavigation, SwiperItemContainer, ImgBox, Description, Title, Price };
+export { TitleAndLinkBox, LinkToOthers, SwiperItemContainer, ImgBox, Description, Title, Price };

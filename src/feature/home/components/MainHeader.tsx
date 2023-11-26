@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Container, LinkedBox, InputText, SearchIcon, CartIcon } from "../styles/mainHeader.ts";
 
