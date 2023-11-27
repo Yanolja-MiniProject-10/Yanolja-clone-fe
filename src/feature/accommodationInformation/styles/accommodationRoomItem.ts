@@ -140,7 +140,7 @@ export const RoomTopWrapper = styled.div`
 `;
 
 export const RoomName = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 export const RoomDetailButton = styled.button`
@@ -168,7 +168,7 @@ export const RoomCount = styled.p`
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
 export const ButtonWraper = styled.div`
