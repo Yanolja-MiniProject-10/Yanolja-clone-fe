@@ -1,32 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useNavigate } from "react-router-dom";
 import { AccommodationProps } from "../../feature/accommodation/accommodation.types";
+import { AccommodationDataProps } from "./accommodation.types";
 import * as style from "../../feature/accommodation/styles/accommodationContent";
-import { useEffect, useState } from "react";
 import accommmodationSample from "../../assets/images/accommodationSample.svg";
-import { useAccommodationsListQuery } from "../../feature/accommodation/hooks/accommodation.hooks";
-import { accommodationDateState } from "../../recoil/accommodation/accommodationDate";
-import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember";
-import { useRecoilValue } from "recoil";
 import { handleTitlelength } from "../../feature/accommodation/accommodation.utils";
 
-const AccommodationContent = () => {
-  const [accommodations, setAccommodations] = useState<AccommodationProps[]>([]);
-  const { startDate, endDate } = useRecoilValue(accommodationDateState);
-  const { guest } = useRecoilValue(accommodationMemberState);
+const AccommodationContent = ({ accommodations }: AccommodationDataProps) => {
   const navigate = useNavigate();
-
-  const { status, data, error } = useAccommodationsListQuery({ startDate, endDate, guest });
-
-  if (status === "error") {
-    console.log(error.message);
-  }
-
-  useEffect(() => {
-    if (status === "success" && data.data.content) {
-      setAccommodations(data.data.content);
-    }
-  }, [status]);
 
   return (
     <style.AccommodationContentBox>
@@ -38,7 +18,7 @@ const AccommodationContent = () => {
           ? accommodations.map((singleAccommodation: AccommodationProps) => (
               <style.AccommodationContentGridContainer
                 key={singleAccommodation.id}
-                onClick={() => navigate(`${singleAccommodation.id}`)}
+                onClick={() => navigate(`/accommodation/${singleAccommodation.id}`)}
               >
                 <style.AccommodationContentGridImg
                   src={
