@@ -9,5 +9,7 @@ export const Wrapper = styled.div`
 
   @media screen and (width < 840px) {
     gap: 2rem;
+
+    padding: 0.5rem;
   }
 `;
