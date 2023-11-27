@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ButtonWrapper, CancelButton, ConfirmButton, Form, Modal, ModalBackground } from "../styles/profileEditModal";
+import * as style from "../styles/profileEditModal";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
 
 const ProfileEditModal = ({ onClose }: ModalProps) => {
@@ -19,24 +19,24 @@ const ProfileEditModal = ({ onClose }: ModalProps) => {
   };
 
   return (
-    <ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
-      <Modal>
+    <style.ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
+      <style.Modal>
         <div>
-          <Form onSubmit={handleEdit}>
+          <style.Form onSubmit={handleEdit}>
             <div>
               <label htmlFor="name">이름</label>
               <p>* 이름은 2글자 이상 10글자 이하로 입력해주세요.</p>
             </div>
             <input type="text" id="name" value={name} onChange={e => setName(e.target.value)} />
-          </Form>
+          </style.Form>
 
-          <ButtonWrapper>
-            <CancelButton onClick={onClose}>취소</CancelButton>
-            <ConfirmButton type="submit">완료</ConfirmButton>
-          </ButtonWrapper>
+          <style.ButtonWrapper>
+            <style.CancelButton onClick={onClose}>취소</style.CancelButton>
+            <style.ConfirmButton type="submit">완료</style.ConfirmButton>
+          </style.ButtonWrapper>
         </div>
-      </Modal>
-    </ModalBackground>
+      </style.Modal>
+    </style.ModalBackground>
   );
 };
 

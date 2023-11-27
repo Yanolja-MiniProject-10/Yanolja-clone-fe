@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { CancelButton, ConfirmButton, Modal, ModalBackground } from "../styles/profileEditModal";
-import { StyledButtonWrapper, Title } from "../styles/logoutModal";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
+import * as style from "../styles/logoutModal";
+import * as commonStyle from "../styles/profileEditModal";
 
 const LogoutModal = ({ onClose, onConfirmLogout }: ModalProps) => {
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
@@ -12,16 +12,16 @@ const LogoutModal = ({ onClose, onConfirmLogout }: ModalProps) => {
     }
   };
   return (
-    <ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
-      <Modal>
-        <Title>로그아웃 하시겠습니까?</Title>
+    <commonStyle.ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
+      <commonStyle.Modal>
+        <style.Title>로그아웃 하시겠습니까?</style.Title>
 
-        <StyledButtonWrapper>
-          <CancelButton onClick={onClose}>취소</CancelButton>
-          <ConfirmButton onClick={onConfirmLogout}>로그아웃</ConfirmButton>
-        </StyledButtonWrapper>
-      </Modal>
-    </ModalBackground>
+        <style.StyledButtonWrapper>
+          <commonStyle.CancelButton onClick={onClose}>취소</commonStyle.CancelButton>
+          <commonStyle.ConfirmButton onClick={onConfirmLogout}>로그아웃</commonStyle.ConfirmButton>
+        </style.StyledButtonWrapper>
+      </commonStyle.Modal>
+    </commonStyle.ModalBackground>
   );
 };
 

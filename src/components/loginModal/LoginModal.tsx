@@ -1,29 +1,29 @@
 import { useNavigate } from "react-router-dom";
-import { ButtonWrapper, CancelButton, ConfirmButton, Modal, ModalBackground, Title } from "./loginModal.styles";
+import * as style from "./loginModal.styles";
 import { ModalProps } from "./loginModal.types";
 
 const LoginModal = ({ onClose }: ModalProps) => {
   const navigate = useNavigate();
 
   return (
-    <ModalBackground>
-      <Modal>
+    <style.ModalBackground>
+      <style.Modal>
         <div>
-          <Title>
+          <style.Title>
             <p>로그인이 필요합니다.</p>
             <p>로그인 페이지로 이동하시겠습니까?</p>
-          </Title>
-          <ButtonWrapper>
-            <CancelButton type="button" onClick={onClose}>
+          </style.Title>
+          <style.ButtonWrapper>
+            <style.CancelButton type="button" onClick={onClose}>
               취소
-            </CancelButton>
-            <ConfirmButton type="button" onClick={() => navigate("/login")}>
+            </style.CancelButton>
+            <style.ConfirmButton type="button" onClick={() => navigate("/login")}>
               확인
-            </ConfirmButton>
-          </ButtonWrapper>
+            </style.ConfirmButton>
+          </style.ButtonWrapper>
         </div>
-      </Modal>
-    </ModalBackground>
+      </style.Modal>
+    </style.ModalBackground>
   );
 };
 
