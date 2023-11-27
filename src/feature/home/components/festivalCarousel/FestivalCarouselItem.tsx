@@ -31,10 +31,8 @@ const FestivalCarouselItem = ({ festival }: FestivalProps) => {
   return (
     <>
       <BannerContainer onClick={showModal}>
-        <BackgroundImg style={{ backgroundSize: "cover", backgroundImage: `url(${thumbnailImageUrl})` }}>
-          {/* <ColorTitleBox> */}
+        <BackgroundImg $backImage={thumbnailImageUrl}>
           <Title>{title}</Title>
-          {/* </ColorTitleBox> */}
         </BackgroundImg>
       </BannerContainer>
 

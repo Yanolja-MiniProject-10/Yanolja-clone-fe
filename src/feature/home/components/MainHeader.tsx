@@ -4,9 +4,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import { useFetchCarts } from "../../cart/hooks/queries/useFetchCarts.ts";
 
 const MainHeader = () => {
-  const { data: cartData, isLoading, isError } = useFetchCarts();
-
-  console.log("장바구니", cartData?.count);
+  const { data: cartData } = useFetchCarts();
 
   return (
     <Container>
@@ -17,9 +15,11 @@ const MainHeader = () => {
       <Link to="/cart">
         <CartIcon>
           <LuShoppingCart />
-          <CartBadge>
-            <p>{cartData?.count}</p>
-          </CartBadge>
+          {cartData?.count !== 0 && (
+            <CartBadge>
+              <p>{cartData?.count}</p>
+            </CartBadge>
+          )}
         </CartIcon>
       </Link>
     </Container>

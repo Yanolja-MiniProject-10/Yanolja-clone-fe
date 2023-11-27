@@ -9,7 +9,7 @@ import AllAndRelatedSwiper from "../feature/home/components/allAndRelatedSwiper"
 import { useAllAccommodations, useRelatedAccommodations } from "../feature/home/hooks/queries/home.hooks";
 import { HomeContainer } from "../feature/home/styles/homeCommon";
 import { useRecoilValue } from "recoil";
-import { relatedAccommodationsState } from "../recoil/home/clickedData";
+import { relatedAccommodationsState } from "../recoil/home/clickedCategoryAndRegion";
 
 const Home = () => {
   const { data: allAccommodations } = useAllAccommodations();

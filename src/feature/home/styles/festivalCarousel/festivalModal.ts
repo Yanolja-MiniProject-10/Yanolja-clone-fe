@@ -9,6 +9,10 @@ const ModalContainer = styled.dialog`
 
   border-radius: ${({ theme }) => theme.box.radius};
   box-shadow: ${({ theme }) => theme.box.shadow};
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const CloseButton = styled.p`
@@ -22,6 +26,9 @@ const CloseButton = styled.p`
 
   * {
     cursor: pointer;
+    &:hover {
+      color: ${({ theme }) => theme.color.mainPink};
+    }
   }
 `;
 
@@ -47,9 +54,9 @@ const ImageBox = styled.div`
     width: 350px;
     height: 200px;
 
-    border-radius: 3px;
+    border-radius: 10px;
 
-    object-fit: cover; //contain? 세로 사진은 잘림
+    object-fit: contain;
   }
 `;
 

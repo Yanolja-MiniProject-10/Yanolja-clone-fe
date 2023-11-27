@@ -27,7 +27,7 @@ const AllAndRelatedSwiper = ({ title, accommodations, category, region }: AllAnd
         <Title>{title}</Title>
         <LinkToOthers to={category ? `/category/${category}` : `/accommodation`}>전체보기 &gt;</LinkToOthers>
       </TitleAndLinkBox>
-      <Swiper slidesPerView={3} navigation={true} modules={[Navigation]}>
+      <Swiper slidesPerView={3.2} navigation={true} modules={[Navigation]}>
         {accommodations?.map(accommodation => (
           <SwiperSlide key={accommodation.id}>
             <Link to={`/accommodation/${accommodation.id}`}>
