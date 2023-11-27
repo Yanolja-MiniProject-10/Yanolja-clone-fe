@@ -1,20 +1,16 @@
 import { SwiperItemContainer, ImgBox, Description, Title, Price } from "../../styles/allAndRelatedSwiper";
 import { AccommodationProp } from "../../home.types";
 import { useSetRecoilState } from "recoil";
-import { relatedAccommodationsState } from "../../../../recoil/home/clickedData";
+import { relatedAccommodationsState } from "../../../../recoil/home/clickedCategoryAndRegion";
 
 const AllAndRelatedSwiperItem = ({ accommodation }: AccommodationProp) => {
   const setRelatedCateRegion = useSetRecoilState(relatedAccommodationsState);
-  const { name, category, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
-
-  //이후 삭제 category, region,
-  //const Mcategory = "모텔";
-  const Mregion = "경기";
+  const { name, category, region, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
 
   return (
     <SwiperItemContainer
       onClick={() => {
-        setRelatedCateRegion({ category: category, region: Mregion });
+        setRelatedCateRegion({ category: category, region: region });
       }}
     >
       <ImgBox>
