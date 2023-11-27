@@ -21,7 +21,7 @@ const AccommodationInfo = () => {
 
   if (status === "pending") {
     return (
-      <style.Wrapper>
+      <style.Wrapper style={{ zIndex: 0 }}>
         <style.SkeletonImgWrapper>
           <Skeleton height={560} />
         </style.SkeletonImgWrapper>
@@ -48,6 +48,7 @@ const AccommodationInfo = () => {
       <style.AccomodationImg src={data.data.thumbnailImageUrl} />
       <style.TextInfo>
         <style.AccommodationName>{data.data.name}</style.AccommodationName>
+        <style.AccommodationCategory>{data.data.category}</style.AccommodationCategory>
         <style.AccommodationAddress>{data.data.address}</style.AccommodationAddress>
         <style.DivideLine />
         <style.AccommodationStaticDescWrap>

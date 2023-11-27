@@ -3,73 +3,124 @@ import { LuShoppingCart } from "react-icons/lu";
 
 export const Box = styled.div`
   width: 100%;
-  height: 15rem;
+  height: 220px;
 
   display: flex;
   gap: 2rem;
   align-items: center;
 
+  padding: 1rem;
+
   @media screen and (width < 840px) {
-    height: 35rem;
+    height: 550px;
 
     flex-direction: column;
     justify-content: center;
 
-    padding: 1rem 0;
+    padding: 1.5rem;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: ${({ theme }) => theme.color.middleGray};
+
+    &:hover {
+      color: ${({ theme }) => theme.color.black};
+      transition: 0.4s;
+    }
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: ${({ theme }) => theme.fontSize.md} !important;
+  }
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+
+    background: ${({ theme }) => theme.color.darkGray};
+
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    transition: width 0.4s;
+    border-radius: 5px;
+
+    background: ${({ theme }) => theme.color.mainPink};
   }
 `;
 
-export const RoomImgWrapper = styled.div`
-  width: 500px;
-  height: 230px;
+export const SkeletonBox = styled.div`
+  width: 100%;
+  height: 220px;
 
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  padding: 1rem;
+
+  @media screen and (width < 840px) {
+    height: 40rem;
+
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    padding: 1rem;
+  }
+`;
+
+export const SkeletonRoomImgWrapper = styled.div`
   display: flex;
   align-items: center;
 
   @media screen and (width < 840px) {
-    height: 300px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+`;
+
+export const RoomImgWrapper = styled.div`
+  width: 270px;
+  height: 180px;
+
+  display: flex;
+
+  @media screen and (width < 840px) {
+    width: 80%;
+    min-width: 460px;
+
+    height: 60%;
   }
 `;
 
 export const RoomImg = styled.img`
   width: 100%;
-  height: 80%;
+  height: 100%;
+  max-height: 180px;
 
   border-radius: 10px;
 
   @media screen and (width < 840px) {
-    width: 100%;
-    height: 100%;
+    max-height: 100%;
   }
 `;
 
 export const RoomInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
 
-  width: 100%;
-
-  @media screen and (width < 840px) {
-    justify-content: center;
-
-    padding: 1rem 2rem;
-
-    width: 500px;
-  }
-`;
-
-export const SkeletonRoomInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  width: 100%;
+  width: 60%;
 
   @media screen and (width < 840px) {
-    justify-content: flex-start;
+    padding: 1rem;
 
-    width: 410px;
+    width: 80%;
+    min-width: 460px;
   }
 `;
 
@@ -84,7 +135,7 @@ export const RoomTopWrapper = styled.div`
   justify-content: space-between;
 
   @media screen and (width < 840px) {
-    width: 430px;
+    width: 100%;
   }
 `;
 
@@ -105,23 +156,11 @@ export const RoomDetailButton = styled.button`
   }
 `;
 
-export const RoomCheckInOut = styled.div`
+export const RoomCheckInOut = styled.p`
   display: flex;
-  gap: 0.4rem;
 
-  span {
-    color: ${({ theme }) => theme.color.darkGray};
-  }
-`;
-
-export const RoomCheckIn = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.darkGray};
-`;
-
-export const RoomCheckOut = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
-  color: ${({ theme }) => theme.color.darkGray};
 `;
 
 export const RoomCount = styled.p`
@@ -134,8 +173,10 @@ export const RoomPrice = styled.h2`
 
 export const ButtonWraper = styled.div`
   display: flex;
+  justify-content: flex-end;
   gap: 1rem;
-  margin-left: 265px;
+
+  width: 100%;
 `;
 
 export const CartIcon = styled(LuShoppingCart)`
@@ -149,8 +190,8 @@ export const CartButton = styled.button`
 
   background-color: ${({ theme }) => theme.color.white};
 
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.mainPink};
@@ -168,8 +209,8 @@ export const CartButton = styled.button`
 `;
 
 export const ReservationButton = styled.button`
-  width: 110px;
-  height: 40px;
+  width: 100px;
+  height: 35px;
 
   border-radius: 10px;
   border: none;
@@ -177,8 +218,7 @@ export const ReservationButton = styled.button`
   background-color: ${({ theme }) => theme.color.mainPink};
 
   color: ${({ theme }) => theme.color.white};
-  font-size: ${({ theme }) => theme.fontSize.xxs};
-  font-weight: bold;
+  font-size: 14px;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.hoverPink};
