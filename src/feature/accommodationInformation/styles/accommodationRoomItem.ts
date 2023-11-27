@@ -12,12 +12,12 @@ export const Box = styled.div`
   padding: 1rem;
 
   @media screen and (width < 840px) {
-    height: 40rem;
+    height: 550px;
 
     flex-direction: column;
     justify-content: center;
 
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .swiper-button-next,
@@ -85,25 +85,27 @@ export const SkeletonRoomImgWrapper = styled.div`
 
 export const RoomImgWrapper = styled.div`
   width: 270px;
+  height: 180px;
 
   display: flex;
-  align-items: center;
 
   @media screen and (width < 840px) {
     width: 80%;
     min-width: 460px;
+
+    height: 60%;
   }
 `;
 
 export const RoomImg = styled.img`
   width: 100%;
-  height: 80%;
+  height: 100%;
+  max-height: 180px;
 
   border-radius: 10px;
 
   @media screen and (width < 840px) {
-    width: 100%;
-    height: 100%;
+    max-height: 100%;
   }
 `;
 
