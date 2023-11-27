@@ -2,27 +2,50 @@ import { Link } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { toastState } from "../../../recoil/toast";
 import * as style from "../styles/accommodationRoomItem";
+import { RoomListProps } from "../accommodationInformation.types";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 /**실제 데이터 받아올 때 타입 지정해줘야 함 */
 const AccommodationRoomItem = ({
   id,
   name,
-  img,
-  checkIn,
-  checkOut,
-  price,
+  roomOptionImage,
+  checkInTime,
+  checkOutTime,
+  totalPrice,
   accommodationId,
   stayDuration,
   totalRoomCount,
   reservedRoomCount,
-}) => {
+}: RoomListProps) => {
   const setToast = useSetRecoilState(toastState);
   const availableRoomCount = totalRoomCount - reservedRoomCount;
 
   return (
     <style.Box>
       <style.RoomImgWrapper>
-        <style.RoomImg src={img} />
+        {roomOptionImage.mainImageUrls.length > 1 ? (
+          <Swiper
+            style={{ zIndex: 0 }}
+            slidesPerView={1}
+            navigation={true}
+            loop={true}
+            modules={[Navigation, Pagination]}
+            pagination={{ clickable: true }}
+          >
+            {roomOptionImage.mainImageUrls.map((img, index) => (
+              <SwiperSlide key={index}>
+                <style.RoomImg src={img} alt={name} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <style.RoomImg src={roomOptionImage.mainImageUrls[0]} alt={name} />
+        )}
       </style.RoomImgWrapper>
       <style.RoomInfo>
         <style.RoomTopWrapper>
@@ -32,18 +55,10 @@ const AccommodationRoomItem = ({
           </Link>
         </style.RoomTopWrapper>
         <style.RoomCheckInOut>
-          <style.RoomCheckIn>
-            <span>체크인: </span>
-            {checkIn.slice(0, 5)}
-          </style.RoomCheckIn>
-          <span>~</span>
-          <style.RoomCheckOut>
-            <span>체크아웃: </span>
-            {checkOut.slice(0, 5)}
-          </style.RoomCheckOut>
+          체크인: {checkInTime.slice(0, 5)} ~ 체크아웃: {checkOutTime.slice(0, 5)}
         </style.RoomCheckInOut>
         <style.RoomPrice>
-          {price.toLocaleString()}원 / {stayDuration}박
+          {totalPrice.toLocaleString()}원 / {stayDuration}박
         </style.RoomPrice>
         {availableRoomCount > 0 && <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>}
         <style.ButtonWraper>
