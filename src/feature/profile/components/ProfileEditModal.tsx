@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import * as style from "../styles/profileEditModal";
+import * as commonStyle from "../../../components/loginModal/loginModal.styles";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
 
 const ProfileEditModal = ({ onClose }: ModalProps) => {
@@ -14,13 +15,12 @@ const ProfileEditModal = ({ onClose }: ModalProps) => {
 
   const handleEdit = () => {
     // 프로필 수정 로직
-    console.log(name);
     onClose();
   };
 
   return (
-    <style.ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
-      <style.Modal>
+    <commonStyle.ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
+      <commonStyle.Modal>
         <div>
           <style.Form onSubmit={handleEdit}>
             <div>
@@ -30,13 +30,13 @@ const ProfileEditModal = ({ onClose }: ModalProps) => {
             <input type="text" id="name" value={name} onChange={e => setName(e.target.value)} />
           </style.Form>
 
-          <style.ButtonWrapper>
-            <style.CancelButton onClick={onClose}>취소</style.CancelButton>
-            <style.ConfirmButton type="submit">완료</style.ConfirmButton>
-          </style.ButtonWrapper>
+          <commonStyle.ButtonWrapper>
+            <commonStyle.CancelButton onClick={onClose}>취소</commonStyle.CancelButton>
+            <commonStyle.ConfirmButton type="submit">완료</commonStyle.ConfirmButton>
+          </commonStyle.ButtonWrapper>
         </div>
-      </style.Modal>
-    </style.ModalBackground>
+      </commonStyle.Modal>
+    </commonStyle.ModalBackground>
   );
 };
 

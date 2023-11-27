@@ -15,18 +15,19 @@ export const ModalBackground = styled.div`
 
 export const Modal = styled.div`
   margin: 0 auto;
+  min-height: 10rem;
   padding: 1.3rem 2rem;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 
   background-color: ${({ theme }) => theme.color.white};
   border-radius: ${({ theme }) => theme.box.radius};
 `;
 
 export const Title = styled.div`
-  margin: 1rem 1rem 1.5rem 1rem;
+  padding: 1rem;
 
   > p {
     padding-bottom: 0.7rem;
@@ -41,10 +42,11 @@ export const Title = styled.div`
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 100%;
-  margin: 1rem auto 0.6rem auto;
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 1rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
   > button {
     background-color: inherit;
@@ -52,7 +54,6 @@ export const ButtonWrapper = styled.div`
     transition: 0.4s;
 
     font-size: ${({ theme }) => theme.fontSize.sm};
-    font-weight: 600;
     white-space: nowrap;
   }
 `;

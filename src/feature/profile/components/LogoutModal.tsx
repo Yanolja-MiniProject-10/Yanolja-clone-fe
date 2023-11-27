@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
 import * as style from "../styles/logoutModal";
-import * as commonStyle from "../styles/profileEditModal";
+import * as commonStyle from "../../../components/loginModal/loginModal.styles";
 
 const LogoutModal = ({ onClose, onConfirmLogout }: ModalProps) => {
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
@@ -14,12 +14,14 @@ const LogoutModal = ({ onClose, onConfirmLogout }: ModalProps) => {
   return (
     <commonStyle.ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
       <commonStyle.Modal>
-        <style.Title>로그아웃 하시겠습니까?</style.Title>
+        <div>
+          <style.Title>로그아웃 하시겠습니까?</style.Title>
 
-        <style.StyledButtonWrapper>
-          <commonStyle.CancelButton onClick={onClose}>취소</commonStyle.CancelButton>
-          <commonStyle.ConfirmButton onClick={onConfirmLogout}>로그아웃</commonStyle.ConfirmButton>
-        </style.StyledButtonWrapper>
+          <commonStyle.ButtonWrapper>
+            <commonStyle.CancelButton onClick={onClose}>취소</commonStyle.CancelButton>
+            <commonStyle.ConfirmButton onClick={onConfirmLogout}>로그아웃</commonStyle.ConfirmButton>
+          </commonStyle.ButtonWrapper>
+        </div>
       </commonStyle.Modal>
     </commonStyle.ModalBackground>
   );
