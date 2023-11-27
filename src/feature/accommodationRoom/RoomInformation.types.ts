@@ -1,8 +1,8 @@
 export interface RoomInfoParams {
   id: string | undefined;
-  startDate: string;
-  endDate: string;
-  guest: number;
+  reservationStartDate: string;
+  reservationEndDate: string;
+  member: number;
 }
 
 export interface RoomInfoProps {

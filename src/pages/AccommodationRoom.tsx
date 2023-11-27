@@ -3,16 +3,33 @@ import AccommodationRoomInfo from "../feature/accommodationRoom/components/Accom
 import BottomBar from "../feature/accommodationRoom/components/BottomBar";
 import { useParams, useNavigate } from "react-router-dom";
 import { useRoomInfoQuery } from "../feature/accommodationRoom/hooks/queries/fetchData";
+import { useRecoilValue } from "recoil";
+import { accommodationMemberState } from "../recoil/accommodation/accommodationMember";
+import { accommodationDateState } from "../recoil/accommodation/accommodationDate";
+import { handleDateParam } from "../feature/accommodation/accommodation.utils";
 
 const AccommodationRoom = () => {
   const { id } = useParams();
   const navigation = useNavigate();
 
+  const { guest } = useRecoilValue(accommodationMemberState);
+
+  const { startDate, endDate } = useRecoilValue(accommodationDateState);
+  const dateArray = handleDateParam(startDate, endDate);
+
+  /**나중에 로직 수정 예정 */
+  let reservationStartDate = "";
+  let reservationEndDate = "";
+  if (dateArray) {
+    reservationStartDate = dateArray![0];
+    reservationEndDate = dateArray![1];
+  }
+
   const { status, data, error } = useRoomInfoQuery({
     id,
-    startDate: "2023-11-21",
-    endDate: "2023-11-22",
-    guest: 2,
+    reservationStartDate,
+    reservationEndDate,
+    member: guest,
   });
 
   if (status === "error") {
