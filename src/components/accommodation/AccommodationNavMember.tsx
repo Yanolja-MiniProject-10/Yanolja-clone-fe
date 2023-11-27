@@ -7,7 +7,7 @@ import AccommodationMember from "../accommodationMember/AccommodationMember.tsx"
 
 const AccommodationInfoMember = () => {
   const [isMemberShow, setIsMemberShow] = useState<boolean>(false);
-  const { memberNumber } = useRecoilValue(accommodationMemberState);
+  const { guest } = useRecoilValue(accommodationMemberState);
 
   return (
     <>
@@ -17,9 +17,9 @@ const AccommodationInfoMember = () => {
         }}
       >
         <IoPeople />
-        <style.AccommodationInfoMemberParagraph>인원 {memberNumber}</style.AccommodationInfoMemberParagraph>
+        <style.AccommodationInfoMemberParagraph>인원 {guest}</style.AccommodationInfoMemberParagraph>
       </style.AccommodationInfoMemberBox>
-      <AccommodationMember isMemberShow={isMemberShow} setIsMemberShow={setIsMemberShow} memberNumber={memberNumber} />
+      <AccommodationMember isMemberShow={isMemberShow} setIsMemberShow={setIsMemberShow} memberNumber={guest} />
     </>
   );
 };

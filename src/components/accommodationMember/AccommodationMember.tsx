@@ -21,9 +21,9 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: Me
           <MemberContentPeopleContainer>
             인원
             <MemberContentPeoplePick>
-              <button onClick={() => setAccommodationMemberState({ memberNumber: memberNumber - 1 })}> - </button>
+              <button onClick={() => setAccommodationMemberState({ guest: memberNumber - 1 })}> - </button>
               {memberNumber}
-              <button onClick={() => setAccommodationMemberState({ memberNumber: memberNumber + 1 })}> + </button>
+              <button onClick={() => setAccommodationMemberState({ guest: memberNumber + 1 })}> + </button>
             </MemberContentPeoplePick>
           </MemberContentPeopleContainer>
         </MemberContentBox>

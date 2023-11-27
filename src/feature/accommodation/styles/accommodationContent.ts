@@ -6,7 +6,7 @@ export const AccommodationContentTitleParagraph = styled.p`
   padding: 1rem 0;
 
   font-size: ${({ theme }) => theme.fontSize.xs};
-  font-weight: 600;
+  color: ${({ theme }) => theme.color.darkGray};
 `;
 
 export const AccommodationContentGrid = styled.div`
@@ -28,12 +28,8 @@ export const AccommodationContentGrid = styled.div`
     border-radius: 6px;
   }
 
-  > div:nth-child(odd) {
-    border-right: 1px solid #d9d9d9;
-  }
-
-  > div:nth-child(-n + 2) {
-    border-top: none;
+  > div:nth-child(even) {
+    border-right: none;
   }
 `;
 
@@ -41,10 +37,10 @@ export const AccommodationContentGridContainer = styled.div`
   width: auto;
   height: 9rem;
 
-  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  padding: 1rem 2rem;
 
-  border-top: 1px solid #d9d9d9;
-  border-bottom: 1px solid #d9d9d9;
+  border-right: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
 
   display: flex;
   align-items: center;
@@ -53,8 +49,9 @@ export const AccommodationContentGridContainer = styled.div`
 `;
 
 export const AccommodationContentGridImg = styled.img`
-  width: 7rem;
-  height: 7rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 5px;
 `;
 
 export const AccommodationContentGridInnerBox = styled.div`
@@ -65,8 +62,7 @@ export const AccommodationContentGridInnerBox = styled.div`
 
   display: flex;
   flex-direction: column;
-
-  position: relative;
+  gap: 1rem;
 `;
 
 export const AccommodationContentGridInnerTitle = styled.p`
@@ -82,9 +78,5 @@ export const AccommodationContentGridInnerTag = styled.p`
 `;
 
 export const AccommodationContentGridInnerParagraph = styled.p`
-  position: absolute;
-  bottom: 1rem;
-  right: 0;
-
   font-size: ${({ theme }) => theme.fontSize.xs};
 `;
