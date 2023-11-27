@@ -14,6 +14,13 @@ export interface AccommodationListParams {
   guest: number;
 }
 
+export interface AccommodationRegionParams {
+  startDate: Date;
+  endDate: Date;
+  guest: number;
+  region: string;
+}
+
 export interface accommodationMemberDefault {
   guest: number;
 }

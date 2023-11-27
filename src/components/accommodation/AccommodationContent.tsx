@@ -8,6 +8,7 @@ import { useAccommodationsListQuery } from "../../feature/accommodation/hooks/ac
 import { accommodationDateState } from "../../recoil/accommodation/accommodationDate";
 import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember";
 import { useRecoilValue } from "recoil";
+import { handleTitlelength } from "../../feature/accommodation/accommodation.utils";
 
 const AccommodationContent = () => {
   const [accommodations, setAccommodations] = useState<AccommodationProps[]>([]);
@@ -25,12 +26,12 @@ const AccommodationContent = () => {
     if (status === "success" && data.data.content) {
       setAccommodations(data.data.content);
     }
-  }, [startDate, endDate, guest]);
+  }, [status]);
 
   return (
     <style.AccommodationContentBox>
       <style.AccommodationContentTitleParagraph>
-        {accommodations.length}개의 숙소
+        <span style={{ fontWeight: 600 }}>{accommodations.length}</span>개의 숙소
       </style.AccommodationContentTitleParagraph>
       <style.AccommodationContentGrid>
         {accommodations.length
@@ -46,17 +47,22 @@ const AccommodationContent = () => {
                 />
                 <style.AccommodationContentGridInnerBox>
                   <div style={{ paddingTop: "0.5rem" }}>
-                    <style.AccommodationContentGridInnerTitle>
+                    <style.AccommodationContentGridInnerTitle
+                      style={{ fontSize: handleTitlelength(singleAccommodation.name) }}
+                    >
                       {singleAccommodation.name}
                     </style.AccommodationContentGridInnerTitle>
                     <style.AccommodationContentGridInnerTag>
                       {singleAccommodation.category}
                     </style.AccommodationContentGridInnerTag>
                   </div>
-                  <style.AccommodationContentGridInnerParagraph>
-                    {`${singleAccommodation.minimumPrice.toLocaleString()} ~
-                      ${singleAccommodation.maximumPrice.toLocaleString()} 원`}
-                  </style.AccommodationContentGridInnerParagraph>
+                  <div style={{ marginLeft: "auto" }}>
+                    <style.AccommodationContentGridInnerParagraph>
+                      {`${singleAccommodation.minimumPrice.toLocaleString()} ~ `}
+                      <br />
+                      {`${singleAccommodation.maximumPrice.toLocaleString()} 원`}
+                    </style.AccommodationContentGridInnerParagraph>
+                  </div>
                 </style.AccommodationContentGridInnerBox>
               </style.AccommodationContentGridContainer>
             ))
