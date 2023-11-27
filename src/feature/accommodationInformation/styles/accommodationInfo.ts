@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  max-width: 840px;
+  width: 100%;
+`;
+
+export const NavWrapper = styled.div`
+  padding-left: 3rem;
+  display: flex;
 `;
 
 export const SkeletonImgWrapper = styled.div`

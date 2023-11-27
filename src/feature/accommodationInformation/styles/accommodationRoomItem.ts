@@ -9,7 +9,7 @@ export const Box = styled.div`
   gap: 2rem;
   align-items: center;
 
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
 
   @media screen and (width < 840px) {
     height: 550px;
@@ -91,7 +91,7 @@ export const RoomImgWrapper = styled.div`
 
   @media screen and (width < 840px) {
     width: 80%;
-    min-width: 460px;
+    min-width: 400px;
 
     height: 60%;
   }
@@ -120,7 +120,7 @@ export const RoomInfo = styled.div`
     padding: 1rem;
 
     width: 80%;
-    min-width: 460px;
+    min-width: 430px;
   }
 `;
 
