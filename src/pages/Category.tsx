@@ -1,12 +1,12 @@
-// import AccommodationContent from "../components/accommodation/AccommodationContent";
 import AccommodationNav from "../components/accommodation/AccommodationNav";
 import { AccommodationLayout } from "../feature/accommodation/styles/accommodationLayout";
+import AccommodationCategory from "../feature/category/components/AccommodationCategory";
 
 const Category = () => {
   return (
     <AccommodationLayout>
       <AccommodationNav />
-      {/* <AccommodationContent /> */}
+      <AccommodationCategory />
     </AccommodationLayout>
   );
 };
