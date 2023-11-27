@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormData } from "../feature/login/login.types";
-import { LinkWrapper } from "../feature/login/styles/login";
-import { Button, Div, Form, FormItem } from "../feature/signUp/styles/signUp";
+import * as style from "../feature/login/styles/login";
+import * as commonStyle from "../feature/signUp/styles/signUp";
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -30,33 +30,33 @@ const LogIn = () => {
   };
 
   return (
-    <Div>
-      <Form onSubmit={handleLogin}>
-        <FormItem>
+    <commonStyle.Div>
+      <commonStyle.Form onSubmit={handleLogin}>
+        <commonStyle.FormItem>
           <div>
             <label htmlFor="email">이메일</label>
           </div>
           <input type="text" id="email" value={formData.email} onChange={handleInputChange} />
-        </FormItem>
-        <FormItem>
+        </commonStyle.FormItem>
+        <commonStyle.FormItem>
           <div>
             <label>비밀번호</label>
           </div>
           <input type="password" id="password" value={formData.password} onChange={handleInputChange} />
-        </FormItem>
+        </commonStyle.FormItem>
 
         {/* <LoginMessage>* 이메일 또는 비밀번호가 일치하지 않습니다.</LoginMessage> */}
 
-        <Button type="submit" disabled={formData.email === "" || formData.password === ""}>
+        <commonStyle.Button type="submit" disabled={formData.email === "" || formData.password === ""}>
           로그인
-        </Button>
+        </commonStyle.Button>
 
-        <LinkWrapper>
+        <style.LinkWrapper>
           <span>야놀자 계정이 없다면?</span>
           <span onClick={() => navigate("/signup")}>회원가입</span>
-        </LinkWrapper>
-      </Form>
-    </Div>
+        </style.LinkWrapper>
+      </commonStyle.Form>
+    </commonStyle.Div>
   );
 };
 
