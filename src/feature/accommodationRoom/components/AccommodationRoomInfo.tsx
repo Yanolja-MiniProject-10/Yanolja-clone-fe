@@ -9,8 +9,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
+import { RoomInfoProps } from "../RoomInformation.types";
 
-const AccommodationRoomInfo = ({ status, data, error }) => {
+const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
   const [toast, setToast] = useRecoilState(toastState);
   const navigation = useNavigate();
 
@@ -55,7 +56,7 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
             ))}
           </Swiper>
         ) : (
-          <style.RoomImg src={room.img} alt={room.name} />
+          <style.RoomImg src={room.roomOptionImage.mainImageUrls[0]} alt={room.name} />
         )}
         <style.TextInfo>
           <style.RoomName>{room.name}</style.RoomName>

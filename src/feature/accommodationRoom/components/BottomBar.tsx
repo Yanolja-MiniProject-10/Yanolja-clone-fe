@@ -3,8 +3,9 @@ import { toastState } from "../../../recoil/toast";
 import * as style from "../styles/bottomBar";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import { RoomInfoProps } from "../RoomInformation.types";
 
-const BottomBar = ({ status, data, error }) => {
+const BottomBar = ({ status, data }: RoomInfoProps) => {
   const [, setToast] = useRecoilState(toastState);
 
   if (status == "pending") {
@@ -14,7 +15,7 @@ const BottomBar = ({ status, data, error }) => {
       </style.Wrapper>
     );
   } else if (status == "error") {
-    console.log(error.message);
+    return null;
   } else {
     const room = data.data;
     return (
