@@ -1,8 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
+import { postCheckEmail, postSignUp } from "../feature/signUp/signUp.api";
 import { FormData } from "../feature/signUp/signUp.types";
 import * as style from "../feature/signUp/styles/signUp";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -39,6 +43,7 @@ const SignUp = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
+
     setFormData({ ...formData, [id]: value });
     setIsChanged({ ...isChanged, [id]: true });
 
@@ -142,30 +147,40 @@ const SignUp = () => {
   }, [validateForm]);
 
   // 이메일 중복 확인
-  const handleDuplicateEmail = (email: string) => {
-    // 중복 확인 로직
-    const isDuplicate = email === "test@example.com"; // 임시 중복 확인
+  const handleDuplicateEmail = async (email: string) => {
+    try {
+      const data = await postCheckEmail(email);
 
-    setIsConfirmEmail(true);
-    setIsEmailUnique(!isDuplicate);
-    setHasEmailCheck(true);
+      if (data.status === 200) {
+        setIsConfirmEmail(true);
+        setIsEmailUnique(!data.data.exists);
+        setHasEmailCheck(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   // 회원가입
-  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>, name: string, email: string, password: string) => {
     e.preventDefault();
+
     try {
-      console.log(formData);
-      // 회원가입 로직
+      const data = await postSignUp(name, email, password);
+      if (data.status === 201) {
+        alert("회원가입되었습니다.");
+        navigate("/login");
+      } else {
+        alert("회원가입에 실패하였습니다.");
+      }
     } catch (error) {
-      console.log(error);
-      // 회원가입 실패 로직
+      console.error(error);
     }
   };
 
   return (
     <style.Div>
-      <style.Form onSubmit={handleSignup}>
+      <style.Form onSubmit={e => handleSignup(e, formData.email, formData.password, formData.name)}>
         <style.FormItem>
           <div>
             <label htmlFor="name">이름</label>

@@ -8,3 +8,10 @@ export interface FormData {
 export interface MessageProps {
   $isconfirm?: boolean;
 }
+
+export interface EmailCheckResponse {
+  status: number;
+  data: {
+    exists: boolean;
+  };
+}
