@@ -39,7 +39,7 @@ export interface PayCartRooms {
 }
 
 export interface SelectRoomProps {
-  accomodations: Accommodations[] | undefined | null;
+  accomodations: Accommodations[] | undefined;
 }
 
 export interface CartRoomProps extends SelectRoomProps {
@@ -52,7 +52,6 @@ export interface RoomListProps extends CartRoomProps {
 }
 
 export interface CartModalProps {
-  selectedItem: RoomOption | null;
-  setSelectedItem: React.Dispatch<React.SetStateAction<RoomOption | null>>;
+  selectedRooms: RoomOption[] | [];
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }

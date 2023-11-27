@@ -17,7 +17,7 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ModalInner = styled.div`
-  width: 300px;
+  width: 350px;
 
   position: fixed;
   top: 50%;
@@ -57,21 +57,25 @@ export const ModalQ = styled.span`
   font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
-export const ModalRoomName = styled.span`
-  margin: 10px 0;
-  padding: 5px;
+export const ModalRoomName = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 20px 0;
 
   font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.darkGray};
+
+  span {
+    margin: 5px 0;
+  }
 `;
 
 export const ModalBtns = styled.div`
   width: 100%;
 
   display: flex;
-  justify-content: space-between;
-
-  padding: 0 35px;
 
   button {
     border: none;
@@ -82,6 +86,8 @@ export const ModalBtns = styled.div`
 `;
 
 export const ModalClose = styled.button`
+  width: 50%;
+
   transition: 0.5s;
 
   &:hover {
@@ -90,6 +96,8 @@ export const ModalClose = styled.button`
 `;
 
 export const ModalRoomDelete = styled.button`
+  width: 50%;
+
   color: ${({ theme }) => theme.color.mainPink};
 
   transition: 0.5s;

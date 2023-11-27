@@ -42,7 +42,6 @@ export const RoomOptionWrapper = styled.div`
   .cart-cancel-btn {
     align-self: self-start;
 
-    margin-left: 5px;
     border: none;
 
     color: ${({ theme }) => theme.color.middleGray};

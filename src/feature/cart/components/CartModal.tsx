@@ -1,43 +1,44 @@
+import { useQueryClient } from "@tanstack/react-query";
+import { useDeleteCarts } from "../hooks/queries/useDeleteCarts";
 import { CartModalProps } from "../cart.types";
-import {
-  ModalWrapper,
-  ModalInner,
-  ModalContents,
-  ModalRoomName,
-  ModalQ,
-  ModalBtns,
-  ModalClose,
-  ModalRoomDelete,
-} from "../styles/cartModal";
+import * as style from "../styles/cartModal";
 
-const CartModal = ({ selectedItem, setSelectedItem, setIsModalOpen }: CartModalProps) => {
+const CartModal = ({ selectedRooms, setIsModalOpen }: CartModalProps) => {
+  const queryClient = useQueryClient();
+  const { mutateAsync: deleteCartRooms } = useDeleteCarts(queryClient);
+
+  const handleDeleteCartRooms = async () => {
+    try {
+      deleteCartRooms(selectedRooms);
+      closeModal();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const closeModal = () => {
-    setSelectedItem(null);
     setIsModalOpen(false);
   };
 
   return (
-    <ModalWrapper>
-      <ModalInner>
-        <ModalContents>
-          <ModalQ>상품을 삭제하시겠습니까?</ModalQ>
-          <ModalRoomName>{selectedItem?.name}</ModalRoomName>
-        </ModalContents>
+    <style.ModalWrapper>
+      <style.ModalInner>
+        <style.ModalContents>
+          <style.ModalQ>선택 숙소를 삭제하시겠습니까?</style.ModalQ>
+          <style.ModalRoomName>
+            {selectedRooms.map((selectedRoom, index) => (
+              <span key={`modal-room-name-${index}`}>{selectedRoom.name}</span>
+            ))}
+          </style.ModalRoomName>
+        </style.ModalContents>
 
-        <ModalBtns>
-          <ModalClose onClick={closeModal}>아니요</ModalClose>
+        <style.ModalBtns>
+          <style.ModalClose onClick={closeModal}>아니요</style.ModalClose>
 
-          <ModalRoomDelete
-            onClick={() => {
-              console.log("장바구니 삭제 API");
-              closeModal();
-            }}
-          >
-            삭제
-          </ModalRoomDelete>
-        </ModalBtns>
-      </ModalInner>
-    </ModalWrapper>
+          <style.ModalRoomDelete onClick={handleDeleteCartRooms}>삭제</style.ModalRoomDelete>
+        </style.ModalBtns>
+      </style.ModalInner>
+    </style.ModalWrapper>
   );
 };
 

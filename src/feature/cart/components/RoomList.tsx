@@ -1,15 +1,8 @@
 import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
 import { useRecoilState } from "recoil";
 import { RoomListProps } from "../cart.types";
-import { Checkbox } from "../../../styles/checkbox";
-import {
-  RoomOptions,
-  RoomOptionImg,
-  RoomOptionsText,
-  RoomOptionsName,
-  RoomOptionsCapacity,
-  RoomOptionsAmount,
-} from "../styles/roomList";
+import * as style from "../styles/roomList";
+import * as commonStyle from "../../../styles/checkbox";
 
 const RoomList = ({ accomodations, setIsSelectAll, roomOption }: RoomListProps) => {
   const [checkedRooms, setCheckedRooms] = useRecoilState(checkedCartRooms);
@@ -20,10 +13,10 @@ const RoomList = ({ accomodations, setIsSelectAll, roomOption }: RoomListProps) 
     const index = newRooms.findIndex(item => item.roomOptionId === roomId);
 
     if (index === -1) {
-      const selectedItem = accomodations?.flatMap(room => room.roomOptions).find(item => item.roomOptionId === roomId);
+      const selectedRoom = accomodations?.flatMap(room => room.roomOptions).find(item => item.roomOptionId === roomId);
 
-      if (selectedItem) {
-        newRooms.push(selectedItem);
+      if (selectedRoom) {
+        newRooms.push(selectedRoom);
       }
     } else {
       newRooms.splice(index, 1);
@@ -35,7 +28,7 @@ const RoomList = ({ accomodations, setIsSelectAll, roomOption }: RoomListProps) 
 
   return (
     <>
-      <Checkbox>
+      <commonStyle.Checkbox>
         <input
           type="checkbox"
           value={roomOption.roomOptionId}
@@ -44,23 +37,23 @@ const RoomList = ({ accomodations, setIsSelectAll, roomOption }: RoomListProps) 
           id={`room-checkbox-${roomOption.roomOptionId}`}
         />
         <label htmlFor={`room-checkbox-${roomOption.roomOptionId}`}></label>
-      </Checkbox>
+      </commonStyle.Checkbox>
 
-      <RoomOptions onClick={() => handleSelectItem(roomOption.roomOptionId)}>
-        <RoomOptionImg src={roomOption.thumbnailImage} alt="숙소 사진" />
+      <style.RoomOptions onClick={() => handleSelectItem(roomOption.roomOptionId)}>
+        <style.RoomOptionImg src={roomOption.thumbnailImage} alt="숙소 사진" />
 
-        <RoomOptionsText>
-          <RoomOptionsName>{roomOption.name}</RoomOptionsName>
+        <style.RoomOptionsText>
+          <style.RoomOptionsName>{roomOption.name}</style.RoomOptionsName>
           <span>
             {roomOption.reservationStartDate} ~ {roomOption.reservationEndDate} | {roomOption.stayDuration} 박
           </span>
-          <RoomOptionsCapacity>{roomOption.capacity} 인</RoomOptionsCapacity>
-        </RoomOptionsText>
+          <style.RoomOptionsCapacity>{roomOption.capacity} 인</style.RoomOptionsCapacity>
+        </style.RoomOptionsText>
 
-        <RoomOptionsAmount>
+        <style.RoomOptionsPrice>
           {(roomOption.pricePerNight * roomOption.stayDuration).toLocaleString()} 원
-        </RoomOptionsAmount>
-      </RoomOptions>
+        </style.RoomOptionsPrice>
+      </style.RoomOptions>
     </>
   );
 };
