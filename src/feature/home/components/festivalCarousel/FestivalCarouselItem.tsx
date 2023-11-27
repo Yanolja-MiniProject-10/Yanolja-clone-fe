@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Festival } from "../../home.types";
-import { BannerContainer, BackgroundImg, ColorTitleBox, Title } from "../../styles/festivalCarousel/festivalCarousel";
+import { BannerContainer, BackgroundImg, Title } from "../../styles/festivalCarousel/festivalCarousel";
 import {
   ModalContainer,
   ModalWrapper,
