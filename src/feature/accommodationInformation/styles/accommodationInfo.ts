@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
 
 export const NavWrapper = styled.div`
   padding-left: 3rem;
-  display: flex;
 `;
 
 export const SkeletonImgWrapper = styled.div`
