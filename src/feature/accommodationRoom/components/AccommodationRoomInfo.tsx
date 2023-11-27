@@ -8,9 +8,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
+import { useNavigate } from "react-router-dom";
 
 const AccommodationRoomInfo = ({ status, data, error }) => {
   const [toast, setToast] = useRecoilState(toastState);
+  const navigation = useNavigate();
 
   if (status == "pending") {
     return (
@@ -29,7 +31,9 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
       </style.Wrapper>
     );
   } else if (status == "error") {
-    console.log(error.message);
+    window.alert("잘못된 접근입니다. 메인 페이지로 이동합니다.");
+    navigation("/");
+    return null;
   } else {
     const room = data.data;
     const availableRoomCount = room.totalRoomCount - room.reservedRoomCount;
