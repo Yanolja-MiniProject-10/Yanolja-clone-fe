@@ -12,12 +12,12 @@ export const Box = styled.div`
   padding: 1rem;
 
   @media screen and (width < 840px) {
-    height: 35rem;
+    height: 40rem;
 
     flex-direction: column;
     justify-content: center;
 
-    padding: 2rem 0 1rem;
+    padding: 1rem;
   }
 
   .swiper-button-next,
@@ -49,6 +49,37 @@ export const Box = styled.div`
     border-radius: 5px;
 
     background: ${({ theme }) => theme.color.mainPink};
+  }
+`;
+
+export const SkeletonBox = styled.div`
+  width: 100%;
+  height: 220px;
+
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  padding: 1rem;
+
+  @media screen and (width < 840px) {
+    height: 40rem;
+
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    padding: 1rem;
+  }
+`;
+
+export const SkeletonRoomImgWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media screen and (width < 840px) {
+    margin: 0 auto;
+    justify-content: center;
   }
 `;
 
