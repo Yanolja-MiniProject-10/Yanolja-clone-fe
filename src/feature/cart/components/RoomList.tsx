@@ -13,10 +13,10 @@ const RoomList = ({ accomodations, setIsSelectAll, roomOption }: RoomListProps) 
     const index = newRooms.findIndex(item => item.roomOptionId === roomId);
 
     if (index === -1) {
-      const selectedItem = accomodations?.flatMap(room => room.roomOptions).find(item => item.roomOptionId === roomId);
+      const selectedRoom = accomodations?.flatMap(room => room.roomOptions).find(item => item.roomOptionId === roomId);
 
-      if (selectedItem) {
-        newRooms.push(selectedItem);
+      if (selectedRoom) {
+        newRooms.push(selectedRoom);
       }
     } else {
       newRooms.splice(index, 1);
