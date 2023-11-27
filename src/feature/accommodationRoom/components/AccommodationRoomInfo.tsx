@@ -40,24 +40,26 @@ const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
     const availableRoomCount = room.totalRoomCount - room.reservedRoomCount;
     return (
       <style.Wrapper>
-        {room.roomOptionImage.mainImageUrls.length > 1 ? (
-          <Swiper
-            style={{ zIndex: 0 }}
-            slidesPerView={1}
-            navigation={true}
-            loop={true}
-            modules={[Navigation, Pagination]}
-            pagination={{ clickable: true }}
-          >
-            {room.roomOptionImage.mainImageUrls.map((img, index) => (
-              <SwiperSlide key={index}>
-                <style.RoomImg src={img} alt={room.name} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        ) : (
-          <style.RoomImg src={room.roomOptionImage.mainImageUrls[0]} alt={room.name} />
-        )}
+        <style.RoomImgWrapper>
+          {room.roomOptionImage.mainImageUrls.length > 1 ? (
+            <Swiper
+              style={{ zIndex: 0 }}
+              slidesPerView={1}
+              navigation={true}
+              loop={true}
+              modules={[Navigation, Pagination]}
+              pagination={{ clickable: true }}
+            >
+              {room.roomOptionImage.mainImageUrls.map((img, index) => (
+                <SwiperSlide key={index}>
+                  <style.RoomImg src={img} alt={room.name} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
+            <style.RoomImg src={room.roomOptionImage.mainImageUrls[0]} alt={room.name} />
+          )}
+        </style.RoomImgWrapper>
         <style.TextInfo>
           <style.RoomName>{room.name}</style.RoomName>
           <style.RoomCheckInOut>

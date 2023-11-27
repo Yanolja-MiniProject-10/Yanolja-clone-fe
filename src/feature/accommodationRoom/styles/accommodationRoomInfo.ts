@@ -31,10 +31,17 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const RoomImg = styled.img`
-  max-width: 52.5rem;
+export const RoomImgWrapper = styled.div`
   width: 100%;
-  max-height: 35rem;
+  display: flex;
+
+  @media screen and (width < 840px) {
+    min-width: 460px;
+  }
+`;
+
+export const RoomImg = styled.img`
+  width: 100%;
   height: 100%;
 `;
 
