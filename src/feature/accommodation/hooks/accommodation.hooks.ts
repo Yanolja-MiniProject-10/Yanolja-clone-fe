@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllAccommodations } from "../api";
+import { getAllAccommodationData } from "../api";
+import { AccommodationListParams } from "../accommodation.types";
 
-export const useAccommodationsList = () => {
+export const useAccommodationsListQuery = ({ startDate, endDate, guest }: AccommodationListParams) => {
   return useQuery({
     queryKey: ["accommodationsList"],
-    queryFn: getAllAccommodations,
+    queryFn: () => getAllAccommodationData({ startDate, endDate, guest }),
   });
 };
