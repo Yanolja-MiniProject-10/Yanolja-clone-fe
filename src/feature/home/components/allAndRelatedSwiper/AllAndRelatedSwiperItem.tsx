@@ -5,16 +5,12 @@ import { relatedAccommodationsState } from "../../../../recoil/home/clickedData"
 
 const AllAndRelatedSwiperItem = ({ accommodation }: AccommodationProp) => {
   const setRelatedCateRegion = useSetRecoilState(relatedAccommodationsState);
-  const { name, category, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
-
-  //이후 삭제 category, region,
-  //const Mcategory = "모텔";
-  const Mregion = "경기";
+  const { name, category, region, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
 
   return (
     <SwiperItemContainer
       onClick={() => {
-        setRelatedCateRegion({ category: category, region: Mregion });
+        setRelatedCateRegion({ category: category, region: region });
       }}
     >
       <ImgBox>

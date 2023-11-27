@@ -8,6 +8,8 @@ import {
   Price,
 } from "../../styles/rankingArea/rankingAreaItem";
 import { Accommodation } from "../../home.types";
+import { useSetRecoilState } from "recoil";
+import { relatedAccommodationsState } from "../../../../recoil/home/clickedData";
 
 interface RankinItemProps {
   index: number;
@@ -15,10 +17,15 @@ interface RankinItemProps {
 }
 
 const RankingAreaItem = ({ index, accommodation }: RankinItemProps) => {
-  const { id, name, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
+  const setRelatedCateRegion = useSetRecoilState(relatedAccommodationsState);
+  const { id, category, region, name, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
 
   return (
-    <RankingItemWrapper>
+    <RankingItemWrapper
+      onClick={() => {
+        setRelatedCateRegion({ category: category, region: region });
+      }}
+    >
       <NumberBox>
         <p>{index}</p>
       </NumberBox>

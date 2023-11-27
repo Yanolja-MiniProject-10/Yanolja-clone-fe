@@ -15,8 +15,11 @@ interface AllAndRelatedProps {
   region?: string;
 }
 //region props에 추가
-const AllAndRelatedSwiper = ({ title, accommodations, category }: AllAndRelatedProps) => {
+const AllAndRelatedSwiper = ({ title, accommodations, category, region }: AllAndRelatedProps) => {
   //Link에 한글 있어서 이동 시 에러(디코 fe대화 스샷 참고)
+  //console.log("category, region", category, region);
+
+  //region? Link로 넘겨주나?
 
   return (
     <HomeInnerContainer>

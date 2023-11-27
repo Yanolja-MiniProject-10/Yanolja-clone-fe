@@ -10,10 +10,6 @@ import FestivalCarouselItem from "./FestivalCarouselItem";
 const FestivalCarousel = () => {
   const { data: festivals } = useFestivalInfo();
 
-  if (!festivals) {
-    <div>없지롱~~~</div>;
-  }
-
   return (
     <HomeInnerContainer style={{ marginTop: "3rem" }}>
       <Swiper
@@ -22,7 +18,7 @@ const FestivalCarousel = () => {
         navigation={true}
         pagination={{ clickable: true }}
         // spaceBetween={10}
-        // loop={true} --> 부족하면 워닝 뜸
+        loop={true}
         autoplay={{ delay: 2500 }}
         modules={[Navigation, Pagination, Autoplay]}
       >
