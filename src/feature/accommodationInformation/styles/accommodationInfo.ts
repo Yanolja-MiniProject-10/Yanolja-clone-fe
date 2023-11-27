@@ -30,6 +30,10 @@ export const AccommodationName = styled.h1`
   font-size: ${({ theme }) => theme.fontSize.md};
 `;
 
+export const AccommodationCategory = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+`;
+
 export const AccommodationAddress = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
   font-size: ${({ theme }) => theme.fontSize.xs};
