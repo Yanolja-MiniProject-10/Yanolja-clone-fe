@@ -14,10 +14,10 @@ const FestivalCarousel = () => {
     <HomeInnerContainer style={{ marginTop: "3rem" }}>
       <Swiper
         style={{ height: "200px" }}
-        slidesPerView={2.5}
+        slidesPerView={2.1}
         navigation={true}
         pagination={{ clickable: true }}
-        // spaceBetween={10}
+        // spaceBetween={5}
         loop={true}
         autoplay={{ delay: 2500 }}
         modules={[Navigation, Pagination, Autoplay]}

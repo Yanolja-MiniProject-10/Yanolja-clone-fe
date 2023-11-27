@@ -11,7 +11,7 @@ const ModalContainer = styled.dialog`
   box-shadow: ${({ theme }) => theme.box.shadow};
 `;
 
-const CloseButton = styled.div`
+const CloseButton = styled.p`
   margin-bottom: 1.5rem;
 
   display: flex;
@@ -19,6 +19,10 @@ const CloseButton = styled.div`
 
   font-size: ${({ theme }) => theme.fontSize.xl};
   color: ${({ theme }) => theme.color.middleGray};
+
+  * {
+    cursor: pointer;
+  }
 `;
 
 const ModalWrapper = styled.div`

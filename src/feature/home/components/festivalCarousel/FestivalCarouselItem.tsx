@@ -31,16 +31,16 @@ const FestivalCarouselItem = ({ festival }: FestivalProps) => {
   return (
     <>
       <BannerContainer onClick={showModal}>
-        <BackgroundImg style={{ backgroundImage: `url(${thumbnailImageUrl})` }}>
-          <ColorTitleBox>
-            <Title>{title}</Title>
-          </ColorTitleBox>
+        <BackgroundImg style={{ backgroundSize: "cover", backgroundImage: `url(${thumbnailImageUrl})` }}>
+          {/* <ColorTitleBox> */}
+          <Title>{title}</Title>
+          {/* </ColorTitleBox> */}
         </BackgroundImg>
       </BannerContainer>
 
       <ModalContainer ref={dialogRef}>
-        <CloseButton onClick={closeModal}>
-          <IoClose />
+        <CloseButton>
+          <IoClose onClick={closeModal} />
         </CloseButton>
         <ModalWrapper>
           <ModalInner>

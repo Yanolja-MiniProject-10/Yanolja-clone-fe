@@ -20,6 +20,7 @@ export interface Accommodations {
 
 export interface CartData {
   cartId: number;
+  count?: number;
   accommodations: Accommodations[];
 }
 
