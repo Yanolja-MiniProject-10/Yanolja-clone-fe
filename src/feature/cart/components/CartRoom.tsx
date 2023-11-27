@@ -6,11 +6,11 @@ import * as style from "../styles/cartRoom";
 import { IoClose } from "react-icons/io5";
 
 const CartRoom = ({ accomodations, setIsSelectAll }: CartRoomProps) => {
-  const [selectedItem, setSelectedItem] = useState<RoomOption[] | []>([]);
+  const [selectedRooms, setSelectedRooms] = useState<RoomOption[] | []>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = (roomOption: RoomOption[]) => {
-    setSelectedItem([...roomOption]);
+    setSelectedRooms([...roomOption]);
     setIsModalOpen(true);
   };
 
@@ -33,7 +33,7 @@ const CartRoom = ({ accomodations, setIsSelectAll }: CartRoomProps) => {
         </style.AccommodationList>
       ))}
 
-      {isModalOpen ? <CartModal selectedItem={selectedItem} setIsModalOpen={setIsModalOpen} /> : null}
+      {isModalOpen ? <CartModal selectedRooms={selectedRooms} setIsModalOpen={setIsModalOpen} /> : null}
     </>
   );
 };
