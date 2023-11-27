@@ -1,12 +1,11 @@
 import instance from "../../api/instance";
+import { AccommodationListParams } from "./accommodation.types";
+import { handleDateParam } from "./accommodation.utils";
 
-const accommodationDateData = {
-  startDate: "2023-11-24",
-  endDate: "2023-11-25",
-  guest: 2,
-};
-
-export const getAllAccommodations = async () => {
-  const response = await instance.get("/accommodations", { params: accommodationDateData });
-  return response.data.data.content;
+export const getAllAccommodationData = async ({ startDate, endDate, guest }: AccommodationListParams) => {
+  const dateString: string[] | undefined = handleDateParam(startDate, endDate);
+  const { data } = await instance.get("/accommodations", {
+    params: { startDate: dateString![0], endDate: dateString![1], guest },
+  });
+  return data;
 };

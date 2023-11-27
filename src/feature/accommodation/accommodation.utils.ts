@@ -27,3 +27,11 @@ export const handleDateParam = (sDate: Date, eDate: Date) => {
   });
   return returnArr;
 };
+
+export const handleTitlelength = (title: string) => {
+  if (title.length > 18) {
+    return "15px";
+  } else if (title.length > 15) {
+    return "18px";
+  }
+};
