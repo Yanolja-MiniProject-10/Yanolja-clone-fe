@@ -4,12 +4,26 @@ export interface AccommodationProps {
   category: string;
   region: string;
   thumbnailImageUrl: string;
+  region: string;
   minimumPrice: number;
   maximumPrice: number;
 }
 
+export interface AccommodationListParams {
+  startDate: Date;
+  endDate: Date;
+  guest: number;
+}
+
+export interface AccommodationRegionParams {
+  startDate: Date;
+  endDate: Date;
+  guest: number;
+  region: string;
+}
+
 export interface accommodationMemberDefault {
-  memberNumber: number;
+  guest: number;
 }
 
 export interface accommodationDateDefault {

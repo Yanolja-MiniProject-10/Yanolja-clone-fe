@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 3rem;
+  padding: 1rem 3rem;
 
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 
   @media screen and (width < 840px) {
-    gap: 3rem;
+    gap: 2rem;
 
-    padding: 2rem;
+    padding: 0.5rem;
   }
 `;

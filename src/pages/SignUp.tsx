@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { FormData } from "../feature/signUp/signUp.types";
-import { Button, Div, EmailButton, Form, FormItem, Message } from "../feature/signUp/styles/signUp";
+import * as style from "../feature/signUp/styles/signUp";
 
 const SignUp = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -164,30 +164,30 @@ const SignUp = () => {
   };
 
   return (
-    <Div>
-      <Form onSubmit={handleSignup}>
-        <FormItem>
+    <style.Div>
+      <style.Form onSubmit={handleSignup}>
+        <style.FormItem>
           <div>
             <label htmlFor="name">이름</label>
-            <Message>{errors.name}</Message>
+            <style.Message>{errors.name}</style.Message>
           </div>
           <input type="text" id="name" placeholder="ex) 야놀자" value={formData.name} onChange={handleInputChange} />
-        </FormItem>
-        <FormItem>
+        </style.FormItem>
+        <style.FormItem>
           <div>
             <div>
               <label htmlFor="email">이메일</label>
               {hasEmailCheck ? (
                 isEmailUnique ? (
-                  <Message $isconfirm={true}>{success.email}</Message>
+                  <style.Message $isconfirm={true}>{success.email}</style.Message>
                 ) : (
-                  <Message>{errors.email}</Message>
+                  <style.Message>{errors.email}</style.Message>
                 )
               ) : (
-                <Message>{errors.email}</Message>
+                <style.Message>{errors.email}</style.Message>
               )}
             </div>
-            <EmailButton
+            <style.EmailButton
               type="button"
               $isconfirm={isEmailUnique}
               disabled={!isConfirmEmail}
@@ -196,7 +196,7 @@ const SignUp = () => {
               }}
             >
               중복확인
-            </EmailButton>
+            </style.EmailButton>
           </div>
           <input
             type="email"
@@ -205,30 +205,30 @@ const SignUp = () => {
             value={formData.email}
             onChange={handleInputChange}
           />
-        </FormItem>
-        <FormItem>
+        </style.FormItem>
+        <style.FormItem>
           <div>
             <label htmlFor="password">비밀번호</label>
-            <Message>{errors.password}</Message>
+            <style.Message>{errors.password}</style.Message>
           </div>
           <input type="password" id="password" value={formData.password} onChange={handleInputChange} />
-        </FormItem>
-        <FormItem>
+        </style.FormItem>
+        <style.FormItem>
           <div>
             <label htmlFor="confirmPassword">비밀번호 확인</label>
             {isConfirmPassword ? (
-              <Message $isconfirm={isConfirmPassword}>{success.confirmPassword}</Message>
+              <style.Message $isconfirm={isConfirmPassword}>{success.confirmPassword}</style.Message>
             ) : (
-              <Message>{errors.confirmPassword}</Message>
+              <style.Message>{errors.confirmPassword}</style.Message>
             )}
           </div>
           <input type="password" id="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} />
-        </FormItem>
-        <Button type="submit" disabled={!isValid}>
+        </style.FormItem>
+        <style.Button type="submit" disabled={!isValid}>
           회원가입
-        </Button>
-      </Form>
-    </Div>
+        </style.Button>
+      </style.Form>
+    </style.Div>
   );
 };
 

@@ -8,14 +8,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
+import { useNavigate } from "react-router-dom";
+import { RoomInfoProps } from "../RoomInformation.types";
 
-const AccommodationRoomInfo = ({ status, data, error }) => {
+const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
   const [toast, setToast] = useRecoilState(toastState);
+  const navigation = useNavigate();
 
   if (status == "pending") {
     return (
       <style.Wrapper>
-        <Skeleton height={560} />
+        <Skeleton height={560} style={{ zIndex: 0 }} />
         <style.TextInfo>
           <Skeleton height={30} width={200} />
           <Skeleton width={300} height={15} />
@@ -29,30 +32,34 @@ const AccommodationRoomInfo = ({ status, data, error }) => {
       </style.Wrapper>
     );
   } else if (status == "error") {
-    console.log(error.message);
+    window.alert("잘못된 접근입니다. 메인 페이지로 이동합니다.");
+    navigation("/");
+    return null;
   } else {
     const room = data.data;
     const availableRoomCount = room.totalRoomCount - room.reservedRoomCount;
     return (
       <style.Wrapper>
-        {room.roomOptionImage.mainImageUrls.length > 1 ? (
-          <Swiper
-            style={{ zIndex: 0 }}
-            slidesPerView={1}
-            navigation={true}
-            loop={true}
-            modules={[Navigation, Pagination]}
-            pagination={{ clickable: true }}
-          >
-            {room.roomOptionImage.mainImageUrls.map((img, index) => (
-              <SwiperSlide key={index}>
-                <style.RoomImg src={img} alt={room.name} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        ) : (
-          <style.RoomImg src={room.img} alt={room.name} />
-        )}
+        <style.RoomImgWrapper>
+          {room.roomOptionImage.mainImageUrls.length > 1 ? (
+            <Swiper
+              style={{ zIndex: 0 }}
+              slidesPerView={1}
+              navigation={true}
+              loop={true}
+              modules={[Navigation, Pagination]}
+              pagination={{ clickable: true }}
+            >
+              {room.roomOptionImage.mainImageUrls.map((img, index) => (
+                <SwiperSlide key={index}>
+                  <style.RoomImg src={img} alt={room.name} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
+            <style.RoomImg src={room.roomOptionImage.mainImageUrls[0]} alt={room.name} />
+          )}
+        </style.RoomImgWrapper>
         <style.TextInfo>
           <style.RoomName>{room.name}</style.RoomName>
           <style.RoomCheckInOut>
