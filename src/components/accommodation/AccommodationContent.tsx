@@ -14,39 +14,43 @@ const AccommodationContent = ({ accommodations }: AccommodationDataProps) => {
         <span style={{ fontWeight: 600 }}>{accommodations.length}</span>개의 숙소
       </style.AccommodationContentTitleParagraph>
       <style.AccommodationContentGrid>
-        {accommodations.length
-          ? accommodations.map((singleAccommodation: AccommodationProps) => (
-              <style.AccommodationContentGridContainer
-                key={singleAccommodation.id}
-                onClick={() => navigate(`/accommodation/${singleAccommodation.id}`)}
-              >
-                <style.AccommodationContentGridImg
-                  src={
-                    singleAccommodation.thumbnailImageUrl ? singleAccommodation.thumbnailImageUrl : accommmodationSample
-                  }
-                />
-                <style.AccommodationContentGridInnerBox>
-                  <div style={{ paddingTop: "0.5rem" }}>
-                    <style.AccommodationContentGridInnerTitle
-                      style={{ fontSize: handleTitlelength(singleAccommodation.name) }}
-                    >
-                      {singleAccommodation.name}
-                    </style.AccommodationContentGridInnerTitle>
-                    <style.AccommodationContentGridInnerTag>
-                      {singleAccommodation.category}
-                    </style.AccommodationContentGridInnerTag>
-                  </div>
-                  <div style={{ marginLeft: "auto" }}>
-                    <style.AccommodationContentGridInnerParagraph>
-                      {`${singleAccommodation.minimumPrice.toLocaleString()} ~ `}
-                      <br />
-                      {`${singleAccommodation.maximumPrice.toLocaleString()} 원`}
-                    </style.AccommodationContentGridInnerParagraph>
-                  </div>
-                </style.AccommodationContentGridInnerBox>
-              </style.AccommodationContentGridContainer>
-            ))
-          : "해당 숙소가 없습니다."}
+        {accommodations.length ? (
+          accommodations.map((singleAccommodation: AccommodationProps) => (
+            <style.AccommodationContentGridContainer
+              key={singleAccommodation.id}
+              onClick={() => navigate(`/accommodation/${singleAccommodation.id}`)}
+            >
+              <style.AccommodationContentGridImg
+                src={
+                  singleAccommodation.thumbnailImageUrl ? singleAccommodation.thumbnailImageUrl : accommmodationSample
+                }
+              />
+              <style.AccommodationContentGridInnerBox>
+                <div style={{ paddingTop: "0.5rem" }}>
+                  <style.AccommodationContentGridInnerTitle
+                    style={{ fontSize: handleTitlelength(singleAccommodation.name) }}
+                  >
+                    {singleAccommodation.name}
+                  </style.AccommodationContentGridInnerTitle>
+                  <style.AccommodationContentGridInnerTag>
+                    {singleAccommodation.category}
+                  </style.AccommodationContentGridInnerTag>
+                </div>
+                <div style={{ marginLeft: "auto" }}>
+                  <style.AccommodationContentGridInnerParagraph>
+                    {`${singleAccommodation.minimumPrice.toLocaleString()} ~ `}
+                    <br />
+                    {`${singleAccommodation.maximumPrice.toLocaleString()}원`}
+                  </style.AccommodationContentGridInnerParagraph>
+                </div>
+              </style.AccommodationContentGridInnerBox>
+            </style.AccommodationContentGridContainer>
+          ))
+        ) : (
+          <style.AccommodationContentNotExists>
+            <p>해당 숙소가 없습니다.</p>
+          </style.AccommodationContentNotExists>
+        )}
       </style.AccommodationContentGrid>
     </style.AccommodationContentBox>
   );
