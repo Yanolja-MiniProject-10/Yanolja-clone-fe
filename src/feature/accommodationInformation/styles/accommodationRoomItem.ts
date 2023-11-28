@@ -164,14 +164,23 @@ export const RoomCheckInOut = styled.p`
 `;
 
 export const RoomCount = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: 13px; //폰트 크기
+
+  margin-top: 10px;
+`;
+
+export const NoAvailableRoom = styled.p`
+  font-size: 13px;
+  color: ${({ theme }) => theme.color.hoverPink};
+
+  margin-top: 10px;
 `;
 
 export const RoomPrice = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
-export const ButtonWraper = styled.div`
+export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
@@ -182,6 +191,11 @@ export const ButtonWraper = styled.div`
 export const CartIcon = styled(LuShoppingCart)`
   font-size: ${({ theme }) => theme.fontSize.lg};
   color: ${({ theme }) => theme.color.mainPink};
+`;
+
+export const DisableCartIcon = styled(LuShoppingCart)`
+  font-size: ${({ theme }) => theme.fontSize.lg};
+  color: ${({ theme }) => theme.color.darkGray};
 `;
 
 export const CartButton = styled.button`
@@ -208,6 +222,22 @@ export const CartButton = styled.button`
   align-items: center;
 `;
 
+export const DisableCartButton = styled.button`
+  border: 1px solid ${({ theme }) => theme.color.darkGray};
+  border-radius: 10px;
+
+  background-color: ${({ theme }) => theme.color.white};
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: not-allowed;
+`;
+
 export const ReservationButton = styled.button`
   width: 100px;
   height: 35px;
@@ -224,4 +254,19 @@ export const ReservationButton = styled.button`
     background-color: ${({ theme }) => theme.color.hoverPink};
     transition: 0.4s;
   }
+`;
+
+export const DisableReservationButton = styled.button`
+  width: 100px;
+  height: 35px;
+
+  border-radius: 10px;
+  border: none;
+
+  background-color: ${({ theme }) => theme.color.darkGray};
+
+  color: ${({ theme }) => theme.color.white};
+  font-size: 14px;
+
+  cursor: not-allowed;
 `;

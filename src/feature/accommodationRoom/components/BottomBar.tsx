@@ -42,6 +42,8 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
     return null;
   } else {
     const room = data.data;
+    const availableRoomCount = room.totalRoomCount - room.reservedRoomCount;
+    const isRoomAvailable = availableRoomCount > 0;
 
     const handleAddCart = async () => {
       try {
@@ -84,18 +86,25 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
             <style.ReservationGuest> ({guest}인)</style.ReservationGuest>
           </style.ReservationInfoText>
           <style.RoomPrice>
-            {room.totalPrice.toLocaleString()} 원 / {room.stayDuration}박
+            {room.totalPrice.toLocaleString()}원 / {room.stayDuration}박
           </style.RoomPrice>
         </style.TopWrapper>
         <style.ButtonWrapper>
-          <style.CartButton
-            onClick={() => {
-              handleAddCart();
-            }}
-          >
-            <style.CartIcon />
-          </style.CartButton>
-          <style.ReservationButton onClick={() => postReservationInstant()}>예약하기</style.ReservationButton>
+          {isRoomAvailable ? (
+            <>
+              <style.CartButton onClick={() => handleAddCart()}>
+                <style.CartIcon />
+              </style.CartButton>
+              <style.ReservationButton onClick={() => postReservationInstant()}>예약하기</style.ReservationButton>
+            </>
+          ) : (
+            <>
+              <style.DisableCartButton>
+                <style.DisableCartIcon />
+              </style.DisableCartButton>
+              <style.DisableReservationButton>예약마감</style.DisableReservationButton>
+            </>
+          )}
         </style.ButtonWrapper>
       </style.Wrapper>
     );

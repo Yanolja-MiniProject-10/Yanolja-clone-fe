@@ -81,6 +81,13 @@ export const RoomCount = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
+export const NoAvailableRoom = styled.p`
+  font-size: 13px;
+  color: ${({ theme }) => theme.color.hoverPink};
+
+  margin-top: 10px;
+`;
+
 export const RoomPrice = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.sm};
 

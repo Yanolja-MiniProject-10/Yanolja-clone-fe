@@ -38,6 +38,8 @@ const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
   } else {
     const room = data.data;
     const availableRoomCount = room.totalRoomCount - room.reservedRoomCount;
+    const isRoomAvailable = availableRoomCount > 0;
+
     return (
       <style.Wrapper>
         <style.RoomImgWrapper>
@@ -73,9 +75,13 @@ const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
               {room.checkOutTime.slice(0, 5)}
             </style.RoomCheckOut>
           </style.RoomCheckInOut>
-          {availableRoomCount > 0 && <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>}
+          {isRoomAvailable ? (
+            <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>
+          ) : (
+            <style.NoAvailableRoom>* 예약이 마감되었습니다.</style.NoAvailableRoom>
+          )}
           <style.RoomPrice>
-            {room.totalPrice.toLocaleString()} 원 / {room.stayDuration}박
+            {room.totalPrice.toLocaleString()}원 / {room.stayDuration}박
           </style.RoomPrice>
           <style.DivideLine />
           <style.RoomStaticDescWrap>
