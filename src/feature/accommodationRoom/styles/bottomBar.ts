@@ -57,7 +57,7 @@ export const CartIcon = styled(LuShoppingCart)`
 
 export const DisableCartIcon = styled(LuShoppingCart)`
   font-size: ${({ theme }) => theme.fontSize.lg};
-  color: ${({ theme }) => theme.color.darkGray};
+  color: ${({ theme }) => theme.color.middleGray};
 `;
 
 export const CartButton = styled.button`
@@ -85,7 +85,7 @@ export const CartButton = styled.button`
 `;
 
 export const DisableCartButton = styled.button`
-  border: 1px solid ${({ theme }) => theme.color.darkGray};
+  border: 1px solid ${({ theme }) => theme.color.middleGray};
   border-radius: 10px;
 
   background-color: ${({ theme }) => theme.color.white};
@@ -125,7 +125,7 @@ export const DisableReservationButton = styled.button`
   border-radius: 10px;
   border: none;
 
-  background-color: ${({ theme }) => theme.color.darkGray};
+  background-color: ${({ theme }) => theme.color.middleGray};
 
   color: ${({ theme }) => theme.color.white};
   font-size: 14px;

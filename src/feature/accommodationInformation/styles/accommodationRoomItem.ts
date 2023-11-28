@@ -195,7 +195,7 @@ export const CartIcon = styled(LuShoppingCart)`
 
 export const DisableCartIcon = styled(LuShoppingCart)`
   font-size: ${({ theme }) => theme.fontSize.lg};
-  color: ${({ theme }) => theme.color.darkGray};
+  color: ${({ theme }) => theme.color.middleGray};
 `;
 
 export const CartButton = styled.button`
@@ -204,8 +204,8 @@ export const CartButton = styled.button`
 
   background-color: ${({ theme }) => theme.color.white};
 
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.mainPink};
@@ -223,13 +223,13 @@ export const CartButton = styled.button`
 `;
 
 export const DisableCartButton = styled.button`
-  border: 1px solid ${({ theme }) => theme.color.darkGray};
+  border: 1px solid ${({ theme }) => theme.color.middleGray};
   border-radius: 10px;
 
   background-color: ${({ theme }) => theme.color.white};
 
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
 
   display: flex;
   justify-content: center;
@@ -239,8 +239,8 @@ export const DisableCartButton = styled.button`
 `;
 
 export const ReservationButton = styled.button`
-  width: 100px;
-  height: 35px;
+  width: 90px;
+  height: 32px;
 
   border-radius: 10px;
   border: none;
@@ -248,7 +248,7 @@ export const ReservationButton = styled.button`
   background-color: ${({ theme }) => theme.color.mainPink};
 
   color: ${({ theme }) => theme.color.white};
-  font-size: 14px;
+  font-size: 12px;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.hoverPink};
@@ -257,16 +257,16 @@ export const ReservationButton = styled.button`
 `;
 
 export const DisableReservationButton = styled.button`
-  width: 100px;
-  height: 35px;
+  width: 90px;
+  height: 32px;
 
   border-radius: 10px;
   border: none;
 
-  background-color: ${({ theme }) => theme.color.darkGray};
+  background-color: ${({ theme }) => theme.color.middleGray};
 
   color: ${({ theme }) => theme.color.white};
-  font-size: 14px;
+  font-size: 12px;
 
   cursor: not-allowed;
 `;
