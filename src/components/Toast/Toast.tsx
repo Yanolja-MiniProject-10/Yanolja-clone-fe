@@ -14,7 +14,7 @@ const Toast = ({ setToast }: ToastProps) => {
     console.log(message);
 
     const timer = setTimeout(() => {
-      setToast({ open: false });
+      setToast({ open: false, message: "" });
     }, 3000);
 
     return () => {
@@ -23,7 +23,7 @@ const Toast = ({ setToast }: ToastProps) => {
   }, [message, setToast]);
 
   const handleCloseToast = () => {
-    setToast({ open: false });
+    setToast({ open: false, message: "" });
   };
 
   return (
