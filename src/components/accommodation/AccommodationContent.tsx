@@ -6,6 +6,7 @@ import accommmodationSample from "../../assets/images/accommodationSample.svg";
 import { handleTitlelength } from "../../feature/accommodation/accommodation.utils";
 
 const AccommodationContent = ({ accommodations }: AccommodationDataProps) => {
+  console.log("final", accommodations);
   const navigate = useNavigate();
 
   return (
