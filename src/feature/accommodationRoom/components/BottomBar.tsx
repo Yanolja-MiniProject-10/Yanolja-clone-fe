@@ -57,9 +57,15 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
 
     return (
       <style.Wrapper>
-        <style.RoomPrice>
-          {room.totalPrice.toLocaleString()} 원 / {room.stayDuration}박
-        </style.RoomPrice>
+        <style.TopWrapper>
+          <style.ReservationInfoText>
+            {reservationStartDate} ~ {reservationEndDate}
+            <style.ReservationGuest> ({guest}인)</style.ReservationGuest>
+          </style.ReservationInfoText>
+          <style.RoomPrice>
+            {room.totalPrice.toLocaleString()} 원 / {room.stayDuration}박
+          </style.RoomPrice>
+        </style.TopWrapper>
         <style.ButtonWrapper>
           <style.CartButton
             onClick={() => {

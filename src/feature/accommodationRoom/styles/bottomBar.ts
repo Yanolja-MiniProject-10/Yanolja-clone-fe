@@ -3,7 +3,7 @@ import { LuShoppingCart } from "react-icons/lu";
 
 export const Wrapper = styled.div`
   position: fixed;
-  height: 120px;
+  height: 90px;
   width: 100%;
 
   z-index: 1;
@@ -15,7 +15,6 @@ export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.color.white};
 
   display: flex;
-  flex-direction: column;
   align-items: flex-end;
   gap: 1rem;
 
@@ -24,8 +23,26 @@ export const Wrapper = styled.div`
   border-top: 1px solid ${({ theme }) => theme.color.middleGray};
 `;
 
+export const TopWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  width: 100%;
+`;
+
+export const ReservationInfoText = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+  color: ${({ theme }) => theme.color.darkGray};
+`;
+
+export const ReservationGuest = styled.span`
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+  color: ${({ theme }) => theme.color.darkGray};
+`;
+
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 export const ButtonWrapper = styled.div`
@@ -63,7 +80,7 @@ export const CartButton = styled.button`
 `;
 
 export const ReservationButton = styled.button`
-  width: 200px;
+  width: 250px;
   height: 40px;
 
   border-radius: 10px;
@@ -73,7 +90,6 @@ export const ReservationButton = styled.button`
 
   color: ${({ theme }) => theme.color.white};
   font-size: ${({ theme }) => theme.fontSize.xxs};
-  font-weight: bold;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.hoverPink};
