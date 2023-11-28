@@ -8,10 +8,17 @@ export const Wrapper = styled.div`
   .swiper-button-prev {
     color: ${({ theme }) => theme.color.middleGray};
 
+    width: 20px;
+
     &:hover {
       color: ${({ theme }) => theme.color.black};
       transition: 0.4s;
     }
+  }
+
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: ${({ theme }) => theme.fontSize.lg} !important;
   }
 
   .swiper-pagination-bullet {
