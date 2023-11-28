@@ -11,6 +11,7 @@ import Layout from "./components/Layout";
 import AccommodationRoom from "./pages/AccommodationRoom";
 import AccommodationInformation from "./pages/AccommodationInformation";
 import PageNotFound from "./pages/PageNotFound";
+import Category from "./pages/Category";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/accommodation" element={<Accommodation />} />
         <Route path="/accommodation/:id" element={<AccommodationInformation />} />
         <Route path="/accommodation/:id/room/:id" element={<AccommodationRoom />} />
+        <Route path="/category/:id" element={<Category />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/*" element={<PageNotFound />} />

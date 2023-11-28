@@ -9,22 +9,15 @@ import AllAndRelatedSwiper from "../feature/home/components/allAndRelatedSwiper"
 import { useAllAccommodations, useRelatedAccommodations } from "../feature/home/hooks/queries/home.hooks";
 import { HomeContainer } from "../feature/home/styles/homeCommon";
 import { useRecoilValue } from "recoil";
-import { relatedAccommodationsState } from "../recoil/home/clickedData";
-
-//const allAccommodations = responseMock.data.content;
-// useRelatedAccommodations({ category, region });
+import { relatedAccommodationsState } from "../recoil/home/clickedCategoryAndRegion";
 
 const Home = () => {
   const { data: allAccommodations } = useAllAccommodations();
 
   const relatedCateRegion = useRecoilValue(relatedAccommodationsState);
-  const { category: category } = relatedCateRegion; //, region: realRegi
-  //realRegi ? console.log("잇음", realRegi, category) : console.log("읭 업는듯", relatedCateRegion, realRegi);
-
-  //accommodation에 category가 있어야 제대로 사용 가능
+  const { category: category, region: region } = relatedCateRegion;
+  //region ? console.log("잇음", region, category) : console.log("읭 업는듯", relatedCateRegion, region);
   // 로그인 여부 판단해서 로그인 안했을 때는 연관숙소 보여주지 않음
-  const region = "경기";
-  //const category = "모텔";
   const { data: relatedAccommodations } = useRelatedAccommodations({ category, region });
 
   return (
@@ -34,15 +27,13 @@ const Home = () => {
         <CategoryArea />
         {allAccommodations && <AllAndRelatedSwiper title={"모든 숙소 둘러보기"} accommodations={allAccommodations} />}
 
-        {relatedAccommodations ? (
+        {relatedAccommodations && (
           <AllAndRelatedSwiper
             title={"최근 본 상품의 연관 상품"}
             accommodations={relatedAccommodations}
             category={category}
-            //region={region}
+            region={region}
           />
-        ) : (
-          <div>아직없음</div>
         )}
 
         <RegionArea />
