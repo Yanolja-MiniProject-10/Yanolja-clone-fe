@@ -49,6 +49,7 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
           reservationEndDate,
           stayDuration: room.stayDuration,
         });
+        setToast({ open: true, message: "장바구니에 상품이 담겼습니다." });
       } catch (e) {
         alert(`장바구니에 상품 담기를 실패했습니다.`);
         console.log(e);
@@ -70,7 +71,6 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
           <style.CartButton
             onClick={() => {
               handleAddCart();
-              setToast({ open: true, message: "장바구니에 상품이 담겼습니다." });
             }}
           >
             <style.CartIcon />
