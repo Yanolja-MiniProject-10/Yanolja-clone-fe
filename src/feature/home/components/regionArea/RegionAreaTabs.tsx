@@ -7,10 +7,11 @@ import { Swiper as SwiperCore } from "swiper/types";
 import { SwiperNavTabs, SwiperTab, SpanTab } from "../../styles/regionArea/regionArea.ts";
 
 interface TabsProps {
+  regions: string[] | undefined;
   setThumbsSwiper: React.Dispatch<React.SetStateAction<SwiperCore | null>>;
 }
 
-const RegionAreaTabs = ({ setThumbsSwiper }: TabsProps) => {
+const RegionAreaTabs = ({ regions, setThumbsSwiper }: TabsProps) => {
   return (
     <div>
       <SwiperNavTabs
@@ -20,18 +21,11 @@ const RegionAreaTabs = ({ setThumbsSwiper }: TabsProps) => {
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
       >
-        <SwiperTab>
-          <SpanTab>서울</SpanTab>
-        </SwiperTab>
-        <SwiperTab>
-          <SpanTab>경기</SpanTab>
-        </SwiperTab>
-        <SwiperTab>
-          <SpanTab>강원</SpanTab>
-        </SwiperTab>
-        <SwiperTab>
-          <SpanTab>제주</SpanTab>
-        </SwiperTab>
+        {regions?.map(region => (
+          <SwiperTab key={region}>
+            <SpanTab>{region}</SpanTab>
+          </SwiperTab>
+        ))}
       </SwiperNavTabs>
     </div>
   );

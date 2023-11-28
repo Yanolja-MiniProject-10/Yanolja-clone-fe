@@ -40,3 +40,17 @@ export interface RelatedProps {
   category: string;
   region: string;
 }
+
+export interface RegionList {
+  data: {
+    regions: string[];
+  };
+}
+
+export interface RegionListResponse {
+  data: {
+    data: {
+      regions: string[];
+    };
+  };
+}
