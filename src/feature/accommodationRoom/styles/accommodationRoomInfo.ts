@@ -55,7 +55,7 @@ export const TextInfo = styled.div`
 `;
 
 export const RoomName = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const RoomCheckInOut = styled.div`
@@ -114,7 +114,7 @@ export const StaticDesc = styled.h1`
 `;
 
 export const RoomDesc = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.middleGray};
   line-height: 25px;
 `;
