@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { Checkbox } from "../../../styles/checkbox";
-import { REQUIRMENTS } from "../reservation.constants";
+import { DELAY_SETAllCHECKED, REQUIRMENTS } from "../reservation.constants";
 import { RequirementsTitle, RequirementsContents, Requirement } from "../styles/requirementsPrePay";
 import { ReservationWrapper } from "../styles/reservationWrapper";
 
-const RequirementsPrePay = ({ serAllChecked }: { serAllChecked: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const RequirementsPrePay = ({ setAllChecked }: { setAllChecked: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const [countChecked, setCountChecked] = useState(0);
 
-  const handleCountChecked = e => {
+  const handleCountChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.checked ? setCountChecked(prev => prev + 1) : setCountChecked(prev => prev - 1);
   };
 
   setTimeout(() => {
-    countChecked === 5 ? serAllChecked(true) : serAllChecked(false);
-  }, 100);
+    countChecked === 5 ? setAllChecked(true) : setAllChecked(false);
+  }, DELAY_SETAllCHECKED);
 
   return (
     <ReservationWrapper>

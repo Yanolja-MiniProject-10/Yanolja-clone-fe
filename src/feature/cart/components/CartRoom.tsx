@@ -1,11 +1,12 @@
 import { useState } from "react";
 import RoomList from "./RoomList";
 import CartModal from "./CartModal";
-import { CartRoomProps, RoomOption } from "../cart.types";
+import { RoomOption } from "../../../types";
+import { CartRoomProps } from "../cart.types";
 import * as style from "../styles/cartRoom";
 import { IoClose } from "react-icons/io5";
 
-const CartRoom = ({ accomodations, setIsSelectAll }: CartRoomProps) => {
+const CartRoom = ({ accommodations, setIsSelectAll }: CartRoomProps) => {
   const [selectedRooms, setSelectedRooms] = useState<RoomOption[] | []>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,16 +17,16 @@ const CartRoom = ({ accomodations, setIsSelectAll }: CartRoomProps) => {
 
   return (
     <>
-      {accomodations.map(accomodation => (
-        <style.AccommodationList key={`accommodation-list-${accomodation.accommodationId}`}>
+      {accommodations.map(accommodation => (
+        <style.AccommodationList key={`accommodation-list-${accommodation.accommodationId}`}>
           <style.Accommodation>
-            <style.AccommodationName>{accomodation.name}</style.AccommodationName>
-            <style.AccommodationAddress>{accomodation.address}</style.AccommodationAddress>
+            <style.AccommodationName>{accommodation.name}</style.AccommodationName>
+            <style.AccommodationAddress>{accommodation.address}</style.AccommodationAddress>
           </style.Accommodation>
 
-          {accomodation.roomOptions.map(roomOption => (
-            <style.RoomOptionWrapper key={`room-option-${roomOption.roomOptionId}`}>
-              <RoomList accomodations={accomodations} setIsSelectAll={setIsSelectAll} roomOption={roomOption} />
+          {accommodation.roomOptions.map(roomOption => (
+            <style.RoomOptionWrapper key={`room-option-${roomOption.cartProductId}`}>
+              <RoomList accommodations={accommodations} setIsSelectAll={setIsSelectAll} roomOption={roomOption} />
 
               <IoClose onClick={() => openModal([roomOption])} className="cart-cancel-btn" />
             </style.RoomOptionWrapper>

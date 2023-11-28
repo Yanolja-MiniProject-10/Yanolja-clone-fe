@@ -3,11 +3,11 @@ import RequirementsPrePay from "./RequirementsPrePay";
 import ReservationPayBtn from "./ReservationPayBtn";
 
 const ReservationPay = () => {
-  const [allChecked, serAllChecked] = useState(false);
+  const [allChecked, setAllChecked] = useState(false);
 
   return (
     <>
-      <RequirementsPrePay serAllChecked={serAllChecked} />
+      <RequirementsPrePay setAllChecked={setAllChecked} />
       <ReservationPayBtn allChecked={allChecked} />
     </>
   );
