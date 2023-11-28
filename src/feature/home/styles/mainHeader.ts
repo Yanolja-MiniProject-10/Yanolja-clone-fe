@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { IoSearch } from "react-icons/io5";
-import { LuShoppingCart } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -50,7 +49,9 @@ const SearchIcon = styled(IoSearch)`
   color: black;
 `;
 
-const CartIcon = styled(LuShoppingCart)`
+const CartIcon = styled.div`
+  position: relative;
+
   margin-left: 1rem;
 
   font-size: ${({ theme }) => theme.fontSize.md};
@@ -61,4 +62,26 @@ const CartIcon = styled(LuShoppingCart)`
   }
 `;
 
-export { Container, LinkedBox, InputText, SearchIcon, CartIcon };
+const CartBadge = styled.div`
+  position: absolute;
+  top: -2px;
+  right: -5px;
+  z-index: 100;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
+
+  background-color: ${({ theme }) => theme.color.mainPink};
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  * {
+    font-size: 10px;
+  }
+
+  color: white;
+`;
+
+export { Container, LinkedBox, InputText, SearchIcon, CartIcon, CartBadge };

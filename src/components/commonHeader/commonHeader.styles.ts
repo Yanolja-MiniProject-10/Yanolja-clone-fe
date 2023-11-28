@@ -55,4 +55,14 @@ const RightIcons = styled.div`
   }
 `;
 
-export { Container, ArrowBox, RightIcons, HeadingText };
+const CartBadge = styled.div`
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+
+  background-color: ${({ theme }) => theme.color.mainPink};
+
+  color: white;
+`;
+
+export { Container, ArrowBox, RightIcons, HeadingText, CartBadge };
