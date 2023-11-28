@@ -1,23 +1,38 @@
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import * as style from "../styles/accommodationInfo";
 import Toast from "../../../components/Toast/Toast";
 import { toastState } from "../../../recoil/toast";
 import { useParams } from "react-router-dom";
-
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
+import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
+import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
+import { handleDateParam } from "../../accommodation/accommodation.utils";
 
 const AccommodationInfo = () => {
   const [toast, setToast] = useRecoilState(toastState);
   const { id } = useParams();
+  const { guest } = useRecoilValue(accommodationMemberState);
 
-  // 날짜, 게스트 임의 지정
-  const startDate = "2023-11-21";
-  const endDate = "2023-11-22";
-  const guest = 2;
+  const { startDate, endDate } = useRecoilValue(accommodationDateState);
 
-  const { status, data, error } = useAccommodationInfoQuery({ id, startDate, endDate, guest });
+  const dateArray = handleDateParam(startDate, endDate);
+
+  /**나중에 로직 수정 예정 */
+  let reservationStartDate = "";
+  let reservationEndDate = "";
+  if (dateArray) {
+    reservationStartDate = dateArray![0];
+    reservationEndDate = dateArray![1];
+  }
+
+  const { status, data, error } = useAccommodationInfoQuery({
+    id,
+    reservationStartDate,
+    reservationEndDate,
+    member: guest,
+  });
 
   if (status === "pending") {
     return (
