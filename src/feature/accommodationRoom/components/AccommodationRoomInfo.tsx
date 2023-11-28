@@ -87,6 +87,7 @@ const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
           )}
           {isAvailableGuest ? (
             <style.CapacityWrapper>
+              <style.GuestIcon />
               <style.GuestNumber>인원: {room.capacity}인</style.GuestNumber>
             </style.CapacityWrapper>
           ) : (
