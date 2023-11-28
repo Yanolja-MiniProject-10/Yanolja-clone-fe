@@ -45,7 +45,8 @@ export const RoomOptionsCapacity = styled.span`
 `;
 
 export const RoomOptionsPrice = styled.span`
-  width: 120px;
+  width: 110px;
 
+  text-align: end;
   font-size: ${({ theme }) => theme.fontSize.xs};
 `;
