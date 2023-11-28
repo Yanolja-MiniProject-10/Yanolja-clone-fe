@@ -4,7 +4,6 @@ export interface AccommodationProps {
   category: string;
   region: string;
   thumbnailImageUrl: string;
-  region: string;
   minimumPrice: number;
   maximumPrice: number;
 }
