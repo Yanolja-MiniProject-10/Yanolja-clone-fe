@@ -7,9 +7,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { TitleAndLinkBox, LinkToOthers } from "../../styles/allAndRelatedSwiper";
 import { Accommodation } from "../../home.types";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import { useAllAccommodations } from "../../hooks/queries/home.hooks";
 
 interface AllAndRelatedProps {
   title: string;
