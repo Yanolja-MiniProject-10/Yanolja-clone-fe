@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export const useAccommodationsSearchQuery = ({ startDate, endDate, guest, name }: AccommodationSearchParams) => {
   return useQuery({
-    queryKey: ["useAccommodationsSearchQuery", useDebounce(name, 500)],
+    queryKey: ["useAccommodationsSearchQuery", useDebounce(name, 400)],
     queryFn: () => getAllAccommodationSearchData({ startDate, endDate, guest, name }),
   });
 };

@@ -80,3 +80,17 @@ export const AccommodationContentGridInnerTag = styled.p`
 export const AccommodationContentGridInnerParagraph = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
+
+export const AccommodationContentNotExists = styled.div`
+  width: 675px;
+  min-height: 50vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: ${({ theme }) => theme.fontSize.xxs};
+    color: ${({ theme }) => theme.color.darkGray};
+  }
+`;

@@ -20,7 +20,7 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
 
   const handleEnterpress = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      if (inputValue && data?.data.content && status === "success") {
+      if (inputValue && data.data.content && status === "success") {
         setAccommodations(data.data.content);
       }
     }
