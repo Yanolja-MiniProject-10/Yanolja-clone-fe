@@ -38,3 +38,24 @@ export const postCart = async (
     console.error("Error posting cart:", error);
   }
 };
+
+export const postReservation = async (
+  roomOptionId: number,
+  numberOfGuest: number,
+  reservationStartDate: string,
+  reservationEndDate: string,
+  stayDuration: number,
+) => {
+  try {
+    const { data } = await instance.post("/payment/instant", {
+      roomOptionId,
+      numberOfGuest,
+      reservationStartDate,
+      reservationEndDate,
+      stayDuration,
+    });
+    return data;
+  } catch (error) {
+    console.error("Error posting cart:", error);
+  }
+};

@@ -4,8 +4,9 @@ import { Box, TextWrapper, LinkToCart } from "./toast.styles";
 import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { toastState } from "../../recoil/toast";
+import { ToastProps } from "./toast.types";
 
-const Toast = ({ setToast }) => {
+const Toast = ({ setToast }: ToastProps) => {
   const { page } = useParams();
   const { message } = useRecoilValue(toastState);
 
