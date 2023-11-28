@@ -17,3 +17,11 @@ export interface RoomListProps {
   totalRoomCount: number;
   reservedRoomCount: number;
 }
+
+export interface PostCart {
+  roomOptionId: number;
+  numberOfGuest: number;
+  reservationStartDate: string;
+  reservationEndDate: string;
+  stayDuration: number;
+}
