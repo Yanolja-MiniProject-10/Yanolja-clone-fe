@@ -13,6 +13,7 @@ import {
   ContactNumber,
 } from "../../styles/festivalCarousel/festivalModal";
 import { IoClose } from "react-icons/io5";
+
 interface FestivalProps {
   festival: Festival;
 }
