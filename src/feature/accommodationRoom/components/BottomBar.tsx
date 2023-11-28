@@ -1,7 +1,6 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { toastState } from "../../../recoil/toast";
 import * as style from "../styles/bottomBar";
-import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import { RoomInfoProps } from "../RoomInformation.types";
 import { useQueryClient } from "@tanstack/react-query";
@@ -9,6 +8,8 @@ import { usePostCart } from "../../accommodationInformation/hooks/queries/addCar
 import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
 import { handleDateParam } from "../../accommodation/accommodation.utils";
+import { postReservation } from "../../accommodationInformation/api";
+import { useNavigate } from "react-router-dom";
 
 const BottomBar = ({ status, data }: RoomInfoProps) => {
   const [, setToast] = useRecoilState(toastState);
@@ -20,6 +21,8 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
 
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const dateArray = handleDateParam(startDate, endDate);
+
+  const navigation = useNavigate();
 
   /**나중에 로직 수정 예정 */
   let reservationStartDate = "";
@@ -56,6 +59,23 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
       }
     };
 
+    const postReservationInstant = async () => {
+      try {
+        const data = await postReservation(room.id, guest, reservationStartDate, reservationEndDate, room.stayDuration);
+        const cartId = data.data.cartId;
+        const cartProducts = [data.data.accommodations[0].roomOptions[0].cartProductId];
+
+        navigation("/reservation", {
+          state: {
+            cartId,
+            cartProducts,
+          },
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
     return (
       <style.Wrapper>
         <style.TopWrapper>
@@ -75,9 +95,7 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
           >
             <style.CartIcon />
           </style.CartButton>
-          <Link to="/reservation">
-            <style.ReservationButton>예약하기</style.ReservationButton>
-          </Link>
+          <style.ReservationButton onClick={() => postReservationInstant()}>예약하기</style.ReservationButton>
         </style.ButtonWrapper>
       </style.Wrapper>
     );
