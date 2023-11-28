@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { toastState } from "../../../recoil/toast";
 import * as style from "../styles/accommodationRoomItem";
 import { RoomListProps } from "../accommodationInformation.types";
@@ -8,8 +8,12 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useQueryClient } from "@tanstack/react-query";
+import { usePostCart } from "../hooks/queries/addCartData";
+import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
+import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
+import { handleDateParam } from "../../accommodation/accommodation.utils";
 
-/**실제 데이터 받아올 때 타입 지정해줘야 함 */
 const AccommodationRoomItem = ({
   id,
   name,
@@ -24,6 +28,37 @@ const AccommodationRoomItem = ({
 }: RoomListProps) => {
   const setToast = useSetRecoilState(toastState);
   const availableRoomCount = totalRoomCount - reservedRoomCount;
+
+  const queryClient = useQueryClient();
+  const { mutateAsync: postCart } = usePostCart(queryClient);
+
+  const { guest } = useRecoilValue(accommodationMemberState);
+
+  const { startDate, endDate } = useRecoilValue(accommodationDateState);
+  const dateArray = handleDateParam(startDate, endDate);
+
+  /**나중에 로직 수정 예정 */
+  let reservationStartDate = "";
+  let reservationEndDate = "";
+  if (dateArray) {
+    reservationStartDate = dateArray![0];
+    reservationEndDate = dateArray![1];
+  }
+
+  const handleAddCart = async () => {
+    try {
+      await postCart({
+        roomOptionId: id,
+        numberOfGuest: guest,
+        reservationStartDate,
+        reservationEndDate,
+        stayDuration,
+      });
+    } catch (e) {
+      alert(`장바구니에 상품 담기를 실패했습니다.`);
+      console.log(e);
+    }
+  };
 
   return (
     <style.Box>
@@ -62,7 +97,12 @@ const AccommodationRoomItem = ({
         </style.RoomPrice>
         {availableRoomCount > 0 && <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>}
         <style.ButtonWraper>
-          <style.CartButton onClick={() => setToast({ open: true, message: "장바구니에 상품이 담겼습니다." })}>
+          <style.CartButton
+            onClick={() => {
+              handleAddCart();
+              setToast({ open: true, message: "장바구니에 상품이 담겼습니다." });
+            }}
+          >
             <style.CartIcon />
           </style.CartButton>
           <Link to="/reservation">

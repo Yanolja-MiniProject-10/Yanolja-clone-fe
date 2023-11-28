@@ -10,7 +10,7 @@ export interface RoomInfoProps {
   data: {
     status: number;
     data: {
-      id: string | undefined;
+      id: number;
       accommodationId: string | undefined;
       name: string;
       roomOptionImage: { mainImageUrls: string[] };
