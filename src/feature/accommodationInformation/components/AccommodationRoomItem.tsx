@@ -13,6 +13,8 @@ import { usePostCart } from "../hooks/queries/addCartData";
 import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
 import { handleDateParam } from "../../accommodation/accommodation.utils";
+import { postReservation } from "../api";
+import { useNavigate } from "react-router-dom";
 
 const AccommodationRoomItem = ({
   id,
@@ -37,6 +39,8 @@ const AccommodationRoomItem = ({
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const dateArray = handleDateParam(startDate, endDate);
 
+  const navigation = useNavigate();
+
   /**나중에 로직 수정 예정 */
   let reservationStartDate = "";
   let reservationEndDate = "";
@@ -57,6 +61,23 @@ const AccommodationRoomItem = ({
       setToast({ open: true, message: "장바구니에 상품이 담겼습니다." });
     } catch (e) {
       alert(`장바구니에 상품 담기를 실패했습니다.`);
+      console.log(e);
+    }
+  };
+
+  const postReservationInstant = async () => {
+    try {
+      const data = await postReservation(id, guest, reservationStartDate, reservationEndDate, stayDuration);
+      const cartId = data.data.cartId;
+      const cartProducts = [data.data.accommodations[0].roomOptions[0].cartProductId];
+
+      navigation("/reservation", {
+        state: {
+          cartId,
+          cartProducts,
+        },
+      });
+    } catch (e) {
       console.log(e);
     }
   };
@@ -98,16 +119,16 @@ const AccommodationRoomItem = ({
         </style.RoomPrice>
         {availableRoomCount > 0 && <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>}
         <style.ButtonWraper>
-          <style.CartButton
-            onClick={() => {
-              handleAddCart();
-            }}
-          >
+          <style.CartButton onClick={() => handleAddCart()}>
             <style.CartIcon />
           </style.CartButton>
-          <Link to="/reservation">
-            <style.ReservationButton>예약하기</style.ReservationButton>
-          </Link>
+          <style.ReservationButton
+            onClick={() => {
+              postReservationInstant();
+            }}
+          >
+            예약하기
+          </style.ReservationButton>
         </style.ButtonWraper>
       </style.RoomInfo>
     </style.Box>
