@@ -1,12 +1,12 @@
 export interface AccommodationInfoParams {
   id: string | undefined;
-  startDate: string;
-  endDate: string;
-  guest: number;
+  reservationStartDate: string;
+  reservationEndDate: string;
+  member: number;
 }
 
 export interface RoomListProps {
-  id: string | undefined;
+  id: number;
   accommodationId: string | undefined;
   name: string;
   roomOptionImage: { mainImageUrls: string[] };
@@ -16,4 +16,12 @@ export interface RoomListProps {
   stayDuration: number;
   totalRoomCount: number;
   reservedRoomCount: number;
+}
+
+export interface PostCart {
+  roomOptionId: number;
+  numberOfGuest: number;
+  reservationStartDate: string;
+  reservationEndDate: string;
+  stayDuration: number;
 }

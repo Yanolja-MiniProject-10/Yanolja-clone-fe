@@ -9,7 +9,7 @@ export const Box = styled.div`
   gap: 2rem;
   align-items: center;
 
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
 
   @media screen and (width < 840px) {
     height: 550px;
@@ -36,8 +36,8 @@ export const Box = styled.div`
   }
 
   .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
 
     background: ${({ theme }) => theme.color.darkGray};
 
@@ -91,7 +91,7 @@ export const RoomImgWrapper = styled.div`
 
   @media screen and (width < 840px) {
     width: 80%;
-    min-width: 460px;
+    min-width: 400px;
 
     height: 60%;
   }
@@ -120,7 +120,7 @@ export const RoomInfo = styled.div`
     padding: 1rem;
 
     width: 80%;
-    min-width: 460px;
+    min-width: 430px;
   }
 `;
 
@@ -140,7 +140,7 @@ export const RoomTopWrapper = styled.div`
 `;
 
 export const RoomName = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 export const RoomDetailButton = styled.button`
@@ -168,7 +168,7 @@ export const RoomCount = styled.p`
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
 export const ButtonWraper = styled.div`
