@@ -7,6 +7,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { TitleAndLinkBox, LinkToOthers } from "../../styles/allAndRelatedSwiper";
 import { Accommodation } from "../../home.types";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { useAllAccommodations } from "../../hooks/queries/home.hooks";
 
 interface AllAndRelatedProps {
   title: string;
@@ -16,10 +19,7 @@ interface AllAndRelatedProps {
 }
 //region props에 추가
 const AllAndRelatedSwiper = ({ title, accommodations, category, region }: AllAndRelatedProps) => {
-  //Link에 한글 있어서 이동 시 에러(디코 fe대화 스샷 참고)
   console.log("category, region", category, region);
-
-  //region? Link로 넘겨주나?
 
   return (
     <HomeInnerContainer>
@@ -36,6 +36,8 @@ const AllAndRelatedSwiper = ({ title, accommodations, category, region }: AllAnd
           </SwiperSlide>
         ))}
       </Swiper>
+      {/* </>
+      )} */}
     </HomeInnerContainer>
   );
 };
