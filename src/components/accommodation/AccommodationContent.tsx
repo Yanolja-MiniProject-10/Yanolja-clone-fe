@@ -40,7 +40,7 @@ const AccommodationContent = ({ accommodations }: AccommodationDataProps) => {
                   <style.AccommodationContentGridInnerParagraph>
                     {`${singleAccommodation.minimumPrice.toLocaleString()} ~ `}
                     <br />
-                    {`${singleAccommodation.maximumPrice.toLocaleString()} 원`}
+                    {`${singleAccommodation.maximumPrice.toLocaleString()}원`}
                   </style.AccommodationContentGridInnerParagraph>
                 </div>
               </style.AccommodationContentGridInnerBox>

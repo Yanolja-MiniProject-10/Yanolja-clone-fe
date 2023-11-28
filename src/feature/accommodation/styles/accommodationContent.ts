@@ -78,6 +78,8 @@ export const AccommodationContentGridInnerTag = styled.p`
 `;
 
 export const AccommodationContentGridInnerParagraph = styled.p`
+  padding-top: 0.5rem;
+
   font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
