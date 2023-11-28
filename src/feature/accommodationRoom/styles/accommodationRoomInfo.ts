@@ -81,7 +81,7 @@ export const RoomCount = styled.p`
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 
   text-align: right;
 `;
