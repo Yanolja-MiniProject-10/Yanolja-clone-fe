@@ -15,8 +15,8 @@ export const Wrapper = styled.div`
   }
 
   .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
 
     background: ${({ theme }) => theme.color.darkGray};
 
@@ -33,6 +33,7 @@ export const Wrapper = styled.div`
 
 export const RoomImgWrapper = styled.div`
   width: 100%;
+
   display: flex;
 
   @media screen and (width < 840px) {

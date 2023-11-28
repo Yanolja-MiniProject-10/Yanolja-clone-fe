@@ -36,8 +36,8 @@ export const Box = styled.div`
   }
 
   .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
 
     background: ${({ theme }) => theme.color.darkGray};
 
