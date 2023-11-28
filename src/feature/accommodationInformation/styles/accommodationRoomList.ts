@@ -13,3 +13,9 @@ export const Wrapper = styled.div`
     margin-top: 1rem;
   }
 `;
+
+export const ChooseRoomText = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize.xs};
+
+  margin-top: 20px;
+`;

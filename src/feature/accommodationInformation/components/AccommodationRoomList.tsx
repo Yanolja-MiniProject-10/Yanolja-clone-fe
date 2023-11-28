@@ -1,4 +1,4 @@
-import { Wrapper } from "../styles/accommodationRoomList";
+import { ChooseRoomText, Wrapper } from "../styles/accommodationRoomList";
 import AccommodationRoomItem from "./AccommodationRoomItem";
 import { useParams, useNavigate } from "react-router-dom";
 import * as style from "../styles/accommodationRoomItem";
@@ -63,6 +63,7 @@ const AccommodationRoomList = () => {
 
   return (
     <Wrapper>
+      <ChooseRoomText>객실 선택</ChooseRoomText>
       {data.data.roomOptions.map((room: RoomListProps) => (
         <AccommodationRoomItem
           key={room.id}
