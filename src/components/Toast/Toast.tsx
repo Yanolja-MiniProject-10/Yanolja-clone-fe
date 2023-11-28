@@ -22,13 +22,21 @@ const Toast = ({ setToast }: ToastProps) => {
     };
   }, [message, setToast]);
 
+  const handleCloseToast = () => {
+    setToast({ open: false });
+  };
+
   return (
     <Box>
       <TextWrapper>
         <BsCheckLg size="20" color="#E7497A" />
         <p>{message}</p>
       </TextWrapper>
-      {page != "cart" ? <LinkToCart to="/cart">장바구니로 가기</LinkToCart> : null}
+      {page != "cart" ? (
+        <LinkToCart to="/cart" onClick={handleCloseToast}>
+          장바구니로 가기
+        </LinkToCart>
+      ) : null}
     </Box>
   );
 };
