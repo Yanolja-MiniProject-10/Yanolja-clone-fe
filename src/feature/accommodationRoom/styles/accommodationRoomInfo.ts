@@ -44,7 +44,7 @@ export const RoomImgWrapper = styled.div`
 
   display: flex;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     min-width: 460px;
   }
 `;

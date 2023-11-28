@@ -11,7 +11,7 @@ export const Box = styled.div`
 
   padding: 1rem 1rem 1rem 0;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     height: 550px;
     min-width: 400px;
 
@@ -63,7 +63,7 @@ export const SkeletonBox = styled.div`
 
   padding: 1rem;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     height: 40rem;
 
     flex-direction: column;
@@ -78,7 +78,7 @@ export const SkeletonRoomImgWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     margin: 0 auto;
     justify-content: center;
   }
@@ -90,7 +90,7 @@ export const RoomImgWrapper = styled.div`
 
   display: flex;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     width: 80%;
     min-width: 400px;
 
@@ -105,7 +105,7 @@ export const RoomImg = styled.img`
 
   border-radius: 10px;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     max-height: 100%;
   }
 `;
@@ -117,7 +117,7 @@ export const RoomInfo = styled.div`
 
   width: 60%;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     padding: 1rem;
 
     width: 80%;
@@ -135,7 +135,7 @@ export const RoomTopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     width: 100%;
   }
 `;
@@ -184,7 +184,7 @@ export const BottomWrapper = styled.div`
 
   width: 100%;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     margin-top: 20px;
   }
 `;
