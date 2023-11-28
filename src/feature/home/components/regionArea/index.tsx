@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HomeInnerContainer, Title } from "../../styles/homeCommon";
 import RegionAreaTabs from "./RegionAreaTabs";
 import RegionAreaSlide from "./RegionAreaSlide";
@@ -9,15 +9,17 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { useRegionList } from "../../hooks/queries/home.hooks";
 
 const RegionArea = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null);
-  const regions = ["서울", "강원", "경기", "제주"];
+
+  const { data: regions } = useRegionList();
 
   return (
     <HomeInnerContainer>
       <Title>지역 별 상품 추천</Title>
-      <RegionAreaTabs setThumbsSwiper={setThumbsSwiper} />
+      <RegionAreaTabs regions={regions} setThumbsSwiper={setThumbsSwiper} />
 
       <Swiper
         effect="flip"
@@ -26,7 +28,7 @@ const RegionArea = () => {
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
       >
-        {regions.map((region, i) => (
+        {regions?.map((region, i) => (
           <SwiperSlide key={i}>
             <RegionAreaSlide region={region} />
           </SwiperSlide>

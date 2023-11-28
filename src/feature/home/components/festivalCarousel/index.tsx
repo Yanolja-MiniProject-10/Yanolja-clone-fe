@@ -21,11 +21,14 @@ const FestivalCarousel = () => {
         autoplay={{ delay: 2500 }}
         modules={[Navigation, Pagination, Autoplay]}
       >
-        {festivals?.map(festival => (
-          <SwiperSlide key={festival.id}>
-            <FestivalCarouselItem festival={festival} />
-          </SwiperSlide>
-        ))}
+        {festivals?.map(
+          festival =>
+            festival.thumbnailImageUrl && (
+              <SwiperSlide key={festival.id}>
+                <FestivalCarouselItem festival={festival} />
+              </SwiperSlide>
+            ),
+        )}
       </Swiper>
     </HomeInnerContainer>
   );
