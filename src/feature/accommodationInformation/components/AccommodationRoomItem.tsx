@@ -27,10 +27,11 @@ const AccommodationRoomItem = ({
   stayDuration,
   totalRoomCount,
   reservedRoomCount,
+  capacity,
 }: RoomListProps) => {
   const setToast = useSetRecoilState(toastState);
   const availableRoomCount = totalRoomCount - reservedRoomCount;
-  const isRoomAvailable = availableRoomCount > 0;
+  const isAvailableDate = availableRoomCount > 0;
 
   const queryClient = useQueryClient();
   const { mutateAsync: postCart } = usePostCart(queryClient);
@@ -41,6 +42,8 @@ const AccommodationRoomItem = ({
   const dateArray = handleDateParam(startDate, endDate);
 
   const navigation = useNavigate();
+
+  const isAvailableGuest = guest <= capacity;
 
   /**나중에 로직 수정 예정 */
   let reservationStartDate = "";
@@ -118,28 +121,36 @@ const AccommodationRoomItem = ({
         <style.RoomPrice>
           {totalPrice.toLocaleString()}원 / {stayDuration}박
         </style.RoomPrice>
-        {isRoomAvailable ? (
-          <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>
+        {isAvailableGuest ? (
+          <style.CapacityWrapper>인원: {capacity}인</style.CapacityWrapper>
         ) : (
-          <style.NoAvailableRoom>* 예약이 마감되었습니다.</style.NoAvailableRoom>
+          <style.CapacityWrapper>
+            인원: {capacity}인
+            <style.NoAvailableRoom>* 선택하신 인원으로 이용 불가능한 객실입니다.</style.NoAvailableRoom>
+          </style.CapacityWrapper>
         )}
-        <style.ButtonWrapper>
-          {isRoomAvailable ? (
-            <>
+        <style.BottomWrapper>
+          {isAvailableDate ? (
+            <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>
+          ) : (
+            <style.NoAvailableRoom>* 예약이 마감되었습니다.</style.NoAvailableRoom>
+          )}
+          {isAvailableDate && isAvailableGuest ? (
+            <style.ButtonWrapper>
               <style.CartButton onClick={() => handleAddCart()}>
                 <style.CartIcon />
               </style.CartButton>
               <style.ReservationButton onClick={() => postReservationInstant()}>예약하기</style.ReservationButton>
-            </>
+            </style.ButtonWrapper>
           ) : (
-            <>
+            <style.ButtonWrapper>
               <style.DisableCartButton>
                 <style.DisableCartIcon />
               </style.DisableCartButton>
-              <style.DisableReservationButton>예약마감</style.DisableReservationButton>
-            </>
+              <style.DisableReservationButton>예약불가</style.DisableReservationButton>
+            </style.ButtonWrapper>
           )}
-        </style.ButtonWrapper>
+        </style.BottomWrapper>
       </style.RoomInfo>
     </style.Box>
   );

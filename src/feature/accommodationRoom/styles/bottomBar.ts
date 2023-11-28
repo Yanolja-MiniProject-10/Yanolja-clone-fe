@@ -3,7 +3,7 @@ import { LuShoppingCart } from "react-icons/lu";
 
 export const Wrapper = styled.div`
   position: fixed;
-  height: 90px;
+  height: 120px;
   width: 100%;
 
   z-index: 1;
@@ -31,14 +31,16 @@ export const TopWrapper = styled.div`
   width: 100%;
 `;
 
-export const ReservationInfoText = styled.p`
+export const ReservationDate = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.darkGray};
+
+  margin-bottom: 0.3rem;
 `;
 
-export const ReservationGuest = styled.span`
+export const ReservationGuest = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
-  color: ${({ theme }) => theme.color.darkGray};
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const RoomPrice = styled.h2`

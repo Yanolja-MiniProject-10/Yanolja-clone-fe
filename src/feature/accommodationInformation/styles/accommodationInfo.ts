@@ -64,6 +64,6 @@ export const StaticDesc = styled.h1`
 
 export const AccommodationDesc = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
-  color: ${({ theme }) => theme.color.middleGray};
+  color: ${({ theme }) => theme.color.darkGray};
   line-height: 25px;
 `;

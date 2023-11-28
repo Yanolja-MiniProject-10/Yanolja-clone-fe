@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 export const Wrapper = styled.div`
   max-width: 840px;
@@ -91,8 +92,6 @@ export const RoomCount = styled.p`
 export const NoAvailableRoom = styled.p`
   font-size: 13px;
   color: ${({ theme }) => theme.color.hoverPink};
-
-  margin-top: 10px;
 `;
 
 export const RoomPrice = styled.h2`
@@ -122,6 +121,25 @@ export const StaticDesc = styled.h1`
 
 export const RoomDesc = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
-  color: ${({ theme }) => theme.color.middleGray};
+  color: ${({ theme }) => theme.color.darkGray};
   line-height: 25px;
+`;
+
+export const CapacityWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 10px;
+`;
+
+export const GuestIcon = styled(BsFillPeopleFill)`
+  font-size: ${({ theme }) => theme.fontSize.md};
+  color: ${({ theme }) => theme.color.darkGray};
+`;
+
+export const GuestNumber = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+  color: ${({ theme }) => theme.color.darkGray};
 `;

@@ -77,6 +77,7 @@ const AccommodationRoomList = () => {
           stayDuration={room.stayDuration}
           totalRoomCount={room.totalRoomCount}
           reservedRoomCount={room.reservedRoomCount}
+          capacity={room.capacity}
         />
       ))}
     </Wrapper>

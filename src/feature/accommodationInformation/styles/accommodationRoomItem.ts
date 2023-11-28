@@ -13,6 +13,7 @@ export const Box = styled.div`
 
   @media screen and (width < 840px) {
     height: 550px;
+    min-width: 400px;
 
     flex-direction: column;
     justify-content: center;
@@ -36,8 +37,8 @@ export const Box = styled.div`
   }
 
   .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
 
     background: ${({ theme }) => theme.color.darkGray};
 
@@ -165,27 +166,34 @@ export const RoomCheckInOut = styled.p`
 
 export const RoomCount = styled.p`
   font-size: 13px; //폰트 크기
-
-  margin-top: 10px;
 `;
 
 export const NoAvailableRoom = styled.p`
   font-size: 13px;
   color: ${({ theme }) => theme.color.hoverPink};
-
-  margin-top: 10px;
 `;
 
 export const RoomPrice = styled.h2`
   font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
-export const ButtonWrapper = styled.div`
+export const BottomWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
 
   width: 100%;
+
+  @media screen and (width < 840px) {
+    margin-top: 20px;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+
+  width: 130px;
 `;
 
 export const CartIcon = styled(LuShoppingCart)`
@@ -269,4 +277,15 @@ export const DisableReservationButton = styled.button`
   font-size: 12px;
 
   cursor: not-allowed;
+`;
+
+export const CapacityWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 13px;
+
+  color: ${({ theme }) => theme.color.darkGray};
 `;
