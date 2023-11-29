@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
+import { setAllCheked } from "../cart.utils";
 import CartRoom from "./CartRoom";
 import EmptyCart from "./EmptyCart";
 import CartModal from "./CartModal";
-import { setAllCheked } from "../cart.utils";
-import { SelectRoomProps } from "../cart.types";
+import { SelectCartListProps } from "../cart.types";
 import * as style from "../styles/selectCartList";
 import * as commonStyle from "../../../styles/checkbox";
 
-const SelectCartList = ({ accomodations }: SelectRoomProps) => {
+const SelectCartList = ({ accommodations }: SelectCartListProps) => {
   const [checkedRooms, setCheckedRooms] = useRecoilState(checkedCartRooms);
   const [isSelectAll, setIsSelectAll] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // 최초 및 재입장 시 전체 선택 상태 기본값
   useEffect(() => {
-    setAllCheked(accomodations, setCheckedRooms);
-  }, [accomodations, setCheckedRooms]);
+    setAllCheked(accommodations, setCheckedRooms);
+  }, [accommodations, setCheckedRooms]);
 
   // 전체 선택
   const handleIsSelectAll = () => {
@@ -25,7 +25,7 @@ const SelectCartList = ({ accomodations }: SelectRoomProps) => {
     setCheckedRooms([]);
 
     if (!isSelectAll) {
-      setAllCheked(accomodations, setCheckedRooms);
+      setAllCheked(accommodations, setCheckedRooms);
     }
   };
 
@@ -41,11 +41,11 @@ const SelectCartList = ({ accomodations }: SelectRoomProps) => {
           <commonStyle.Checkbox>
             <input
               type="checkbox"
-              checked={accomodations ? isSelectAll : true}
+              checked={accommodations ? isSelectAll : true}
               onChange={handleIsSelectAll}
-              id="all-check"
+              id="all-check-btn"
             />
-            <label htmlFor="all-check">전체 선택</label>
+            <label htmlFor="all-check-btn">전체 선택</label>
           </commonStyle.Checkbox>
 
           <style.DeleteCheckedbox
@@ -57,8 +57,8 @@ const SelectCartList = ({ accomodations }: SelectRoomProps) => {
         </style.SelectCartListHeader>
 
         <style.CartList>
-          {accomodations !== undefined ? (
-            <CartRoom accomodations={accomodations} setIsSelectAll={setIsSelectAll} />
+          {accommodations !== undefined ? (
+            <CartRoom accommodations={accommodations} setIsSelectAll={setIsSelectAll} />
           ) : (
             <EmptyCart />
           )}

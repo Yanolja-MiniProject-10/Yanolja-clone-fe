@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 export const RoomOptions = styled.div`
-  width: 540px;
+  width: 600px;
   height: 80px;
 
   display: flex;
   align-items: center;
 
   margin: 5px 5px 5px 10px;
-
-  cursor: pointer;
 `;
 
 export const RoomOptionImg = styled.img`
@@ -22,7 +20,7 @@ export const RoomOptionImg = styled.img`
 `;
 
 export const RoomOptionsText = styled.div`
-  width: 310px;
+  width: 75%;
   height: 100%;
 
   display: flex;
@@ -45,7 +43,7 @@ export const RoomOptionsCapacity = styled.span`
 `;
 
 export const RoomOptionsPrice = styled.span`
-  width: 110px;
+  width: 25%;
 
   text-align: end;
   font-size: ${({ theme }) => theme.fontSize.xs};

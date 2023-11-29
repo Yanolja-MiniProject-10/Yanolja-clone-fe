@@ -16,6 +16,8 @@ export const CartPayWrapper = styled.div`
 `;
 
 export const CartPayContents = styled.div`
+  margin: 0 20px;
+
   display: flex;
   justify-content: space-between;
 `;

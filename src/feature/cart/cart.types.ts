@@ -1,28 +1,4 @@
-export interface RoomOption {
-  cartProductId: number;
-  roomOptionId: number;
-  name: string;
-  thumbnailImage: string;
-  capacity: number;
-  pricePerNight: number;
-  reservationStartDate: string;
-  reservationEndDate: string;
-  stayDuration: number;
-}
-
-export interface Accommodations {
-  accommodationId: number;
-  name: string;
-  address: string;
-  thumbnailImageUrl: string;
-  roomOptions: RoomOption[];
-}
-
-export interface CartData {
-  cartId: number;
-  count?: number;
-  accommodations: Accommodations[];
-}
+import { RoomOption, Accommodations, CartData } from "../../types";
 
 export interface FetchCartResult {
   status: number;
@@ -30,21 +6,12 @@ export interface FetchCartResult {
   data: CartData;
 }
 
-export interface DeleteCartRooms {
-  roomOptionId: RoomOption["roomOptionId"][];
+export interface SelectCartListProps {
+  accommodations: Accommodations[] | undefined;
 }
 
-export interface PayCartRooms {
-  cartId: number;
-  cartProductId: RoomOption["cartProductId"][];
-}
-
-export interface SelectRoomProps {
-  accomodations: Accommodations[] | undefined;
-}
-
-export interface CartRoomProps extends SelectRoomProps {
-  accomodations: Accommodations[];
+export interface CartRoomProps extends SelectCartListProps {
+  accommodations: Accommodations[];
   setIsSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
 }
 

@@ -1,10 +1,22 @@
 import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
 import { useRecoilValue } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { calculateTotalPrice } from "../cart.utils";
 import * as style from "../styles/cartPay";
 
-const CartPay = () => {
+const CartPay = ({ cartId }: { cartId: number | undefined }) => {
   const checkedRooms = useRecoilValue(checkedCartRooms);
+  const cartProducts = checkedRooms.map(checkedRoom => checkedRoom.cartProductId);
+  const navigation = useNavigate();
+
+  const movetoPament = () => {
+    navigation("/reservation", {
+      state: {
+        cartId,
+        cartProducts,
+      },
+    });
+  };
 
   return (
     <style.CartPayWrapper>
@@ -15,10 +27,7 @@ const CartPay = () => {
         </style.CartPayPrice>
       </style.CartPayContents>
 
-      <style.CartPayBtn
-        $selectedRooms={checkedRooms.length}
-        onClick={checkedRooms.length ? () => console.log("결제하기 API, 결제하기 페이지로 이동") : undefined}
-      >
+      <style.CartPayBtn $selectedRooms={checkedRooms.length} onClick={checkedRooms.length ? movetoPament : undefined}>
         결제하기
       </style.CartPayBtn>
     </style.CartPayWrapper>

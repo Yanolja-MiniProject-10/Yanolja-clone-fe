@@ -9,7 +9,7 @@ const CartModal = ({ selectedRooms, setIsModalOpen }: CartModalProps) => {
 
   const handleDeleteCartRooms = async () => {
     try {
-      deleteCartRooms(selectedRooms);
+      await deleteCartRooms(selectedRooms);
       closeModal();
     } catch (e) {
       console.log(e);
