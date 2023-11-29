@@ -34,7 +34,7 @@ export const AccommodationContentGrid = styled.div`
     border-radius: 6px;
   }
 
-  > div:nth-child(even) {
+  > a:nth-child(even) > div {
     border-right: none;
   }
 `;
