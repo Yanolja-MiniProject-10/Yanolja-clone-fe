@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const AccommodationContentBox = styled.div``;
@@ -7,6 +8,11 @@ export const AccommodationContentTitleParagraph = styled.p`
 
   font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.darkGray};
+`;
+
+export const AccommodationContentLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 
 export const AccommodationContentGrid = styled.div`
