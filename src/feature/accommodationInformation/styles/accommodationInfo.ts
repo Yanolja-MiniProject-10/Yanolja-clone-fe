@@ -9,17 +9,20 @@ export const NavWrapper = styled.div`
 `;
 
 export const SkeletonImgWrapper = styled.div`
-  max-width: 52.5rem;
   width: 100%;
-  max-height: 35rem;
   height: 100%;
 `;
 
-export const AccomodationImg = styled.img`
-  max-width: 52.5rem;
+export const ImgWrapper = styled.div`
   width: 100%;
-  max-height: 35rem;
+  height: 500px;
+`;
+
+export const AccomodationImg = styled.img`
+  width: 100%;
   height: 100%;
+
+  object-fit: cover;
 `;
 
 export const TextInfo = styled.div`
@@ -31,16 +34,16 @@ export const TextInfo = styled.div`
 `;
 
 export const AccommodationName = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.lg};
 `;
 
 export const AccommodationCategory = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const AccommodationAddress = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const DivideLine = styled.hr`
@@ -55,15 +58,15 @@ export const AccommodationStaticDescWrap = styled.div`
 
   margin: 1rem 0;
 
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.xl};
 `;
 
 export const StaticDesc = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.lg};
 `;
 
 export const AccommodationDesc = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.darkGray};
   line-height: 25px;
 `;
