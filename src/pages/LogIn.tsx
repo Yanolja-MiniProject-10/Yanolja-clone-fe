@@ -32,15 +32,15 @@ const LogIn = () => {
   };
 
   // // 쿠키에 액세스 토큰과 리프레시 토큰을 저장
-  const setCookie = (name: string, value: string, daysToLive: number) => {
-    // 쿠키 만료 날짜 설정
-    const date = new Date();
-    date.setTime(date.getTime() + daysToLive * 24 * 60 * 60 * 1000);
-    const expires = `expires=${date.toUTCString()}`;
+  // const setCookie = (name: string, value: string, daysToLive: number) => {
+  //   // 쿠키 만료 날짜 설정
+  //   const date = new Date();
+  //   date.setTime(date.getTime() + daysToLive * 24 * 60 * 60 * 1000);
+  //   const expires = `expires=${date.toUTCString()}`;
 
-    // 쿠키 설정
-    document.cookie = `${name}=${value}; ${expires}; path=/; secure; samesite=none`;
-  };
+  //   // 쿠키 설정
+  //   document.cookie = `${name}=${value}; ${expires}; path=/; secure; samesite=none`;
+  // };
 
   // 쿠키를 삭제하는 함수
   // const deleteCookie = (name: string) => {
@@ -59,9 +59,9 @@ const LogIn = () => {
       if (data.status === 200) {
         alert("로그인되었습니다.");
         // 액세스 토큰과 리프레시 토큰을 각각의 쿠키로 설정합니다.
-        setCookie("access-token", data.data.access_token, 1); // 1일 후에 만료되는 액세스 토큰 쿠키
-        setCookie("refresh-token", data.data.refresh_token, 7); // 7일 후에 만료되는 리프레시 토큰 쿠키
-        console.log(document.cookie);
+        // setCookie("access-token", data.data.access_token, 1); // 1일 후에 만료되는 액세스 토큰 쿠키
+        // setCookie("refresh-token", data.data.refresh_token, 7); // 7일 후에 만료되는 리프레시 토큰 쿠키
+        // console.log(document.cookie);
       } else if (data.status === 401) {
         alert("가입된 정보가 없습니다.");
       } else {
