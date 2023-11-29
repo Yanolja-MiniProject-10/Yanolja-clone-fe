@@ -24,3 +24,22 @@ export interface RadioDataState {
     transportation: "차량" | "도보";
   };
 }
+
+export interface ReservationLocationsState {
+  cartId: number;
+  cartProducts: number[];
+}
+
+export interface PostPurchasePayload {
+  cartId: number;
+  cartProducts: RadioDataState[];
+}
+
+export interface PostPurchase {
+  postPurchasePayload: PostPurchasePayload;
+}
+
+export interface PostPurchaseResult {
+  status: number;
+  message: string;
+}
