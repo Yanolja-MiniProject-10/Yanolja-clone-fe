@@ -30,7 +30,7 @@ export const RoomInfo = styled.div`
 `;
 
 export const ChooseRoomText = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.md};
 
   margin-top: 20px;
 `;

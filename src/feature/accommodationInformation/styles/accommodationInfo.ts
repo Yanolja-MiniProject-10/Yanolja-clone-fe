@@ -34,16 +34,16 @@ export const TextInfo = styled.div`
 `;
 
 export const AccommodationName = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.lg};
 `;
 
 export const AccommodationCategory = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const AccommodationAddress = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const DivideLine = styled.hr`
@@ -58,15 +58,15 @@ export const AccommodationStaticDescWrap = styled.div`
 
   margin: 1rem 0;
 
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.xl};
 `;
 
 export const StaticDesc = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.lg};
 `;
 
 export const AccommodationDesc = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.darkGray};
   line-height: 25px;
 `;

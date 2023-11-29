@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 
   .swiper-button-prev:after,
   .swiper-button-next:after {
-    font-size: ${({ theme }) => theme.fontSize.lg} !important;
+    font-size: ${({ theme }) => theme.fontSize.xxl} !important;
   }
 
   .swiper-pagination-bullet {
@@ -66,7 +66,7 @@ export const TextInfo = styled.div`
 `;
 
 export const RoomName = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.lg};
 `;
 
 export const RoomCheckInOut = styled.div`
@@ -79,27 +79,27 @@ export const RoomCheckInOut = styled.div`
 `;
 
 export const RoomCheckIn = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
 export const RoomCheckOut = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
 export const RoomCount = styled.p`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: #de8c12;
 `;
 
 export const NoAvailableRoom = styled.p`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.color.hoverPink};
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.lg};
 
   text-align: right;
 `;
@@ -116,15 +116,15 @@ export const RoomStaticDescWrap = styled.div`
 
   margin: 2rem 0;
 
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.xl};
 `;
 
 export const StaticDesc = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.lg};
 `;
 
 export const RoomDesc = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.darkGray};
   line-height: 25px;
 `;
@@ -139,11 +139,11 @@ export const CapacityWrapper = styled.div`
 `;
 
 export const GuestIcon = styled(BsFillPeopleFill)`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.xl};
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
 export const GuestNumber = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.darkGray};
 `;
