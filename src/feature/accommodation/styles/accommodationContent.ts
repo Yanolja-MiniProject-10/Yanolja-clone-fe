@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const AccommodationContentBox = styled.div``;
@@ -9,8 +10,13 @@ export const AccommodationContentTitleParagraph = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
+export const AccommodationContentLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 export const AccommodationContentGrid = styled.div`
-  max-height: 80vh;
+  max-height: 70vh;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
