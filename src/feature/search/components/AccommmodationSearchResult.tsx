@@ -31,11 +31,13 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
 
   const handleEnterpress = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      if (inputValue && data?.data.content && status === "success") {
+      if (!inputValue) return;
+
+      if (data?.data?.content && status === "success") {
         setSearchValue("searchResult", inputValue);
         setSearchValue("accommodations", data?.data.content);
         setSearchValue("historyIdx", window.history.state.idx);
-        setAccommodations(data?.data.content);
+        setAccommodations(data?.data?.content);
       }
     }
   };
