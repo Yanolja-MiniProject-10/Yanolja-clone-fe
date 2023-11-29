@@ -35,3 +35,16 @@ export const handleTitlelength = (title: string) => {
     return "18px";
   }
 };
+
+export const getDateValue = (key: string) => {
+  const dateValue = sessionStorage.getItem(key);
+
+  return dateValue === null ? null : new Date(JSON.parse(dateValue));
+};
+
+export const setDateValue = (key: string, value: Date) => {
+  if (value === null || value === undefined) return;
+
+  const dateResultToJSON = JSON.stringify(value);
+  sessionStorage.setItem(key, dateResultToJSON);
+};
