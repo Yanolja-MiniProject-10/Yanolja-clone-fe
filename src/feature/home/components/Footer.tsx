@@ -80,7 +80,7 @@ import styled from "styled-components";
 const FooterContainer = styled.div`
   padding: 5% 5% 60px;
 
-  background-color: ${({ theme }) => theme.color.brightGray};
+  background-color: ${({ theme }) => theme.color.middleGray};
 
   display: flex;
   flex-direction: column;
@@ -123,7 +123,7 @@ const ButtonContainer = styled.div`
 const ButtonBox = styled(Link)`
   padding: 3px 5px;
 
-  background-color: ${({ theme }) => theme.color.brightGray};
+  background-color: ${({ theme }) => theme.color.middleGray};
   border: 0.5px solid #e6e6e6;
   text-decoration: none;
 

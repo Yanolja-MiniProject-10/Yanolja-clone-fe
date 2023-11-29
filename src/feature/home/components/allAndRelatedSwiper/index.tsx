@@ -33,8 +33,6 @@ const AllAndRelatedSwiper = ({ title, accommodations, category, region }: AllAnd
           </SwiperSlide>
         ))}
       </Swiper>
-      {/* </>
-      )} */}
     </HomeInnerContainer>
   );
 };
