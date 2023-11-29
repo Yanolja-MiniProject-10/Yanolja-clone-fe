@@ -36,8 +36,7 @@ const RankingAreaItem = ({ index, accommodation }: RankinItemProps) => {
         <Description>
           <Name>{name}</Name>
           <Price>
-            {minimumPrice.toLocaleString()} ~<br />
-            {maximumPrice.toLocaleString()}원
+            {minimumPrice.toLocaleString()} ~{maximumPrice.toLocaleString()}원
           </Price>
         </Description>
       </StyledLink>

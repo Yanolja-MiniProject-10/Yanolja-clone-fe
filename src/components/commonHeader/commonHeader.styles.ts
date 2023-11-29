@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   max-width: 750px;
-  height: 60px;
+  height: 50px;
 
   position: fixed;
   top: 0;
@@ -21,16 +21,16 @@ const Container = styled.div`
 
   vertical-align: middle;
   * {
-    transition: 0.4s;
     color: black;
   }
 `;
 
-const ArrowBox = styled.div`
+const IconBox = styled.div`
   cursor: pointer;
 
   &:hover {
     * {
+      transition: 0.4s;
       color: ${({ theme }) => theme.color.mainPink};
     }
   }
@@ -45,24 +45,6 @@ const HeadingText = styled.p`
 const RightIcons = styled.div`
   display: flex;
   gap: 1rem;
-
-  cursor: pointer;
-
-  * {
-    &:hover {
-      color: ${({ theme }) => theme.color.mainPink};
-    }
-  }
 `;
 
-const CartBadge = styled.div`
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-
-  background-color: ${({ theme }) => theme.color.mainPink};
-
-  color: white;
-`;
-
-export { Container, ArrowBox, RightIcons, HeadingText, CartBadge };
+export { Container, IconBox, RightIcons, HeadingText };

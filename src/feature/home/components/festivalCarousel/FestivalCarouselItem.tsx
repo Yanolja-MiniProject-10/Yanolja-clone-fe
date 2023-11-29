@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { Festival } from "../../home.types";
 import { BannerContainer, BackgroundImg, Title } from "../../styles/festivalCarousel/festivalCarousel";
 import {
@@ -28,6 +28,24 @@ const FestivalCarouselItem = ({ festival }: FestivalProps) => {
   const closeModal = () => {
     dialogRef.current?.close();
   };
+
+  useEffect(() => {
+    if (dialogRef.current) {
+      const dialogElement: HTMLDialogElement = dialogRef.current;
+
+      dialogElement.addEventListener("click", event => {
+        const dialogArea = dialogElement.getBoundingClientRect();
+        if (
+          event.clientX < dialogArea.left ||
+          event.clientX > dialogArea.right ||
+          event.clientY < dialogArea.top ||
+          event.clientY > dialogArea.bottom
+        ) {
+          dialogElement.close();
+        }
+      });
+    }
+  }, []);
 
   return (
     <>

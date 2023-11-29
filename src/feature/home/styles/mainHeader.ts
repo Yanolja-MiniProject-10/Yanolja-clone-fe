@@ -7,7 +7,7 @@ const Container = styled.div`
   top: 0;
   z-index: 100;
 
-  height: 60px;
+  height: 50px;
   width: 100%;
   max-width: 750px;
 
@@ -17,10 +17,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  * {
-    transition: 0.4s;
-  }
 `;
 
 const LinkedBox = styled(Link)`
@@ -45,7 +41,7 @@ const InputText = styled.p`
 `;
 
 const SearchIcon = styled(IoSearch)`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.md};
   color: black;
 `;
 
@@ -57,6 +53,7 @@ const CartIcon = styled.div`
   font-size: ${({ theme }) => theme.fontSize.md};
   color: black;
 
+  transition: 0.4s;
   &:hover {
     color: ${({ theme }) => theme.color.mainPink};
   }
@@ -64,12 +61,12 @@ const CartIcon = styled.div`
 
 const CartBadge = styled.div`
   position: absolute;
-  top: -2px;
-  right: -5px;
+  top: -3px;
+  right: -6px;
   z-index: 100;
   border-radius: 50%;
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
 
   background-color: ${({ theme }) => theme.color.mainPink};
 

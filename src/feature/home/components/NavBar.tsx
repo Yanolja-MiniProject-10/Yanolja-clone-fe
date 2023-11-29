@@ -14,7 +14,9 @@ const NavBar = () => {
         <MdOutlineBook />
         <IconLabel>예약</IconLabel>
       </LinkedBox>
-      <CenterIcon onClick={scrollToTop} />
+      <div onClick={scrollToTop}>
+        <CenterIcon src="/public/favicon.ico" alt="상단으로 가기" />
+      </div>
       <LinkedBox to="/profile">
         <MdOutlinePersonOutline />
         <IconLabel>마이</IconLabel>
