@@ -1,7 +1,6 @@
-import { ChooseRoomText, Wrapper } from "../styles/accommodationRoomList";
 import AccommodationRoomItem from "./AccommodationRoomItem";
 import { useParams, useNavigate } from "react-router-dom";
-import * as style from "../styles/accommodationRoomItem";
+import * as style from "../styles/accommodationRoomList";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
@@ -37,7 +36,7 @@ const AccommodationRoomList = () => {
 
   if (status === "pending") {
     return (
-      <Wrapper style={{ zIndex: 0 }}>
+      <style.Wrapper style={{ zIndex: 0 }}>
         {[...Array(4)].map((_, index) => (
           <style.SkeletonBox key={index}>
             <style.SkeletonRoomImgWrapper>
@@ -53,7 +52,7 @@ const AccommodationRoomList = () => {
             </style.RoomInfo>
           </style.SkeletonBox>
         ))}
-      </Wrapper>
+      </style.Wrapper>
     );
   } else if (status === "error") {
     window.alert("잘못된 접근입니다. 메인 페이지로 이동합니다.");
@@ -62,8 +61,8 @@ const AccommodationRoomList = () => {
   }
 
   return (
-    <Wrapper>
-      <ChooseRoomText>객실 선택</ChooseRoomText>
+    <style.Wrapper>
+      <style.ChooseRoomText>객실 선택</style.ChooseRoomText>
       {data.data.roomOptions.map((room: RoomListProps) => (
         <AccommodationRoomItem
           key={room.id}
@@ -80,7 +79,7 @@ const AccommodationRoomList = () => {
           capacity={room.capacity}
         />
       ))}
-    </Wrapper>
+    </style.Wrapper>
   );
 };
 

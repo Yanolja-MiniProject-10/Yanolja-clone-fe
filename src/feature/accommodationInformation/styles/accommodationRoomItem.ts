@@ -54,37 +54,6 @@ export const Box = styled.div`
   }
 `;
 
-export const SkeletonBox = styled.div`
-  width: 100%;
-  height: 220px;
-
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-
-  padding: 1rem;
-
-  @media screen and (width < 750px) {
-    height: 40rem;
-
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-
-    padding: 1rem;
-  }
-`;
-
-export const SkeletonRoomImgWrapper = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media screen and (width < 750px) {
-    margin: 0 auto;
-    justify-content: center;
-  }
-`;
-
 export const RoomImgWrapper = styled.div`
   width: 270px;
   height: 180px;
@@ -124,12 +93,6 @@ export const RoomInfo = styled.div`
     width: 80%;
     min-width: 430px;
   }
-`;
-
-export const SkeletonRoomTopWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
 `;
 
 export const RoomTopWrapper = styled.div`
