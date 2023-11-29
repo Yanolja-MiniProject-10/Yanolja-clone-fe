@@ -4,8 +4,6 @@ const HomeInnerContainer = styled.div`
   margin-bottom: 4rem;
 
   * {
-    transition: 0.4s;
-
     .swiper-button-next,
     .swiper-button-prev {
       color: ${({ theme }) => theme.color.middleGray};

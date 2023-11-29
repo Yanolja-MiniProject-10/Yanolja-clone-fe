@@ -9,6 +9,12 @@ const CommonHeader = () => {
   const location = useLocation();
   const { pathname } = location;
 
+  const encordedPathName = (name: string) => {
+    return encodeURI(name);
+  };
+
+  console.log("pathname", encordedPathName("호텔_리조트"));
+
   const getPageName = () => {
     switch (pathname) {
       case "/signup":
@@ -25,11 +31,11 @@ const CommonHeader = () => {
         return "예약";
       case "/profile":
         return "마이 페이지";
-      case "/category/호텔_리조트":
+      case `/category/${encordedPathName("호텔_리조트")}`:
         return "호텔/리조트";
-      case "/category/펜션_풀빌라":
+      case `/category/${encordedPathName("펜션_풀빌라")}`:
         return "펜션/풀빌라";
-      case "/category/모텔":
+      case `/category/${encordedPathName("모텔")}`:
         return "모텔";
       default:
         return " ";
