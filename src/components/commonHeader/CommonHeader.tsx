@@ -29,8 +29,10 @@ const CommonHeader = () => {
         return "모든 숙소";
       case "/reservation":
         return "예약";
+      case "/reservation-check":
+        return "예약 결과 확인";
       case "/reservation-list":
-        return "예약 내역";
+        return "예약 내역 확인";
       case "/profile":
         return "마이 페이지";
       case `/category/${encordedPathName("호텔_리조트")}`:
