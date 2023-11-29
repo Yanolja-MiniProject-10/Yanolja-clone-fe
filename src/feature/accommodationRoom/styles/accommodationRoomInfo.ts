@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 export const Wrapper = styled.div`
   max-width: 840px;
@@ -8,15 +9,22 @@ export const Wrapper = styled.div`
   .swiper-button-prev {
     color: ${({ theme }) => theme.color.middleGray};
 
+    width: 20px;
+
     &:hover {
       color: ${({ theme }) => theme.color.black};
       transition: 0.4s;
     }
   }
 
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: ${({ theme }) => theme.fontSize.lg} !important;
+  }
+
   .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
 
     background: ${({ theme }) => theme.color.darkGray};
 
@@ -33,9 +41,10 @@ export const Wrapper = styled.div`
 
 export const RoomImgWrapper = styled.div`
   width: 100%;
+
   display: flex;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     min-width: 460px;
   }
 `;
@@ -54,7 +63,7 @@ export const TextInfo = styled.div`
 `;
 
 export const RoomName = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const RoomCheckInOut = styled.div`
@@ -77,11 +86,17 @@ export const RoomCheckOut = styled.p`
 `;
 
 export const RoomCount = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: 13px;
+  color: #de8c12;
+`;
+
+export const NoAvailableRoom = styled.p`
+  font-size: 13px;
+  color: ${({ theme }) => theme.color.hoverPink};
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 
   text-align: right;
 `;
@@ -106,7 +121,26 @@ export const StaticDesc = styled.h1`
 `;
 
 export const RoomDesc = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  color: ${({ theme }) => theme.color.middleGray};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+  color: ${({ theme }) => theme.color.darkGray};
   line-height: 25px;
+`;
+
+export const CapacityWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 10px;
+`;
+
+export const GuestIcon = styled(BsFillPeopleFill)`
+  font-size: ${({ theme }) => theme.fontSize.md};
+  color: ${({ theme }) => theme.color.darkGray};
+`;
+
+export const GuestNumber = styled.p`
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+  color: ${({ theme }) => theme.color.darkGray};
 `;

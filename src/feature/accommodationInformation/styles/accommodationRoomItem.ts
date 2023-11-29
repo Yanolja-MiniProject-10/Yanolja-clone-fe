@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { LuShoppingCart } from "react-icons/lu";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 export const Box = styled.div`
   width: 100%;
@@ -9,10 +10,11 @@ export const Box = styled.div`
   gap: 2rem;
   align-items: center;
 
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     height: 550px;
+    min-width: 400px;
 
     flex-direction: column;
     justify-content: center;
@@ -36,8 +38,8 @@ export const Box = styled.div`
   }
 
   .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
+    width: 6px;
+    height: 6px;
 
     background: ${({ theme }) => theme.color.darkGray};
 
@@ -62,7 +64,7 @@ export const SkeletonBox = styled.div`
 
   padding: 1rem;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     height: 40rem;
 
     flex-direction: column;
@@ -77,7 +79,7 @@ export const SkeletonRoomImgWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     margin: 0 auto;
     justify-content: center;
   }
@@ -89,9 +91,9 @@ export const RoomImgWrapper = styled.div`
 
   display: flex;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     width: 80%;
-    min-width: 460px;
+    min-width: 400px;
 
     height: 60%;
   }
@@ -104,7 +106,7 @@ export const RoomImg = styled.img`
 
   border-radius: 10px;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     max-height: 100%;
   }
 `;
@@ -116,11 +118,11 @@ export const RoomInfo = styled.div`
 
   width: 60%;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     padding: 1rem;
 
     width: 80%;
-    min-width: 460px;
+    min-width: 430px;
   }
 `;
 
@@ -134,17 +136,17 @@ export const RoomTopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     width: 100%;
   }
 `;
 
 export const RoomName = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 export const RoomDetailButton = styled.button`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: 13px;
   color: ${({ theme }) => theme.color.mainPink};
 
   border: none;
@@ -164,24 +166,47 @@ export const RoomCheckInOut = styled.p`
 `;
 
 export const RoomCount = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: 13px; //폰트 크기
+  color: ${({ theme }) => theme.color.mainPink};
+  color: #de8c12; //theme 추가
+`;
+
+export const NoAvailableRoom = styled.p`
+  font-size: 13px;
+  color: ${({ theme }) => theme.color.hoverPink};
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
-export const ButtonWraper = styled.div`
+export const BottomWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
 
   width: 100%;
+
+  @media screen and (width < 750px) {
+    margin-top: 20px;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+
+  width: 130px;
 `;
 
 export const CartIcon = styled(LuShoppingCart)`
   font-size: ${({ theme }) => theme.fontSize.lg};
   color: ${({ theme }) => theme.color.mainPink};
+`;
+
+export const DisableCartIcon = styled(LuShoppingCart)`
+  font-size: ${({ theme }) => theme.fontSize.lg};
+  color: ${({ theme }) => theme.color.middleGray};
 `;
 
 export const CartButton = styled.button`
@@ -190,8 +215,8 @@ export const CartButton = styled.button`
 
   background-color: ${({ theme }) => theme.color.white};
 
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.mainPink};
@@ -208,9 +233,25 @@ export const CartButton = styled.button`
   align-items: center;
 `;
 
+export const DisableCartButton = styled.button`
+  border: 1px solid ${({ theme }) => theme.color.middleGray};
+  border-radius: 10px;
+
+  background-color: ${({ theme }) => theme.color.white};
+
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: not-allowed;
+`;
+
 export const ReservationButton = styled.button`
-  width: 100px;
-  height: 35px;
+  width: 90px;
+  height: 32px;
 
   border-radius: 10px;
   border: none;
@@ -218,10 +259,46 @@ export const ReservationButton = styled.button`
   background-color: ${({ theme }) => theme.color.mainPink};
 
   color: ${({ theme }) => theme.color.white};
-  font-size: 14px;
+  font-size: 12px;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.hoverPink};
     transition: 0.4s;
   }
+`;
+
+export const DisableReservationButton = styled.button`
+  width: 90px;
+  height: 32px;
+
+  border-radius: 10px;
+  border: none;
+
+  background-color: ${({ theme }) => theme.color.middleGray};
+
+  color: ${({ theme }) => theme.color.white};
+  font-size: 12px;
+
+  cursor: not-allowed;
+`;
+
+export const GuestIcon = styled(BsFillPeopleFill)`
+  font-size: 13px;
+  color: ${({ theme }) => theme.color.darkGray};
+`;
+
+export const CapacityWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+
+  font-size: 13px;
+
+  color: ${({ theme }) => theme.color.darkGray};
+`;
+
+export const GuestNumber = styled.p`
+  font-size: 13px;
+  color: ${({ theme }) => theme.color.darkGray};
 `;

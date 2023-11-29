@@ -1,8 +1,8 @@
 export interface RoomInfoParams {
   id: string | undefined;
-  startDate: string;
-  endDate: string;
-  guest: number;
+  reservationStartDate: string;
+  reservationEndDate: string;
+  member: number;
 }
 
 export interface RoomInfoProps {
@@ -10,7 +10,7 @@ export interface RoomInfoProps {
   data: {
     status: number;
     data: {
-      id: string | undefined;
+      id: number;
       accommodationId: string | undefined;
       name: string;
       roomOptionImage: { mainImageUrls: string[] };
@@ -21,6 +21,7 @@ export interface RoomInfoProps {
       totalRoomCount: number;
       reservedRoomCount: number;
       description: string;
+      capacity: number;
     };
   };
   error: Error | null;

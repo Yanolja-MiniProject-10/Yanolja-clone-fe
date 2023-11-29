@@ -6,32 +6,40 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import FestivalCarouselItem from "./FestivalCarouselItem";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const FestivalCarousel = () => {
-  const { data: festivals } = useFestivalInfo();
-
-  if (!festivals) {
-    <div>없지롱~~~</div>;
-  }
+  const { data: festivals, isFetching } = useFestivalInfo();
 
   return (
     <HomeInnerContainer style={{ marginTop: "3rem" }}>
-      <Swiper
-        style={{ height: "200px" }}
-        slidesPerView={2.5}
-        navigation={true}
-        pagination={{ clickable: true }}
-        // spaceBetween={10}
-        // loop={true} --> 부족하면 워닝 뜸
-        autoplay={{ delay: 2500 }}
-        modules={[Navigation, Pagination, Autoplay]}
-      >
-        {festivals?.map(festival => (
-          <SwiperSlide key={festival.id}>
-            <FestivalCarouselItem festival={festival} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {isFetching ? (
+        <div style={{ display: "flex", gap: "10px", overflow: "hidden" }}>
+          <Skeleton height={140} width={250} />
+          <Skeleton height={140} width={250} />
+          <Skeleton height={140} width={250} />
+        </div>
+      ) : (
+        <Swiper
+          style={{ height: "200px" }}
+          slidesPerView={2.3}
+          navigation={true}
+          pagination={{ clickable: true }}
+          loop={true}
+          autoplay={{ delay: 2500 }}
+          modules={[Navigation, Pagination, Autoplay]}
+        >
+          {festivals?.map(
+            festival =>
+              festival.thumbnailImageUrl && (
+                <SwiperSlide key={festival.id}>
+                  <FestivalCarouselItem festival={festival} />
+                </SwiperSlide>
+              ),
+          )}
+        </Swiper>
+      )}
     </HomeInnerContainer>
   );
 };

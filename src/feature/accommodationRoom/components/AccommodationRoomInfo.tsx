@@ -10,10 +10,13 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
 import { RoomInfoProps } from "../RoomInformation.types";
+import { useRecoilValue } from "recoil";
+import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 
 const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
   const [toast, setToast] = useRecoilState(toastState);
   const navigation = useNavigate();
+  const { guest } = useRecoilValue(accommodationMemberState);
 
   if (status == "pending") {
     return (
@@ -38,6 +41,10 @@ const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
   } else {
     const room = data.data;
     const availableRoomCount = room.totalRoomCount - room.reservedRoomCount;
+    const isRoomAvailable = availableRoomCount > 0;
+
+    const isAvailableGuest = guest <= room.capacity;
+
     return (
       <style.Wrapper>
         <style.RoomImgWrapper>
@@ -73,9 +80,25 @@ const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
               {room.checkOutTime.slice(0, 5)}
             </style.RoomCheckOut>
           </style.RoomCheckInOut>
-          {availableRoomCount > 0 && <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>}
+          {isRoomAvailable ? (
+            <style.RoomCount>남은 객실 수: {availableRoomCount}개</style.RoomCount>
+          ) : (
+            <style.NoAvailableRoom>* 예약이 마감되었습니다.</style.NoAvailableRoom>
+          )}
+          {isAvailableGuest ? (
+            <style.CapacityWrapper>
+              <style.GuestIcon />
+              <style.GuestNumber>인원: {room.capacity}인</style.GuestNumber>
+            </style.CapacityWrapper>
+          ) : (
+            <style.CapacityWrapper>
+              <style.GuestIcon />
+              <style.GuestNumber>인원: {room.capacity}인</style.GuestNumber>
+              <style.NoAvailableRoom>* 선택하신 인원으로 이용 불가능한 객실입니다.</style.NoAvailableRoom>
+            </style.CapacityWrapper>
+          )}
           <style.RoomPrice>
-            {room.totalPrice.toLocaleString()} 원 / {room.stayDuration}박
+            {room.totalPrice.toLocaleString()}원 / {room.stayDuration}박
           </style.RoomPrice>
           <style.DivideLine />
           <style.RoomStaticDescWrap>

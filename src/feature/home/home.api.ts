@@ -1,19 +1,15 @@
+import dayjs from "dayjs";
 import instance from "../../api/instance";
-import * as dayjs from "dayjs";
-import { AccommodationResponse, Festival, RelatedProps } from "./home.types";
+import { AccommodationResponse, FestivalResponse, RegionList, RegionListResponse, RelatedProps } from "./home.types";
 
-interface FestivalResponse {
-  data: {
-    content: Festival[];
-  };
-}
+const dayJS: dayjs.Dayjs = dayjs();
 
-const startDate = dayjs().format("YYYY-MM-DD");
-const endDate = dayjs().add(1, "day").format("YYYY-MM-DD");
+const startDate = dayJS.format("YYYY-MM-DD");
+const endDate = dayJS.add(1, "day").format("YYYY-MM-DD");
 
 const requiredParams = {
   page: 0,
-  size: 10,
+  size: 20,
   startDate,
   endDate,
   guest: 2,
@@ -62,4 +58,9 @@ export const getRankingAccommodations = async () => {
 export const getFestivalInfo = async () => {
   const response = await instance.get<FestivalResponse>("/festival", { params: festivalRequiredParams });
   return response.data.data.content;
+};
+
+export const getRegionList = async () => {
+  const response: RegionListResponse = await instance.get<RegionList>("/regions");
+  return response.data.data.regions;
 };

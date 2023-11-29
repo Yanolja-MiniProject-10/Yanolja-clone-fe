@@ -4,6 +4,7 @@ import {
   getRegionAccommodations,
   getRankingAccommodations,
   getFestivalInfo,
+  getRegionList,
 } from "../../home.api";
 import { useQuery } from "@tanstack/react-query";
 import { RelatedProps } from "../../home.types";
@@ -45,6 +46,14 @@ export const useFestivalInfo = () => {
   return useQuery({
     queryKey: ["festivalInfo"],
     queryFn: getFestivalInfo,
+    staleTime: 1 * 60 * 1000,
+  });
+};
+
+export const useRegionList = () => {
+  return useQuery({
+    queryKey: ["regionList"],
+    queryFn: getRegionList,
     staleTime: 1 * 60 * 1000,
   });
 };

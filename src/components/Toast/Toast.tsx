@@ -4,8 +4,9 @@ import { Box, TextWrapper, LinkToCart } from "./toast.styles";
 import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { toastState } from "../../recoil/toast";
+import { ToastProps } from "./toast.types";
 
-const Toast = ({ setToast }) => {
+const Toast = ({ setToast }: ToastProps) => {
   const { page } = useParams();
   const { message } = useRecoilValue(toastState);
 
@@ -13,7 +14,7 @@ const Toast = ({ setToast }) => {
     console.log(message);
 
     const timer = setTimeout(() => {
-      setToast({ open: false });
+      setToast({ open: false, message: "" });
     }, 3000);
 
     return () => {
@@ -21,13 +22,21 @@ const Toast = ({ setToast }) => {
     };
   }, [message, setToast]);
 
+  const handleCloseToast = () => {
+    setToast({ open: false, message: "" });
+  };
+
   return (
     <Box>
       <TextWrapper>
         <BsCheckLg size="20" color="#E7497A" />
         <p>{message}</p>
       </TextWrapper>
-      {page != "cart" ? <LinkToCart to="/cart">장바구니로 가기</LinkToCart> : null}
+      {page != "cart" ? (
+        <LinkToCart to="/cart" onClick={handleCloseToast}>
+          장바구니로 가기
+        </LinkToCart>
+      ) : null}
     </Box>
   );
 };

@@ -1,6 +1,6 @@
 import { CAUTION_CONTENTS } from "../reservation.constants";
-import { GoDotFill } from "react-icons/go";
 import { CautionWrapper, CautionTitle, CautionContents, CautionContent } from "../styles/reservationCaution";
+import { GoDotFill } from "react-icons/go";
 
 const ReservationCaution = () => {
   return (
@@ -12,7 +12,6 @@ const ReservationCaution = () => {
           <CautionContent key={index}>
             <GoDotFill size={10} />
             <span>{content}</span>
-            <br />
           </CautionContent>
         ))}
       </CautionContents>

@@ -49,12 +49,12 @@ const IconLabel = styled.p`
 `;
 
 const CenterIcon = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 
   border-radius: 50%;
 
-  background-image: url("favicon.svg");
+  background-image: url("favicon.ico");
   background-size: cover;
 `;
 

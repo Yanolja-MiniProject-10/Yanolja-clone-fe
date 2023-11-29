@@ -5,7 +5,7 @@ export const AccommodationContentBox = styled.div``;
 export const AccommodationContentTitleParagraph = styled.p`
   padding: 1rem 0;
 
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
@@ -37,7 +37,7 @@ export const AccommodationContentGridContainer = styled.div`
   width: auto;
   height: 9rem;
 
-  padding: 1rem 2rem;
+  padding: 1rem 1rem 1rem 2rem;
 
   border-right: 1px solid #f2f2f2;
   border-bottom: 1px solid #f2f2f2;
@@ -73,10 +73,26 @@ export const AccommodationContentGridInnerTitle = styled.p`
 `;
 
 export const AccommodationContentGridInnerTag = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: 13px;
   color: ${({ theme }) => theme.color.middleGray};
 `;
 
 export const AccommodationContentGridInnerParagraph = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  padding-top: 0.5rem;
+
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+`;
+
+export const AccommodationContentNotExists = styled.div`
+  width: 675px;
+  min-height: 50vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: ${({ theme }) => theme.fontSize.xxs};
+    color: ${({ theme }) => theme.color.darkGray};
+  }
 `;

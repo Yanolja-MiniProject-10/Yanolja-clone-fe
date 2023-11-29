@@ -1,4 +1,4 @@
-import { Wrapper } from "../styles/accommodationRoomList";
+import { ChooseRoomText, Wrapper } from "../styles/accommodationRoomList";
 import AccommodationRoomItem from "./AccommodationRoomItem";
 import { useParams, useNavigate } from "react-router-dom";
 import * as style from "../styles/accommodationRoomItem";
@@ -6,17 +6,34 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
 import { RoomListProps } from "../accommodationInformation.types";
+import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
+import { useRecoilValue } from "recoil";
+import { handleDateParam } from "../../accommodation/accommodation.utils";
+import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 
 const AccommodationRoomList = () => {
   const { id } = useParams();
   const navigation = useNavigate();
 
-  //날짜, 게스트 임의 지정
-  const startDate = "2023-11-21";
-  const endDate = "2023-12-05";
-  const guest = 2;
+  const { guest } = useRecoilValue(accommodationMemberState);
 
-  const { status, data } = useAccommodationInfoQuery({ id, startDate, endDate, guest });
+  const { startDate, endDate } = useRecoilValue(accommodationDateState);
+  const dateArray = handleDateParam(startDate, endDate);
+
+  /**나중에 로직 수정 예정 */
+  let reservationStartDate = "";
+  let reservationEndDate = "";
+  if (dateArray) {
+    reservationStartDate = dateArray![0];
+    reservationEndDate = dateArray![1];
+  }
+
+  const { status, data } = useAccommodationInfoQuery({
+    id,
+    reservationStartDate,
+    reservationEndDate,
+    member: guest,
+  });
 
   if (status === "pending") {
     return (
@@ -46,6 +63,7 @@ const AccommodationRoomList = () => {
 
   return (
     <Wrapper>
+      <ChooseRoomText>객실 선택</ChooseRoomText>
       {data.data.roomOptions.map((room: RoomListProps) => (
         <AccommodationRoomItem
           key={room.id}
@@ -59,6 +77,7 @@ const AccommodationRoomList = () => {
           stayDuration={room.stayDuration}
           totalRoomCount={room.totalRoomCount}
           reservedRoomCount={room.reservedRoomCount}
+          capacity={room.capacity}
         />
       ))}
     </Wrapper>

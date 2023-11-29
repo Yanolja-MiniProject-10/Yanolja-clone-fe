@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  max-width: 840px;
+  width: 100%;
+`;
+
+export const NavWrapper = styled.div`
+  padding-left: 3rem;
 `;
 
 export const SkeletonImgWrapper = styled.div`
@@ -27,7 +31,7 @@ export const TextInfo = styled.div`
 `;
 
 export const AccommodationName = styled.h1`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const AccommodationCategory = styled.p`
@@ -36,7 +40,7 @@ export const AccommodationCategory = styled.p`
 
 export const AccommodationAddress = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
 export const DivideLine = styled.hr`
@@ -59,7 +63,7 @@ export const StaticDesc = styled.h1`
 `;
 
 export const AccommodationDesc = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  color: ${({ theme }) => theme.color.middleGray};
+  font-size: ${({ theme }) => theme.fontSize.xxs};
+  color: ${({ theme }) => theme.color.darkGray};
   line-height: 25px;
 `;
