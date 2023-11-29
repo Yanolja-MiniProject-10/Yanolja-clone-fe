@@ -9,17 +9,20 @@ export const NavWrapper = styled.div`
 `;
 
 export const SkeletonImgWrapper = styled.div`
-  max-width: 52.5rem;
   width: 100%;
-  max-height: 35rem;
   height: 100%;
 `;
 
-export const AccomodationImg = styled.img`
-  max-width: 52.5rem;
+export const ImgWrapper = styled.div`
   width: 100%;
-  max-height: 35rem;
+  height: 31rem;
+`;
+
+export const AccomodationImg = styled.img`
+  width: 100%;
   height: 100%;
+
+  object-fit: cover;
 `;
 
 export const TextInfo = styled.div`
