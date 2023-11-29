@@ -130,7 +130,7 @@ const AccommodationRoomItem = ({
           <style.CapacityWrapper>
             <style.GuestIcon />
             <style.GuestNumber>인원: {capacity}인</style.GuestNumber>
-            <style.NoAvailableRoom>* 선택하신 인원으로 이용 불가능한 객실입니다.</style.NoAvailableRoom>
+            <style.NoAvailableRoom>* 선택하신 인원으로 이용이 불가능합니다.</style.NoAvailableRoom>
           </style.CapacityWrapper>
         )}
         <style.BottomWrapper>
