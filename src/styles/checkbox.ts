@@ -10,13 +10,14 @@ export const Checkbox = styled.div`
 
   label {
     width: auto;
-    height: 18px;
+    height: 15px;
 
     position: relative;
 
     padding-left: 30px;
 
-    line-height: 18px;
+    line-height: 22px;
+
     cursor: pointer;
 
     &:before {
@@ -32,6 +33,8 @@ export const Checkbox = styled.div`
       border: 2px solid ${({ theme }) => theme.color.middleGray};
       border-radius: 35%;
       background-color: white;
+
+      transition: 0.3s;
     }
 
     &:after {

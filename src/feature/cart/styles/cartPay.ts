@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CartPayWrapper = styled.div`
-  max-width: 52.5rem;
+  max-width: 750px;
   height: 150px;
 
   margin: 50px -30px 20px;
@@ -23,11 +23,11 @@ export const CartPayContents = styled.div`
 `;
 
 export const CartPayTitle = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const CartPayPrice = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.md};
 `;
 
 export const CartPayBtn = styled.button<{ $selectedRooms?: number }>`

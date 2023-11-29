@@ -8,7 +8,6 @@ const EmptyCart = () => {
 
       <EmptyCartText>
         <strong>장바구니에 담긴 상품이 없습니다.</strong>
-        <br />
         <span>원하는 상품을 담아보세요.</span>
       </EmptyCartText>
 

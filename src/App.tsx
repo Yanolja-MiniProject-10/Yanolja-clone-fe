@@ -6,6 +6,7 @@ import Search from "./pages/Search";
 import Cart from "./pages/Cart";
 import Accommodation from "./pages/Accommodation";
 import Reservation from "./pages/Reservation";
+import ReservationList from "./pages/ReservationList";
 import Profile from "./pages/Profile";
 import Layout from "./components/Layout";
 import AccommodationRoom from "./pages/AccommodationRoom";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/accommodation/:id/room/:id" element={<AccommodationRoom />} />
         <Route path="/category/:id" element={<Category />} />
         <Route path="/reservation" element={<Reservation />} />
+        <Route path="/reservation-list" element={<ReservationList />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>

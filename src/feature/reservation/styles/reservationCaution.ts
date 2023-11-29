@@ -15,7 +15,7 @@ export const CautionWrapper = styled.div`
 export const CautionTitle = styled.h2`
   margin-bottom: 15px;
 
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.mainPink};
 `;
 

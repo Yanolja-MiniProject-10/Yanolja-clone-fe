@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const RequirementsTitle = styled.h2`
   margin-bottom: 15px;
 
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const RequirementsContents = styled.ol`
@@ -11,11 +11,11 @@ export const RequirementsContents = styled.ol`
   flex-direction: column;
   justify-content: center;
 
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 export const Requirement = styled.li`
-  margin: 10px;
+  margin: 8px;
 
   color: black;
 `;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const GuestInfoTitle = styled.h2`
   margin-bottom: 15px;
 
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const GuestName = styled.span`
