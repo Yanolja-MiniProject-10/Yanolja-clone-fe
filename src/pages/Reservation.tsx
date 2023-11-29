@@ -3,12 +3,12 @@ import { useEffect } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { paymentDataState } from "../recoil/paymentData";
 import { radioDataState } from "../recoil/checkedRadio";
-import { usePostPaymentCart } from "../feature/reservation/hooks/queries/useFetchPaymentCart";
+import { usePostPaymentCart } from "../feature/reservation/hooks/queries/usePostPaymentCart";
 import ReservationSummary from "../feature/reservation/components/ReservationSummary";
 import GuestInformation from "../feature/reservation/components/GuestInformation";
 import ReservationPay from "../feature/reservation/components/ReservationPay";
 import { PostPaymentCartPayload } from "../feature/reservation/reservation.types";
-import { ReservationWrapper } from "../styles/reservation";
+import * as style from "../feature/reservation/styles/reservation";
 
 const Reservation = () => {
   const location = useLocation();
@@ -35,11 +35,11 @@ const Reservation = () => {
   }, []);
 
   return (
-    <ReservationWrapper>
+    <style.ReservationWrapper>
       <ReservationSummary />
       <GuestInformation />
       <ReservationPay />
-    </ReservationWrapper>
+    </style.ReservationWrapper>
   );
 };
 
