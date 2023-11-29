@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const RequirementsTitle = styled.h2`
   margin-bottom: 15px;
 
-  font-size: ${({ theme }) => theme.fontSize.sm};
-  color: ${({ theme }) => theme.color.mainPink};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 export const RequirementsContents = styled.ol`

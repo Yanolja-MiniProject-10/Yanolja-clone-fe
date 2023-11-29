@@ -1,5 +1,6 @@
 import instance from "../../api/instance";
-import { FetchCartResult, CartData, RoomOption } from "./cart.types";
+import { CartData, RoomOption } from "../../types";
+import { FetchCartResult } from "./cart.types";
 
 /**
  * @returns 장바구니 정보
@@ -16,8 +17,6 @@ export const fetchCarts = async (): Promise<CartData> => {
  */
 export const deleteCarts = async (roomOptions: RoomOption[]): Promise<string> => {
   const cartProductsIds = roomOptions.map(RoomOption => RoomOption.cartProductId);
-
-  console.log(cartProductsIds);
 
   const { data }: { data: string } = await instance.delete("carts", {
     data: { cartProducts: cartProductsIds },

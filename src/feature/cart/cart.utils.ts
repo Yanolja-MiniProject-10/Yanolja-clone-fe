@@ -1,12 +1,12 @@
 import { SetterOrUpdater } from "recoil";
-import { Accommodations, RoomOption } from "./cart.types";
+import { Accommodations, RoomOption } from "../../types";
 
 export const calculateTotalPrice = (selectedRooms: RoomOption[]) => {
   return selectedRooms.reduce((total, item) => total + item.pricePerNight * item.stayDuration, 0).toLocaleString();
 };
 
 export const setAllCheked = (
-  accomodations: Accommodations[] | null | undefined,
+  accomodations: Accommodations[] | undefined,
   setCheckedRooms: SetterOrUpdater<RoomOption[]>,
 ) => {
   const allRooms = accomodations?.flatMap(accomodations => accomodations.roomOptions);

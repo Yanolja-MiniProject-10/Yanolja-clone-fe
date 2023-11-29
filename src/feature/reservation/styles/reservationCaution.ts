@@ -31,8 +31,6 @@ export const CautionContent = styled.li`
   margin: 2px;
   padding: 3px 0;
 
-  color: ${({ theme }) => theme.color.darkGray};
-
   span {
     margin-left: 5px;
   }
