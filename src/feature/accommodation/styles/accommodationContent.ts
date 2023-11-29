@@ -52,6 +52,10 @@ export const AccommodationContentGridContainer = styled.div`
   align-items: center;
 
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 export const AccommodationContentGridImg = styled.img`
