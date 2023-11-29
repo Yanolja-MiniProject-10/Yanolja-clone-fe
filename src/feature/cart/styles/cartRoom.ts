@@ -20,7 +20,7 @@ export const Accommodation = styled.div`
 `;
 
 export const AccommodationName = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const AccommodationAddress = styled.span`

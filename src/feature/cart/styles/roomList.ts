@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RoomOptions = styled.div`
-  width: 540px;
+  width: 100%;
   height: 80px;
 
   display: flex;
@@ -13,8 +13,8 @@ export const RoomOptions = styled.div`
 `;
 
 export const RoomOptionImg = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
 
   border-radius: 5px;
 
@@ -22,7 +22,7 @@ export const RoomOptionImg = styled.img`
 `;
 
 export const RoomOptionsText = styled.div`
-  width: 310px;
+  width: 80%;
   height: 100%;
 
   display: flex;
@@ -36,11 +36,12 @@ export const RoomOptionsText = styled.div`
 `;
 
 export const RoomOptionsName = styled.span`
-  line-height: 25px;
+  line-height: 30px;
   font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 export const RoomOptionsCapacity = styled.span`
+  line-height: 30px;
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
