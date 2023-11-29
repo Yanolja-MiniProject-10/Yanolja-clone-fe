@@ -17,10 +17,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  * {
-    transition: 0.4s;
-  }
 `;
 
 const LinkedBox = styled(Link)`
@@ -57,6 +53,7 @@ const CartIcon = styled.div`
   font-size: ${({ theme }) => theme.fontSize.md};
   color: black;
 
+  transition: 0.4s;
   &:hover {
     color: ${({ theme }) => theme.color.mainPink};
   }

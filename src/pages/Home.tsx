@@ -1,7 +1,6 @@
 import CategoryArea from "../feature/home/components/CategoryArea";
 import FestivalCarousel from "../feature/home/components/festivalCarousel";
 import Footer from "../feature/home/components/Footer";
-import ToTopButton from "../components/toTopButton/ToTopButton";
 import NavBar from "../feature/home/components/NavBar";
 import RankingArea from "../feature/home/components/rankingArea";
 import RegionArea from "../feature/home/components/regionArea";
@@ -47,10 +46,8 @@ const Home = () => {
             <RankingArea />
           </>
         )}
-
-        <ToTopButton />
-        <Footer />
       </HomeContainer>
+      <Footer />
 
       <NavBar />
     </>

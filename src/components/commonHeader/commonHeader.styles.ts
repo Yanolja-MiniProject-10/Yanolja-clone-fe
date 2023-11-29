@@ -19,18 +19,20 @@ const Container = styled.div`
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
   font-size: ${({ theme }) => theme.fontSize.md};
 
+  transition: 0.4s;
+
   vertical-align: middle;
   * {
-    transition: 0.4s;
     color: black;
   }
 `;
 
-const ArrowBox = styled.div`
+const IconBox = styled.div`
   cursor: pointer;
 
   &:hover {
     * {
+      transition: 0.4s;
       color: ${({ theme }) => theme.color.mainPink};
     }
   }
@@ -45,14 +47,6 @@ const HeadingText = styled.p`
 const RightIcons = styled.div`
   display: flex;
   gap: 1rem;
-
-  cursor: pointer;
-
-  * {
-    &:hover {
-      color: ${({ theme }) => theme.color.mainPink};
-    }
-  }
 `;
 
 const CartBadge = styled.div`
@@ -65,4 +59,4 @@ const CartBadge = styled.div`
   color: white;
 `;
 
-export { Container, ArrowBox, RightIcons, HeadingText, CartBadge };
+export { Container, IconBox, RightIcons, HeadingText, CartBadge };

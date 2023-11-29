@@ -12,7 +12,7 @@ const StyledToTopButton = styled.div`
 
   position: fixed;
   z-index: 10;
-  bottom: 6rem;
+
   right: calc(50% - 22rem);
 
   display: flex;
@@ -23,8 +23,8 @@ const StyledToTopButton = styled.div`
 
   cursor: pointer;
 
-  transition: 0.4s;
   &:hover {
+    transition: 0.4s;
     opacity: 0.8;
   }
 `;

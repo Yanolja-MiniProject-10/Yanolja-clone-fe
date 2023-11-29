@@ -22,7 +22,6 @@ const Container = styled.div`
   font-weight: bold;
 
   * {
-    transition: 0.4s;
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
@@ -36,7 +35,7 @@ const LinkedBox = styled(Link)`
   justify-content: center;
 
   color: ${({ theme }) => theme.color.darkGray};
-
+  transition: 0.4s;
   &:hover {
     color: ${({ theme }) => theme.color.mainPink};
   }

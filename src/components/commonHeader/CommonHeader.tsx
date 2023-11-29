@@ -1,4 +1,4 @@
-import { Container, ArrowBox, RightIcons, HeadingText } from "./commonHeader.styles.ts";
+import { Container, IconBox, RightIcons, HeadingText } from "./commonHeader.styles.ts";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { BiHome } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
@@ -42,25 +42,30 @@ const CommonHeader = () => {
 
   return (
     <Container>
-      <ArrowBox
+      <IconBox
         onClick={() => {
           navigate(-1);
         }}
       >
         <MdOutlineArrowBackIos />
-      </ArrowBox>
+      </IconBox>
       <div>
         <HeadingText>{getPageName()}</HeadingText>
       </div>
+
       <RightIcons>
         {isMatchingPath && (
-          <Link to="/search">
-            <IoSearch />
-          </Link>
+          <IconBox>
+            <Link to="/search">
+              <IoSearch />
+            </Link>
+          </IconBox>
         )}
-        <Link to="/">
-          <BiHome />
-        </Link>
+        <IconBox>
+          <Link to="/">
+            <BiHome />
+          </Link>
+        </IconBox>
       </RightIcons>
     </Container>
   );
