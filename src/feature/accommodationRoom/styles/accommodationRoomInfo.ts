@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { BsFillPeopleFill } from "react-icons/bs";
 
 export const Wrapper = styled.div`
-  max-width: 840px;
-  position: relative;
+  max-width: 750px;
 
   .swiper-button-next,
   .swiper-button-prev {
@@ -44,6 +43,8 @@ export const RoomImgWrapper = styled.div`
 
   display: flex;
 
+  height: 500px;
+
   @media screen and (width < 750px) {
     min-width: 460px;
   }
@@ -52,6 +53,8 @@ export const RoomImgWrapper = styled.div`
 export const RoomImg = styled.img`
   width: 100%;
   height: 100%;
+
+  object-fit: cover;
 `;
 
 export const TextInfo = styled.div`
