@@ -86,7 +86,8 @@ export const RoomCheckOut = styled.p`
 `;
 
 export const RoomCount = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: 13px;
+  color: #de8c12;
 `;
 
 export const NoAvailableRoom = styled.p`

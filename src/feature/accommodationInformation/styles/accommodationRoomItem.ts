@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { LuShoppingCart } from "react-icons/lu";
+import { BsFillPeopleFill } from "react-icons/bs";
 
 export const Box = styled.div`
   width: 100%;
@@ -145,7 +146,7 @@ export const RoomName = styled.h2`
 `;
 
 export const RoomDetailButton = styled.button`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: 13px;
   color: ${({ theme }) => theme.color.mainPink};
 
   border: none;
@@ -166,6 +167,8 @@ export const RoomCheckInOut = styled.p`
 
 export const RoomCount = styled.p`
   font-size: 13px; //폰트 크기
+  color: ${({ theme }) => theme.color.mainPink};
+  color: #de8c12; //theme 추가
 `;
 
 export const NoAvailableRoom = styled.p`
@@ -279,13 +282,23 @@ export const DisableReservationButton = styled.button`
   cursor: not-allowed;
 `;
 
+export const GuestIcon = styled(BsFillPeopleFill)`
+  font-size: 13px;
+  color: ${({ theme }) => theme.color.darkGray};
+`;
+
 export const CapacityWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
+  gap: 5px;
 
   font-size: 13px;
 
+  color: ${({ theme }) => theme.color.darkGray};
+`;
+
+export const GuestNumber = styled.p`
+  font-size: 13px;
   color: ${({ theme }) => theme.color.darkGray};
 `;

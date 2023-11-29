@@ -122,10 +122,14 @@ const AccommodationRoomItem = ({
           {totalPrice.toLocaleString()}원 / {stayDuration}박
         </style.RoomPrice>
         {isAvailableGuest ? (
-          <style.CapacityWrapper>인원: {capacity}인</style.CapacityWrapper>
+          <style.CapacityWrapper>
+            <style.GuestIcon />
+            <style.GuestNumber>인원: {capacity}인</style.GuestNumber>
+          </style.CapacityWrapper>
         ) : (
           <style.CapacityWrapper>
-            인원: {capacity}인
+            <style.GuestIcon />
+            <style.GuestNumber>인원: {capacity}인</style.GuestNumber>
             <style.NoAvailableRoom>* 선택하신 인원으로 이용 불가능한 객실입니다.</style.NoAvailableRoom>
           </style.CapacityWrapper>
         )}
