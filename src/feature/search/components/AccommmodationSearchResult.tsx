@@ -26,6 +26,10 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
     }
   };
 
+  const handleInputValue = () => {
+    setInputValue("");
+  };
+
   return (
     <style.AccommodationSearchInputBox>
       <style.AccommodationSearchIcon />
@@ -35,6 +39,7 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
         value={inputValue}
         onKeyUp={handleEnterpress}
       />
+      {inputValue ? <style.AccommodationSearchCloseIcon onClick={handleInputValue} /> : null}
     </style.AccommodationSearchInputBox>
   );
 };
