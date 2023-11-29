@@ -2,8 +2,8 @@ import instance from "../../api/instance";
 import * as dayjs from "dayjs";
 import { AccommodationResponse, FestivalResponse, RegionList, RegionListResponse, RelatedProps } from "./home.types";
 
-const startDate = dayjs().format("YYYY-MM-DD");
-const endDate = dayjs().add(1, "day").format("YYYY-MM-DD");
+const startDate = dayjs()?.format("YYYY-MM-DD");
+const endDate = dayjs()?.add(1, "day").format("YYYY-MM-DD");
 
 const requiredParams = {
   page: 0,
