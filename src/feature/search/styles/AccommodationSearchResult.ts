@@ -14,8 +14,8 @@ export const AccommodationSearchInputBox = styled.div`
 `;
 
 export const AccommodationSearchIcon = styled(IoSearch)`
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
 
   margin-left: 1rem;
 `;
