@@ -162,11 +162,11 @@ const SignUp = () => {
   };
 
   // 회원가입
-  const handleSignup = async (e: React.FormEvent<HTMLFormElement>, name: string, email: string, password: string) => {
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>, email: string, password: string, name: string) => {
     e.preventDefault();
 
     try {
-      const data = await postSignUp(name, email, password);
+      const data = await postSignUp(email, password, name);
       if (data.status === 201) {
         alert("회원가입되었습니다.");
         navigate("/login");

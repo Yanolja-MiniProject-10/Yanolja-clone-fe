@@ -11,6 +11,7 @@ const LogoutModal = ({ onClose, onConfirmLogout }: ModalProps) => {
       onClose();
     }
   };
+
   return (
     <commonStyle.ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
       <commonStyle.Modal>
