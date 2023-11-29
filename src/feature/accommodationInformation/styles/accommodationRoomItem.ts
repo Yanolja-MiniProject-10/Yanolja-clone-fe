@@ -76,7 +76,7 @@ export const RoomImg = styled.img`
   border-radius: 10px;
 
   @media screen and (width < 750px) {
-    max-height: 100%;
+    min-height: 270px;
   }
 `;
 
