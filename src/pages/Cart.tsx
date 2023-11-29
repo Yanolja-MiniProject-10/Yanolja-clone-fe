@@ -2,7 +2,7 @@ import { useFetchCarts } from "../feature/cart/hooks/queries/useFetchCarts";
 import SelectCartList from "../feature/cart/components/SelectCartList";
 import TotalSelectedPrice from "../feature/cart/components/TotalSelectedPrice";
 import CartPay from "../feature/cart/components/CartPay";
-import * as style from "../styles/cart";
+import * as style from "../feature/cart/styles/cart";
 
 const Cart = () => {
   const { data: cartData, isLoading, isError } = useFetchCarts();

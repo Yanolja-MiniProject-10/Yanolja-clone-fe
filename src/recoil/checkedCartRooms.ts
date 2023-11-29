@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { RoomOption } from "../feature/cart/cart.types";
+import { RoomOption } from "../types";
 
 export const checkedCartRooms = atom<RoomOption[]>({
   key: "checkedCartRooms",
