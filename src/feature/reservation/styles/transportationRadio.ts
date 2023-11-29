@@ -30,6 +30,10 @@ export const LabelWrapper = styled.div`
 export const RadioLabel = styled.label`
   margin: 0 3px;
 
+  span {
+    vertical-align: text-top;
+  }
+
   [type="radio"] {
     appearance: none;
     border: 1px solid ${({ theme }) => theme.color.darkGray};
