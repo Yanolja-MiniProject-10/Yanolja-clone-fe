@@ -32,19 +32,19 @@ export const TopWrapper = styled.div`
 `;
 
 export const ReservationDate = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.darkGray};
 
   margin-bottom: 0.3rem;
 `;
 
 export const ReservationGuest = styled.p`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.black};
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.md};
 `;
 
 export const ButtonWrapper = styled.div`
@@ -53,12 +53,12 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const CartIcon = styled(LuShoppingCart)`
-  font-size: ${({ theme }) => theme.fontSize.lg};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
   color: ${({ theme }) => theme.color.mainPink};
 `;
 
 export const DisableCartIcon = styled(LuShoppingCart)`
-  font-size: ${({ theme }) => theme.fontSize.lg};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
   color: ${({ theme }) => theme.color.middleGray};
 `;
 
@@ -112,7 +112,7 @@ export const ReservationButton = styled.button`
   background-color: ${({ theme }) => theme.color.mainPink};
 
   color: ${({ theme }) => theme.color.white};
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 
   &:hover {
     background-color: ${({ theme }) => theme.color.hoverPink};
@@ -130,7 +130,7 @@ export const DisableReservationButton = styled.button`
   background-color: ${({ theme }) => theme.color.middleGray};
 
   color: ${({ theme }) => theme.color.white};
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 
   cursor: not-allowed;
 `;
