@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
-const StyledToTopButton = styled.div`
-  width: 3.5rem;
-  height: 3.5rem;
+interface StyledToTopButtonProps {
+  $isVisible: boolean;
+  $pathBottom: string;
+}
+
+const StyledToTopButton = styled.div<StyledToTopButtonProps>`
+  width: 3rem;
+  height: 3rem;
 
   border-radius: 50%;
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.16);
@@ -12,8 +17,8 @@ const StyledToTopButton = styled.div`
 
   position: fixed;
   z-index: 10;
-
   right: calc(50% - 22rem);
+  bottom: ${props => (props.$isVisible ? props.$pathBottom : "-50px")};
 
   display: flex;
   justify-content: center;
@@ -23,8 +28,9 @@ const StyledToTopButton = styled.div`
 
   cursor: pointer;
 
+  transition: bottom 0.5s ease-in-out;
+
   &:hover {
-    transition: 0.4s;
     opacity: 0.8;
   }
 `;

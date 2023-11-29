@@ -24,7 +24,6 @@ const RegionArea = () => {
       <Swiper
         effect="flip"
         spaceBetween={10}
-        loop={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
       >

@@ -1,20 +1,26 @@
 import styled from "styled-components";
 
 const HomeInnerContainer = styled.div`
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 
   * {
     .swiper-button-next,
     .swiper-button-prev {
+      font-size: 30px !important;
       color: ${({ theme }) => theme.color.middleGray};
 
       &:hover {
         color: ${({ theme }) => theme.color.black};
       }
     }
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+      font-size: ${({ theme }) => theme.fontSize.xxl} !important;
+      margin-bottom: 30px;
+    }
     .swiper-pagination-bullet {
-      width: 10px;
-      height: 10px;
+      width: 6px;
+      height: 6px;
 
       background: ${({ theme }) => theme.color.darkGray};
       opacity: 1;
@@ -33,8 +39,9 @@ const Title = styled.p`
 `;
 
 const HomeContainer = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  padding: 0 3rem;
 
   a {
     text-decoration: none;

@@ -1,6 +1,5 @@
 import CategoryArea from "../feature/home/components/CategoryArea";
 import FestivalCarousel from "../feature/home/components/festivalCarousel";
-import Footer1 from "../feature/home/components/Footer1";
 import Footer from "../feature/home/components/Footer";
 import NavBar from "../feature/home/components/NavBar";
 import RankingArea from "../feature/home/components/rankingArea";
@@ -48,7 +47,6 @@ const Home = () => {
           </>
         )}
       </HomeContainer>
-      {/* <Footer1 /> */}
       <Footer />
       <NavBar />
     </>

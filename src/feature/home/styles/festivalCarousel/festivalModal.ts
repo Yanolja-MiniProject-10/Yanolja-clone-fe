@@ -13,6 +13,10 @@ const ModalContainer = styled.dialog`
   &:focus {
     outline: none;
   }
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
 `;
 
 const CloseButton = styled.p`
@@ -54,8 +58,6 @@ const ImageBox = styled.div`
     width: 350px;
     height: 200px;
 
-    border-radius: 10px;
-
     object-fit: contain;
   }
 `;
@@ -70,7 +72,8 @@ const Description = styled.div`
 `;
 
 const ModalTitle = styled.div`
-  white-space: pre-line;
+  word-break: keep-all;
+  /* white-space: pre-line; */
   font-size: ${({ theme }) => theme.fontSize.xs};
   font-weight: bold;
 `;

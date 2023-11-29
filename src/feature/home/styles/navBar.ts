@@ -47,14 +47,11 @@ const IconLabel = styled.p`
   font-size: 12px;
 `;
 
-const CenterIcon = styled.div`
+const CenterIcon = styled.img`
   width: 45px;
   height: 45px;
-
+  object-fit: cover;
   border-radius: 50%;
-
-  background-image: url("favicon.ico");
-  background-size: cover;
 `;
 
 export { Container, LinkedBox, IconLabel, CenterIcon };

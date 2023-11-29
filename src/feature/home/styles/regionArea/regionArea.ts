@@ -67,14 +67,16 @@ const Description = styled.div`
   flex-direction: column;
 
   white-space: nowrap;
+
+  * {
+    font-size: ${({ theme }) => theme.fontSize.xs};
+  }
 `;
 
-const Title = styled.p`
-  margin-bottom: 10px;
+const Title = styled.b`
+  margin-bottom: 13px;
 `;
 
-const Price = styled.b`
-  text-align: right;
-`;
+const Price = styled.p``;
 
 export { SwiperNavTabs, SwiperTab, SpanTab, RegionListBox, ItemContainer, ImgBox, Description, Title, Price };
