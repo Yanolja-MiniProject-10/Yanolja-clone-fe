@@ -4,6 +4,7 @@ import LoginModal from "../components/loginModal/LoginModal";
 import LogoutModal from "../feature/profile/components/LogoutModal";
 import ProfileEditModal from "../feature/profile/components/ProfileEditModal";
 import * as style from "../feature/profile/styles/profile";
+import instance from "../api/instance";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -14,9 +15,16 @@ const Profile = () => {
 
   const [currentUser, setCurrentUser] = useState<boolean>(true); // 로그인 UI 전환 위한 임시 state
 
-  const handleLogout = () => {
-    setCurrentUser(false);
-    setIsLogoutModal(false);
+  const handleLogout = async () => {
+    try {
+      const data = await instance.post("/auth/logout");
+      if (data.status === 200) {
+        setCurrentUser(false);
+        setIsLogoutModal(false);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

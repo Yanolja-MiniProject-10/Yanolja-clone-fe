@@ -9,11 +9,11 @@ export const postCheckEmail = async (email: string): Promise<EmailCheckResponse>
   return data;
 };
 
-export const postSignUp = async (name: string, email: string, password: string) => {
+export const postSignUp = async (email: string, password: string, name: string) => {
   const { data } = await instance.post("/auth/signup", {
-    email,
-    password,
-    name,
+    email: email,
+    password: password,
+    name: name,
   });
 
   return data;
