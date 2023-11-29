@@ -16,7 +16,7 @@ export const AccommodationContentLink = styled(Link)`
 `;
 
 export const AccommodationContentGrid = styled.div`
-  max-height: 80vh;
+  max-height: 70vh;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
