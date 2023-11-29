@@ -3,7 +3,7 @@ import { LuShoppingCart } from "react-icons/lu";
 
 export const Wrapper = styled.div`
   position: fixed;
-  height: 90px;
+  height: 120px;
   width: 100%;
 
   z-index: 1;
@@ -31,14 +31,16 @@ export const TopWrapper = styled.div`
   width: 100%;
 `;
 
-export const ReservationInfoText = styled.p`
+export const ReservationDate = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.darkGray};
+
+  margin-bottom: 0.3rem;
 `;
 
-export const ReservationGuest = styled.span`
+export const ReservationGuest = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xxs};
-  color: ${({ theme }) => theme.color.darkGray};
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const RoomPrice = styled.h2`
@@ -53,6 +55,11 @@ export const ButtonWrapper = styled.div`
 export const CartIcon = styled(LuShoppingCart)`
   font-size: ${({ theme }) => theme.fontSize.lg};
   color: ${({ theme }) => theme.color.mainPink};
+`;
+
+export const DisableCartIcon = styled(LuShoppingCart)`
+  font-size: ${({ theme }) => theme.fontSize.lg};
+  color: ${({ theme }) => theme.color.middleGray};
 `;
 
 export const CartButton = styled.button`
@@ -79,6 +86,22 @@ export const CartButton = styled.button`
   align-items: center;
 `;
 
+export const DisableCartButton = styled.button`
+  border: 1px solid ${({ theme }) => theme.color.middleGray};
+  border-radius: 10px;
+
+  background-color: ${({ theme }) => theme.color.white};
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: not-allowed;
+`;
+
 export const ReservationButton = styled.button`
   width: 250px;
   height: 40px;
@@ -95,4 +118,19 @@ export const ReservationButton = styled.button`
     background-color: ${({ theme }) => theme.color.hoverPink};
     transition: 0.4s;
   }
+`;
+
+export const DisableReservationButton = styled.button`
+  width: 100px;
+  height: 35px;
+
+  border-radius: 10px;
+  border: none;
+
+  background-color: ${({ theme }) => theme.color.middleGray};
+
+  color: ${({ theme }) => theme.color.white};
+  font-size: 14px;
+
+  cursor: not-allowed;
 `;

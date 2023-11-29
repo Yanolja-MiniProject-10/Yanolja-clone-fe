@@ -21,6 +21,7 @@ export interface RoomInfoProps {
       totalRoomCount: number;
       reservedRoomCount: number;
       description: string;
+      capacity: number;
     };
   };
   error: Error | null;

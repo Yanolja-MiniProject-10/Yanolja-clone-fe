@@ -7,9 +7,15 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
 
-  @media screen and (width < 840px) {
+  @media screen and (width < 750px) {
     gap: 2rem;
 
     margin-top: 1rem;
   }
+`;
+
+export const ChooseRoomText = styled.h1`
+  font-size: ${({ theme }) => theme.fontSize.xs};
+
+  margin-top: 20px;
 `;

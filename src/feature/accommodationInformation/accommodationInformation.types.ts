@@ -16,6 +16,7 @@ export interface RoomListProps {
   stayDuration: number;
   totalRoomCount: number;
   reservedRoomCount: number;
+  capacity: number;
 }
 
 export interface PostCart {

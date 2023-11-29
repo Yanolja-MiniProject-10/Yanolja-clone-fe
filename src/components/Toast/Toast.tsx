@@ -14,7 +14,7 @@ const Toast = ({ setToast }: ToastProps) => {
     console.log(message);
 
     const timer = setTimeout(() => {
-      setToast({ open: false });
+      setToast({ open: false, message: "" });
     }, 3000);
 
     return () => {
@@ -22,13 +22,21 @@ const Toast = ({ setToast }: ToastProps) => {
     };
   }, [message, setToast]);
 
+  const handleCloseToast = () => {
+    setToast({ open: false, message: "" });
+  };
+
   return (
     <Box>
       <TextWrapper>
         <BsCheckLg size="20" color="#E7497A" />
         <p>{message}</p>
       </TextWrapper>
-      {page != "cart" ? <LinkToCart to="/cart">장바구니로 가기</LinkToCart> : null}
+      {page != "cart" ? (
+        <LinkToCart to="/cart" onClick={handleCloseToast}>
+          장바구니로 가기
+        </LinkToCart>
+      ) : null}
     </Box>
   );
 };
