@@ -12,8 +12,6 @@ Test ID : test@yanolja.com
 Test PW : 00000
 ```
 
-<br/>
-
 <details>
 <summary>a. 프로젝트 요구 사항</summary>
 
@@ -138,15 +136,33 @@ Test PW : 00000
 
 </details>
 
-<br/>
-
 ## 🧑🏻‍💻 프로젝트 소개
 
 Yanoja Clone은 `야놀자`의 숙박 예약 서비스 `Clone 프로젝트`입니다.
 
 - 🧑🏻‍💻 개발 기간 : `2주, 23.11.20 (월) ~ 23.12.01 (금)`
 
-## 🧑🏻‍💻 Contributor (각자 확인 필요)
+<br/>
+
+## 🧑🏻‍💻 Script
+
+### Development Mode
+
+```
+$ git clone https://github.com/Yanolja-MiniProject-10/KDT_Y_FE_Mini-Project.git
+$ npm ci
+$ npm run dev
+```
+
+<br/>
+
+## 🧑🏻‍💻 Stack
+
+![mini-project](https://github.com/cs-yum/cs-yum-blog/assets/101972330/ea06a2f1-e5c6-4d9f-8b8a-7b4431eb5837)
+
+<br/>
+
+## 🧑🏻‍💻 Contributor
 ### Frontend
 > @[신현진](https://github.com/xxxjinn) : 개별 상품 조회, 개별 상품 상세 (accommodation, cart)  
 > @[남현준](https://github.com/applevalley) : 검색, 전체 상품 조회, 카테고리 별 상품 조회 (accommodation, category, region)  
@@ -154,101 +170,12 @@ Yanoja Clone은 `야놀자`의 숙박 예약 서비스 `Clone 프로젝트`입�
 > @[이연수](https://github.com/suehub) : 로그인, 회원가입, 마이페이지 (auth, user)  
 > @[최지훈](https://github.com/JitHoon) : 장바구니, 주문하기, 주문 결과 확인, 주문 내역 확인 (cart, reservation)
 
-
-<table>
-  <tr>
-    <td align="center" width="150px">
-      <img src="https://avatars.githubusercontent.com/u/102955516?v=4" alt="신현진 프로필" />
-    </td>
-    <td align="center" width="150px">
-      <img src="https://avatars.githubusercontent.com/u/62874043?v=4" alt="남현준 프로필" />
-    </td>
-    <td align="center" width="150px">
-      <img src="https://avatars.githubusercontent.com/u/139188760?v=4" alt="박은영 프로필" />
-    </td>
-    <td align="center" width="150px">
-      <img src="https://avatars.githubusercontent.com/u/111065848?v=4" alt="이연수 프로필" />
-    </td>
-    <td align="center" width="150px">
-      <img src="https://avatars.githubusercontent.com/u/101972330?v=4" alt="최지훈 프로필" />
-    </td>
-  </tr>
-  <tr> 
-    <td align="center">
-      <a href="https://github.com/xxxjinn" target="_blank">
-        신현진<br />
-        Frontend
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/applevalley" target="_blank">
-        남현준<br />
-        Frontend
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/SKY-PEY" target="_blank">
-        박은영<br />
-        Frontend
-      </a>
-    </td>    
-    <td align="center">
-      <a href="https://github.com/suehub" target="_blank">
-        이연수<br />
-        Frontend
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/JitHoon" target="_blank">
-        최지훈<br />
-        Frontend
-      </a>
-    </td>
-  </tr>
-</table>
-
 ### Backend
 > @[김동준](https://github.com/Kim-Dong-Jun99) : accommodation, category, region  
 > @[김종훈](https://github.com/whdgns5059) : cart, reservation  
 > @[노재혁](https://github.com/NoJaeHyuk) : auth, user
 
-<table>
-  <tr>
-    <td align="center" width="150px">
-      <img src="https://avatars.githubusercontent.com/u/95599193?v=4" alt="김동준 프로필" />
-    </td>
-    <td align="center" width="150px">
-      <img src="https://avatars.githubusercontent.com/u/40512982?v=4" alt="김종훈 프로필" />
-    </td>
-    <td align="center" width="150px">
-      <img src="https://avatars.githubusercontent.com/u/32382839?v=4" alt="노재혁 프로필" />
-  </tr>
-  <tr> 
-    <td align="center">
-      <a href="https://github.com/Kim-Dong-Jun99" target="_blank">
-        김동준<br />
-        BackEnd
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/whdgns5059" target="_blank">
-        김종훈<br />
-        BackEnd
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/NoJaeHyuk" target="_blank">
-        노재혁<br />
-        BackEnd
-      </a>
-    </td>
-  </tr>
-</table>
-
-## 🧑🏻‍💻 Stack
-
-![mini-project](https://github.com/cs-yum/cs-yum-blog/assets/101972330/ea06a2f1-e5c6-4d9f-8b8a-7b4431eb5837)
-
+<br/>
 
 ## 🧑🏻‍💻 주요 협업 링크
 
@@ -261,14 +188,4 @@ Yanoja Clone은 `야놀자`의 숙박 예약 서비스 `Clone 프로젝트`입�
 ## 🧑🏻‍💻 주요 기능 구현
 
 
-## 🧑🏻‍💻 Script
-
-### Development Mode
-
-```
-$ git clone https://github.com/Yanolja-MiniProject-10/KDT_Y_FE_Mini-Project.git
-$ npm ci
-$ npm run dev
-```
-
-### 프로젝트 회고
+## 🧑🏻‍💻 프로젝트 회고

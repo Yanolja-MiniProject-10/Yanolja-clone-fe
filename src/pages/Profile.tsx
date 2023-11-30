@@ -4,11 +4,14 @@ import LoginModal from "../components/loginModal/LoginModal";
 import LogoutModal from "../feature/profile/components/LogoutModal";
 import ProfileEditModal from "../feature/profile/components/ProfileEditModal";
 import * as style from "../feature/profile/styles/profile";
-import instance from "../api/instance";
-import getToken from "../util/getToken";
 import { getUser } from "../feature/profile/profile.api";
+import { useRecoilValue, useResetRecoilState } from "recoil";
+import { userState } from "../recoil/userData";
+import authInstance from "../api/authInstance";
 
 const Profile = () => {
+  const user = useRecoilValue(userState);
+  const resetUser = useResetRecoilState(userState);
   const navigate = useNavigate();
 
   const [name, setName] = useState<string>("");
@@ -17,8 +20,6 @@ const Profile = () => {
   const [isEditModal, setIsEditModal] = useState<boolean>(false);
   const [isLogoutModal, setIsLogoutModal] = useState<boolean>(false);
   const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
-
-  const [isUser, setIsUser] = useState<boolean>(true); // 로그인 UI 전환 위한 state
 
   // user 정보 가져오기
   const handleGetUser = async () => {
@@ -34,19 +35,21 @@ const Profile = () => {
     }
   };
 
+  // 로그아웃
   const handleLogout = async () => {
     try {
-      const data = await instance.get("/auth/logout", {
+      const data = await authInstance.get("/auth/logout", {
         headers: {
-          accessToken: localStorage.getItem("accessToken"),
-          refreshToken: localStorage.getItem("refreshToken"),
+          accessToken: user.accessToken,
+          refreshToken: user.refreshToken,
         },
       });
       if (data.status === 200) {
+        resetUser(); // userState를 초기 상태로 재설정
+
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
 
-        setIsUser(false);
         setIsLogoutModal(false);
       } else {
         alert("로그아웃에 실패하였습니다.");
@@ -56,25 +59,14 @@ const Profile = () => {
     }
   };
 
-  const handleLoginCheck = () => {
-    const { accessToken, refreshToken } = getToken();
-
-    if (accessToken && refreshToken) {
-      setIsUser(true);
-    } else {
-      setIsUser(false);
-    }
-  };
-
   useEffect(() => {
     handleGetUser();
-    handleLoginCheck();
 
     return () => {
-      setIsUser(false);
       setName("");
       setEmail("");
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleNameUpdated = (name: string) => {
@@ -86,10 +78,10 @@ const Profile = () => {
       <style.Div>
         <style.MyProfile>
           <div>
-            <style.Name>{isUser ? name : "로그인이 필요합니다."}</style.Name>
-            {isUser && <style.Email>{email}</style.Email>}
+            <style.Name>{user.accessToken ? name : "로그인이 필요합니다."}</style.Name>
+            {user.accessToken && <style.Email>{email}</style.Email>}
           </div>
-          {isUser ? (
+          {user.accessToken ? (
             <style.Button
               type="button"
               onClick={() => {
@@ -108,8 +100,8 @@ const Profile = () => {
         <p>프로필</p>
         <style.Hr />
         <style.List>
-          <div onClick={() => (isUser ? setIsEditModal(true) : setIsLoginModal(true))}>내 정보 수정하기</div>
-          <div>예약 내역</div>
+          <div onClick={() => (user ? setIsEditModal(true) : setIsLoginModal(true))}>내 정보 수정하기</div>
+          <div onClick={() => navigate("/reservation-list")}>예약 내역</div>
           <div onClick={() => navigate("/cart")}>장바구니</div>
         </style.List>
       </style.Div>
