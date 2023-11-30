@@ -32,7 +32,7 @@ export const Hr = styled.hr`
 `;
 
 export const Button = styled.button`
-  padding: 0.9rem 1.7rem;
+  padding: 0.7rem 1.3rem;
 
   color: ${({ theme }) => theme.color.white};
   background-color: ${({ theme }) => theme.color.mainPink};
