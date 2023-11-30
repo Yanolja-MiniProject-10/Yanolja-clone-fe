@@ -11,7 +11,7 @@ export const ModalWrapper = styled.div`
   bottom: 0;
   margin: auto;
 
-  z-index: 1;
+  z-index: 2;
 
   background-color: rgb(114, 114, 114, 0.5);
 `;
@@ -46,7 +46,7 @@ export const ModalContents = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 10px;
+  margin: 10px 10px 0;
 
   font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
@@ -62,18 +62,19 @@ export const ModalRoomName = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 20px 0;
+  margin: 15px 0;
 
   font-size: ${({ theme }) => theme.fontSize.xxs};
   color: ${({ theme }) => theme.color.darkGray};
 
   span {
-    margin: 5px 0;
+    padding: 5px;
   }
 `;
 
 export const ModalBtns = styled.div`
   width: 100%;
+  height: 30px;
 
   display: flex;
 
