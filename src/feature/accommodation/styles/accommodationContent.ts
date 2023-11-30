@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const AccommodationContentBox = styled.div``;
@@ -9,8 +10,13 @@ export const AccommodationContentTitleParagraph = styled.p`
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
+export const AccommodationContentLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 export const AccommodationContentGrid = styled.div`
-  max-height: 80vh;
+  max-height: 70vh;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -28,7 +34,7 @@ export const AccommodationContentGrid = styled.div`
     border-radius: 6px;
   }
 
-  > div:nth-child(even) {
+  > a:nth-child(even) > div {
     border-right: none;
   }
 `;
@@ -46,6 +52,10 @@ export const AccommodationContentGridContainer = styled.div`
   align-items: center;
 
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 export const AccommodationContentGridImg = styled.img`
@@ -63,6 +73,8 @@ export const AccommodationContentGridInnerBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  position: relative;
 `;
 
 export const AccommodationContentGridInnerTitle = styled.p`
@@ -75,6 +87,12 @@ export const AccommodationContentGridInnerTitle = styled.p`
 export const AccommodationContentGridInnerTag = styled.p`
   font-size: 13px;
   color: ${({ theme }) => theme.color.middleGray};
+`;
+
+export const AccommodationContentGridInnerPriceBox = styled.div`
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0;
 `;
 
 export const AccommodationContentGridInnerParagraph = styled.p`

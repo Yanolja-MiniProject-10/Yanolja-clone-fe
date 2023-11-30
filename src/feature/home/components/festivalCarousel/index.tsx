@@ -22,7 +22,7 @@ const FestivalCarousel = () => {
         </div>
       ) : (
         <Swiper
-          style={{ height: "200px" }}
+          style={{ height: "180px" }}
           slidesPerView={2.3}
           navigation={true}
           pagination={{ clickable: true }}

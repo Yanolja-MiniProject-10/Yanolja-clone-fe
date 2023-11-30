@@ -1,14 +1,14 @@
 import { ReservationWrapper } from "../styles/reservationWrapper";
-import { GuestInfoTitle, GuestName, GuestEmail } from "../styles/guestInformation";
+import * as style from "../styles/guestInformation";
 
 const GuestInformation = () => {
   return (
     <ReservationWrapper>
-      <GuestInfoTitle>예약자 정보</GuestInfoTitle>
+      <style.GuestInfoTitle>예약자 정보</style.GuestInfoTitle>
 
-      <GuestName>최지훈</GuestName>
+      <style.GuestName>최지훈</style.GuestName>
       <span>/</span>
-      <GuestEmail>123@yanolja.com</GuestEmail>
+      <style.GuestEmail>123@yanolja.com</style.GuestEmail>
     </ReservationWrapper>
   );
 };

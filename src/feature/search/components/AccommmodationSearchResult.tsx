@@ -3,13 +3,25 @@ import { useRecoilValue } from "recoil";
 import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
 import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 import { useAccommodationsSearchQuery } from "../hooks/search.hooks";
-import { useState, KeyboardEvent } from "react";
+import { useState, KeyboardEvent, useEffect } from "react";
 import { AccommodationSetSearchResultParams } from "../search.types";
+import { getSessionValue, setSessionValue } from "../../../util/searchSessionValue";
 
 const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearchResultParams) => {
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const { guest } = useRecoilValue(accommodationMemberState);
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    const prevSearchValue = getSessionValue("searchResult");
+    const prevAccommodationValue = getSessionValue("accommodations");
+    const prevHistoryIdx = getSessionValue("historyIdx");
+    setSessionValue("historyPage", "search");
+    if (prevHistoryIdx === window.history.state.idx && prevSearchValue && prevAccommodationValue.length) {
+      setInputValue(prevSearchValue);
+      setAccommodations(prevAccommodationValue);
+    }
+  }, []);
 
   const { data, status } = useAccommodationsSearchQuery({
     startDate,
@@ -20,10 +32,19 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
 
   const handleEnterpress = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      if (inputValue && data.data.content && status === "success") {
-        setAccommodations(data.data.content);
+      if (!inputValue) return;
+
+      if (data?.data?.content && status === "success") {
+        setSessionValue("searchResult", inputValue);
+        setSessionValue("accommodations", data?.data.content);
+        setSessionValue("historyIdx", window.history.state.idx);
+        setAccommodations(data?.data?.content);
       }
     }
+  };
+
+  const handleInputValue = () => {
+    setInputValue("");
   };
 
   return (
@@ -35,6 +56,7 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
         value={inputValue}
         onKeyUp={handleEnterpress}
       />
+      {inputValue ? <style.AccommodationSearchCloseIcon onClick={handleInputValue} /> : null}
     </style.AccommodationSearchInputBox>
   );
 };

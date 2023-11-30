@@ -58,7 +58,11 @@ const SelectCartList = ({ accommodations }: SelectCartListProps) => {
 
         <style.CartList>
           {accommodations !== undefined ? (
-            <CartRoom accommodations={accommodations} setIsSelectAll={setIsSelectAll} />
+            accommodations.length ? (
+              <CartRoom accommodations={accommodations} setIsSelectAll={setIsSelectAll} />
+            ) : (
+              <EmptyCart />
+            )
           ) : (
             <EmptyCart />
           )}

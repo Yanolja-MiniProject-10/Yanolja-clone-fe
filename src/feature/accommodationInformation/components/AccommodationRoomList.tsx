@@ -1,7 +1,6 @@
-import { ChooseRoomText, Wrapper } from "../styles/accommodationRoomList";
 import AccommodationRoomItem from "./AccommodationRoomItem";
 import { useParams, useNavigate } from "react-router-dom";
-import * as style from "../styles/accommodationRoomItem";
+import * as style from "../styles/accommodationRoomList";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
@@ -12,7 +11,7 @@ import { handleDateParam } from "../../accommodation/accommodation.utils";
 import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 
 const AccommodationRoomList = () => {
-  const { id } = useParams();
+  const { accommodationId } = useParams();
   const navigation = useNavigate();
 
   const { guest } = useRecoilValue(accommodationMemberState);
@@ -29,7 +28,7 @@ const AccommodationRoomList = () => {
   }
 
   const { status, data } = useAccommodationInfoQuery({
-    id,
+    id: accommodationId,
     reservationStartDate,
     reservationEndDate,
     member: guest,
@@ -37,7 +36,7 @@ const AccommodationRoomList = () => {
 
   if (status === "pending") {
     return (
-      <Wrapper style={{ zIndex: 0 }}>
+      <style.Wrapper style={{ zIndex: 0 }}>
         {[...Array(4)].map((_, index) => (
           <style.SkeletonBox key={index}>
             <style.SkeletonRoomImgWrapper>
@@ -53,7 +52,7 @@ const AccommodationRoomList = () => {
             </style.RoomInfo>
           </style.SkeletonBox>
         ))}
-      </Wrapper>
+      </style.Wrapper>
     );
   } else if (status === "error") {
     window.alert("잘못된 접근입니다. 메인 페이지로 이동합니다.");
@@ -62,13 +61,13 @@ const AccommodationRoomList = () => {
   }
 
   return (
-    <Wrapper>
-      <ChooseRoomText>객실 선택</ChooseRoomText>
+    <style.Wrapper>
+      <style.ChooseRoomText>객실 선택</style.ChooseRoomText>
       {data.data.roomOptions.map((room: RoomListProps) => (
         <AccommodationRoomItem
           key={room.id}
           id={room.id}
-          accommodationId={id}
+          accommodationId={accommodationId}
           name={room.name}
           roomOptionImage={room.roomOptionImage}
           checkInTime={room.checkInTime}
@@ -80,7 +79,7 @@ const AccommodationRoomList = () => {
           capacity={room.capacity}
         />
       ))}
-    </Wrapper>
+    </style.Wrapper>
   );
 };
 

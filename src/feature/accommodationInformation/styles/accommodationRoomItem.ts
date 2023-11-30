@@ -34,7 +34,7 @@ export const Box = styled.div`
 
   .swiper-button-prev:after,
   .swiper-button-next:after {
-    font-size: ${({ theme }) => theme.fontSize.md} !important;
+    font-size: ${({ theme }) => theme.fontSize.xl} !important;
   }
 
   .swiper-pagination-bullet {
@@ -54,42 +54,15 @@ export const Box = styled.div`
   }
 `;
 
-export const SkeletonBox = styled.div`
-  width: 100%;
-  height: 220px;
-
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-
-  padding: 1rem;
-
-  @media screen and (width < 750px) {
-    height: 40rem;
-
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-
-    padding: 1rem;
-  }
-`;
-
-export const SkeletonRoomImgWrapper = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media screen and (width < 750px) {
-    margin: 0 auto;
-    justify-content: center;
-  }
-`;
-
 export const RoomImgWrapper = styled.div`
   width: 270px;
   height: 180px;
 
   display: flex;
+
+  border-radius: 10px;
+
+  overflow: hidden;
 
   @media screen and (width < 750px) {
     width: 80%;
@@ -104,10 +77,8 @@ export const RoomImg = styled.img`
   height: 100%;
   max-height: 180px;
 
-  border-radius: 10px;
-
   @media screen and (width < 750px) {
-    max-height: 100%;
+    min-height: 270px;
   }
 `;
 
@@ -126,12 +97,6 @@ export const RoomInfo = styled.div`
   }
 `;
 
-export const SkeletonRoomTopWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
 export const RoomTopWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -142,11 +107,11 @@ export const RoomTopWrapper = styled.div`
 `;
 
 export const RoomName = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.md};
 `;
 
 export const RoomDetailButton = styled.button`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.color.mainPink};
 
   border: none;
@@ -162,28 +127,30 @@ export const RoomCheckInOut = styled.p`
   display: flex;
 
   color: ${({ theme }) => theme.color.darkGray};
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const RoomCount = styled.p`
-  font-size: 13px; //폰트 크기
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.color.mainPink};
   color: #de8c12; //theme 추가
 `;
 
 export const NoAvailableRoom = styled.p`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.color.hoverPink};
 `;
 
 export const RoomPrice = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const BottomWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  margin-top: 10px;
 
   width: 100%;
 
@@ -200,12 +167,12 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const CartIcon = styled(LuShoppingCart)`
-  font-size: ${({ theme }) => theme.fontSize.lg};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
   color: ${({ theme }) => theme.color.mainPink};
 `;
 
 export const DisableCartIcon = styled(LuShoppingCart)`
-  font-size: ${({ theme }) => theme.fontSize.lg};
+  font-size: ${({ theme }) => theme.fontSize.xxl};
   color: ${({ theme }) => theme.color.middleGray};
 `;
 
@@ -259,7 +226,7 @@ export const ReservationButton = styled.button`
   background-color: ${({ theme }) => theme.color.mainPink};
 
   color: ${({ theme }) => theme.color.white};
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 
   &:hover {
     background-color: ${({ theme }) => theme.color.hoverPink};
@@ -277,13 +244,13 @@ export const DisableReservationButton = styled.button`
   background-color: ${({ theme }) => theme.color.middleGray};
 
   color: ${({ theme }) => theme.color.white};
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 
   cursor: not-allowed;
 `;
 
 export const GuestIcon = styled(BsFillPeopleFill)`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
@@ -291,14 +258,14 @@ export const CapacityWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
 
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
 export const GuestNumber = styled.p`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.xs};
   color: ${({ theme }) => theme.color.darkGray};
 `;

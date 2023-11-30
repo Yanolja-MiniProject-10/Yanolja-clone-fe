@@ -20,13 +20,13 @@ const box = {
 
 /** 글자 크기 */
 const fontSize = {
-  xxl: "40px",
-  xl: "32px",
-  lg: "30px",
-  md: "24px",
-  sm: "20px",
-  xs: "18px",
-  xxs: "15px",
+  xxl: "30px",
+  xl: "24px",
+  lg: "20px",
+  md: "18px",
+  sm: "15px",
+  xs: "13px",
+  xxs: "12px",
 };
 const theme = { color, box, fontSize };
 

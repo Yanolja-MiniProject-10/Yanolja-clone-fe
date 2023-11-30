@@ -8,6 +8,7 @@ export const ReservationWrapper = styled.div`
 
   border-radius: ${({ theme }) => theme.box.radius};
 
+  font-size: ${({ theme }) => theme.fontSize.xs};
   box-shadow: ${({ theme }) => theme.box.shadow};
   background-color: white;
 `;

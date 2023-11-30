@@ -18,6 +18,14 @@ export interface AccommodationResponse {
   };
 }
 
+export interface RelatedResponse {
+  data: {
+    data: {
+      content: Accommodation[];
+    };
+  };
+}
+
 export interface Festival {
   id: number;
   title: string;

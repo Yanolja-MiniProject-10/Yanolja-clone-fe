@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RoomOptions = styled.div`
-  width: 600px;
+  width: 95%;
   height: 80px;
 
   display: flex;
@@ -10,13 +10,16 @@ export const RoomOptions = styled.div`
   margin: 5px 5px 5px 10px;
 `;
 
-export const RoomOptionImg = styled.img`
-  width: 80px;
-  height: 80px;
+export const RoomOptionImg = styled.img<{ $isPaymentId?: boolean }>`
+  width: 75px;
+  height: 75px;
 
   border-radius: 5px;
 
   object-fit: cover;
+
+  opacity: 1;
+  opacity: ${props => (props.$isPaymentId ? 0.5 : 1)};
 `;
 
 export const RoomOptionsText = styled.div`
@@ -34,11 +37,12 @@ export const RoomOptionsText = styled.div`
 `;
 
 export const RoomOptionsName = styled.span`
-  line-height: 25px;
+  line-height: 30px;
   font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 export const RoomOptionsCapacity = styled.span`
+  line-height: 30px;
   color: ${({ theme }) => theme.color.darkGray};
 `;
 

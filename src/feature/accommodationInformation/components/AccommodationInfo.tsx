@@ -12,7 +12,7 @@ import { handleDateParam } from "../../accommodation/accommodation.utils";
 
 const AccommodationInfo = () => {
   const [toast, setToast] = useRecoilState(toastState);
-  const { id } = useParams();
+  const { accommodationId } = useParams();
   const { guest } = useRecoilValue(accommodationMemberState);
 
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
@@ -28,7 +28,7 @@ const AccommodationInfo = () => {
   }
 
   const { status, data, error } = useAccommodationInfoQuery({
-    id,
+    id: accommodationId,
     reservationStartDate,
     reservationEndDate,
     member: guest,
@@ -60,7 +60,9 @@ const AccommodationInfo = () => {
 
   return (
     <style.Wrapper>
-      <style.AccomodationImg src={data.data.thumbnailImageUrl} />
+      <style.ImgWrapper>
+        <style.AccomodationImg src={data.data.thumbnailImageUrl} />
+      </style.ImgWrapper>
       <style.TextInfo>
         <style.AccommodationName>{data.data.name}</style.AccommodationName>
         <style.AccommodationCategory>{data.data.category}</style.AccommodationCategory>

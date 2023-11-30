@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IoClose } from "react-icons/io5";
 
 export const AccommodationList = styled.li`
   width: 100%;
@@ -10,17 +11,26 @@ export const AccommodationList = styled.li`
   border-bottom: 1px solid ${({ theme }) => theme.color.middleGray};
 `;
 
-export const Accommodation = styled.div`
+export const Accommodation = styled.a<{ $isPaymentId?: boolean }>`
   width: 100%;
 
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  &:visited {
+    text-decoration: none;
+    color: ${props => (props.$isPaymentId ? props.theme.color.middleGray : "black")};
+  }
 `;
 
 export const AccommodationName = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const AccommodationAddress = styled.span`
@@ -36,21 +46,23 @@ export const RoomOptionWrapper = styled.div`
   display: flex;
   align-items: center;
 
-  margin: 10px 0;
+  margin-bottom: 10px;
   padding: 5px;
+`;
 
-  .cart-cancel-btn {
-    align-self: self-start;
+export const CartCancelBtn = styled(IoClose)`
+  align-self: self-start;
 
-    border: none;
+  border: none;
 
-    color: ${({ theme }) => theme.color.middleGray};
-    background-color: transparent;
+  color: ${({ theme }) => theme.color.middleGray};
+  background-color: transparent;
 
-    transition: 0.5s;
+  cursor: pointer;
 
-    &:hover {
-      color: ${({ theme }) => theme.color.mainPink};
-    }
+  transition: 0.5s;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.mainPink};
   }
 `;

@@ -52,13 +52,15 @@ const Description = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
-const Title = styled.p`
+const Title = styled.b`
   margin-bottom: 1rem;
 `;
 
-const Price = styled.b`
+const Price = styled.p`
   text-align: right;
 `;
 
