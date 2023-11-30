@@ -1,19 +1,15 @@
 import { ReservationWrapper } from "../styles/reservationWrapper";
 import * as style from "../styles/guestInformation";
-import { useRecoilValue } from "recoil";
-import { userState } from "../../../recoil/userData";
 import { useEffect, useState } from "react";
 import { getUser } from "../../profile/profile.api";
 
 const GuestInformation = () => {
-  const user = useRecoilValue(userState);
-
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   // user 정보 가져오기
   const handleGetUser = async () => {
     try {
-      const data = await getUser(user);
+      const data = await getUser();
 
       if (data.status === 200) {
         setName(data.data.data.name);

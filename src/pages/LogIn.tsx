@@ -37,6 +37,9 @@ const LogIn = () => {
           accessToken: data.data.accessToken,
           refreshToken: data.data.refreshToken,
         });
+        localStorage.setItem("accessToken", data.data.accessToken);
+        localStorage.setItem("refreshToken", data.data.refreshToken);
+
         navigate("/");
       } else {
         alert("로그인에 실패하였습니다.");
