@@ -1,4 +1,4 @@
-import instance from "../../api/instance";
+import authInstance from "../../api/authInstance";
 import getToken from "../../util/getToken";
 import { AccommodationListParams } from "./accommodation.types";
 import { handleDateParam } from "./accommodation.utils";
@@ -8,7 +8,7 @@ export const getAllAccommodationData = async ({ startDate, endDate, guest, regio
   const { accessToken, refreshToken } = getToken();
 
   if (!region || region === "default") {
-    const { data } = await instance.get("/accommodations", {
+    const { data } = await authInstance.get("/accommodations", {
       headers: {
         accessToken: accessToken,
         refreshToken: refreshToken,
@@ -17,7 +17,11 @@ export const getAllAccommodationData = async ({ startDate, endDate, guest, regio
     });
     return data;
   } else {
-    const { data } = await instance.get("/accommodations", {
+    const { data } = await authInstance.get("/accommodations", {
+      headers: {
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      },
       params: { startDate: dateString![0], endDate: dateString![1], guest, region },
     });
     return data;

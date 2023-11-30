@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
-import instance from "../../../api/instance";
 import * as commonStyle from "../../../components/loginModal/loginModal.styles";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
 import * as style from "../styles/profileEditModal";
 import { useRecoilValue } from "recoil";
 import { userState } from "../../../recoil/userData";
+import authInstance from "../../../api/authInstance";
 
 const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
   const user = useRecoilValue(userState);
@@ -20,7 +20,7 @@ const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
 
   const handleEdit = async (name: string) => {
     try {
-      const data = await instance.put(
+      const data = await authInstance.put(
         "/users",
         {
           name: name,

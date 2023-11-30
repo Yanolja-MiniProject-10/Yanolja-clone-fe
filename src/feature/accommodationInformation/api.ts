@@ -1,6 +1,7 @@
 import instance from "../../api/instance";
 import { AccommodationInfoParams } from "./accommodationInformation.types";
 import getToken from "../../util/getToken";
+import authInstance from "../../api/authInstance";
 
 export const getAccommodationInfoData = async ({
   id,
@@ -27,10 +28,9 @@ export const postCart = async (
   stayDuration: number,
 ) => {
   const { accessToken, refreshToken } = getToken();
-  console.log("토큰", accessToken, refreshToken);
 
   try {
-    const { data } = await instance.post("/carts", {
+    const { data } = await authInstance.post("/carts", {
       headers: {
         accessToken: accessToken,
         refreshToken: refreshToken,
@@ -57,7 +57,7 @@ export const postReservation = async (
   const { accessToken, refreshToken } = getToken();
 
   try {
-    const { data } = await instance.post("/payment/instant", {
+    const { data } = await authInstance.post("/payment/instant", {
       headers: {
         accessToken: accessToken,
         refreshToken: refreshToken,

@@ -4,10 +4,10 @@ import LoginModal from "../components/loginModal/LoginModal";
 import LogoutModal from "../feature/profile/components/LogoutModal";
 import ProfileEditModal from "../feature/profile/components/ProfileEditModal";
 import * as style from "../feature/profile/styles/profile";
-import instance from "../api/instance";
 import { getUser } from "../feature/profile/profile.api";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { userState } from "../recoil/userData";
+import authInstance from "../api/authInstance";
 
 const Profile = () => {
   const user = useRecoilValue(userState);
@@ -38,7 +38,7 @@ const Profile = () => {
   // 로그아웃
   const handleLogout = async () => {
     try {
-      const data = await instance.get("/auth/logout", {
+      const data = await authInstance.get("/auth/logout", {
         headers: {
           accessToken: user.accessToken,
           refreshToken: user.refreshToken,

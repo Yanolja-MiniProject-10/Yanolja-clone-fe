@@ -1,4 +1,4 @@
-import instance from "../../api/instance";
+import authInstance from "../../api/authInstance";
 
 interface User {
   accessToken: string;
@@ -6,7 +6,7 @@ interface User {
 }
 
 export const getUser = async ({ accessToken, refreshToken }: User) => {
-  const data = await instance.get("/users", {
+  const data = await authInstance.get("/users", {
     headers: {
       accessToken: accessToken,
       refreshToken: refreshToken,

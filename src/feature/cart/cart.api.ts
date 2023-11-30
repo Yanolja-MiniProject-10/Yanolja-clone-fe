@@ -1,4 +1,4 @@
-import instance from "../../api/instance";
+import authInstance from "../../api/authInstance";
 import { CartData, RoomOption } from "../../types";
 import getToken from "../../util/getToken";
 import { FetchCartResult } from "./cart.types";
@@ -9,7 +9,7 @@ import { FetchCartResult } from "./cart.types";
 export const fetchCarts = async (): Promise<CartData> => {
   const { accessToken, refreshToken } = getToken();
 
-  const { data }: { data: FetchCartResult } = await instance.get("carts", {
+  const { data }: { data: FetchCartResult } = await authInstance.get("carts", {
     headers: {
       accessToken: accessToken,
       refreshToken: refreshToken,
@@ -28,7 +28,7 @@ export const deleteCarts = async (roomOptions: RoomOption[]): Promise<string> =>
 
   const cartProductsIds = roomOptions.map(RoomOption => RoomOption.cartProductId);
 
-  const { data }: { data: string } = await instance.delete("carts", {
+  const { data }: { data: string } = await authInstance.delete("carts", {
     headers: {
       accessToken: accessToken,
       refreshToken: refreshToken,
