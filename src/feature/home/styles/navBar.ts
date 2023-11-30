@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: fixed;
   bottom: 0;
-  z-index: 100;
+  z-index: 95;
 
   height: 60px;
   width: 100%;
@@ -28,7 +27,7 @@ const Container = styled.div`
   }
 `;
 
-const LinkedBox = styled(Link)`
+const LinkedBox = styled.div`
   display: flex;
   gap: 1px;
   flex-direction: column;

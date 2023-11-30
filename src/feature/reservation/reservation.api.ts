@@ -1,4 +1,5 @@
-import instance from "../../api/instance";
+import authInstance from "../../api/authInstance";
+import getLocalStorage from "../../util/getLocalStorage";
 import { PostPaymentCart, PostPaymentCartResult, PostPurchasePayload, PostPurchaseResult } from "./reservation.types";
 
 /**
@@ -11,7 +12,15 @@ export const postPaymentCart = async ({
   paymentData,
   setPaymentData,
 }: PostPaymentCart): Promise<void> => {
-  const { data }: { data: PostPaymentCartResult } = await instance.post("payment/cart", postPaymentCartPayload);
+  const { accessToken, refreshToken } = getLocalStorage();
+
+  const { data }: { data: PostPaymentCartResult } = await authInstance.post("/payment/cart", {
+    postPaymentCartPayload,
+    headers: {
+      accessToken: accessToken,
+      refreshToken: refreshToken,
+    },
+  });
   setPaymentData({ ...paymentData, ...data.data });
 };
 
@@ -20,6 +29,14 @@ export const postPaymentCart = async ({
  * @return 결제 성공 메시지
  */
 export const postPurchase = async (postPurchasePayload: PostPurchasePayload): Promise<string> => {
-  const { data }: { data: PostPurchaseResult } = await instance.post("payment/purchase", postPurchasePayload);
+  const { accessToken, refreshToken } = getLocalStorage();
+
+  const { data }: { data: PostPurchaseResult } = await authInstance.post("/payment/purchase", {
+    postPurchasePayload,
+    headers: {
+      accessToken: accessToken,
+      refreshToken: refreshToken,
+    },
+  });
   return data.message;
 };

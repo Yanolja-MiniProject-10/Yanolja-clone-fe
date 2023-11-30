@@ -6,11 +6,20 @@ import { useAccommodationsSearchQuery } from "../hooks/search.hooks";
 import { useState, KeyboardEvent, useEffect } from "react";
 import { AccommodationSetSearchResultParams } from "../search.types";
 import { getSessionValue, setSessionValue } from "../../../util/searchSessionValue";
+import { Loading, LoadingWrapper } from "../../../styles/loading";
+import { useNavigate } from "react-router-dom";
 
 const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearchResultParams) => {
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const { guest } = useRecoilValue(accommodationMemberState);
   const [inputValue, setInputValue] = useState("");
+  const { data, status, isLoading } = useAccommodationsSearchQuery({
+    startDate,
+    endDate,
+    guest,
+    name: inputValue,
+  });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const prevSearchValue = getSessionValue("searchResult");
@@ -23,12 +32,12 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
     }
   }, []);
 
-  const { data, status } = useAccommodationsSearchQuery({
-    startDate,
-    endDate,
-    guest,
-    name: inputValue,
-  });
+  useEffect(() => {
+    if (status === "error") {
+      window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+      navigate("/");
+    }
+  }, [status]);
 
   const handleEnterpress = async (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -47,7 +56,11 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
     setInputValue("");
   };
 
-  return (
+  return isLoading ? (
+    <LoadingWrapper>
+      <Loading />
+    </LoadingWrapper>
+  ) : (
     <style.AccommodationSearchInputBox>
       <style.AccommodationSearchIcon />
       <style.AccommodationSearchInput
