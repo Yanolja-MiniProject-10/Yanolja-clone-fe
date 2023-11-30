@@ -8,8 +8,6 @@ export const RoomOptions = styled.div`
   align-items: center;
 
   margin: 5px 5px 5px 10px;
-
-  cursor: pointer;
 `;
 
 export const RoomOptionImg = styled.img`

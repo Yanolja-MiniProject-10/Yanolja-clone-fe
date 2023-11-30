@@ -15,7 +15,7 @@ export interface CartRoomProps extends SelectCartListProps {
   setIsSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export interface RoomListProps extends CartRoomProps {
+export interface RoomListProps {
   roomOption: RoomOption;
 }
 
