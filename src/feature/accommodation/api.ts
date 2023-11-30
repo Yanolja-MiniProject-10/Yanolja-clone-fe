@@ -4,8 +4,16 @@ import { handleDateParam } from "./accommodation.utils";
 
 export const getAllAccommodationData = async ({ startDate, endDate, guest, region }: AccommodationListParams) => {
   const dateString: string[] | undefined = handleDateParam(startDate, endDate);
-  const { data } = await instance.get("/accommodations", {
-    params: { startDate: dateString![0], endDate: dateString![1], guest, region },
-  });
-  return data;
+
+  if (!region || region === "default") {
+    const { data } = await instance.get("/accommodations", {
+      params: { startDate: dateString![0], endDate: dateString![1], guest },
+    });
+    return data;
+  } else {
+    const { data } = await instance.get("/accommodations", {
+      params: { startDate: dateString![0], endDate: dateString![1], guest, region },
+    });
+    return data;
+  }
 };

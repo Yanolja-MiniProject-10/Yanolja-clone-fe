@@ -37,3 +37,16 @@ export const handleTitlelength = (title: string) => {
     return "18px";
   }
 };
+
+export const getAccommodationParamValue = (key: string) => {
+  const accommodationParamValue = sessionStorage.getItem(key);
+
+  return accommodationParamValue === null ? null : JSON.parse(accommodationParamValue);
+};
+
+export const setAccommodationParamValue = (key: string, value: string) => {
+  if (value === null || value === undefined) return;
+
+  const accommodationParamResultToJSON = JSON.stringify(value);
+  sessionStorage.setItem(key, accommodationParamResultToJSON);
+};

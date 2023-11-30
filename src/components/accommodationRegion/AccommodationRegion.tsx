@@ -5,11 +5,9 @@ import { accommodationRegionState } from "../../recoil/accommodation/accommodati
 const AccommodationRegion = () => {
   const setAccommodationRegionState = useSetRecoilState(accommodationRegionState);
   const handleRegionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value !== "default") {
-      setAccommodationRegionState({
-        region: e.target.value,
-      });
-    }
+    setAccommodationRegionState({
+      region: e.target.value,
+    });
   };
   return (
     <style.AccommodationInfoRegionBox>
