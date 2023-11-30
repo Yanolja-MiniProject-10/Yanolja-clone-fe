@@ -5,7 +5,7 @@ export const ReservationChecktWrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin: 20px 30px 0;
+  margin: 40px 30px;
 `;
 
 export const ChekPaymentWrapper = styled.div`
@@ -20,7 +20,7 @@ export const ChekPaymentWrapper = styled.div`
 `;
 
 export const Airplane = styled(PiAirplaneTiltDuotone)`
-  margin: 20px 5px 10px;
+  margin: 5px 10px;
 
   font-size: 50px;
   color: ${({ theme }) => theme.color.mainPink};
@@ -34,12 +34,9 @@ export const ChekPaymentContents = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin: 0 0 50px;
-  border-radius: ${({ theme }) => theme.box.radius};
+  border-bottom: 1px solid ${({ theme }) => theme.color.middleGray};
   padding: 20px;
 
-  box-shadow: ${({ theme }) => theme.box.shadow};
-  color: ${({ theme }) => theme.color.mainPink};
   background-color: white;
 `;
 
@@ -52,7 +49,7 @@ export const ChekPaymentBtn = styled.button`
   width: 45%;
   height: 45px;
 
-  margin: 10px 0 30px;
+  margin: 10px 0 60px;
 
   border: 1px solid ${({ theme }) => theme.color.mainPink};
   border-radius: ${({ theme }) => theme.box.radius};

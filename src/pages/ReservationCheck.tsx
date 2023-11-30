@@ -3,11 +3,14 @@ import { ReservationCheckData } from "../feature/reservationCheck/reservationChe
 import * as cartStyle from "../feature/cart/styles/cartRoom";
 import * as reserStyle from "../feature/reservation/styles/reservationRooms";
 import * as style from "../feature/reservationCheck/styles/reservationCheck";
+import { updateTransportation } from "../feature/reservationCheck/reservationCheck.util";
 
 const ReservationCheck = () => {
   const location = useLocation();
   const reservationCheckData: ReservationCheckData = { ...location.state };
   const chekPayment = reservationCheckData.paymentData;
+  const radioData = reservationCheckData.radioDataArray;
+  const newCartData = updateTransportation(chekPayment, radioData);
   const navigation = useNavigate();
 
   return (
@@ -15,13 +18,13 @@ const ReservationCheck = () => {
       <style.ChekPaymentWrapper>
         <style.ChekPaymentContents>
           <style.Airplane />
-          <style.ChekPaymentTitle>예약이 완료되었습니다!</style.ChekPaymentTitle>
+          <style.ChekPaymentTitle>예약이 완료되었습니다.</style.ChekPaymentTitle>
           <style.ChekPaymentBtn onClick={() => navigation("/reservation-list")}>
-            모든 예약 내역 확인하기
+            예약 내역 확인하기
           </style.ChekPaymentBtn>
         </style.ChekPaymentContents>
 
-        {chekPayment.accommodations.map(accommodation => (
+        {newCartData.accommodations.map(accommodation => (
           <cartStyle.AccommodationList key={`accommodation-list-${accommodation.accommodationId}`}>
             <cartStyle.Accommodation>
               <cartStyle.AccommodationName>{accommodation.name}</cartStyle.AccommodationName>
@@ -48,7 +51,7 @@ const ReservationCheck = () => {
 
                 <style.RoomOptionsTrans>
                   <span>방문 수단</span>
-                  <span>{roomOption.transportation === "CAR" ? "차량" : "도보"}</span>
+                  <span>{roomOption.transportation}</span>
                 </style.RoomOptionsTrans>
               </div>
             ))}
