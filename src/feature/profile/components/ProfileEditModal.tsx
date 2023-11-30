@@ -2,10 +2,13 @@ import { useRef, useState } from "react";
 import instance from "../../../api/instance";
 import * as commonStyle from "../../../components/loginModal/loginModal.styles";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
-import getToken from "../../../util/getToken";
 import * as style from "../styles/profileEditModal";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../../recoil/userData";
 
 const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
+  const user = useRecoilValue(userState);
+
   const [name, setName] = useState(userName);
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
 
@@ -16,8 +19,6 @@ const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
   };
 
   const handleEdit = async (name: string) => {
-    const { accessToken, refreshToken } = getToken();
-
     try {
       const data = await instance.put(
         "/users",
@@ -26,8 +27,8 @@ const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
         },
         {
           headers: {
-            accessToken: accessToken,
-            refreshToken: refreshToken,
+            accessToken: user.accessToken,
+            refreshToken: user.refreshToken,
           },
         },
       );

@@ -1,8 +1,15 @@
 const getToken = () => {
-  const access = localStorage.getItem("accessToken");
-  const refresh = localStorage.getItem("refreshToken");
+  const userStateValue = localStorage.getItem("userState");
 
-  return { accessToken: access, refreshToken: refresh };
+  if (userStateValue) {
+    const userState = JSON.parse(userStateValue);
+
+    const access = userState.accessToken;
+    const refresh = userState.refreshToken;
+
+    return { accessToken: access, refreshToken: refresh };
+  }
+  return { accessToken: "", refreshToken: "" };
 };
 
 export default getToken;
