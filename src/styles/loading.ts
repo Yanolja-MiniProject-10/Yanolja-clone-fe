@@ -23,9 +23,11 @@ export const Loading = styled.div`
   height: 50px;
 
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 
   margin: auto;
   border: 5.5px solid rgba(255, 255, 255, 0.3);
