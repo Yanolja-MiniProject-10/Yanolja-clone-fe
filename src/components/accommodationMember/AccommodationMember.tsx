@@ -10,11 +10,17 @@ import {
 import { MemberProps } from "./accommodationMember.types";
 import { useSetRecoilState } from "recoil";
 import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: MemberProps) => {
   const setAccommodationMemberState = useSetRecoilState(accommodationMemberState);
   const [memberCount, setMemberCount] = useState(memberNumber);
+
+  useEffect(() => {
+    if (memberCount !== memberNumber) {
+      setMemberCount(memberNumber);
+    }
+  }, [memberNumber]);
 
   const handleSetMember = (type: string) => {
     if (type == "plus") {
