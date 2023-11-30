@@ -57,6 +57,12 @@ const MemberContentPeopleContainer = styled.div`
 const MemberContentPeoplePick = styled.div`
   display: flex;
   gap: 1rem;
+
+  > button {
+    &:disabled {
+      cursor: revert;
+    }
+  }
 `;
 
 const MemberNav = styled.nav`
