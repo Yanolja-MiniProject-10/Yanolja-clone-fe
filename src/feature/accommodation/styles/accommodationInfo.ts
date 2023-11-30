@@ -5,7 +5,7 @@ export const AccommodationInfoBox = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 
-  @media screen and (width < 500px) {
+  @media screen and (width < 520px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
