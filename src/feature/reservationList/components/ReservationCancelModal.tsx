@@ -23,9 +23,13 @@ const ReservationCancelModal = ({ reservationNumber, paymentId, setIsModalOpen }
     setIsModalOpen(false);
   };
 
+  const handleInnerClick = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+  };
+
   return (
-    <style.ModalWrapper>
-      <style.ModalInner>
+    <style.ModalWrapper onClick={closeModal}>
+      <style.ModalInner onClick={handleInnerClick}>
         <style.ModalContents>
           <style.ModalQ>선택 숙소를 삭제하시겠습니까?</style.ModalQ>
           <style.ModalRoomName>
@@ -36,7 +40,6 @@ const ReservationCancelModal = ({ reservationNumber, paymentId, setIsModalOpen }
 
         <style.ModalBtns>
           <style.ModalClose onClick={closeModal}>아니요</style.ModalClose>
-
           <style.ModalRoomDelete onClick={() => handleCancleReservation(paymentId)}>삭제</style.ModalRoomDelete>
         </style.ModalBtns>
       </style.ModalInner>

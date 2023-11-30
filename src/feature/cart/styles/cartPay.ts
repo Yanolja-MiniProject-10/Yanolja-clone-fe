@@ -1,17 +1,23 @@
 import styled from "styled-components";
 
 export const CartPayWrapper = styled.div`
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+
+  width: 100%;
   max-width: 750px;
   height: 150px;
-
-  margin: 50px -30px 20px;
-  padding: 30px 50px 10px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
+  margin: 50px -30px 0;
   border-top: 1px solid ${({ theme }) => theme.color.brightGray};
+
+  padding: 30px 50px 20px;
+
   background-color: white;
 `;
 

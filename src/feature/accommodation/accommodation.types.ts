@@ -12,20 +12,18 @@ export interface AccommodationListParams {
   startDate: Date;
   endDate: Date;
   guest: number;
+  region?: string;
 }
 
-export interface AccommodationRegionParams {
-  startDate: Date;
-  endDate: Date;
-  guest: number;
+export interface AccommodationRegionDefault {
   region: string;
 }
 
-export interface accommodationMemberDefault {
+export interface AccommodationMemberDefault {
   guest: number;
 }
 
-export interface accommodationDateDefault {
+export interface AccommodationDateDefault {
   startDate: Date;
   endDate: Date;
 }

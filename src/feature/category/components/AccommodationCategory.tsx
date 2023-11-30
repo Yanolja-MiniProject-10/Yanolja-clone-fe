@@ -6,12 +6,14 @@ import { accommodationMemberState } from "../../../recoil/accommodation/accommod
 import { AccommodationProps } from "../../accommodation/accommodation.types";
 import { useAccommodationsCategoryQuery } from "../hooks/category.hooks";
 import { useLocation } from "react-router-dom";
+import { setSessionValue } from "../../../util/searchSessionValue";
 
 const AccommodationCategory = () => {
   const [accommodations, setAccommodations] = useState<AccommodationProps[]>([]);
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const { guest } = useRecoilValue(accommodationMemberState);
   const { pathname } = useLocation();
+  setSessionValue("historyPage", "category");
 
   const categoryResult = useAccommodationsCategoryQuery({
     startDate,

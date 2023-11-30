@@ -13,8 +13,6 @@ const CommonHeader = () => {
     return encodeURI(name);
   };
 
-  console.log("pathname", encordedPathName("호텔_리조트"));
-
   const getPageName = () => {
     switch (pathname) {
       case "/signup":
@@ -46,8 +44,7 @@ const CommonHeader = () => {
     }
   };
 
-  //이후 상세 숙소 등에서도 필요
-  const isMatchingPath = ["/signup", "/login", "/cart", "/accommodation", "/profile"].includes(pathname);
+  const isMatchingPath = ["/cart", "/accommodation", "/profile"].includes(pathname);
 
   return (
     <Container>
@@ -61,7 +58,6 @@ const CommonHeader = () => {
       <div>
         <HeadingText>{getPageName()}</HeadingText>
       </div>
-
       <RightIcons>
         {isMatchingPath && (
           <IconBox>

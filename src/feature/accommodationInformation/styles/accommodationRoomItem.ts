@@ -60,6 +60,10 @@ export const RoomImgWrapper = styled.div`
 
   display: flex;
 
+  border-radius: 10px;
+
+  overflow: hidden;
+
   @media screen and (width < 750px) {
     width: 80%;
     min-width: 400px;
@@ -72,8 +76,6 @@ export const RoomImg = styled.img`
   width: 100%;
   height: 100%;
   max-height: 180px;
-
-  border-radius: 10px;
 
   @media screen and (width < 750px) {
     min-height: 270px;

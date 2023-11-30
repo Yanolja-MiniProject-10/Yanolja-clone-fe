@@ -4,7 +4,7 @@ import { AccommodationInfoParams } from "../../../accommodationInformation/accom
 
 export const useRoomInfoQuery = ({ id, reservationStartDate, reservationEndDate, member }: AccommodationInfoParams) => {
   return useQuery({
-    queryKey: ["getRoomInfoData"],
+    queryKey: ["getRoomInfoData", id],
     queryFn: () => getRoomInfoData({ id, reservationStartDate, reservationEndDate, member }),
   });
 };
