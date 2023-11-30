@@ -5,8 +5,11 @@ import { postLogin } from "../feature/login/login.api";
 import { FormData } from "../feature/login/login.types";
 import * as style from "../feature/login/styles/login";
 import * as commonStyle from "../feature/signUp/styles/signUp";
+import { userState } from "../recoil/userData";
+import { useSetRecoilState } from "recoil";
 
 const LogIn = () => {
+  const setUserState = useSetRecoilState(userState);
   const navigate = useNavigate();
 
   const [isUser, setIsUser] = useState<boolean>(true);
@@ -30,8 +33,10 @@ const LogIn = () => {
 
       if (data.status === 200) {
         alert("로그인되었습니다.");
-        localStorage.setItem("accessToken", data.data.accessToken);
-        localStorage.setItem("refreshToken", data.data.refreshToken);
+        setUserState({
+          accessToken: data.data.accessToken,
+          refreshToken: data.data.refreshToken,
+        });
         navigate("/");
       } else {
         alert("로그인에 실패하였습니다.");

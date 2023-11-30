@@ -1,11 +1,12 @@
-import instance from "../../api/instance";
+import authInstance from "../../api/authInstance";
+import getToken from "../../util/getToken";
 import { DeletePaymentResult, FetchPaymentResult, PaymentData } from "./reservationList.types";
 
 /**
  * @returns 결제 완료 숙소 정보
  */
 export const fetchPayment = async (): Promise<PaymentData[]> => {
-  const { data }: { data: FetchPaymentResult } = await instance.get("payment");
+  const { data }: { data: FetchPaymentResult } = await authInstance.get("payment");
 
   return data.data;
 };
@@ -15,7 +16,13 @@ export const fetchPayment = async (): Promise<PaymentData[]> => {
  * @returns 장바구니 삭제 성공 여부
  */
 export const deletePayment = async (deletePaymentId: PaymentData["paymentId"]): Promise<string> => {
-  const { data }: { data: DeletePaymentResult } = await instance.delete("payment", {
+  const { accessToken, refreshToken } = getToken();
+
+  const { data }: { data: DeletePaymentResult } = await authInstance.delete("payment", {
+    headers: {
+      accessToken: accessToken,
+      refreshToken: refreshToken,
+    },
     data: { paymentId: deletePaymentId },
   });
 

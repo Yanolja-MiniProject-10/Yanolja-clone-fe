@@ -1,3 +1,4 @@
+import authInstance from "../../api/authInstance";
 import instance from "../../api/instance";
 import { PostPaymentCart, PostPaymentCartResult, PostPurchasePayload, PostPurchaseResult } from "./reservation.types";
 
@@ -20,6 +21,6 @@ export const postPaymentCart = async ({
  * @return 결제 성공 메시지
  */
 export const postPurchase = async (postPurchasePayload: PostPurchasePayload): Promise<string> => {
-  const { data }: { data: PostPurchaseResult } = await instance.post("payment/purchase", postPurchasePayload);
+  const { data }: { data: PostPurchaseResult } = await authInstance.post("payment/purchase", postPurchasePayload);
   return data.message;
 };

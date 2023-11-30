@@ -10,8 +10,15 @@ import { accommodationDateState } from "../../../recoil/accommodation/accommodat
 import { handleDateParam } from "../../accommodation/accommodation.utils";
 import { postReservation } from "../../accommodationInformation/api";
 import { useNavigate } from "react-router-dom";
+import { userState } from "../../../recoil/userData";
+import { useState } from "react";
+import LoginModal from "../../../components/loginModal/LoginModal";
 
 const BottomBar = ({ status, data }: RoomInfoProps) => {
+  const user = useRecoilValue(userState);
+
+  const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
+
   const [, setToast] = useRecoilState(toastState);
 
   const queryClient = useQueryClient();
@@ -80,34 +87,48 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
     };
 
     return (
-      <style.Wrapper>
-        <style.TopWrapper>
-          <style.ReservationDate>
-            {reservationStartDate} ~ {reservationEndDate}
-          </style.ReservationDate>
-          <style.ReservationGuest> 선택 인원: {guest}인</style.ReservationGuest>
-          <style.RoomPrice>
-            {room.totalPrice.toLocaleString()}원 / {room.stayDuration}박
-          </style.RoomPrice>
-        </style.TopWrapper>
-        <style.ButtonWrapper>
-          {isRoomAvailable && isAvailableGuest ? (
-            <>
-              <style.CartButton onClick={() => handleAddCart()}>
-                <style.CartIcon />
-              </style.CartButton>
-              <style.ReservationButton onClick={() => postReservationInstant()}>예약하기</style.ReservationButton>
-            </>
-          ) : (
-            <>
-              <style.DisableCartButton>
-                <style.DisableCartIcon />
-              </style.DisableCartButton>
-              <style.DisableReservationButton>예약불가</style.DisableReservationButton>
-            </>
-          )}
-        </style.ButtonWrapper>
-      </style.Wrapper>
+      <>
+        <style.Wrapper>
+          <style.TopWrapper>
+            <style.ReservationDate>
+              {reservationStartDate} ~ {reservationEndDate}
+            </style.ReservationDate>
+            <style.ReservationGuest> 선택 인원: {guest}인</style.ReservationGuest>
+            <style.RoomPrice>
+              {room.totalPrice.toLocaleString()}원 / {room.stayDuration}박
+            </style.RoomPrice>
+          </style.TopWrapper>
+          <style.ButtonWrapper>
+            {isRoomAvailable && isAvailableGuest ? (
+              <>
+                <style.CartButton
+                  onClick={() => {
+                    user.accessToken ? handleAddCart() : setIsLoginModal(true);
+                  }}
+                >
+                  <style.CartIcon />
+                </style.CartButton>
+                <style.ReservationButton
+                  onClick={() => {
+                    user.accessToken ? postReservationInstant() : setIsLoginModal(true);
+                  }}
+                >
+                  예약하기
+                </style.ReservationButton>
+              </>
+            ) : (
+              <>
+                <style.DisableCartButton>
+                  <style.DisableCartIcon />
+                </style.DisableCartButton>
+                <style.DisableReservationButton>예약불가</style.DisableReservationButton>
+              </>
+            )}
+          </style.ButtonWrapper>
+        </style.Wrapper>
+
+        {isLoginModal && <LoginModal onClose={() => setIsLoginModal(false)} />}
+      </>
     );
   }
 };
