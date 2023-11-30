@@ -7,14 +7,17 @@ import { useAccommodationsListQuery } from "../hooks/accommodation.hooks";
 import AccommodationContent from "../../../components/accommodation/AccommodationContent";
 import { accommodationRegionState } from "../../../recoil/accommodation/accommodationRegion";
 import { setSessionValue } from "../../../util/searchSessionValue";
+import { Loading, LoadingWrapper } from "../../../styles/loading";
+import { useNavigate } from "react-router-dom";
 
 const AccommodationEntireList = () => {
   const [accommodations, setAccommodations] = useState<AccommodationProps[]>([]);
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const { guest } = useRecoilValue(accommodationMemberState);
   const { region } = useRecoilValue(accommodationRegionState);
+  const navigate = useNavigate();
   setSessionValue("historyPage", "accommodation");
-  const entireResult = useAccommodationsListQuery({
+  const { data, status, isLoading } = useAccommodationsListQuery({
     startDate,
     endDate,
     guest,
@@ -22,12 +25,19 @@ const AccommodationEntireList = () => {
   });
 
   useEffect(() => {
-    if (entireResult.status === "success" && entireResult.data.data.content) {
-      setAccommodations(entireResult.data.data.content);
+    if (status === "success" && data?.data?.content) {
+      setAccommodations(data?.data?.content);
+    } else if (status === "error") {
+      window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+      navigate("/");
     }
-  }, [entireResult.status]);
+  }, [status]);
 
-  return (
+  return isLoading ? (
+    <LoadingWrapper>
+      <Loading />
+    </LoadingWrapper>
+  ) : (
     <div>
       <AccommodationContent accommodations={accommodations} />
     </div>
