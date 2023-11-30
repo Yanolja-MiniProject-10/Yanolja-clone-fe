@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper as SwiperCore } from "swiper/types";
-import { SwiperNavTabs, SwiperTab, SpanTab } from "../../styles/regionArea/regionArea.ts";
+import { SwiperNavTabs, SwiperTab, SpanTab } from "../../styles/regionArea/regionAreaTabs.ts";
 
 interface TabsProps {
   regions: string[] | undefined;
