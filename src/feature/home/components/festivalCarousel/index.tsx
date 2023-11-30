@@ -23,12 +23,18 @@ const FestivalCarousel = () => {
       ) : (
         <Swiper
           style={{ height: "180px" }}
-          slidesPerView={2.3}
+          slidesPerView={1.5}
           navigation={true}
           pagination={{ clickable: true }}
           loop={true}
           autoplay={{ delay: 2500 }}
           modules={[Navigation, Pagination, Autoplay]}
+          breakpoints={{
+            540: { slidesPerView: 1.7 },
+            620: { slidesPerView: 1.9 },
+            660: { slidesPerView: 2.1 },
+            735: { slidesPerView: 2.3 },
+          }}
         >
           {festivals?.map(
             festival =>

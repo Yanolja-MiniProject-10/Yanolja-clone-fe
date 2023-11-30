@@ -37,6 +37,7 @@ const LinkedBox = styled(Link)`
 
 const InputText = styled.p`
   color: ${({ theme }) => theme.color.middleGray};
+  font-size: ${({ theme }) => theme.fontSize.xs};
   vertical-align: middle;
 `;
 

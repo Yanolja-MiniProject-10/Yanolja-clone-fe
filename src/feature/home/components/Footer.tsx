@@ -14,7 +14,7 @@ const Footer = () => {
     <FooterContainer>
       <FooterHeader>
         <YLogoBox target="_blank" to="https://www.yanolja.com/">
-          <img src="/public/footer/yanolja-ico-logo.svg" alt="yanolja-ico-logo" />
+          <img src="footer/yanolja-ico-logo.svg" alt="yanolja-ico-logo" />
         </YLogoBox>
         <FLogoBox target="_blank" to="https://github.com/Yanolja-MiniProject-10/KDT_Y_FE_Mini-Project#readme">
           <span>1등하고10조 </span>&nbsp;

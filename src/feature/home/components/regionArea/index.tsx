@@ -21,12 +21,7 @@ const RegionArea = () => {
       <Title>지역 별 상품 추천</Title>
       <RegionAreaTabs regions={regions} setThumbsSwiper={setThumbsSwiper} />
 
-      <Swiper
-        effect="flip"
-        spaceBetween={10}
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
-      >
+      <Swiper effect="flip" thumbs={{ swiper: thumbsSwiper }} modules={[FreeMode, Navigation, Thumbs]}>
         {regions?.map((region, i) => (
           <SwiperSlide key={i}>
             <RegionAreaSlide region={region} />

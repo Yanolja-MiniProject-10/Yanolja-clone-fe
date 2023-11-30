@@ -29,6 +29,7 @@ const CloseButton = styled.p`
   color: ${({ theme }) => theme.color.middleGray};
 
   * {
+    transition: 0.4s;
     cursor: pointer;
     &:hover {
       color: ${({ theme }) => theme.color.mainPink};
@@ -73,7 +74,6 @@ const Description = styled.div`
 
 const ModalTitle = styled.div`
   word-break: keep-all;
-  /* white-space: pre-line; */
   font-size: ${({ theme }) => theme.fontSize.xs};
   font-weight: bold;
 `;

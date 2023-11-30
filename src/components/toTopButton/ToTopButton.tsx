@@ -12,7 +12,7 @@ const ToTopButton = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setIsVisible(currentScrollY > 500);
+      setIsVisible(currentScrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
