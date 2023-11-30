@@ -11,7 +11,6 @@ export const useAccommodationInfoQuery = ({
   reservationEndDate,
   member,
 }: AccommodationInfoParams) => {
-  /**추후 확인 버튼 눌렀을 때로 수정 */
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const { guest } = useRecoilValue(accommodationMemberState);
   return useQuery({

@@ -45,7 +45,6 @@ const AccommodationRoomItem = ({
 
   const isAvailableGuest = guest <= capacity;
 
-  /**나중에 로직 수정 예정 */
   let reservationStartDate = "";
   let reservationEndDate = "";
   if (dateArray) {
@@ -82,6 +81,7 @@ const AccommodationRoomItem = ({
         },
       });
     } catch (e) {
+      alert(`예약 정보를 보내는 것을 실패했습니다.`);
       console.log(e);
     }
   };
