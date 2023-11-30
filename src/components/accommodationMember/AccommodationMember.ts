@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const MemberLayout = styled.div<{ $isMemberShow: boolean }>`
-  width: 100%;
+  width: 100vw;
   height: 100%;
 
   display: flex;
@@ -23,7 +23,8 @@ const MemberLayout = styled.div<{ $isMemberShow: boolean }>`
 `;
 
 const MemberContainer = styled.div`
-  width: 90%;
+  width: 100%;
+  max-width: 750px;
   height: calc(100% - 50px);
 
   display: flex;
