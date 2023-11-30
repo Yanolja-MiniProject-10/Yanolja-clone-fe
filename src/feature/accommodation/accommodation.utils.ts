@@ -1,6 +1,8 @@
 export const handleDateString = (sDate: Date, eDate: Date) => {
-  const targetDate = [sDate, eDate];
-  if (!sDate || !eDate) return;
+  const startTime = new Date(sDate);
+  const endTime = new Date(eDate);
+  const targetDate = [startTime, endTime];
+  if (!startTime || !endTime) return;
 
   let returnString = "";
   targetDate.map((singleDate: Date, index: number) => {
@@ -13,9 +15,12 @@ export const handleDateString = (sDate: Date, eDate: Date) => {
 };
 
 export const handleDateParam = (sDate: Date, eDate: Date) => {
+  if (!sDate || !eDate) return;
+  sDate = new Date(sDate);
+  eDate = new Date(eDate);
+
   const targetDate = [sDate, eDate];
   const returnArr: string[] = [];
-  if (!sDate || !eDate) return;
 
   targetDate.map((singleDate: Date) => {
     let temp = "";
