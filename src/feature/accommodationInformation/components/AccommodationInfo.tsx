@@ -41,7 +41,7 @@ const AccommodationInfo = () => {
           <Skeleton height={560} />
         </style.SkeletonImgWrapper>
         <style.TextInfo>
-          <Skeleton height={30} width={200} />
+          <Skeleton height={30} width={150} />
           <Skeleton width={300} height={25} />
           <style.DivideLine />
           <style.AccommodationStaticDescWrap>

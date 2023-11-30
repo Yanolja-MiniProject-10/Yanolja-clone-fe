@@ -40,7 +40,7 @@ const AccommodationRoomList = () => {
         {[...Array(4)].map((_, index) => (
           <style.SkeletonBox key={index}>
             <style.SkeletonRoomImgWrapper>
-              <Skeleton width={270} height={150} />
+              <Skeleton width={270} height={180} style={{ borderRadius: "10px" }} />
             </style.SkeletonRoomImgWrapper>
             <style.RoomInfo>
               <style.SkeletonRoomTopWrapper>

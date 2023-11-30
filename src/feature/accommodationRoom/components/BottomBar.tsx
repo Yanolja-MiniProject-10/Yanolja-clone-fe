@@ -35,7 +35,11 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
   if (status == "pending") {
     return (
       <style.Wrapper>
-        <Skeleton height={30} width={200} />
+        <style.SkeletonTextWrapper>
+          <Skeleton height={15} width={160} />
+          <Skeleton height={20} width={100} />
+          <Skeleton height={30} width={200} />
+        </style.SkeletonTextWrapper>
       </style.Wrapper>
     );
   } else if (status == "error") {
