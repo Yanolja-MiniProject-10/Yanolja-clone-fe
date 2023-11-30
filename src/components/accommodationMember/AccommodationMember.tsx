@@ -53,16 +53,16 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: Me
     <MemberLayout $isMemberShow={isMemberShow}>
       <MemberContainer>
         <MemberContentBox>
-          정확한 숙소검색 결과를 확인하려면 인원수를 선택해주세요.
+          <span>정확한 숙소검색 결과를 확인하려면 인원수를 선택해주세요.</span>
           <MemberContentPeopleContainer>
-            인원
+            <span>인원</span>
             <MemberContentPeoplePick>
               <button disabled={minusDisabled} onClick={() => handleSetMember("minus")}>
-                -
+                <span>-</span>
               </button>
               {memberCount}
               <button disabled={plusDisabled} onClick={() => handleSetMember("plus")}>
-                +
+                <span>+</span>
               </button>
             </MemberContentPeoplePick>
           </MemberContentPeopleContainer>
