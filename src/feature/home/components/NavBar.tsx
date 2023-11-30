@@ -30,7 +30,7 @@ const NavBar = () => {
           <IconLabel>예약</IconLabel>
         </LinkedBox>
         <div onClick={scrollToTop}>
-          <CenterIcon src="/public/favicon.ico" alt="상단으로 가기" />
+          <CenterIcon src="favicon.ico" alt="상단으로 가기" />
         </div>
         <LinkedBox onClick={() => navigate("/profile")}>
           <MdOutlinePersonOutline />

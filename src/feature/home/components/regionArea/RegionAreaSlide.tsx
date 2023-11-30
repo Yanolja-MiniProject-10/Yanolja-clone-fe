@@ -1,6 +1,6 @@
 import { useRegionAccommodations } from "../../hooks/queries/home.hooks.ts";
 import RegionAreaItem from "./RegionAreaItem";
-import { RegionListBox } from "../../styles/regionArea/regionArea.ts";
+import { RegionListBox } from "../../styles/regionArea/regionAreaSlide.ts";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
