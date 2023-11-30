@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import ko from "date-fns/locale/ko";
 import { useSetRecoilState } from "recoil";
 import { accommodationDateState } from "../../recoil/accommodation/accommodationDate";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // import _ from "lodash";
 
 const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow, startDate, endDate }: CalendarProps) => {
@@ -13,17 +13,12 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow, startDate, e
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const [endTime, setEndTime] = useState(tomorrow);
-  console.log(startTime, endTime);
-
-  console.log(startDate, endDate, "##$$");
-
-  useEffect(() => {}, []);
+  console.log(startDate, endDate);
 
   registerLocale("ko", ko); // 달력 한국어로 세팅
   const setAccommodationDateState = useSetRecoilState(accommodationDateState);
   const handleDatePick = (dates: Array<Date | null>) => {
     const [start, end] = dates;
-    console.log(start, end);
 
     setStartTime(start!);
     setEndTime(end!);
