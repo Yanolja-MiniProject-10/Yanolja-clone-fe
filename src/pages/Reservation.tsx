@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { paymentDataState } from "../recoil/paymentData";
 import { radioDataState } from "../recoil/checkedRadio";
@@ -8,9 +8,11 @@ import ReservationSummary from "../feature/reservation/components/ReservationSum
 import GuestInformation from "../feature/reservation/components/GuestInformation";
 import ReservationPay from "../feature/reservation/components/ReservationPay";
 import { PostPaymentCartPayload } from "../feature/reservation/reservation.types";
+import { Loading, LoadingWrapper } from "../styles/loading";
 import * as style from "../feature/reservation/styles/reservation";
 
 const Reservation = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const postPaymentCartPayload: PostPaymentCartPayload = { ...location.state };
   const { mutateAsync: postPaymentCart } = usePostPaymentCart();
@@ -32,9 +34,21 @@ const Reservation = () => {
 
     handlePaymentCart();
     setRadioData({});
+
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    loadingTimer;
+
+    return () => clearInterval(loadingTimer);
   }, []);
 
-  return (
+  return isLoading || paymentData.cartId === -1 ? (
+    <LoadingWrapper>
+      <Loading />
+    </LoadingWrapper>
+  ) : (
     <style.ReservationWrapper>
       <ReservationSummary />
       <GuestInformation />

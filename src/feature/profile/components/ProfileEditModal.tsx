@@ -1,11 +1,12 @@
 import { useRef, useState } from "react";
-import * as style from "../styles/profileEditModal";
+import instance from "../../../api/instance";
 import * as commonStyle from "../../../components/loginModal/loginModal.styles";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
-import instance from "../../../api/instance";
+import getToken from "../../../util/getToken";
+import * as style from "../styles/profileEditModal";
 
-const ProfileEditModal = ({ onClose }: ModalProps) => {
-  const [name, setName] = useState("야놀자");
+const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
+  const [name, setName] = useState(userName);
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
 
   const handleClickBackground = async (e: React.MouseEvent<HTMLDivElement>): Promise<void> => {
@@ -15,13 +16,27 @@ const ProfileEditModal = ({ onClose }: ModalProps) => {
   };
 
   const handleEdit = async (name: string) => {
+    const { accessToken, refreshToken } = getToken();
+
     try {
-      const data = await instance.put("/users", {
-        name: name,
-      });
+      const data = await instance.put(
+        "/users",
+        {
+          name: name,
+        },
+        {
+          headers: {
+            accessToken: accessToken,
+            refreshToken: refreshToken,
+          },
+        },
+      );
       if (data.status === 200) {
         alert("수정되었습니다.");
         onClose();
+        if (onNameUpdated) {
+          onNameUpdated(name);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -44,7 +59,7 @@ const ProfileEditModal = ({ onClose }: ModalProps) => {
             <commonStyle.CancelButton type="button" onClick={onClose}>
               취소
             </commonStyle.CancelButton>
-            <commonStyle.ConfirmButton type="button" onClick={() => handleEdit(name)}>
+            <commonStyle.ConfirmButton type="button" onClick={() => handleEdit(name ? name : "")}>
               완료
             </commonStyle.ConfirmButton>
           </commonStyle.ButtonWrapper>
