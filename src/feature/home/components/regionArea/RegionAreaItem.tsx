@@ -5,9 +5,10 @@ import { relatedAccommodationsState } from "../../../../recoil/home/clickedCateg
 
 const RegionAreaItem = ({ accommodation }: AccommodationProp) => {
   const setRelatedCateRegion = useSetRecoilState(relatedAccommodationsState);
-  const { name, category, region, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
+  const { id, name, category, region, thumbnailImageUrl, minimumPrice, maximumPrice } = accommodation;
   return (
     <ItemContainer
+      to={`/accommodation/${id}`}
       onClick={() => {
         setRelatedCateRegion({ category: category, region: region });
       }}
@@ -16,7 +17,7 @@ const RegionAreaItem = ({ accommodation }: AccommodationProp) => {
         <img src={thumbnailImageUrl} alt={name} />
       </ImgBox>
       <Description>
-        <Title>{name}</Title>
+        <Title>{name.length >= 16 ? name.slice(0, 10) + "..." : name}</Title>
         <Price>
           {minimumPrice.toLocaleString()} ~ {maximumPrice.toLocaleString()}원
         </Price>

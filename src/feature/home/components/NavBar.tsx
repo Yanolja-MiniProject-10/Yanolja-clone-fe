@@ -10,12 +10,12 @@ const NavBar = () => {
   };
   return (
     <Container>
-      <LinkedBox to="/reservation">
+      <LinkedBox to="/resrvation-list">
         <MdOutlineBook />
         <IconLabel>예약</IconLabel>
       </LinkedBox>
       <div onClick={scrollToTop}>
-        <CenterIcon src="/public/favicon.ico" alt="상단으로 가기" />
+        <CenterIcon src="favicon.ico" alt="상단으로 가기" />
       </div>
       <LinkedBox to="/profile">
         <MdOutlinePersonOutline />

@@ -17,7 +17,7 @@ const AllAndRelatedSwiperItem = ({ accommodation }: AccommodationProp) => {
         <img src={thumbnailImageUrl} alt={name} />
       </ImgBox>
       <Description>
-        <Title>{name}</Title>
+        <Title>{name.length >= 16 ? name.slice(0, 10) + "..." : name}</Title>
         <Price>
           {minimumPrice.toLocaleString()} ~ {maximumPrice.toLocaleString()}원
         </Price>
