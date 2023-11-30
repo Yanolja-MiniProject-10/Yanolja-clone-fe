@@ -103,8 +103,7 @@ export const AccommodationContentGridInnerBox = styled.div`
 
   @media screen and (width < 400px) {
     padding: 0;
-  }
-  @media screen and (width < 300px) {
+
     > div:nth-child(2) {
       position: relative;
       margin-bottom: 1rem;
