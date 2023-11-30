@@ -1,6 +1,7 @@
+import { IoClose } from "react-icons/io5";
 import styled, { css } from "styled-components";
 
-const CalendarLayout = styled.div<{ $isCalendarShow: boolean }>`
+export const CalendarLayout = styled.div<{ $isCalendarShow: boolean }>`
   width: 100vw;
   height: 100%;
 
@@ -22,7 +23,7 @@ const CalendarLayout = styled.div<{ $isCalendarShow: boolean }>`
     `};
 `;
 
-const CalendarContainer = styled.div`
+export const CalendarContainer = styled.div`
   width: 100%;
   max-width: 750px;
   height: calc(100% - 50px);
@@ -48,6 +49,7 @@ const CalendarContainer = styled.div`
   }
   & .react-datepicker {
     height: calc(100% - 70px);
+    border: none;
 
     .react-datepicker__navigation.react-datepicker__navigation--previous {
       display: none;
@@ -74,9 +76,11 @@ const CalendarContainer = styled.div`
       // }
     }
 
-    // .react-datepicker__week {
-    //   height: 50px;
-    // }
+    .react-datepicker__week {
+      // display: flex;
+      // justify-content: center;
+      // gap: 1rem;
+    }
 
     .react-datepicker__day-names {
       background-color: #414141;
@@ -94,20 +98,45 @@ const CalendarContainer = styled.div`
       color: #01aeff;
     }
 
+    .react-datepicker__day-name,
+    .react-datepicker__day,
+    .react-datepicker__time-name {
+      width: 3rem;
+      line-height: 3rem;
+    }
+
     // .react-datepicker__day {
     //   width: 3rem;
     //   height: 3rem;
     // }
     .react-datepicker__day:nth-child(1) {
-      color: red;
+      color: #dd2e5f;
     }
     .react-datepicker__day:nth-child(7) {
-      color: blue;
+      color: #01aeff;
     }
   }
 `;
 
-const CalendarNav = styled.nav`
+export const CalendarCloseBox = styled.div`
+  width: 100%;
+  max-width: 750px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  // position: fixed;
+`;
+
+export const CalenderCloseIcon = styled(IoClose)`
+  // position: absolute;
+  width: 1rem;
+  height: 1rem;
+  margin: 1rem;
+  // right: 0;
+`;
+
+export const CalendarNav = styled.nav`
   width: 100vw;
   height: 60px;
 
@@ -124,7 +153,7 @@ const CalendarNav = styled.nav`
   box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.1);
 `;
 
-const CalendarButton = styled.button`
+export const CalendarButton = styled.button`
   width: 90%;
   max-width: 750px;
   height: 75%;
@@ -135,5 +164,3 @@ const CalendarButton = styled.button`
   font-size: ${({ theme }) => theme.fontSize.sm};
   border-radius: 5px;
 `;
-
-export { CalendarLayout, CalendarContainer, CalendarNav, CalendarButton };

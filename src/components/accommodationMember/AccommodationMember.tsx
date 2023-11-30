@@ -10,11 +10,19 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: Me
   const [minusDisabled, setMinusDisabled] = useState(false);
   const [plusDisabled, setPlusDisabled] = useState(false);
 
+  // useEffect(() => {
+  //   if (memberCount !== memberNumber) {
+  //     setMemberCount(memberNumber);
+  //   }
+  // }, [memberNumber]);
+
   useEffect(() => {
-    if (memberCount !== memberNumber) {
-      setMemberCount(memberNumber);
+    if (!isMemberShow) {
+      if (memberCount !== memberNumber) {
+        setMemberCount(memberNumber);
+      }
     }
-  }, [memberNumber]);
+  }, [isMemberShow]);
 
   const handleSetMember = (type: string) => {
     type === "plus" ? setMemberCount(prev => prev + 1) : setMemberCount(prev => prev - 1);

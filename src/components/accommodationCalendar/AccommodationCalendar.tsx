@@ -1,4 +1,4 @@
-import { CalendarLayout, CalendarContainer, CalendarNav, CalendarButton } from "./AccommodationCalendar";
+import * as style from "./AccommodationCalendar";
 import { CalendarProps } from "./accommodationCalendar.types";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -32,8 +32,8 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarPr
   };
 
   return (
-    <CalendarLayout $isCalendarShow={isCalendarShow}>
-      <CalendarContainer>
+    <style.CalendarLayout $isCalendarShow={isCalendarShow}>
+      <style.CalendarContainer>
         <DatePicker
           selected={startTime}
           onChange={handleDatePick}
@@ -46,11 +46,14 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarPr
           monthsShown={6}
           inline
         />
-        <CalendarNav>
-          <CalendarButton onClick={handleDateChange}>확인</CalendarButton>
-        </CalendarNav>
-      </CalendarContainer>
-    </CalendarLayout>
+        <style.CalendarNav>
+          <style.CalendarButton onClick={handleDateChange}>확인</style.CalendarButton>
+        </style.CalendarNav>
+        <style.CalendarCloseBox className="closebox">
+          <style.CalenderCloseIcon onClick={() => setIsCalendarShow(prev => !prev)} />
+        </style.CalendarCloseBox>
+      </style.CalendarContainer>
+    </style.CalendarLayout>
   );
 };
 
