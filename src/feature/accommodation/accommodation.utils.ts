@@ -1,6 +1,8 @@
 export const handleDateString = (sDate: Date, eDate: Date) => {
-  const targetDate = [sDate, eDate];
-  if (!sDate || !eDate) return;
+  const startTime = new Date(sDate);
+  const endTime = new Date(eDate);
+  const targetDate = [startTime, endTime];
+  if (!startTime || !endTime) return;
 
   let returnString = "";
   targetDate.map((singleDate: Date, index: number) => {
@@ -34,17 +36,4 @@ export const handleTitlelength = (title: string) => {
   } else if (title.length > 15) {
     return "18px";
   }
-};
-
-export const getDateValue = (key: string) => {
-  const dateValue = sessionStorage.getItem(key);
-
-  return dateValue === null ? null : new Date(JSON.parse(dateValue));
-};
-
-export const setDateValue = (key: string, value: Date) => {
-  if (value === null || value === undefined) return;
-
-  const dateResultToJSON = JSON.stringify(value);
-  sessionStorage.setItem(key, dateResultToJSON);
 };

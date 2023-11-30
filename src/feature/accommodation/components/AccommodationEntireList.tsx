@@ -10,12 +10,14 @@ const AccommodationEntireList = () => {
   const [accommodations, setAccommodations] = useState<AccommodationProps[]>([]);
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const { guest } = useRecoilValue(accommodationMemberState);
-
+  console.log(startDate, endDate, guest);
   const entireResult = useAccommodationsListQuery({
     startDate,
     endDate,
     guest,
   });
+
+  console.log(entireResult);
 
   useEffect(() => {
     if (entireResult.status === "success" && entireResult.data.data.content) {
