@@ -1,5 +1,5 @@
-import PayedRooms from "../feature/reservationList/components/PayedRooms";
 import { useFetchPayment } from "../feature/reservationList/hooks/queries/useFetchPayment";
+import PayedRooms from "../feature/reservationList/components/PayedRooms";
 import * as style from "../feature/reservationList/styles/reservationList";
 
 const ReservationList = () => {
@@ -9,15 +9,13 @@ const ReservationList = () => {
 
   return (
     <style.ReservationListWrapper>
-      <style.PayedRoomsWrapper>
-        {isLoading ? (
-          <span>로딩중...</span>
-        ) : (
-          fetchPaymentResult?.map(paymentData => (
-            <PayedRooms key={`accommodation-list-${paymentData.paymentId}`} paymentData={paymentData} />
-          ))
-        )}
-      </style.PayedRoomsWrapper>
+      {isLoading ? (
+        <span>로딩중...</span>
+      ) : (
+        fetchPaymentResult?.map(paymentData => (
+          <PayedRooms key={`accommodation-list-${paymentData.paymentId}`} paymentData={paymentData} />
+        ))
+      )}
     </style.ReservationListWrapper>
   );
 };
