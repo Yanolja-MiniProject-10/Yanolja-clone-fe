@@ -73,6 +73,8 @@ export const AccommodationContentGridInnerBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  position: relative;
 `;
 
 export const AccommodationContentGridInnerTitle = styled.p`
@@ -85,6 +87,12 @@ export const AccommodationContentGridInnerTitle = styled.p`
 export const AccommodationContentGridInnerTag = styled.p`
   font-size: 13px;
   color: ${({ theme }) => theme.color.middleGray};
+`;
+
+export const AccommodationContentGridInnerPriceBox = styled.div`
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0;
 `;
 
 export const AccommodationContentGridInnerParagraph = styled.p`
