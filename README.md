@@ -168,7 +168,9 @@ Front-End와 Back-End와의 협업을 통해 완성한 숙박 예약 API 서비�
 
 ## 🧑🏻‍💻 디자인 (수정 필요)
 
-### Userflow
+<a href="https://www.figma.com/file/nXHa5NqJdIhkRjZIQ3a2kq/mini-project?type=whiteboard&node-id=0%3A1&t=5zXImadm92h4kzvE-1">🥇 유저플로우 🥇</a>
+<br/>
+<a href="https://www.figma.com/file/xzhsFAOTqHb6HgtcopNyq8/miniProject?type=design&node-id=0%3A1&mode=design&t=3IQv0goIdhTfOUTv-1">🥇 피그마 🥇</a>
 
 ## 🧑🏻‍💻 주요 기능 구현
 
@@ -285,9 +287,6 @@ $ npm run dev
 ### Issues, PR, Merge
 
 ### Style
-<a href="https://www.figma.com/file/nXHa5NqJdIhkRjZIQ3a2kq/mini-project?type=whiteboard&node-id=0%3A1&t=5zXImadm92h4kzvE-1">🥇 유저플로우 🥇</a>
-<br/>
-<a href="https://www.figma.com/file/xzhsFAOTqHb6HgtcopNyq8/miniProject?type=design&node-id=0%3A1&mode=design&t=3IQv0goIdhTfOUTv-1">🥇 피그마 🥇</a>
 
 ### Branch 전략
 
