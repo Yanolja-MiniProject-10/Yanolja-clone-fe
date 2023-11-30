@@ -17,7 +17,7 @@ const RequirementsPrePay = ({ setAllChecked }: { setAllChecked: React.Dispatch<R
 
   return (
     <ReservationWrapper>
-      <RequirementsTitle>결제 전 필수 확인 사항</RequirementsTitle>
+      <RequirementsTitle>결제 전 확인 사항</RequirementsTitle>
 
       <RequirementsContents>
         {REQUIRMENTS.map((requirement, index) => (
