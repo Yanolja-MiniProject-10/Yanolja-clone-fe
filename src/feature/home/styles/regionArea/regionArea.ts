@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -30,17 +31,28 @@ const SpanTab = styled.span`
 
 //Slide
 const RegionListBox = styled.div`
+  width: 100%;
+  gap: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  @media screen and (width < 750px) {
+    padding: 2% 8%;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 `;
 
 //Item
 
-const ItemContainer = styled.div`
-  width: 10rem;
-  border-radius: 10px;
+const ItemContainer = styled(Link)`
+  width: 100%;
 
   display: flex;
+  justify-content: center;
   flex-direction: column;
 
   transition: 0.4s;
@@ -49,14 +61,22 @@ const ItemContainer = styled.div`
   }
 `;
 const ImgBox = styled.div`
-  display: flex;
-  object-fit: cover;
+  width: 100%;
+  height: 8rem;
 
   & > img {
     width: 100%;
-    height: 8rem;
 
+    height: 100%;
+    object-fit: cover;
     border-radius: 3px;
+  }
+
+  @media screen and (width < 750px) {
+    width: 100%;
+    height: 9rem;
+
+    object-fit: cover;
   }
 `;
 

@@ -6,6 +6,11 @@ const RankingWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+
+  @media screen and (width < 700px) {
+    margin: 0 10%;
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export { RankingWrapper };

@@ -36,11 +36,18 @@ const StyledLink = styled(Link)`
 
 const ImageBox = styled.div`
   & > img {
-    width: 70px;
-    height: 70px;
+    width: 4.5rem;
+    height: 4.5rem;
     border-radius: 5px;
 
     object-fit: cover;
+
+    transition: 0.4;
+
+    @media screen and (width < 750px) {
+      width: 6rem;
+      height: 6rem;
+    }
   }
 `;
 const Description = styled.div`
@@ -62,6 +69,10 @@ const Price = styled.p`
   justify-content: right;
 
   font-size: ${({ theme }) => theme.fontSize.xxs};
+
+  @media screen and (width < 750px) {
+    white-space: nowrap;
+  }
 `;
 
 export { RankingItemWrapper, NumberBox, StyledLink, ImageBox, Description, Name, Price };
