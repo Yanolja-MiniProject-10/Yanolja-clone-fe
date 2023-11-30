@@ -40,8 +40,8 @@ const Profile = () => {
     try {
       const data = await instance.get("/auth/logout", {
         headers: {
-          accessToken: localStorage.getItem("accessToken"),
-          refreshToken: localStorage.getItem("refreshToken"),
+          accessToken: user.accessToken,
+          refreshToken: user.refreshToken,
         },
       });
       if (data.status === 200) {
@@ -63,7 +63,8 @@ const Profile = () => {
       setName("");
       setEmail("");
     };
-  }, [handleGetUser]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleNameUpdated = (name: string) => {
     setName(name); // 이름 상태 업데이트
@@ -97,7 +98,7 @@ const Profile = () => {
         <style.Hr />
         <style.List>
           <div onClick={() => (user ? setIsEditModal(true) : setIsLoginModal(true))}>내 정보 수정하기</div>
-          <div>예약 내역</div>
+          <div onClick={() => navigate("/reservation-list")}>예약 내역</div>
           <div onClick={() => navigate("/cart")}>장바구니</div>
         </style.List>
       </style.Div>

@@ -1,5 +1,6 @@
 import instance from "../../api/instance";
 import { AccommodationInfoParams } from "./accommodationInformation.types";
+import getToken from "../../util/getToken";
 
 export const getAccommodationInfoData = async ({
   id,
@@ -25,8 +26,15 @@ export const postCart = async (
   reservationEndDate: string,
   stayDuration: number,
 ) => {
+  const { accessToken, refreshToken } = getToken();
+  console.log("토큰", accessToken, refreshToken);
+
   try {
     const { data } = await instance.post("/carts", {
+      headers: {
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      },
       roomOptionId,
       numberOfGuest,
       reservationStartDate,
@@ -46,8 +54,14 @@ export const postReservation = async (
   reservationEndDate: string,
   stayDuration: number,
 ) => {
+  const { accessToken, refreshToken } = getToken();
+
   try {
     const { data } = await instance.post("/payment/instant", {
+      headers: {
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      },
       roomOptionId,
       numberOfGuest,
       reservationStartDate,

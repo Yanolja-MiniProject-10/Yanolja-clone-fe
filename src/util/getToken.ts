@@ -1,15 +1,15 @@
 const getToken = () => {
-  const userStateValue = localStorage.getItem("userState");
+  const localStorageValue = localStorage.getItem("recoil-persist");
 
-  if (userStateValue) {
-    const userState = JSON.parse(userStateValue);
-
-    const access = userState.accessToken;
-    const refresh = userState.refreshToken;
+  if (localStorageValue) {
+    const userStateValue = JSON.parse(localStorageValue);
+    const access = userStateValue.userState.accessToken;
+    const refresh = userStateValue.userState.refreshToken;
 
     return { accessToken: access, refreshToken: refresh };
+  } else {
+    return { accessToken: "", refreshToken: "" };
   }
-  return { accessToken: "", refreshToken: "" };
 };
 
 export default getToken;
