@@ -11,7 +11,7 @@ import { handleDateParam } from "../../accommodation/accommodation.utils";
 import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 
 const AccommodationRoomList = () => {
-  const { id } = useParams();
+  const { accommodationId } = useParams();
   const navigation = useNavigate();
 
   const { guest } = useRecoilValue(accommodationMemberState);
@@ -28,7 +28,7 @@ const AccommodationRoomList = () => {
   }
 
   const { status, data } = useAccommodationInfoQuery({
-    id,
+    id: accommodationId,
     reservationStartDate,
     reservationEndDate,
     member: guest,
@@ -67,7 +67,7 @@ const AccommodationRoomList = () => {
         <AccommodationRoomItem
           key={room.id}
           id={room.id}
-          accommodationId={id}
+          accommodationId={accommodationId}
           name={room.name}
           roomOptionImage={room.roomOptionImage}
           checkInTime={room.checkInTime}

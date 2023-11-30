@@ -25,8 +25,8 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/accommodation" element={<Accommodation />} />
-        <Route path="/accommodation/:id" element={<AccommodationInformation />} />
-        <Route path="/accommodation/:id/room/:id" element={<AccommodationRoom />} />
+        <Route path="/accommodation/:accommodationId" element={<AccommodationInformation />} />
+        <Route path="/accommodation/:accommodationId/room/:roomOptionId" element={<AccommodationRoom />} />
         <Route path="/category/:id" element={<Category />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/reservation-check" element={<ReservationCheck />} />
