@@ -14,8 +14,6 @@ const SelectCartList = ({ accommodations }: SelectCartListProps) => {
   const [isSelectAll, setIsSelectAll] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(accommodations);
-
   // 최초 및 재입장 시 전체 선택 상태 기본값
   useEffect(() => {
     setAllCheked(accommodations, setCheckedRooms);
