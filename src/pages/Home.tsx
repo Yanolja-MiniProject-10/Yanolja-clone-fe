@@ -11,8 +11,10 @@ import { useRecoilValue } from "recoil";
 import { relatedAccommodationsState } from "../recoil/home/clickedCategoryAndRegion";
 import HomeContainerSkeleton from "../feature/home/components/HomeContainerSkeleton";
 import { setSessionValue } from "../util/searchSessionValue";
+import { userState } from "../recoil/userData";
 
 const Home = () => {
+  const user = useRecoilValue(userState);
   const { data: allAccommodations, isFetching } = useAllAccommodations();
 
   const relatedCateRegion = useRecoilValue(relatedAccommodationsState);
@@ -35,7 +37,7 @@ const Home = () => {
               <AllAndRelatedSwiper title={"모든 숙소 둘러보기"} accommodations={allAccommodations} />
             )}
 
-            {relatedAccommodations && (
+            {user.accessToken && relatedAccommodations && (
               <AllAndRelatedSwiper
                 title={"최근 본 상품의 연관 상품"}
                 accommodations={relatedAccommodations}
