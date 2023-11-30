@@ -3,8 +3,12 @@ import { AccommodationDataProps } from "./accommodation.types";
 import * as style from "../../feature/accommodation/styles/accommodationContent";
 import accommmodationSample from "../../assets/images/accommodationSample.svg";
 import { handleTitlelength } from "../../feature/accommodation/accommodation.utils";
+import { relatedAccommodationsState } from "../../recoil/home/clickedCategoryAndRegion";
+import { useSetRecoilState } from "recoil";
 
 const AccommodationContent = ({ accommodations }: AccommodationDataProps) => {
+  const setRelatedCateRegion = useSetRecoilState(relatedAccommodationsState);
+
   return (
     <style.AccommodationContentBox>
       <style.AccommodationContentTitleParagraph>
@@ -16,6 +20,9 @@ const AccommodationContent = ({ accommodations }: AccommodationDataProps) => {
             <style.AccommodationContentLink
               to={`/accommodation/${singleAccommodation.id}`}
               key={singleAccommodation.id}
+              onClick={() =>
+                setRelatedCateRegion({ category: singleAccommodation.category, region: singleAccommodation.region })
+              }
             >
               <style.AccommodationContentGridContainer>
                 <style.AccommodationContentGridImg
@@ -34,13 +41,13 @@ const AccommodationContent = ({ accommodations }: AccommodationDataProps) => {
                       {singleAccommodation.category}
                     </style.AccommodationContentGridInnerTag>
                   </div>
-                  <div style={{ marginLeft: "auto" }}>
+                  <style.AccommodationContentGridInnerPriceBox>
                     <style.AccommodationContentGridInnerParagraph>
                       {`${singleAccommodation.minimumPrice.toLocaleString()} ~ `}
                       <br />
                       {`${singleAccommodation.maximumPrice.toLocaleString()}원`}
                     </style.AccommodationContentGridInnerParagraph>
-                  </div>
+                  </style.AccommodationContentGridInnerPriceBox>
                 </style.AccommodationContentGridInnerBox>
               </style.AccommodationContentGridContainer>
             </style.AccommodationContentLink>

@@ -5,7 +5,7 @@ import { accommodationMemberState } from "../../../recoil/accommodation/accommod
 import { useAccommodationsSearchQuery } from "../hooks/search.hooks";
 import { useState, KeyboardEvent, useEffect } from "react";
 import { AccommodationSetSearchResultParams } from "../search.types";
-import { getSearchValue, setSearchValue } from "../search.utils";
+import { getSessionValue, setSessionValue } from "../../../util/searchSessionValue";
 
 const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearchResultParams) => {
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
@@ -13,9 +13,10 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
   const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
-    const prevSearchValue = getSearchValue("searchResult");
-    const prevAccommodationValue = getSearchValue("accommodations");
-    const prevHistoryIdx = getSearchValue("historyIdx");
+    const prevSearchValue = getSessionValue("searchResult");
+    const prevAccommodationValue = getSessionValue("accommodations");
+    const prevHistoryIdx = getSessionValue("historyIdx");
+    setSessionValue("historyPage", "search");
     if (prevHistoryIdx === window.history.state.idx && prevSearchValue && prevAccommodationValue.length) {
       setInputValue(prevSearchValue);
       setAccommodations(prevAccommodationValue);
@@ -34,9 +35,9 @@ const AccommmodationSearchResult = ({ setAccommodations }: AccommodationSetSearc
       if (!inputValue) return;
 
       if (data?.data?.content && status === "success") {
-        setSearchValue("searchResult", inputValue);
-        setSearchValue("accommodations", data?.data.content);
-        setSearchValue("historyIdx", window.history.state.idx);
+        setSessionValue("searchResult", inputValue);
+        setSessionValue("accommodations", data?.data.content);
+        setSessionValue("historyIdx", window.history.state.idx);
         setAccommodations(data?.data?.content);
       }
     }

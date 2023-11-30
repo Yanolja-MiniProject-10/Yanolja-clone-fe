@@ -1,13 +1,7 @@
-import * as style from "../../feature/accommodation/styles/accommodationInfo";
+import AccommodationRegion from "../accommodationRegion/AccommodationRegion";
 
 const AccommodationInfoRegion = () => {
-  return (
-    <>
-      <style.AccommodationInfoRegionBox>
-        <style.AccommodationInfoRegionSelect />
-      </style.AccommodationInfoRegionBox>
-    </>
-  );
+  return <AccommodationRegion />;
 };
 
 export default AccommodationInfoRegion;
