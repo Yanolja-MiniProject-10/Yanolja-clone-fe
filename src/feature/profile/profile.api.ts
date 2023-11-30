@@ -1,11 +1,9 @@
 import authInstance from "../../api/authInstance";
+import getLocalStorage from "../../util/getLocalStorage";
 
-interface User {
-  accessToken: string;
-  refreshToken: string;
-}
+export const getUser = async () => {
+  const { accessToken, refreshToken } = getLocalStorage();
 
-export const getUser = async ({ accessToken, refreshToken }: User) => {
   const data = await authInstance.get("/users", {
     headers: {
       accessToken: accessToken,

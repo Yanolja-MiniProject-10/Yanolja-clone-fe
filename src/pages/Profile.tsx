@@ -24,7 +24,7 @@ const Profile = () => {
   // user 정보 가져오기
   const handleGetUser = async () => {
     try {
-      const data = await getUser(user);
+      const data = await getUser();
 
       if (data.status === 200) {
         setName(data.data.data.name);
@@ -46,6 +46,9 @@ const Profile = () => {
       });
       if (data.status === 200) {
         resetUser(); // userState를 초기 상태로 재설정
+
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
 
         setIsLogoutModal(false);
       } else {
