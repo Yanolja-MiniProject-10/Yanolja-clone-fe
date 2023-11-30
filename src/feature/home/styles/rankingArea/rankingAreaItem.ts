@@ -4,17 +4,17 @@ import styled from "styled-components";
 const RankingItemWrapper = styled.div`
   display: flex;
   grid-template-columns: auto 2fr;
-  gap: 1rem;
+  gap: 2rem;
   align-items: center;
 `;
 
 const NumberBox = styled.div`
-  width: 2rem;
-  height: 2rem;
-  padding-bottom: 3px;
+  width: 1.3rem;
+  height: 1.3rem;
+  padding-bottom: 1px;
 
   background-color: ${({ theme }) => theme.color.mainPink};
-  border-radius: ${({ theme }) => theme.box.radius};
+  border-radius: 5px;
 
   display: flex;
   justify-content: center;
@@ -29,37 +29,39 @@ const NumberBox = styled.div`
 const StyledLink = styled(Link)`
   height: 100%;
 
+  width: 90%;
   display: flex;
   gap: 1rem;
 `;
 
 const ImageBox = styled.div`
   & > img {
-    width: 6rem;
-    height: 6rem;
+    width: 70px;
+    height: 70px;
     border-radius: 5px;
 
     object-fit: cover;
   }
 `;
 const Description = styled.div`
-  margin: 5% 0;
-
+  margin: 6% 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  * {
-    font-size: ${({ theme }) => theme.fontSize.xxs};
-  }
 `;
 
-//야놀자에서는 제목보다 가격에 bold처리해서 상의 해보기
 const Name = styled.b`
-  //font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 const Price = styled.p`
-  //font-size: ${({ theme }) => theme.fontSize.xs};
+  padding-right: 1.2rem;
+
+  display: flex;
+  justify-content: right;
+
+  font-size: ${({ theme }) => theme.fontSize.xxs};
 `;
 
 export { RankingItemWrapper, NumberBox, StyledLink, ImageBox, Description, Name, Price };

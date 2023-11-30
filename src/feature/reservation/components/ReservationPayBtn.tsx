@@ -1,19 +1,22 @@
 import { useRecoilValue } from "recoil";
 import { radioDataState } from "../../../recoil/checkedRadio";
+import { paymentDataState } from "../../../recoil/paymentData";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RadioDataState, ReservationLocationsState } from "../reservation.types";
+import { CartData } from "../../../types";
 import { PayBtn } from "../styles/reservationPayBtn";
 import { usePostPurchase } from "../hooks/queries/usePostPurchase";
 
 const ReservationPayBtn = ({ allChecked }: { allChecked: boolean }) => {
   const radioData = useRecoilValue(radioDataState);
   const radioDataArray: RadioDataState[] = Object.values(radioData);
-  const location = useLocation();
 
+  const location = useLocation();
   const ReservationInfo: ReservationLocationsState = { ...location.state };
   const { mutateAsync: postPurchase } = usePostPurchase();
 
   const navigation = useNavigate();
+  const paymentData: CartData = useRecoilValue(paymentDataState);
 
   const postPurchasePayload = {
     cartId: ReservationInfo.cartId,
@@ -25,7 +28,7 @@ const ReservationPayBtn = ({ allChecked }: { allChecked: boolean }) => {
       const data = await postPurchase(postPurchasePayload);
 
       if (data === "SUCCESS") {
-        navigation("/reservation-list");
+        navigation("/reservation-check", { state: { paymentData } });
       } else {
         throw new Error();
       }

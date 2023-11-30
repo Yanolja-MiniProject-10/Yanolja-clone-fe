@@ -18,7 +18,7 @@ export const EmptyCartWrapper = styled.div`
 `;
 
 export const EmptyCartIcon = styled(LuShoppingCart)`
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: 100px;
   color: ${({ theme }) => theme.color.middleGray};
 `;
 
@@ -28,10 +28,14 @@ export const EmptyCartText = styled.div`
   align-items: center;
 
   strong {
-    font-size: ${({ theme }) => theme.fontSize.xs};
+    margin: 20px 0;
+
+    font-size: ${({ theme }) => theme.fontSize.sm};
   }
 
   span {
+    margin: 0 0 20px;
+
     font-size: ${({ theme }) => theme.fontSize.xxs};
   }
 `;

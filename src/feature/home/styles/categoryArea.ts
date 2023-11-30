@@ -17,9 +17,11 @@ const IconBox = styled(Link)`
 
   cursor: pointer;
 
-  transition: 0.4s;
   &:hover {
-    color: ${({ theme }) => theme.color.mainPink};
+    * {
+      transition: 0.4s;
+      color: ${({ theme }) => theme.color.mainPink};
+    }
   }
 
   * img {

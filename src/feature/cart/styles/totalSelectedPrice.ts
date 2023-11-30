@@ -18,7 +18,7 @@ export const TotalSelectedPriceWrapper = styled.div`
 export const TotalPriceTitle = styled.h2`
   margin-bottom: 20px;
 
-  font-size: ${({ theme }) => theme.fontSize.xs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
 `;
 
 export const TotalPrice = styled.div`
@@ -35,7 +35,7 @@ export const TotalPriceSum = styled.span`
   width: 60%;
 
   line-height: 25px;
-  font-size: ${({ theme }) => theme.fontSize.xxs};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.color.darkGray};
 `;
 
@@ -43,5 +43,5 @@ export const TotalPricePrice = styled.span`
   width: 40%;
 
   text-align: end;
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.lg};
 `;
