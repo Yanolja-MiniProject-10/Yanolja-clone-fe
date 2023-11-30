@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-import MainHeader from "../feature/home/components/MainHeader.tsx";
-import { Wrapper, Box } from "../styles/layout";
-import CommonHeader from "./commonHeader/CommonHeader.tsx";
+import MainHeader from "../../feature/home/components/MainHeader.tsx";
+import { Wrapper, Box } from "./layout.styles.ts";
+import CommonHeader from "../commonHeader/CommonHeader.tsx";
 import { useLocation } from "react-router-dom";
-import ToTopButton from "./toTopButton/ToTopButton.tsx";
+import ToTopButton from "../toTopButton/ToTopButton.tsx";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
