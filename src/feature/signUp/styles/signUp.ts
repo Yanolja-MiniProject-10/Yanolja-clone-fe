@@ -99,7 +99,7 @@ export const Message = styled.p<MessageProps>`
 
 export const Button = styled.button`
   margin-top: 20px;
-  padding: 18px;
+  padding: 1rem;
 
   color: ${({ theme }) => theme.color.white};
   background-color: ${({ theme }) => theme.color.mainPink};
