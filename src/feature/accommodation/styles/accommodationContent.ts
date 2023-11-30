@@ -37,6 +37,20 @@ export const AccommodationContentGrid = styled.div`
   > a:nth-child(even) > div {
     border-right: none;
   }
+
+  @media screen and (width < 750px) {
+    grid-template-columns: repeat(1, 1fr);
+    > a > div {
+      border-right: none;
+    }
+  }
+  @media screen and (width < 400px) {
+    display: flex;
+    flex-direction: column;
+    > a > div {
+      border-right: none;
+    }
+  }
 `;
 
 export const AccommodationContentGridContainer = styled.div`
@@ -57,6 +71,16 @@ export const AccommodationContentGridContainer = styled.div`
     opacity: 0.6;
     transition: 0.4s;
   }
+
+  @media screen and (width < 400px) {
+    // padding: -
+    flex-direction: column;
+    margin-bottom: 1rem;
+    > img {
+      width: 100%;
+      height: 50%;
+    }
+  }
 `;
 
 export const AccommodationContentGridImg = styled.img`
@@ -76,6 +100,18 @@ export const AccommodationContentGridInnerBox = styled.div`
   gap: 1rem;
 
   position: relative;
+
+  @media screen and (width < 400px) {
+    padding: 0;
+  }
+  @media screen and (width < 300px) {
+    > div:nth-child(2) {
+      position: relative;
+      margin-bottom: 1rem;
+      margin-left: auto;
+      bottom: 1.25rem;
+    }
+  }
 `;
 
 export const AccommodationContentGridInnerTitle = styled.p`
