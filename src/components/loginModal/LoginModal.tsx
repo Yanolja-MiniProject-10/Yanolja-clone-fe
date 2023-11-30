@@ -1,12 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import * as style from "./loginModal.styles";
 import { ModalProps } from "./loginModal.types";
+import { useRef } from "react";
 
 const LoginModal = ({ onClose }: ModalProps) => {
   const navigate = useNavigate();
 
+  const modalBackgroundRef = useRef<HTMLDivElement>(null);
+
+  const handleClickBackground = async (e: React.MouseEvent<HTMLDivElement>): Promise<void> => {
+    if (e.target === modalBackgroundRef.current) {
+      onClose();
+    }
+  };
+
   return (
-    <style.ModalBackground>
+    <style.ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
       <style.Modal>
         <div>
           <style.Title>
