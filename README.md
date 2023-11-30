@@ -286,6 +286,7 @@ $ npm run dev
 
 ### Style
 <a href="https://www.figma.com/file/nXHa5NqJdIhkRjZIQ3a2kq/mini-project?type=whiteboard&node-id=0%3A1&t=5zXImadm92h4kzvE-1">🥇 유저플로우 🥇</a>
+<br/>
 <a href="https://www.figma.com/file/xzhsFAOTqHb6HgtcopNyq8/miniProject?type=design&node-id=0%3A1&mode=design&t=3IQv0goIdhTfOUTv-1">🥇 피그마 🥇</a>
 
 ### Branch 전략
