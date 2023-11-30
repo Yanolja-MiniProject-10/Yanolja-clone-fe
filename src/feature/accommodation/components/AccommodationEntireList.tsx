@@ -6,12 +6,14 @@ import { useRecoilValue } from "recoil";
 import { useAccommodationsListQuery } from "../hooks/accommodation.hooks";
 import AccommodationContent from "../../../components/accommodation/AccommodationContent";
 import { accommodationRegionState } from "../../../recoil/accommodation/accommodationRegion";
+import { setSessionValue } from "../../../util/searchSessionValue";
 
 const AccommodationEntireList = () => {
   const [accommodations, setAccommodations] = useState<AccommodationProps[]>([]);
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const { guest } = useRecoilValue(accommodationMemberState);
   const { region } = useRecoilValue(accommodationRegionState);
+  setSessionValue("historyPage", "accommodation");
   const entireResult = useAccommodationsListQuery({
     startDate,
     endDate,

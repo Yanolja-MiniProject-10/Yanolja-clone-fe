@@ -15,9 +15,12 @@ export const handleDateString = (sDate: Date, eDate: Date) => {
 };
 
 export const handleDateParam = (sDate: Date, eDate: Date) => {
+  if (!sDate || !eDate) return;
+  sDate = new Date(sDate);
+  eDate = new Date(eDate);
+
   const targetDate = [sDate, eDate];
   const returnArr: string[] = [];
-  if (!sDate || !eDate) return;
 
   targetDate.map((singleDate: Date) => {
     let temp = "";
@@ -36,17 +39,4 @@ export const handleTitlelength = (title: string) => {
   } else if (title.length > 15) {
     return "18px";
   }
-};
-
-export const getAccommodationParamValue = (key: string) => {
-  const accommodationParamValue = sessionStorage.getItem(key);
-
-  return accommodationParamValue === null ? null : JSON.parse(accommodationParamValue);
-};
-
-export const setAccommodationParamValue = (key: string, value: string) => {
-  if (value === null || value === undefined) return;
-
-  const accommodationParamResultToJSON = JSON.stringify(value);
-  sessionStorage.setItem(key, accommodationParamResultToJSON);
 };

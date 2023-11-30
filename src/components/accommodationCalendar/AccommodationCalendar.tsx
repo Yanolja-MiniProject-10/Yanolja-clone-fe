@@ -6,14 +6,13 @@ import ko from "date-fns/locale/ko";
 import { useSetRecoilState } from "recoil";
 import { accommodationDateState } from "../../recoil/accommodation/accommodationDate";
 import { useState } from "react";
+import { getTomorrow } from "../../util/getTomorrow";
 // import _ from "lodash";
 
 const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow, startDate, endDate }: CalendarProps) => {
   const [startTime, setStartTime] = useState(new Date());
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrow = getTomorrow();
   const [endTime, setEndTime] = useState(tomorrow);
-  console.log(startDate, endDate);
 
   registerLocale("ko", ko); // 달력 한국어로 세팅
   const setAccommodationDateState = useSetRecoilState(accommodationDateState);
