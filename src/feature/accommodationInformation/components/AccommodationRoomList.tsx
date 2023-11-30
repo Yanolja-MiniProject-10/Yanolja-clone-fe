@@ -54,7 +54,7 @@ const AccommodationRoomList = () => {
       </style.Wrapper>
     );
   } else if (status === "error") {
-    window.alert("잘못된 접근입니다. 메인 페이지로 이동합니다.");
+    window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
     navigation("/");
     return null;
   }
