@@ -22,6 +22,7 @@ export const useRelatedAccommodations = ({ category, region }: RelatedProps) => 
   return useQuery({
     queryKey: ["relatedAccommodations", category, region],
     queryFn: () => getRelatedAccommodations(relatedRequest),
+    enabled: !!category,
     staleTime: 1 * 60 * 1000,
   });
 };
