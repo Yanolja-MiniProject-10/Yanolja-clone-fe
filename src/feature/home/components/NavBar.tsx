@@ -10,7 +10,7 @@ const NavBar = () => {
   };
   return (
     <Container>
-      <LinkedBox to="/reservation">
+      <LinkedBox to="/resrvation-list">
         <MdOutlineBook />
         <IconLabel>예약</IconLabel>
       </LinkedBox>

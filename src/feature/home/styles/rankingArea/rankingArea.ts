@@ -8,7 +8,7 @@ const RankingWrapper = styled.div`
   gap: 2rem;
 
   @media screen and (width < 700px) {
-    margin: 0 10%;
+    margin: 0 8%;
     grid-template-columns: repeat(1, 1fr);
   }
 `;
