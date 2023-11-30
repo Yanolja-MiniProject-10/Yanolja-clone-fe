@@ -1,6 +1,7 @@
+import { IoClose } from "react-icons/io5";
 import styled, { css } from "styled-components";
 
-const MemberLayout = styled.div<{ $isMemberShow: boolean }>`
+export const MemberLayout = styled.div<{ $isMemberShow: boolean }>`
   width: 100vw;
   height: 100%;
 
@@ -22,7 +23,7 @@ const MemberLayout = styled.div<{ $isMemberShow: boolean }>`
     `};
 `;
 
-const MemberContainer = styled.div`
+export const MemberContainer = styled.div`
   width: 100%;
   max-width: 750px;
   height: calc(100% - 50px);
@@ -36,23 +37,30 @@ const MemberContainer = styled.div`
   z-index: 3;
 `;
 
-const MemberContentBox = styled.div`
+export const MemberContentBox = styled.div`
   padding-top: 30px;
 
   font-size: ${({ theme }) => theme.fontSize.xxs};
   font-weight: 300;
-
-  > span {
-    font-size: ${({ theme }) => theme.fontSize.sm};
-  }
-
-  > span:nth-child(1) {
-    margin: 0 30px;
-    display: flex;
-  }
 `;
 
-const MemberContentPeopleContainer = styled.div`
+export const MemberContentInfoBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0 30px;
+
+  font-size: ${({ theme }) => theme.fontSize.sm};
+`;
+
+export const MemberContentInfoCloseIcon = styled(IoClose)`
+  width: 1rem;
+  height: 1rem;
+
+  cursor: pointer;
+`;
+
+export const MemberContentPeopleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,7 +81,7 @@ const MemberContentPeopleContainer = styled.div`
   }
 `;
 
-const MemberContentPeoplePick = styled.div`
+export const MemberContentPeoplePick = styled.div`
   display: flex;
   align-items: baseline;
   gap: 1rem;
@@ -89,7 +97,7 @@ const MemberContentPeoplePick = styled.div`
   }
 `;
 
-const MemberNav = styled.nav`
+export const MemberNav = styled.nav`
   width: 100vw;
   height: 60px;
 
@@ -106,7 +114,7 @@ const MemberNav = styled.nav`
   box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.1);
 `;
 
-const MemberButton = styled.button`
+export const MemberButton = styled.button`
   width: 90%;
   max-width: 750px;
   height: 75%;
@@ -117,13 +125,3 @@ const MemberButton = styled.button`
   font-size: ${({ theme }) => theme.fontSize.sm};
   border-radius: 5px;
 `;
-
-export {
-  MemberLayout,
-  MemberContainer,
-  MemberContentBox,
-  MemberContentPeopleContainer,
-  MemberContentPeoplePick,
-  MemberNav,
-  MemberButton,
-};

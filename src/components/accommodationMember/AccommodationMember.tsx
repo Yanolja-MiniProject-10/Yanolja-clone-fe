@@ -1,12 +1,4 @@
-import {
-  MemberLayout,
-  MemberContainer,
-  MemberContentBox,
-  MemberContentPeopleContainer,
-  MemberContentPeoplePick,
-  MemberNav,
-  MemberButton,
-} from "./AccommodationMember";
+import * as style from "./AccommodationMember";
 import { MemberProps } from "./accommodationMember.types";
 import { useSetRecoilState } from "recoil";
 import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember";
@@ -50,13 +42,16 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: Me
     setAccommodationMemberState({ guest: memberCount });
   };
   return (
-    <MemberLayout $isMemberShow={isMemberShow}>
-      <MemberContainer>
-        <MemberContentBox>
-          <span>정확한 숙소검색 결과를 확인하려면 인원수를 선택해주세요.</span>
-          <MemberContentPeopleContainer>
+    <style.MemberLayout $isMemberShow={isMemberShow}>
+      <style.MemberContainer>
+        <style.MemberContentBox>
+          <style.MemberContentInfoBox>
+            <span>정확한 숙소검색 결과를 확인하려면 인원수를 선택해주세요.</span>
+            <style.MemberContentInfoCloseIcon onClick={() => setIsMemberShow(prev => !prev)} />
+          </style.MemberContentInfoBox>
+          <style.MemberContentPeopleContainer>
             <span>인원</span>
-            <MemberContentPeoplePick>
+            <style.MemberContentPeoplePick>
               <button disabled={minusDisabled} onClick={() => handleSetMember("minus")}>
                 <span>-</span>
               </button>
@@ -64,14 +59,14 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: Me
               <button disabled={plusDisabled} onClick={() => handleSetMember("plus")}>
                 <span>+</span>
               </button>
-            </MemberContentPeoplePick>
-          </MemberContentPeopleContainer>
-        </MemberContentBox>
-        <MemberNav>
-          <MemberButton onClick={handleMemberCount}>{`인원 ${memberCount} · 적용하기`}</MemberButton>
-        </MemberNav>
-      </MemberContainer>
-    </MemberLayout>
+            </style.MemberContentPeoplePick>
+          </style.MemberContentPeopleContainer>
+        </style.MemberContentBox>
+        <style.MemberNav>
+          <style.MemberButton onClick={handleMemberCount}>{`인원 ${memberCount} · 적용하기`}</style.MemberButton>
+        </style.MemberNav>
+      </style.MemberContainer>
+    </style.MemberLayout>
   );
 };
 
