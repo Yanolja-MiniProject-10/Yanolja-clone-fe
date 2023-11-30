@@ -28,10 +28,24 @@ const StyledToTopButton = styled.div<StyledToTopButtonProps>`
 
   cursor: pointer;
 
-  transition: bottom 0.5s ease-in-out;
+  transition: 0.4s;
 
   &:hover {
     opacity: 0.8;
+  }
+
+  animation: slideInUp 0.8s ease-in-out;
+
+  /* Keyframes for the animation */
+  @keyframes slideInUp {
+    from {
+      transform: translateY(100%);
+      bottom: -50px;
+    }
+    to {
+      transform: translateY(0%);
+      bottom: ${props => props.$pathBottom};
+    }
   }
 `;
 

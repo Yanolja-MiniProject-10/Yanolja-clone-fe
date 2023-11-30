@@ -20,6 +20,7 @@ export const Accommodation = styled.a<{ $isPaymentId?: boolean }>`
   margin-bottom: 10px;
 
   text-decoration: none;
+  color: ${props => (props.$isPaymentId ? props.theme.color.middleGray : "black")};
 
   cursor: pointer;
 

@@ -15,6 +15,8 @@ import { useEffect, useState } from "react";
 const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: MemberProps) => {
   const setAccommodationMemberState = useSetRecoilState(accommodationMemberState);
   const [memberCount, setMemberCount] = useState(memberNumber);
+  const [minusDisabled, setMinusDisabled] = useState(false);
+  const [plusDisabled, setPlusDisabled] = useState(false);
 
   useEffect(() => {
     if (memberCount !== memberNumber) {
@@ -23,12 +25,25 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: Me
   }, [memberNumber]);
 
   const handleSetMember = (type: string) => {
-    if (type == "plus") {
-      setMemberCount(prev => prev + 1);
-    } else {
-      setMemberCount(prev => prev - 1);
-    }
+    type === "plus" ? setMemberCount(prev => prev + 1) : setMemberCount(prev => prev - 1);
   };
+
+  useEffect(() => {
+    if (memberCount < 2) {
+      setMinusDisabled(true);
+      setPlusDisabled(false);
+      return;
+    }
+
+    if (memberCount >= 2) {
+      if (memberCount > 29) {
+        setPlusDisabled(true);
+        return;
+      }
+      setPlusDisabled(false);
+      setMinusDisabled(false);
+    }
+  }, [memberCount]);
 
   const handleMemberCount = () => {
     setIsMemberShow(prev => !prev);
@@ -38,13 +53,17 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: Me
     <MemberLayout $isMemberShow={isMemberShow}>
       <MemberContainer>
         <MemberContentBox>
-          정확한 숙소검색 결과를 확인하려면 인원수를 선택해주세요.
+          <span>정확한 숙소검색 결과를 확인하려면 인원수를 선택해주세요.</span>
           <MemberContentPeopleContainer>
-            인원
+            <span>인원</span>
             <MemberContentPeoplePick>
-              <button onClick={() => handleSetMember("minus")}> - </button>
+              <button disabled={minusDisabled} onClick={() => handleSetMember("minus")}>
+                <span>-</span>
+              </button>
               {memberCount}
-              <button onClick={() => handleSetMember("plus")}> + </button>
+              <button disabled={plusDisabled} onClick={() => handleSetMember("plus")}>
+                <span>+</span>
+              </button>
             </MemberContentPeoplePick>
           </MemberContentPeopleContainer>
         </MemberContentBox>
