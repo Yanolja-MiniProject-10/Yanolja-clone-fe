@@ -18,6 +18,7 @@ export const AccommodationSearchIcon = styled(IoSearch)`
   height: 1rem;
 
   margin-left: 1rem;
+  flex-shrink: 0;
 `;
 
 export const AccommodationSearchCloseIcon = styled(IoClose)`
@@ -27,10 +28,11 @@ export const AccommodationSearchCloseIcon = styled(IoClose)`
   margin-right: 1rem;
 
   cursor: pointer;
+  flex-shrink: 0;
 `;
 
 export const AccommodationSearchInput = styled.input`
-  width: auto;
+  width: 100%;
 
   flex: auto;
 

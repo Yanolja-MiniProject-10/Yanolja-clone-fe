@@ -9,7 +9,7 @@ import Reservation from "./pages/Reservation";
 import ReservationCheck from "./pages/ReservationCheck";
 import ReservationList from "./pages/ReservationList";
 import Profile from "./pages/Profile";
-import Layout from "./components/Layout";
+import Layout from "./components/layout/Layout";
 import AccommodationRoom from "./pages/AccommodationRoom";
 import AccommodationInformation from "./pages/AccommodationInformation";
 import PageNotFound from "./pages/PageNotFound";

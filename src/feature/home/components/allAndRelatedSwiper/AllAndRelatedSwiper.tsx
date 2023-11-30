@@ -12,12 +12,9 @@ interface AllAndRelatedProps {
   title: string;
   accommodations: Accommodation[];
   category?: string;
-  region?: string;
 }
-//region props에 추가
-const AllAndRelatedSwiper = ({ title, accommodations, category, region }: AllAndRelatedProps) => {
-  console.log("category, region", category, region);
 
+const AllAndRelatedSwiper = ({ title, accommodations, category }: AllAndRelatedProps) => {
   return (
     <HomeInnerContainer>
       <TitleAndLinkBox>

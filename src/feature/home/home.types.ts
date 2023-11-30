@@ -45,8 +45,8 @@ export interface FestivalResponse {
 }
 
 export interface RelatedProps {
-  category: string;
-  region: string;
+  category?: string;
+  region?: string;
 }
 
 export interface RegionList {

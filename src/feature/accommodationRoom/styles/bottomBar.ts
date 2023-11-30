@@ -23,6 +23,12 @@ export const Wrapper = styled.div`
   border-top: 1px solid ${({ theme }) => theme.color.middleGray};
 `;
 
+export const SkeletonTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
 export const TopWrapper = styled.div`
   display: flex;
   flex-direction: column;

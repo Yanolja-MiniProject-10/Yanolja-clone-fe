@@ -43,7 +43,7 @@ const ReservationCheck = () => {
 
         {newCartData.accommodations.map(accommodation => (
           <cartStyle.AccommodationList key={`accommodation-list-${accommodation.accommodationId}`}>
-            <cartStyle.Accommodation>
+            <cartStyle.Accommodation href={"/accommodation/" + accommodation.accommodationId}>
               <cartStyle.AccommodationName>{accommodation.name}</cartStyle.AccommodationName>
               <cartStyle.AccommodationAddress>{accommodation.address}</cartStyle.AccommodationAddress>
             </cartStyle.Accommodation>
