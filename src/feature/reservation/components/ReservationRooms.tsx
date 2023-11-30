@@ -12,7 +12,7 @@ const ReservationRooms = () => {
     <div>
       {paymentData.accommodations.map(accommodation => (
         <common.AccommodationList key={`accommodation-list-${accommodation.accommodationId}`}>
-          <common.Accommodation>
+          <common.Accommodation href={"/accommodation/" + accommodation.accommodationId}>
             <common.AccommodationName>{accommodation.name}</common.AccommodationName>
             <common.AccommodationAddress>{accommodation.address}</common.AccommodationAddress>
           </common.Accommodation>
