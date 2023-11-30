@@ -1,19 +1,36 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { updateTransportation } from "../feature/reservationCheck/reservationCheck.util";
 import { ReservationCheckData } from "../feature/reservationCheck/reservationCheck.types";
+import { Loading, LoadingWrapper } from "../styles/loading";
 import * as cartStyle from "../feature/cart/styles/cartRoom";
 import * as reserStyle from "../feature/reservation/styles/reservationRooms";
 import * as style from "../feature/reservationCheck/styles/reservationCheck";
-import { updateTransportation } from "../feature/reservationCheck/reservationCheck.util";
 
 const ReservationCheck = () => {
   const location = useLocation();
+  const navigation = useNavigate();
   const reservationCheckData: ReservationCheckData = { ...location.state };
   const chekPayment = reservationCheckData.paymentData;
   const radioData = reservationCheckData.radioDataArray;
   const newCartData = updateTransportation(chekPayment, radioData);
-  const navigation = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
-  return (
+  useEffect(() => {
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    loadingTimer;
+
+    return () => clearInterval(loadingTimer);
+  }, []);
+
+  return isLoading ? (
+    <LoadingWrapper>
+      <Loading />
+    </LoadingWrapper>
+  ) : (
     <style.ReservationChecktWrapper>
       <style.ChekPaymentWrapper>
         <style.ChekPaymentContents>
