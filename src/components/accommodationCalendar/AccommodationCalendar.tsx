@@ -9,7 +9,7 @@ import { useState } from "react";
 import { getTomorrow } from "../../util/getTomorrow";
 // import _ from "lodash";
 
-const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow, startDate, endDate }: CalendarProps) => {
+const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarProps) => {
   const [startTime, setStartTime] = useState(new Date());
   const tomorrow = getTomorrow();
   const [endTime, setEndTime] = useState(tomorrow);
