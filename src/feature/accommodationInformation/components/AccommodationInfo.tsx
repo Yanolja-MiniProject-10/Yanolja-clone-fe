@@ -2,7 +2,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import * as style from "../styles/accommodationInfo";
 import Toast from "../../../components/Toast/Toast";
 import { toastState } from "../../../recoil/toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
@@ -19,7 +19,6 @@ const AccommodationInfo = () => {
 
   const dateArray = handleDateParam(startDate, endDate);
 
-  /**나중에 로직 수정 예정 */
   let reservationStartDate = "";
   let reservationEndDate = "";
   if (dateArray) {
@@ -27,12 +26,14 @@ const AccommodationInfo = () => {
     reservationEndDate = dateArray![1];
   }
 
-  const { status, data, error } = useAccommodationInfoQuery({
+  const { status, data } = useAccommodationInfoQuery({
     id: accommodationId,
     reservationStartDate,
     reservationEndDate,
     member: guest,
   });
+
+  const navigation = useNavigate();
 
   if (status === "pending") {
     return (
@@ -41,7 +42,7 @@ const AccommodationInfo = () => {
           <Skeleton height={560} />
         </style.SkeletonImgWrapper>
         <style.TextInfo>
-          <Skeleton height={30} width={200} />
+          <Skeleton height={30} width={150} />
           <Skeleton width={300} height={25} />
           <style.DivideLine />
           <style.AccommodationStaticDescWrap>
@@ -55,7 +56,9 @@ const AccommodationInfo = () => {
       </style.Wrapper>
     );
   } else if (status === "error") {
-    console.log(error.message, ": 알 수 없는 오류입니다.");
+    window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+    navigation("/");
+    return null;
   }
 
   return (

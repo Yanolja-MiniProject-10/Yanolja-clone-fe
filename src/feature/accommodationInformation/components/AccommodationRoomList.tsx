@@ -19,7 +19,6 @@ const AccommodationRoomList = () => {
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const dateArray = handleDateParam(startDate, endDate);
 
-  /**나중에 로직 수정 예정 */
   let reservationStartDate = "";
   let reservationEndDate = "";
   if (dateArray) {
@@ -40,7 +39,7 @@ const AccommodationRoomList = () => {
         {[...Array(4)].map((_, index) => (
           <style.SkeletonBox key={index}>
             <style.SkeletonRoomImgWrapper>
-              <Skeleton width={270} height={150} />
+              <Skeleton width={270} height={180} style={{ borderRadius: "10px" }} />
             </style.SkeletonRoomImgWrapper>
             <style.RoomInfo>
               <style.SkeletonRoomTopWrapper>
@@ -55,7 +54,7 @@ const AccommodationRoomList = () => {
       </style.Wrapper>
     );
   } else if (status === "error") {
-    window.alert("잘못된 접근입니다. 메인 페이지로 이동합니다.");
+    window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
     navigation("/");
     return null;
   }

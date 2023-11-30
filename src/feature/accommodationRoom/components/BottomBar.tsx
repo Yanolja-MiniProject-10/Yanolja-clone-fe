@@ -31,7 +31,6 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
 
   const navigation = useNavigate();
 
-  /**나중에 로직 수정 예정 */
   let reservationStartDate = "";
   let reservationEndDate = "";
   if (dateArray) {
@@ -42,11 +41,16 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
   if (status == "pending") {
     return (
       <style.Wrapper>
-        <Skeleton height={30} width={200} />
+        <style.SkeletonTextWrapper>
+          <Skeleton height={15} width={160} />
+          <Skeleton height={20} width={100} />
+          <Skeleton height={30} width={200} />
+        </style.SkeletonTextWrapper>
       </style.Wrapper>
     );
   } else if (status == "error") {
-    return null;
+    window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+    navigation("/");
   } else {
     const room = data.data;
     const availableRoomCount = room.totalRoomCount - room.reservedRoomCount;
@@ -64,8 +68,8 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
         });
         setToast({ open: true, message: "장바구니에 상품이 담겼습니다." });
       } catch (e) {
-        alert(`장바구니에 상품 담기를 실패했습니다.`);
-        console.log(e);
+        window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+        navigation("/");
       }
     };
 
@@ -82,7 +86,8 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
           },
         });
       } catch (e) {
-        console.log(e);
+        window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+        navigation("/");
       }
     };
 

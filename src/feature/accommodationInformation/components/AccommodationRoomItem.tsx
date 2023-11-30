@@ -52,7 +52,6 @@ const AccommodationRoomItem = ({
 
   const isAvailableGuest = guest <= capacity;
 
-  /**나중에 로직 수정 예정 */
   let reservationStartDate = "";
   let reservationEndDate = "";
   if (dateArray) {
@@ -71,8 +70,8 @@ const AccommodationRoomItem = ({
       });
       setToast({ open: true, message: "장바구니에 상품이 담겼습니다." });
     } catch (e) {
-      alert(`장바구니에 상품 담기를 실패했습니다.`);
-      console.log(e);
+      window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+      navigation("/");
     }
   };
 
@@ -89,7 +88,8 @@ const AccommodationRoomItem = ({
         },
       });
     } catch (e) {
-      console.log(e);
+      window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+      navigation("/");
     }
   };
 
