@@ -84,4 +84,9 @@ export const AccommodationInfoRegionSelect = styled.select`
 
   font-size: ${({ theme }) => theme.fontSize.xxs};
   font-weight: 600;
+
+  color: ${({ theme }) => theme.color.mainPink};
+  &:focus {
+    outline: none;
+  }
 `;

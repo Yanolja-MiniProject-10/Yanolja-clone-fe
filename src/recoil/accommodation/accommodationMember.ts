@@ -1,10 +1,10 @@
 import { atom } from "recoil";
-import { accommodationMemberDefault } from "../../feature/accommodation/accommodation.types";
+import { AccommodationMemberDefault } from "../../feature/accommodation/accommodation.types";
 import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-const defaultValue: accommodationMemberDefault = {
+const defaultValue: AccommodationMemberDefault = {
   guest: 2,
 };
 
