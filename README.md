@@ -1,14 +1,10 @@
 # Yanoja Clone (FE & BE 협업)
 
 <p align="center">
-  <img src="public/favicon.ico"  width="150" height="150"/><br/>
-  <a href="/">
-    <img src="https://img.shields.io/badge/Yanolja Clone-red?style=for-the-badge&logoColor=white" alt="Yanolja Clone"/>
+  <img src="public/favicon.ico"  width="100" height="100"/><br/>
+  <a href="https://yanolja.vercel.app/">
+    <img src="https://img.shields.io/badge/Yanolja Clone-212125?style=for-the-badge&logoColor=white" alt="Yanolja Clone"/>
   </a>
-  <a href="https://github.com/Yanolja-MiniProject-10/KDT_Y_FE_Mini-Project">
-    <img src="https://img.shields.io/badge/배포 repository-212125?style=for-the-badge&logoColor=white" alt="배포 레포"/>
-  </a>
-  <br/>
 </p>
 
 ```
@@ -19,15 +15,12 @@ Test PW : 00000
 <br/>
 
 <details>
-<summary>[요구 사항 체크]</summary>
-
-  <details>
-  <summary>a. 프로젝트 요구 사항</summary>
+<summary>a. 프로젝트 요구 사항</summary>
 
   [회원 회원가입 기능]
 
-  ✅  회원은 회원가입을 할 수 있습니다.
-  ❎  기본 정보는 ID 역할로 이메일 주소와, 비밀번호, 이름 입니다.
+  - [ ] 회원은 회원가입을 할 수 있습니다.  
+  - [ ] 기본 정보는 ID 역할로 이메일 주소와, 비밀번호, 이름 입니다.
 
   [회원 로그인 기능]
 
@@ -66,7 +59,7 @@ Test PW : 00000
   - [ ]  주문하기 버튼을 통해 주문/결제 화면으로 이동합니다.
 
   [주문하기]
-  
+
   - [ ]  장바구니에서 주문하기 버튼 또는 개별 상품 조회 페이지에서 주문하기 버튼을 누르면 전환되는 페이지입니다.
   - [ ]  만 14세 이상 이용 동의를 체크 박스로 입력 받으면, 화면 최하단에 결제하기 버튼이 활성화됩니다.
 
@@ -81,12 +74,14 @@ Test PW : 00000
   - [ ]  결제를 성공적으로 처리하면, 주문한 상품(들)에 대한 주문 결과를 출력해줍니다.
 
   [(옵션) 주문 내역 확인]
-  
-  - [ ]  별도 주문 내역 페이지에 여태 주문한 모든 이력을 출력해줍니다.
-  </details>
 
-  <details>
-  <summary>b. 기능적 요구 사항</summary>
+  - [ ]  별도 주문 내역 페이지에 여태 주문한 모든 이력을 출력해줍니다.
+
+</details>
+
+<details>
+<summary>b. 기능적 요구 사항</summary>
+
   [공통]
 
   - [ ]  모든 단계에서 협업을 기반으로 프로젝트를 진행합니다.
@@ -101,10 +96,11 @@ Test PW : 00000
   - [ ]  React.js 또는 Next.js를 기반으로 구현하며, 컴포넌트 단위로 구조를 설계합니다.
   - [ ]  (옵션) 페이징 처리 시, **무한 스크롤**을 고려합니다.
 
-  </details>
+</details>
 
-  <details>
-  <summary>c. 평가 항목 분석</summary>
+<details>
+<summary>c. 평가 항목 분석</summary>
+
   [프로젝트 관리]
 
   - [ ]  일정을 설정하고 업무를 효과적으로 분배하고 관리했는가?
@@ -139,7 +135,6 @@ Test PW : 00000
 
   - [ ]  협업 도구와 팀원들 간의 원활한 커뮤니케이션을 얼마나 잘 이끌어 나갔는가?
   - [ ]  팀원들과의 원활한 커뮤니케이션과 정보 공유를 수행했는가?
-  </details>
 
 </details>
 
@@ -147,44 +142,18 @@ Test PW : 00000
 
 ## 🧑🏻‍💻 프로젝트 소개
 
-Front-End와 Back-End와의 협업을 통해 완성한 숙박 예약 API 서비스 `Yanolja Clone` 프로젝트입니다.
+Yanoja Clone은 `야놀자`의 숙박 예약 서비스 `Clone 프로젝트`입니다.
+
+- 🧑🏻‍💻 개발 기간 : `2주, 23.11.20 (월) ~ 23.12.01 (금)`
 
 ## 🧑🏻‍💻 Contributor (각자 확인 필요)
-### FE
+### Frontend
 > @[신현진](https://github.com/xxxjinn) : 개별 상품 조회, 개별 상품 상세 (accommodation, cart)  
 > @[남현준](https://github.com/applevalley) : 검색, 전체 상품 조회, 카테고리 별 상품 조회 (accommodation, category, region)  
 > @[박은영](https://github.com/SKY-PEY) : 메인, 헤더, 네비바 (accommodation, category, region)  
 > @[이연수](https://github.com/suehub) : 로그인, 회원가입, 마이페이지 (auth, user)  
 > @[최지훈](https://github.com/JitHoon) : 장바구니, 주문하기, 주문 결과 확인, 주문 내역 확인 (cart, reservation)
 
-### BE
-> @[김동준](https://github.com/Kim-Dong-Jun99) : accommodation, category, region  
-> @[김종훈](https://github.com/whdgns5059) : cart, reservation  
-> @[노재혁](https://github.com/NoJaeHyuk) : auth, user
-
-## 🧑🏻‍💻 Stack (수정 필요)
-
-![Stack](https://github.com/MOVIEJOJO7/cat-talk/assets/101972330/68bb2746-7f5f-40da-9cd6-3a57cb4c89fc)
-
-## 🧑🏻‍💻 디자인 (수정 필요)
-
-<a href="https://www.figma.com/file/nXHa5NqJdIhkRjZIQ3a2kq/mini-project?type=whiteboard&node-id=0%3A1&t=5zXImadm92h4kzvE-1">🥇 유저플로우 🥇</a>
-<br/>
-<a href="https://www.figma.com/file/xzhsFAOTqHb6HgtcopNyq8/miniProject?type=design&node-id=0%3A1&mode=design&t=3IQv0goIdhTfOUTv-1">🥇 피그마 🥇</a>
-
-## 🧑🏻‍💻 주요 기능 구현
-
-## 🧑🏻‍💻 Script
-
-### Development Mode
-
-```
-$ git clone https://github.com/Yanolja-MiniProject-10/KDT_Y_FE_Mini-Project.git
-$ npm ci
-$ npm run dev
-```
-
-## 🧑🏻‍💻 팀 소개
 
 <table>
   <tr>
@@ -238,6 +207,11 @@ $ npm run dev
   </tr>
 </table>
 
+### Backend
+> @[김동준](https://github.com/Kim-Dong-Jun99) : accommodation, category, region  
+> @[김종훈](https://github.com/whdgns5059) : cart, reservation  
+> @[노재혁](https://github.com/NoJaeHyuk) : auth, user
+
 <table>
   <tr>
     <td align="center" width="150px">
@@ -271,27 +245,30 @@ $ npm run dev
   </tr>
 </table>
 
-## 🧑🏻‍💻 Convention
-### 파일 관리
+## 🧑🏻‍💻 Stack
 
-### Commit
-- Feat: 기능 구현
-- Fix: 수정
-- Refactor: 개선
-- Design: 스타일
-- Command: 주석
-- Doc: 문서, 이슈 템플릿
-- Chore: npm 설치
-- Delete: 파일 삭제
+![mini-project](https://github.com/cs-yum/cs-yum-blog/assets/101972330/ea06a2f1-e5c6-4d9f-8b8a-7b4431eb5837)
 
-### Issues, PR, Merge
 
-### Style
+## 🧑🏻‍💻 주요 협업 링크
 
-### Branch 전략
+[🥇 Userflow 🥇](https://www.figma.com/file/nXHa5NqJdIhkRjZIQ3a2kq/mini-project?type=whiteboard&node-id=0%3A1&t=5zXImadm92h4kzvE-1)
 
-### API
+[🥇 Figma 🥇](https://www.figma.com/file/xzhsFAOTqHb6HgtcopNyq8/miniProject?type=design&node-id=0%3A1&mode=design&t=3IQv0goIdhTfOUTv-1)
+
+[🥇 Swagger 🥇](https://ybe-mini.site/swagger-ui/index.html)
+
+## 🧑🏻‍💻 주요 기능 구현
+
+
+## 🧑🏻‍💻 Script
+
+### Development Mode
+
+```
+$ git clone https://github.com/Yanolja-MiniProject-10/KDT_Y_FE_Mini-Project.git
+$ npm ci
+$ npm run dev
+```
 
 ### 프로젝트 회고
-
-## 🧑🏻‍💻 개발 기간 : `2주, 23.11.20 (월) ~ 23.12.01 (금)`
