@@ -41,6 +41,7 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarPr
           shouldCloseOnSelect={false}
           startDate={startTime}
           endDate={endTime}
+          minDate={new Date()}
           locale={ko}
           monthsShown={6}
           inline
