@@ -1,7 +1,7 @@
 import { useRef } from "react";
+import * as commonStyle from "../../../components/loginModal/loginModal.styles";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
 import * as style from "../styles/logoutModal";
-import * as commonStyle from "../../../components/loginModal/loginModal.styles";
 
 const LogoutModal = ({ onClose, onConfirmLogout }: ModalProps) => {
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
