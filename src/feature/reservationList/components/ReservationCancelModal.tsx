@@ -1,11 +1,19 @@
 import { useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { useDeletePayment } from "../hooks/queries/useDeletePayment";
 import { PaymentData, ReserCancelModalProps } from "../reservationList.types";
 import * as style from "../../cart/styles/cartModal";
 
 const ReservationCancelModal = ({ reservationNumber, paymentId, setIsModalOpen }: ReserCancelModalProps) => {
   const queryClient = useQueryClient();
-  const { mutateAsync: deletePayment } = useDeletePayment(queryClient);
+  const { mutateAsync: deletePayment, status } = useDeletePayment(queryClient);
+  const navigation = useNavigate();
+
+  if (status === "error") {
+    window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+    navigation("/");
+    return null;
+  }
 
   const handleCancleReservation = async (deletePaymentId: PaymentData["paymentId"]) => {
     try {
