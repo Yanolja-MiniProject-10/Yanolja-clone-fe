@@ -15,7 +15,7 @@ export const postPaymentCart = async ({
   const { accessToken, refreshToken } = getLocalStorage();
 
   const { data }: { data: PostPaymentCartResult } = await authInstance.post("/payment/cart", {
-    postPaymentCartPayload,
+    ...postPaymentCartPayload,
     headers: {
       accessToken: accessToken,
       refreshToken: refreshToken,
@@ -32,7 +32,7 @@ export const postPurchase = async (postPurchasePayload: PostPurchasePayload): Pr
   const { accessToken, refreshToken } = getLocalStorage();
 
   const { data }: { data: PostPurchaseResult } = await authInstance.post("/payment/purchase", {
-    postPurchasePayload,
+    ...postPurchasePayload,
     headers: {
       accessToken: accessToken,
       refreshToken: refreshToken,
