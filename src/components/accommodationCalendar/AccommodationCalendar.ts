@@ -116,7 +116,7 @@ export const CalendarContainer = styled.div`
       width: 100%;
     }
 
-    .react-datepicker__month-container:nth-child(n + 5) {
+    .react-datepicker__month-container:nth-child(n + 4) {
       .react-datepicker__header {
         display: none;
       }
