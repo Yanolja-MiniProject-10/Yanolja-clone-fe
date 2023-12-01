@@ -13,6 +13,7 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarPr
   const [startTime, setStartTime] = useState(new Date());
   const tomorrow = getTomorrow();
   const [endTime, setEndTime] = useState(tomorrow);
+  const [startDateChangeFlag, setStartDateChangeFlag] = useState(false);
 
   registerLocale("ko", ko); // 달력 한국어로 세팅
   const setAccommodationDateState = useSetRecoilState(accommodationDateState);
@@ -21,6 +22,13 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarPr
 
     setStartTime(start!);
     setEndTime(end!);
+    if (!startDateChangeFlag && end === null) {
+      setStartDateChangeFlag(true);
+    }
+
+    if (start && end) {
+      setStartDateChangeFlag(false);
+    }
   };
 
   const handleDateChange = () => {
@@ -31,8 +39,35 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarPr
     });
   };
 
+  const handleMaxDate = () => {
+    const dateForAdd = new Date(startTime);
+    if (startDateChangeFlag) {
+      dateForAdd.setDate(dateForAdd.getDate() + 13);
+      return dateForAdd;
+    } else {
+      dateForAdd.setDate(dateForAdd.getDate() + 179);
+      console.log(dateForAdd);
+      return dateForAdd;
+    }
+  };
   return (
     <style.CalendarLayout $isCalendarShow={isCalendarShow}>
+      <style.CalendarDateInfoTextBox>
+        <div>
+          <strong>미리예약</strong> : 180일 후까지 가능 | <strong>연박</strong> : 최대 14일까지 가능
+        </div>
+        <style.CalenderCloseIcon onClick={() => setIsCalendarShow(prev => !prev)} />
+      </style.CalendarDateInfoTextBox>
+      <style.CalendarDateInfoBox>
+        <style.CalendarDateStartBox>
+          <div>체크인</div>
+          {`${startTime.getMonth() + 1}월 ${startTime.getDate()}일`}
+        </style.CalendarDateStartBox>
+        <style.CalendarDateEndBox>
+          <div>체크아웃</div>
+          {endTime ? `${endTime.getMonth() + 1}월 ${endTime.getDate()}일` : "-월 -일"}
+        </style.CalendarDateEndBox>
+      </style.CalendarDateInfoBox>
       <style.CalendarContainer>
         <DatePicker
           selected={startTime}
@@ -42,6 +77,7 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarPr
           startDate={startTime}
           endDate={endTime}
           minDate={new Date()}
+          maxDate={handleMaxDate()}
           locale={ko}
           monthsShown={6}
           inline
@@ -49,9 +85,6 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarPr
         <style.CalendarNav>
           <style.CalendarButton onClick={handleDateChange}>확인</style.CalendarButton>
         </style.CalendarNav>
-        <style.CalendarCloseBox className="closebox">
-          <style.CalenderCloseIcon onClick={() => setIsCalendarShow(prev => !prev)} />
-        </style.CalendarCloseBox>
       </style.CalendarContainer>
     </style.CalendarLayout>
   );

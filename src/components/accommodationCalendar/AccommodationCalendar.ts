@@ -6,7 +6,9 @@ export const CalendarLayout = styled.div<{ $isCalendarShow: boolean }>`
   height: 100%;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   position: fixed;
   top: 100%;
@@ -21,6 +23,53 @@ export const CalendarLayout = styled.div<{ $isCalendarShow: boolean }>`
       top: 50px;
       transition: all 0.5s ease;
     `};
+`;
+export const CalendarDateInfoBox = styled.div`
+  width: 100%;
+  max-width: 750px;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 1rem;
+  background-color: ${({ theme }) => theme.color.white};
+`;
+
+export const CalendarDateInfoTextBox = styled.div`
+  width: 100%;
+  max-width: 750px;
+  padding: 1rem 0;
+
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+  font-size: ${({ theme }) => theme.fontSize.xs};
+`;
+
+export const CalendarDateStartBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  font-size: ${({ theme }) => theme.fontSize.lg};
+
+  > div {
+    font-size: ${({ theme }) => theme.fontSize.xl};
+    margin-bottom: 0.25rem;
+  }
+`;
+
+export const CalendarDateEndBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: ${({ theme }) => theme.fontSize.lg};
+
+  > div {
+    font-size: ${({ theme }) => theme.fontSize.xl};
+    margin-bottom: 0.25rem;
+  }
 `;
 
 export const CalendarContainer = styled.div`
@@ -56,6 +105,10 @@ export const CalendarContainer = styled.div`
     }
 
     .react-datepicker__navigation.react-datepicker__navigation--next {
+      display: none;
+    }
+
+    .react-datepicker__current-month {
       display: none;
     }
 
@@ -129,11 +182,13 @@ export const CalendarCloseBox = styled.div`
 `;
 
 export const CalenderCloseIcon = styled(IoClose)`
-  // position: absolute;
   width: 1rem;
   height: 1rem;
-  margin: 1rem;
-  // right: 0;
+
+  position: absolute;
+  right: 1rem;
+
+  cursor: pointer;
 `;
 
 export const CalendarNav = styled.nav`
