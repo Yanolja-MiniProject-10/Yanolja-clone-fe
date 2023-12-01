@@ -10,10 +10,12 @@ import LoginModal from "../../../components/loginModal/LoginModal.tsx";
 const MainHeader = () => {
   const navigate = useNavigate();
   const user = useRecoilValue(userState);
-
-  const { data: cartData } = useFetchCarts();
-
   const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
+  const { data: cartData, status } = useFetchCarts(isLoginModal);
+
+  if (status === "error") {
+    window.alert("잘못된 접근입니다. 다시 시도해 주세요.");
+  }
 
   return (
     <>

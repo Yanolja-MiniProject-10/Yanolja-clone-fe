@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { paymentDataState } from "../recoil/paymentData";
@@ -15,9 +15,10 @@ const Reservation = () => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const postPaymentCartPayload: PostPaymentCartPayload = { ...location.state };
-  const { mutateAsync: postPaymentCart } = usePostPaymentCart();
+  const { mutateAsync: postPaymentCart, status } = usePostPaymentCart();
   const [paymentData, setPaymentData] = useRecoilState(paymentDataState);
   const setRadioData = useSetRecoilState(radioDataState);
+  const navigation = useNavigate();
 
   useEffect(() => {
     const handlePaymentCart = async () => {
@@ -43,6 +44,12 @@ const Reservation = () => {
 
     return () => clearInterval(loadingTimer);
   }, []);
+
+  if (status === "error") {
+    window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+    navigation("/");
+    return null;
+  }
 
   return isLoading || paymentData.cartId === -1 ? (
     <LoadingWrapper>
