@@ -46,7 +46,6 @@ const AccommodationCalendar = ({ isCalendarShow, setIsCalendarShow }: CalendarPr
       return dateForAdd;
     } else {
       dateForAdd.setDate(dateForAdd.getDate() + 179);
-      console.log(dateForAdd);
       return dateForAdd;
     }
   };
