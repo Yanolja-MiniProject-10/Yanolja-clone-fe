@@ -13,15 +13,20 @@ const ReservationPayBtn = ({ allChecked }: { allChecked: boolean }) => {
 
   const location = useLocation();
   const ReservationInfo: ReservationLocationsState = { ...location.state };
-  const { mutateAsync: postPurchase } = usePostPurchase();
+  const { mutateAsync: postPurchase, status } = usePostPurchase();
 
   const navigation = useNavigate();
   const paymentData: CartData = useRecoilValue(paymentDataState);
-
   const postPurchasePayload = {
     cartId: ReservationInfo.cartId,
     cartProducts: radioDataArray,
   };
+
+  if (status === "error") {
+    window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+    navigation("/");
+    return null;
+  }
 
   const handlePurchase = async () => {
     try {
@@ -33,7 +38,9 @@ const ReservationPayBtn = ({ allChecked }: { allChecked: boolean }) => {
         throw new Error();
       }
     } catch (e) {
-      console.log(e);
+      window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+      navigation("/");
+      return null;
     }
   };
 
