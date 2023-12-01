@@ -9,6 +9,7 @@ import { getSessionValue } from "../../util/searchSessionValue.tsx";
 import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember.ts";
 import { getTomorrow } from "../../util/getTomorrow.tsx";
 import { useLocation } from "react-router-dom";
+import { accommodationRegionState } from "../../recoil/accommodation/accommodationRegion.ts";
 
 const AccommodationInfoCalender = () => {
   const [isCalendarShow, setIsCalendarShow] = useState<boolean>(false);
@@ -16,6 +17,7 @@ const AccommodationInfoCalender = () => {
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const setAccommodationDateState = useSetRecoilState(accommodationDateState);
   const setAccommodationMemberState = useSetRecoilState(accommodationMemberState);
+  const setAccommodationRegionState = useSetRecoilState(accommodationRegionState);
   const { pathname } = useLocation();
   const prevHistoryPage = getSessionValue("historyPage");
 
@@ -46,6 +48,9 @@ const AccommodationInfoCalender = () => {
       });
       setAccommodationMemberState({
         guest: 2,
+      });
+      setAccommodationRegionState({
+        region: "",
       });
     }
   }, [prevHistoryPage]);
