@@ -20,7 +20,7 @@ const CartRoom = ({ accommodations, setIsSelectAll }: CartRoomProps) => {
 
     if (index === -1) {
       const selectedRoom = accommodations
-        ?.flatMap(accommodation => accommodation.roomOptions)
+        .flatMap(accommodation => accommodation.roomOptions)
         .find(roomOption => roomOption.cartProductId === roomId);
 
       if (selectedRoom) {
@@ -31,7 +31,7 @@ const CartRoom = ({ accommodations, setIsSelectAll }: CartRoomProps) => {
     }
 
     setCheckedRooms(newRooms);
-    setIsSelectAll(newRooms.length === accommodations?.flatMap(accommodation => accommodation.roomOptions).length);
+    setIsSelectAll(newRooms.length === accommodations.flatMap(accommodation => accommodation.roomOptions).length);
   };
 
   const openModal = (roomOption: RoomOption[]) => {
@@ -40,7 +40,7 @@ const CartRoom = ({ accommodations, setIsSelectAll }: CartRoomProps) => {
   };
 
   return (
-    <>
+    <style.CartList>
       {accommodations.map(accommodation => (
         <style.AccommodationList key={`accommodation-list-${accommodation.accommodationId}`}>
           <style.Accommodation href={"/accommodation/" + accommodation.accommodationId}>
@@ -69,7 +69,7 @@ const CartRoom = ({ accommodations, setIsSelectAll }: CartRoomProps) => {
       ))}
 
       {isModalOpen ? <CartModal selectedRooms={selectedRooms} setIsModalOpen={setIsModalOpen} /> : null}
-    </>
+    </style.CartList>
   );
 };
 
