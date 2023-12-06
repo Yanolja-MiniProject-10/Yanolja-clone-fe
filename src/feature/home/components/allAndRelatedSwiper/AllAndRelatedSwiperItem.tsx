@@ -1,7 +1,7 @@
 import { SwiperItemContainer, ImgBox, Description, Title, Price } from "../../styles/allAndRelatedSwiper";
 import { AccommodationProp } from "../../home.types";
 import { useSetRecoilState } from "recoil";
-import { relatedAccommodationsState } from "../../../../recoil/home/clickedCategoryAndRegion";
+import { relatedAccommodationsState } from "../../../../recoil/clickedCategoryAndRegion";
 
 const AllAndRelatedSwiperItem = ({ accommodation }: AccommodationProp) => {
   const setRelatedCateRegion = useSetRecoilState(relatedAccommodationsState);
