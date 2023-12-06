@@ -35,3 +35,14 @@ export interface CartButtonProps {
   reservationEndDate: string;
   stayDuration: number;
 }
+
+export interface ReservationButtonProps {
+  available: boolean;
+  text: string;
+  $isWide?: boolean;
+  id: number;
+  guest: number;
+  reservationStartDate: string;
+  reservationEndDate: string;
+  stayDuration: number;
+}

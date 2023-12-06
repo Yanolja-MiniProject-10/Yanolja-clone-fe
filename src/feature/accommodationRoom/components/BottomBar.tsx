@@ -5,17 +5,13 @@ import { RoomInfoProps } from "../RoomInformation.types";
 import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
 import { handleDateParam } from "../../accommodation/accommodation.utils";
-import { postReservation } from "../../accommodationInformation/api";
 import { useNavigate } from "react-router-dom";
-import { userState } from "../../../recoil/userData";
 import LoginModal from "../../../components/loginModal/LoginModal";
 import CartButton from "../../accommodationInformation/components/CartButton";
 import ReservationButton from "../../accommodationInformation/components/ReservationButton";
 import { loginModalState } from "../../accommodationInformation/recoil/accommodationLoginModal";
 
 const BottomBar = ({ status, data }: RoomInfoProps) => {
-  const user = useRecoilValue(userState);
-
   const [logInModal, setLogInModal] = useRecoilState(loginModalState);
 
   const { guest } = useRecoilValue(accommodationMemberState);
@@ -51,24 +47,6 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
     const isRoomAvailable = availableRoomCount > 0;
     const isAvailableGuest = guest <= room.capacity;
 
-    const postReservationInstant = async () => {
-      try {
-        const data = await postReservation(room.id, guest, reservationStartDate, reservationEndDate, room.stayDuration);
-        const cartId = data.data.cartId;
-        const cartProducts = [data.data.accommodations[0].roomOptions[0].cartProductId];
-
-        navigation("/reservation", {
-          state: {
-            cartId,
-            cartProducts,
-          },
-        });
-      } catch (e) {
-        window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
-        navigation("/");
-      }
-    };
-
     return (
       <>
         <style.Wrapper>
@@ -93,9 +71,11 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
                   available={true}
                 />
                 <ReservationButton
-                  // onClick={() => {
-                  //   user.accessToken ? postReservationInstant() : setIsLoginModal(true);
-                  // }}
+                  id={room.id}
+                  guest={guest}
+                  reservationStartDate={reservationStartDate}
+                  reservationEndDate={reservationEndDate}
+                  stayDuration={room.stayDuration}
                   available={true}
                   text="예약하기"
                   $isWide={true}
@@ -111,7 +91,16 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
                   stayDuration={room.stayDuration}
                   available={false}
                 />
-                <ReservationButton available={false} text="예약불가" $isWide={true} />
+                <ReservationButton
+                  id={room.id}
+                  guest={guest}
+                  reservationStartDate={reservationStartDate}
+                  reservationEndDate={reservationEndDate}
+                  stayDuration={room.stayDuration}
+                  available={false}
+                  text="예약불가"
+                  $isWide={true}
+                />
               </>
             )}
           </style.ButtonWrapper>
