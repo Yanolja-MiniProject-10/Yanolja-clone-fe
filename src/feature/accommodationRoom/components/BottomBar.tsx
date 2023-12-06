@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import { userState } from "../../../recoil/userData";
 import { useState } from "react";
 import LoginModal from "../../../components/loginModal/LoginModal";
+import CartButton from "../../accommodationInformation/components/CartButton";
+import ReservationButton from "../../accommodationInformation/components/ReservationButton";
 
 const BottomBar = ({ status, data }: RoomInfoProps) => {
   const user = useRecoilValue(userState);
@@ -106,27 +108,25 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
           <style.ButtonWrapper>
             {isRoomAvailable && isAvailableGuest ? (
               <>
-                <style.CartButton
+                <CartButton
                   onClick={() => {
                     user.accessToken ? handleAddCart() : setIsLoginModal(true);
                   }}
-                >
-                  <style.CartIcon />
-                </style.CartButton>
-                <style.ReservationButton
+                  available={true}
+                />
+                <ReservationButton
                   onClick={() => {
                     user.accessToken ? postReservationInstant() : setIsLoginModal(true);
                   }}
-                >
-                  예약하기
-                </style.ReservationButton>
+                  available={true}
+                  text="예약하기"
+                  $isWide={true}
+                />
               </>
             ) : (
               <>
-                <style.DisableCartButton>
-                  <style.DisableCartIcon />
-                </style.DisableCartButton>
-                <style.DisableReservationButton>예약불가</style.DisableReservationButton>
+                <CartButton available={false} />
+                <ReservationButton available={false} text="예약불가" $isWide={true} />
               </>
             )}
           </style.ButtonWrapper>

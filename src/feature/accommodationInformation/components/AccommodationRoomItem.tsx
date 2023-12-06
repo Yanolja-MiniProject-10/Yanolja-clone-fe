@@ -18,6 +18,8 @@ import { useNavigate } from "react-router-dom";
 import { userState } from "../../../recoil/userData";
 import { useState } from "react";
 import LoginModal from "../../../components/loginModal/LoginModal";
+import CartButton from "./CartButton";
+import ReservationButton from "./ReservationButton";
 
 const AccommodationRoomItem = ({
   id,
@@ -147,31 +149,30 @@ const AccommodationRoomItem = ({
             ) : (
               <style.NoAvailableRoom>* 예약이 마감되었습니다.</style.NoAvailableRoom>
             )}
-            {isAvailableDate && isAvailableGuest ? (
-              <style.ButtonWrapper>
-                <style.CartButton
-                  onClick={() => {
-                    user.accessToken ? handleAddCart() : setIsLoginModal(true);
-                  }}
-                >
-                  <style.CartIcon />
-                </style.CartButton>
-                <style.ReservationButton
-                  onClick={() => {
-                    user.accessToken ? postReservationInstant() : setIsLoginModal(true);
-                  }}
-                >
-                  예약하기
-                </style.ReservationButton>
-              </style.ButtonWrapper>
-            ) : (
-              <style.ButtonWrapper>
-                <style.DisableCartButton>
-                  <style.DisableCartIcon />
-                </style.DisableCartButton>
-                <style.DisableReservationButton>예약불가</style.DisableReservationButton>
-              </style.ButtonWrapper>
-            )}
+            <style.ButtonWrapper>
+              {isAvailableDate && isAvailableGuest ? (
+                <>
+                  <CartButton
+                    onClick={() => {
+                      user.accessToken ? handleAddCart() : setIsLoginModal(true);
+                    }}
+                    available={true}
+                  />
+                  <ReservationButton
+                    onClick={() => {
+                      user.accessToken ? postReservationInstant() : setIsLoginModal(true);
+                    }}
+                    available={true}
+                    text="예약하기"
+                  />
+                </>
+              ) : (
+                <>
+                  <CartButton available={false} />
+                  <ReservationButton available={false} text="예약불가" />
+                </>
+              )}
+            </style.ButtonWrapper>
           </style.BottomWrapper>
         </style.RoomInfo>
       </style.Box>
