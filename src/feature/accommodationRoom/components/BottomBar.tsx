@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { toastState } from "../../../recoil/toast";
 import * as style from "../styles/bottomBar";
 import Skeleton from "react-loading-skeleton";
@@ -21,7 +21,7 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
 
   const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
 
-  const [, setToast] = useRecoilState(toastState);
+  const setToast = useSetRecoilState(toastState);
 
   const queryClient = useQueryClient();
   const { mutateAsync: postCart } = usePostCart(queryClient);
