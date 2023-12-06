@@ -1,30 +1,22 @@
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { toastState } from "../../../recoil/toast";
+import { useRecoilState, useRecoilValue } from "recoil";
 import * as style from "../styles/bottomBar";
 import Skeleton from "react-loading-skeleton";
 import { RoomInfoProps } from "../RoomInformation.types";
-import { useQueryClient } from "@tanstack/react-query";
-import { usePostCart } from "../../accommodationInformation/hooks/queries/addCartData";
 import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
 import { handleDateParam } from "../../accommodation/accommodation.utils";
 import { postReservation } from "../../accommodationInformation/api";
 import { useNavigate } from "react-router-dom";
 import { userState } from "../../../recoil/userData";
-import { useState } from "react";
 import LoginModal from "../../../components/loginModal/LoginModal";
 import CartButton from "../../accommodationInformation/components/CartButton";
 import ReservationButton from "../../accommodationInformation/components/ReservationButton";
+import { loginModalState } from "../../accommodationInformation/recoil/accommodationLoginModal";
 
 const BottomBar = ({ status, data }: RoomInfoProps) => {
   const user = useRecoilValue(userState);
 
-  const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
-
-  const setToast = useSetRecoilState(toastState);
-
-  const queryClient = useQueryClient();
-  const { mutateAsync: postCart } = usePostCart(queryClient);
+  const [logInModal, setLogInModal] = useRecoilState(loginModalState);
 
   const { guest } = useRecoilValue(accommodationMemberState);
 
@@ -58,22 +50,6 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
     const availableRoomCount = room.totalRoomCount - room.reservedRoomCount;
     const isRoomAvailable = availableRoomCount > 0;
     const isAvailableGuest = guest <= room.capacity;
-
-    const handleAddCart = async () => {
-      try {
-        await postCart({
-          roomOptionId: room.id,
-          numberOfGuest: guest,
-          reservationStartDate,
-          reservationEndDate,
-          stayDuration: room.stayDuration,
-        });
-        setToast({ open: true, message: "장바구니에 상품이 담겼습니다." });
-      } catch (e) {
-        window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
-        navigation("/");
-      }
-    };
 
     const postReservationInstant = async () => {
       try {
@@ -109,15 +85,17 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
             {isRoomAvailable && isAvailableGuest ? (
               <>
                 <CartButton
-                  onClick={() => {
-                    user.accessToken ? handleAddCart() : setIsLoginModal(true);
-                  }}
+                  roomOptionId={room.id}
+                  numberOfGuest={guest}
+                  reservationStartDate={reservationStartDate}
+                  reservationEndDate={reservationEndDate}
+                  stayDuration={room.stayDuration}
                   available={true}
                 />
                 <ReservationButton
-                  onClick={() => {
-                    user.accessToken ? postReservationInstant() : setIsLoginModal(true);
-                  }}
+                  // onClick={() => {
+                  //   user.accessToken ? postReservationInstant() : setIsLoginModal(true);
+                  // }}
                   available={true}
                   text="예약하기"
                   $isWide={true}
@@ -125,14 +103,21 @@ const BottomBar = ({ status, data }: RoomInfoProps) => {
               </>
             ) : (
               <>
-                <CartButton available={false} />
+                <CartButton
+                  roomOptionId={room.id}
+                  numberOfGuest={guest}
+                  reservationStartDate={reservationStartDate}
+                  reservationEndDate={reservationEndDate}
+                  stayDuration={room.stayDuration}
+                  available={false}
+                />
                 <ReservationButton available={false} text="예약불가" $isWide={true} />
               </>
             )}
           </style.ButtonWrapper>
         </style.Wrapper>
 
-        {isLoginModal && <LoginModal onClose={() => setIsLoginModal(false)} />}
+        {logInModal && <LoginModal onClose={() => setLogInModal(false)} />}
       </>
     );
   }
