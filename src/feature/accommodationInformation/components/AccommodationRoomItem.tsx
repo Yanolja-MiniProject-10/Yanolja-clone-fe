@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import * as style from "../styles/accommodationRoomItem";
 import { RoomListProps } from "../accommodationInformation.types";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,10 +10,8 @@ import "swiper/css/pagination";
 import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
 import { handleDateParam } from "../../accommodation/accommodation.utils";
-import LoginModal from "../../../components/loginModal/LoginModal";
 import CartButton from "./CartButton";
 import ReservationButton from "./ReservationButton";
-import { loginModalState } from "../recoil/accommodationLoginModal";
 
 const AccommodationRoomItem = ({
   id,
@@ -28,8 +26,6 @@ const AccommodationRoomItem = ({
   reservedRoomCount,
   capacity,
 }: RoomListProps) => {
-  const [logInModal, setLogInModal] = useRecoilState(loginModalState);
-
   const availableRoomCount = totalRoomCount - reservedRoomCount;
   const isAvailableDate = availableRoomCount > 0;
 
@@ -145,7 +141,6 @@ const AccommodationRoomItem = ({
           </style.ButtonWrapper>
         </style.BottomWrapper>
       </style.RoomInfo>
-      {logInModal && <LoginModal onClose={() => setLogInModal(false)} />}
     </style.Box>
   );
 };

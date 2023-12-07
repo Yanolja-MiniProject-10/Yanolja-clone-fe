@@ -9,6 +9,8 @@ import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
 import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
 import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
 import { handleDateParam } from "../../accommodation/accommodation.utils";
+import { loginModalState } from "../recoil/accommodationLoginModal";
+import LoginModal from "../../../components/loginModal/LoginModal";
 
 const AccommodationInfo = () => {
   const [toast, setToast] = useRecoilState(toastState);
@@ -18,6 +20,8 @@ const AccommodationInfo = () => {
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
 
   const dateArray = handleDateParam(startDate, endDate);
+
+  const [logInModal, setLogInModal] = useRecoilState(loginModalState);
 
   let reservationStartDate = "";
   let reservationEndDate = "";
@@ -78,6 +82,7 @@ const AccommodationInfo = () => {
         <style.DivideLine />
       </style.TextInfo>
       {toast.open && <Toast setToast={setToast} />}
+      {logInModal && <LoginModal onClose={() => setLogInModal(false)} />}
     </style.Wrapper>
   );
 };
