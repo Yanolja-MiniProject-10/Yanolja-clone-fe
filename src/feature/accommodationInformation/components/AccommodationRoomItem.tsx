@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { toastState } from "../../../recoil/toast";
 import * as style from "../styles/accommodationRoomItem";
 import { RoomListProps } from "../accommodationInformation.types";
@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { userState } from "../../../recoil/userData";
 import { useState } from "react";
 import LoginModal from "../../../components/loginModal/LoginModal";
+import axios from "axios";
 
 const AccommodationRoomItem = ({
   id,
@@ -32,7 +33,7 @@ const AccommodationRoomItem = ({
   reservedRoomCount,
   capacity,
 }: RoomListProps) => {
-  const user = useRecoilValue(userState);
+  const [user, setUser] = useRecoilState(userState);
 
   const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
 
@@ -70,8 +71,20 @@ const AccommodationRoomItem = ({
       });
       setToast({ open: true, message: "장바구니에 상품이 담겼습니다." });
     } catch (e) {
-      window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
-      navigation("/");
+      if (axios.isAxiosError(e) && e.response) {
+        if (e.response.status === 405 || e.response.status === 401) {
+          setUser({
+            accessToken: "",
+            refreshToken: "",
+          });
+          setIsLoginModal(true);
+        } else {
+          console.error(e.response);
+        }
+      } else {
+        window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+        navigation("/");
+      }
     }
   };
 

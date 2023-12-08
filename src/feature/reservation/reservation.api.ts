@@ -12,13 +12,12 @@ export const postPaymentCart = async ({
   paymentData,
   setPaymentData,
 }: PostPaymentCart): Promise<void> => {
-  const { accessToken, refreshToken } = getLocalStorage();
+  const { accessToken } = getLocalStorage();
 
   const { data }: { data: PostPaymentCartResult } = await authInstance.post("/payment/cart", {
     ...postPaymentCartPayload,
     headers: {
-      accessToken: accessToken,
-      refreshToken: refreshToken,
+      Authorization: accessToken,
     },
   });
   setPaymentData({ ...paymentData, ...data.data });
@@ -29,13 +28,12 @@ export const postPaymentCart = async ({
  * @return 결제 성공 메시지
  */
 export const postPurchase = async (postPurchasePayload: PostPurchasePayload): Promise<string> => {
-  const { accessToken, refreshToken } = getLocalStorage();
+  const { accessToken } = getLocalStorage();
 
   const { data }: { data: PostPurchaseResult } = await authInstance.post("/payment/purchase", {
     ...postPurchasePayload,
     headers: {
-      accessToken: accessToken,
-      refreshToken: refreshToken,
+      Authorization: accessToken,
     },
   });
   return data.message;

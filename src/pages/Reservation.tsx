@@ -10,8 +10,14 @@ import ReservationPay from "../feature/reservation/components/ReservationPay";
 import { PostPaymentCartPayload } from "../feature/reservation/reservation.types";
 import { Loading, LoadingWrapper } from "../styles/loading";
 import * as style from "../feature/reservation/styles/reservation";
+import axios from "axios";
+import { userState } from "../recoil/userData";
+import LoginModal from "../components/loginModal/LoginModal";
 
 const Reservation = () => {
+  const setUser = useSetRecoilState(userState);
+  const [isLoginModal, setIsLoginModal] = useState(false);
+
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const postPaymentCartPayload: PostPaymentCartPayload = { ...location.state };
@@ -29,7 +35,17 @@ const Reservation = () => {
           setPaymentData,
         });
       } catch (e) {
-        console.log(e);
+        if (axios.isAxiosError(e) && e.response) {
+          if (e.response.status === 405 || e.response.status === 401) {
+            setUser({
+              accessToken: "",
+              refreshToken: "",
+            });
+            setIsLoginModal(true);
+          } else {
+            console.error(e.response);
+          }
+        }
       }
     };
 
@@ -56,11 +72,15 @@ const Reservation = () => {
       <Loading />
     </LoadingWrapper>
   ) : (
-    <style.ReservationWrapper>
-      <ReservationSummary />
-      <GuestInformation />
-      <ReservationPay />
-    </style.ReservationWrapper>
+    <>
+      <style.ReservationWrapper>
+        <ReservationSummary />
+        <GuestInformation />
+        <ReservationPay />
+      </style.ReservationWrapper>
+
+      {isLoginModal && <LoginModal onClose={() => setIsLoginModal(false)} />}
+    </>
   );
 };
 

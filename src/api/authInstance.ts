@@ -9,13 +9,10 @@ const authInstance = axios.create({
 });
 
 authInstance.interceptors.request.use(request => {
-  const { accessToken, refreshToken } = getLocalStorage();
+  const { accessToken } = getLocalStorage();
 
   if (accessToken) {
-    request.headers["accessToken"] = accessToken;
-  }
-  if (refreshToken) {
-    request.headers["refreshToken"] = refreshToken;
+    request.headers["Authorization"] = accessToken;
   }
   return request;
 });
@@ -38,21 +35,29 @@ authInstance.interceptors.response.use(
           localStorage.setItem("refreshToken", refreshToken);
 
           // 요청 헤더 업데이트
-          originalRequest.headers["accessToken"] = accessToken;
-          originalRequest.headers["refreshToken"] = refreshToken;
+          originalRequest.headers["Authorization"] = accessToken;
 
           return authInstance(originalRequest);
         } else {
           return Promise.reject();
         }
       } catch (refreshError) {
-        return Promise.reject(refreshError);
+        if (axios.isAxiosError(refreshError) && refreshError.response) {
+          if (refreshError.response.status === 405) {
+            // 리프레시 토큰 만료 시
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+
+            return Promise.reject(refreshError);
+          }
+        } else {
+          return Promise.reject(refreshError);
+        }
       }
     }
 
     if (originalRequest._retry && error.response && error.response.status === 403) {
-      alert("로그인을 다시 해주세요.");
-      return;
+      return Promise.reject(error);
     }
 
     return Promise.reject(error);
