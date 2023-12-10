@@ -9,14 +9,12 @@ const authInstance = axios.create({
 });
 
 authInstance.interceptors.request.use(request => {
-  const { accessToken, refreshToken } = getLocalStorage();
+  const { accessToken } = getLocalStorage();
 
   if (accessToken) {
-    request.headers["accessToken"] = accessToken;
+    request.headers["Authorization"] = accessToken;
   }
-  if (refreshToken) {
-    request.headers["refreshToken"] = refreshToken;
-  }
+
   return request;
 });
 
@@ -38,8 +36,7 @@ authInstance.interceptors.response.use(
           localStorage.setItem("refreshToken", refreshToken);
 
           // 요청 헤더 업데이트
-          originalRequest.headers["accessToken"] = accessToken;
-          originalRequest.headers["refreshToken"] = refreshToken;
+          originalRequest.headers["Authorization"] = accessToken;
 
           return authInstance(originalRequest);
         } else {

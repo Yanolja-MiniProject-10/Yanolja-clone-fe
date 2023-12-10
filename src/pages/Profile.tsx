@@ -40,8 +40,7 @@ const Profile = () => {
     try {
       const data = await authInstance.get("/auth/logout", {
         headers: {
-          accessToken: user.accessToken,
-          refreshToken: user.refreshToken,
+          Authorization: user.accessToken,
         },
       });
       if (data.status === 200) {
