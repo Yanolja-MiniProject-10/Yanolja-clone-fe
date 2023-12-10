@@ -6,12 +6,11 @@ import { DeletePaymentResult, FetchPaymentResult, PaymentData } from "./reservat
  * @returns 결제 완료 숙소 정보
  */
 export const fetchPayment = async (): Promise<PaymentData[]> => {
-  const { accessToken, refreshToken } = getLocalStorage();
+  const { accessToken } = getLocalStorage();
 
   const { data }: { data: FetchPaymentResult } = await authInstance.get("payment", {
     headers: {
-      accessToken: accessToken,
-      refreshToken: refreshToken,
+      Authorization: accessToken,
     },
   });
 
@@ -23,12 +22,11 @@ export const fetchPayment = async (): Promise<PaymentData[]> => {
  * @returns 장바구니 삭제 성공 여부
  */
 export const deletePayment = async (deletePaymentId: PaymentData["paymentId"]): Promise<string> => {
-  const { accessToken, refreshToken } = getLocalStorage();
+  const { accessToken } = getLocalStorage();
 
   const { data }: { data: DeletePaymentResult } = await authInstance.delete("payment", {
     headers: {
-      accessToken: accessToken,
-      refreshToken: refreshToken,
+      Authorization: accessToken,
     },
     data: { paymentId: deletePaymentId },
   });

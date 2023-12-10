@@ -27,8 +27,7 @@ const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
         },
         {
           headers: {
-            accessToken: user.accessToken,
-            refreshToken: user.refreshToken,
+            Authorization: user.accessToken,
           },
         },
       );
