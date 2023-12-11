@@ -21,7 +21,7 @@ const ReservationButton = ({
   const postSingleReservationMutation = usePostSingleReservation();
 
   const postReservationInstant = () => {
-    postSingleReservationMutation.mutateAsync({
+    postSingleReservationMutation.mutate({
       roomOptionId: id,
       numberOfGuest: guest,
       reservationStartDate,

@@ -26,7 +26,7 @@ const CartButton = ({
   const cartButtonDisabled = useRecoilValue(cartButtonState);
 
   const handleAddCart = () => {
-    postCartMutation.mutateAsync({
+    postCartMutation.mutate({
       roomOptionId,
       numberOfGuest,
       reservationStartDate,
