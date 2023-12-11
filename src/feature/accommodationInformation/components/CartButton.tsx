@@ -28,10 +28,10 @@ const CartButton = ({
 
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-  const handleAddCart = async () => {
+  const handleAddCart = () => {
     try {
       setIsButtonDisabled(true);
-      await postCartMutation.mutateAsync({
+      postCartMutation.mutateAsync({
         roomOptionId,
         numberOfGuest,
         reservationStartDate,
@@ -39,11 +39,10 @@ const CartButton = ({
         stayDuration,
       });
       setToast({ open: true, message: "장바구니에 상품이 담겼습니다." });
+      setTimeout(() => setIsButtonDisabled(false), 3000);
     } catch (e) {
       window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
       navigation("/");
-    } finally {
-      setTimeout(() => setIsButtonDisabled(false), 3000);
     }
   };
 
