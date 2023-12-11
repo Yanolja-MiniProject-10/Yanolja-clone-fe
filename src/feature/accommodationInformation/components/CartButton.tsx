@@ -3,7 +3,6 @@ import * as style from "../styles/cartButton";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { toastState } from "../../../recoil/toast";
 import { userState } from "../../../recoil/userData";
-import { useQueryClient } from "@tanstack/react-query";
 import { usePostCart } from "../hooks/queries/addCartData";
 import { CartButtonProps } from "../accommodationInformation.types";
 import { loginModalState } from "../recoil/accommodationLoginModal";
@@ -23,8 +22,7 @@ const CartButton = ({
 
   const navigation = useNavigate();
 
-  const queryClient = useQueryClient();
-  const { mutateAsync: postCart } = usePostCart(queryClient);
+  const postCartMutation = usePostCart();
 
   const setLogInModal = useSetRecoilState(loginModalState);
 
@@ -33,7 +31,7 @@ const CartButton = ({
   const handleAddCart = async () => {
     try {
       setIsButtonDisabled(true);
-      await postCart({
+      await postCartMutation.mutateAsync({
         roomOptionId,
         numberOfGuest,
         reservationStartDate,
