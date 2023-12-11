@@ -1,10 +1,10 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { postReservation } from "../api";
 import * as style from "../styles/reservationButton";
 import { userState } from "../../../recoil/userData";
 import { loginModalState } from "../recoil/accommodationLoginModal";
 import { useNavigate } from "react-router-dom";
 import { ReservationButtonProps } from "../accommodationInformation.types";
+import { usePostSingleReservation } from "../hooks/queries/addSingleReservationData";
 
 const ReservationButton = ({
   available,
@@ -21,9 +21,17 @@ const ReservationButton = ({
 
   const navigation = useNavigate();
 
+  const postSingleReservationMutation = usePostSingleReservation();
+
   const postReservationInstant = async () => {
     try {
-      const data = await postReservation(id, guest, reservationStartDate, reservationEndDate, stayDuration);
+      const data = await postSingleReservationMutation.mutateAsync({
+        roomOptionId: id,
+        numberOfGuest: guest,
+        reservationStartDate,
+        reservationEndDate,
+        stayDuration,
+      });
       const cartId = data.data.cartId;
       const cartProducts = [data.data.accommodations[0].roomOptions[0].cartProductId];
 
