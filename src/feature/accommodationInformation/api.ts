@@ -72,6 +72,6 @@ export const postReservation = async (
     });
     return data;
   } catch (error) {
-    console.error("Error posting cart:", error);
+    console.error("Error posting reservation:", error);
   }
 };
