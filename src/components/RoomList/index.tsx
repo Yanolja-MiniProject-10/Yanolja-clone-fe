@@ -1,4 +1,4 @@
-import { RoomListProps } from "./roomlist.types";
+import { RoomListProps } from "./roomList.types";
 import * as style from "./roomList.styles";
 
 const RoomList = ({ roomOption }: RoomListProps) => {
