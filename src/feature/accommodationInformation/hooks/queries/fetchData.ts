@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { AccommodationInfoParams } from "../../accommodationInformation.types";
 import { getAccommodationInfoData } from "../../api";
 import { useRecoilValue } from "recoil";
-import { accommodationDateState } from "../../../../recoil/accommodation/accommodationDate";
-import { accommodationMemberState } from "../../../../recoil/accommodation/accommodationMember";
+import { accommodationDateState } from "../../../../recoil/accommodationDate";
+import { accommodationMemberState } from "../../../../recoil/accommodationMember";
 
 export const useAccommodationInfoQuery = ({
   id,

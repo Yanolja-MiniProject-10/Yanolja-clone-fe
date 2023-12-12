@@ -4,7 +4,7 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ko from "date-fns/locale/ko";
 import { useSetRecoilState } from "recoil";
-import { accommodationDateState } from "../../recoil/accommodation/accommodationDate";
+import { accommodationDateState } from "../../recoil/accommodationDate";
 import { useState } from "react";
 import { getTomorrow } from "../../util/getTomorrow";
 // import _ from "lodash";

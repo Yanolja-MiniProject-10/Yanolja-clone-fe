@@ -11,7 +11,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
 import { RoomInfoProps } from "../RoomInformation.types";
 import { useRecoilValue } from "recoil";
-import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
+import { accommodationMemberState } from "../../../recoil/accommodationMember";
 
 const AccommodationRoomInfo = ({ status, data }: RoomInfoProps) => {
   const [toast, setToast] = useRecoilState(toastState);

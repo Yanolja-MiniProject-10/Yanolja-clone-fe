@@ -1,7 +1,7 @@
 import * as style from "./AccommodationMember";
 import { MemberProps } from "./accommodationMember.types";
 import { useSetRecoilState } from "recoil";
-import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember";
+import { accommodationMemberState } from "../../recoil/accommodationMember";
 import { useEffect, useState } from "react";
 
 const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: MemberProps) => {

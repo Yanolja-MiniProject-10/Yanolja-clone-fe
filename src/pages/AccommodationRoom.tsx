@@ -4,8 +4,8 @@ import BottomBar from "../feature/accommodationRoom/components/BottomBar";
 import { useParams, useNavigate } from "react-router-dom";
 import { useRoomInfoQuery } from "../feature/accommodationRoom/hooks/queries/fetchData";
 import { useRecoilValue } from "recoil";
-import { accommodationMemberState } from "../recoil/accommodation/accommodationMember";
-import { accommodationDateState } from "../recoil/accommodation/accommodationDate";
+import { accommodationMemberState } from "../recoil/accommodationMember";
+import { accommodationDateState } from "../recoil/accommodationDate";
 import { handleDateParam } from "../feature/accommodation/accommodation.utils";
 
 const AccommodationRoom = () => {
