@@ -1,6 +1,7 @@
 import { AccommodationInfoParams } from "./accommodationInformation.types";
 import authInstance from "../../api/authInstance";
 import getLocalStorage from "../../util/getLocalStorage";
+import instance from "../../api/instance";
 
 export const getAccommodationInfoData = async ({
   id,
@@ -9,7 +10,7 @@ export const getAccommodationInfoData = async ({
   member,
 }: AccommodationInfoParams) => {
   try {
-    const { data } = await authInstance.get(`/accommodations/${id}`, {
+    const { data } = await instance.get(`/accommodations/${id}`, {
       params: {
         startDate: reservationStartDate,
         endDate: reservationEndDate,
