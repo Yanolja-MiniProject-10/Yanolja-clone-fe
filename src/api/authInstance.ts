@@ -14,6 +14,7 @@ authInstance.interceptors.request.use(request => {
   if (accessToken) {
     request.headers["Authorization"] = accessToken;
   }
+
   return request;
 });
 

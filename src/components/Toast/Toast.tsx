@@ -11,8 +11,6 @@ const Toast = ({ setToast }: ToastProps) => {
   const { message } = useRecoilValue(toastState);
 
   useEffect(() => {
-    console.log(message);
-
     const timer = setTimeout(() => {
       setToast({ open: false, message: "" });
     }, 3000);
