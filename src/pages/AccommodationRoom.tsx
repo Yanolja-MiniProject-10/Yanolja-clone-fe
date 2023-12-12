@@ -17,7 +17,6 @@ const AccommodationRoom = () => {
   const { startDate, endDate } = useRecoilValue(accommodationDateState);
   const dateArray = handleDateParam(startDate, endDate);
 
-  /**나중에 로직 수정 예정 */
   let reservationStartDate = "";
   let reservationEndDate = "";
   if (dateArray) {

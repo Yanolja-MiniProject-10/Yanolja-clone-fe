@@ -8,7 +8,7 @@ import AllAndRelatedSwiper from "../feature/home/components/allAndRelatedSwiper/
 import { useAllAccommodations, useRelatedAccommodations } from "../feature/home/hooks/queries/home.hooks";
 import { HomeContainer } from "../feature/home/styles/homeCommon";
 import { useRecoilValue } from "recoil";
-import { relatedAccommodationsState } from "../recoil/home/clickedCategoryAndRegion";
+import { relatedAccommodationsState } from "../recoil/clickedCategoryAndRegion";
 import HomeContainerSkeleton from "../feature/home/components/HomeContainerSkeleton";
 import { setSessionValue } from "../util/searchSessionValue";
 import { userState } from "../recoil/userData";

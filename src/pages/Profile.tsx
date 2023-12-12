@@ -1,17 +1,17 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import LoginModal from "../components/loginModal/LoginModal";
 import LogoutModal from "../feature/profile/components/LogoutModal";
 import ProfileEditModal from "../feature/profile/components/ProfileEditModal";
-import * as style from "../feature/profile/styles/profile";
 import { getUser } from "../feature/profile/profile.api";
-import { useRecoilValue, useResetRecoilState } from "recoil";
+import * as style from "../feature/profile/styles/profile";
 import { userState } from "../recoil/userData";
-import authInstance from "../api/authInstance";
 
 const Profile = () => {
-  const user = useRecoilValue(userState);
-  const resetUser = useResetRecoilState(userState);
+  const [user, setUser] = useRecoilState(userState);
+
   const navigate = useNavigate();
 
   const [name, setName] = useState<string>("");
@@ -31,43 +31,44 @@ const Profile = () => {
         setEmail(data.data.data.email);
       }
     } catch (error) {
-      console.error("유저 정보 조회 실패:", error);
+      if (axios.isAxiosError(error) && error.response) {
+        if (error.response.status === 405 || error.response.status === 401) {
+          setUser({
+            accessToken: "",
+            refreshToken: "",
+          });
+          setIsLoginModal(true);
+        } else {
+          console.error(error.response);
+        }
+      }
     }
   };
 
   // 로그아웃
   const handleLogout = async () => {
-    try {
-      const data = await authInstance.get("/auth/logout", {
-        headers: {
-          accessToken: user.accessToken,
-          refreshToken: user.refreshToken,
-        },
-      });
-      if (data.status === 200) {
-        resetUser(); // userState를 초기 상태로 재설정
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
 
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+    setUser({
+      accessToken: "",
+      refreshToken: "",
+    });
 
-        setIsLogoutModal(false);
-      } else {
-        alert("로그아웃에 실패하였습니다.");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    setIsLogoutModal(false);
   };
 
   useEffect(() => {
-    handleGetUser();
+    if (user.accessToken) {
+      handleGetUser();
+    }
 
     return () => {
       setName("");
       setEmail("");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user.accessToken]);
 
   const handleNameUpdated = (name: string) => {
     setName(name); // 이름 상태 업데이트
@@ -100,7 +101,7 @@ const Profile = () => {
         <p>프로필</p>
         <style.Hr />
         <style.List>
-          <div onClick={() => (user ? setIsEditModal(true) : setIsLoginModal(true))}>내 정보 수정하기</div>
+          <div onClick={() => (user.accessToken ? setIsEditModal(true) : setIsLoginModal(true))}>내 정보 수정하기</div>
           <div onClick={() => navigate("/reservation-list")}>예약 내역</div>
           <div onClick={() => navigate("/cart")}>장바구니</div>
         </style.List>
