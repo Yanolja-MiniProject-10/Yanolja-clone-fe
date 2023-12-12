@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
+import { checkedCartRooms } from "../recoil/checkedCartRooms";
 import { useState } from "react";
 import { setAllCheked } from "../cart.utils";
 import CartModal from "./CartModal";
