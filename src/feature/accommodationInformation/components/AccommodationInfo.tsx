@@ -43,7 +43,7 @@ const AccommodationInfo = () => {
         null;
       };
     }
-  }, []);
+  }, [navigation, status]);
 
   return status === "pending" ? (
     <AccommodationInfoSkeleton />

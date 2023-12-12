@@ -41,7 +41,7 @@ const AccommodationRoomList = () => {
         null;
       };
     }
-  }, []);
+  }, [navigation, status]);
 
   return status === "pending" ? (
     <AccommodationRoomListSkeleton />

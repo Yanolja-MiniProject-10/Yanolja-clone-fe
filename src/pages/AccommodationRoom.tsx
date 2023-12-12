@@ -42,7 +42,7 @@ const AccommodationRoom = () => {
         null;
       };
     }
-  }, [status]);
+  }, [navigation, status]);
 
   return status === "pending" ? (
     <Wrapper>
