@@ -6,7 +6,6 @@ export interface RoomInfoParams {
 }
 
 export interface RoomInfoProps {
-  status: "error" | "pending" | "success";
   data: {
     status: number;
     data: {
@@ -24,5 +23,4 @@ export interface RoomInfoProps {
       capacity: number;
     };
   };
-  error: Error | null;
 }
