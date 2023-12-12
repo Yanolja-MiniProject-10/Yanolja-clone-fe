@@ -2,14 +2,13 @@ import { useRef, useState } from "react";
 import * as commonStyle from "../../../components/loginModal/loginModal.styles";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
 import * as style from "../styles/profileEditModal";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { userState } from "../../../recoil/userData";
 import authInstance from "../../../api/authInstance";
 import axios from "axios";
 
 const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
-  const [user, setUser] = useRecoilState(userState);
-
+  const setUser = useSetRecoilState(userState);
   const [name, setName] = useState(userName);
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
 
@@ -22,17 +21,9 @@ const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
   const handleEdit = async (e: React.FormEvent<HTMLFormElement>, name: string) => {
     e.preventDefault();
     try {
-      const data = await authInstance.put(
-        "/users",
-        {
-          name: name,
-        },
-        {
-          headers: {
-            Authorization: user.accessToken,
-          },
-        },
-      );
+      const data = await authInstance.put("/users", {
+        name: name,
+      });
       if (data.status === 200) {
         alert("수정되었습니다.");
         onClose();
