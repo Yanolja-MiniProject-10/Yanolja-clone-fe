@@ -16,16 +16,16 @@ const Cart = () => {
     return null;
   }
 
-  return isLoading ? (
+  return !isLoading && cartData ? (
+    <style.CartWrapper>
+      <SelectCartList accommodations={cartData.accommodations} />
+      <TotalSelectedPrice />
+      <CartPay cartId={cartData.cartId} />
+    </style.CartWrapper>
+  ) : (
     <LoadingWrapper>
       <Loading />
     </LoadingWrapper>
-  ) : (
-    <style.CartWrapper>
-      <SelectCartList accommodations={cartData?.accommodations} />
-      <TotalSelectedPrice />
-      <CartPay cartId={cartData?.cartId} />
-    </style.CartWrapper>
   );
 };
 
