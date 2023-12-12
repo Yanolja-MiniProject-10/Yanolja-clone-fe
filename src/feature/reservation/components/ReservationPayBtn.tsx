@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { radioDataState } from "../../../recoil/checkedRadio";
-import { paymentDataState } from "../../../recoil/paymentData";
+import { radioDataState } from "../recoil/checkedRadio";
+import { paymentDataState } from "../recoil/paymentData";
 import { usePostPurchase } from "../hooks/queries/usePostPurchase";
 import { RadioDataState, ReservationLocationsState } from "../reservation.types";
 import { CartData } from "../../../types";

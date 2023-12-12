@@ -1,4 +1,4 @@
-import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
+import { checkedCartRooms } from "../recoil/checkedCartRooms";
 import { useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { calculateTotalPrice } from "../cart.utils";

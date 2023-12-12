@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { radioDataState } from "../../../recoil/checkedRadio";
+import { radioDataState } from "../recoil/checkedRadio";
 import { RoomOption } from "../../../types";
 import * as style from "../styles/transportationRadio";
 

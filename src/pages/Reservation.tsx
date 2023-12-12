@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { paymentDataState } from "../recoil/paymentData";
-import { radioDataState } from "../recoil/checkedRadio";
+import { paymentDataState } from "../feature/reservation/recoil/paymentData";
+import { radioDataState } from "../feature/reservation/recoil/checkedRadio";
 import { usePostPaymentCart } from "../feature/reservation/hooks/queries/usePostPaymentCart";
 import ReservationSummary from "../feature/reservation/components/ReservationSummary";
 import GuestInformation from "../feature/reservation/components/GuestInformation";

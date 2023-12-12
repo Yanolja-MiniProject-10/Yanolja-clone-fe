@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
+import { checkedCartRooms } from "../recoil/checkedCartRooms";
 import { setAllCheked } from "../cart.utils";
 import CartRoom from "./CartRoom";
 import EmptyCart from "./EmptyCart";
