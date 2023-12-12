@@ -1,7 +1,7 @@
 import { useRecoilValue } from "recoil";
 import * as common from "../../cart/styles/cartRoom";
 import * as style from "../styles/reservationRooms";
-import { paymentDataState } from "../../../recoil/paymentData";
+import { paymentDataState } from "../recoil/paymentData";
 import { CartData } from "../../../types";
 import TransportationRadio from "./TransportationRadio";
 

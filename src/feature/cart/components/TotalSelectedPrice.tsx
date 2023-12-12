@@ -1,4 +1,4 @@
-import { checkedCartRooms } from "../../../recoil/checkedCartRooms";
+import { checkedCartRooms } from "../recoil/checkedCartRooms";
 import { useRecoilValue } from "recoil";
 import { calculateTotalPrice } from "../cart.utils";
 import * as style from "../styles/totalSelectedPrice";
