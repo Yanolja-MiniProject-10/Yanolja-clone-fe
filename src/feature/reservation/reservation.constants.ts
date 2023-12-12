@@ -25,3 +25,31 @@ const REQUIRMENT_5 = "방문 수단을 확인했습니다.";
 export const REQUIRMENTS = [REQUIRMENT_1, REQUIRMENT_2, REQUIRMENT_3, REQUIRMENT_4, REQUIRMENT_5];
 
 export const DELAY_SETAllCHECKED = 100;
+
+export const PAYMENT_DATA_DEFAULT = {
+  cartId: -1,
+  count: -1,
+  accommodations: [
+    {
+      accommodationId: -1,
+      name: "",
+      address: "",
+      thumbnailImageUrl: "",
+      roomOptions: [
+        {
+          cartProductId: -1,
+          roomOptionId: -1,
+          name: "",
+          thumbnailImage: "",
+          capacity: -1,
+          pricePerNight: -1,
+          totalPrice: -1,
+          reservationStartDate: "",
+          reservationEndDate: "",
+          stayDuration: -1,
+          transportation: "",
+        },
+      ],
+    },
+  ],
+};
