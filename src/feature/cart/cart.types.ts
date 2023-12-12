@@ -6,14 +6,13 @@ export interface FetchCartResult {
   data: CartData;
 }
 
-export interface SelectCartListProps {
-  accommodations: Accommodations[] | undefined;
-}
-
-export interface CartRoomProps extends SelectCartListProps {
+export interface CartListHeaderProps {
   accommodations: Accommodations[];
+  isSelectAll: boolean;
   setIsSelectAll: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export type CartRoomProps = Pick<CartListHeaderProps, "accommodations" | "setIsSelectAll">;
 
 export interface RoomListProps {
   roomOption: RoomOption;

@@ -32,19 +32,20 @@ export const Title = styled.div`
   > p {
     padding-bottom: 0.7rem;
 
-    font-size: ${({ theme }) => theme.fontSize.sm};
+    font-size: ${({ theme }) => theme.fontSize.md};
     text-align: center;
 
     &:last-of-type {
-      font-size: ${({ theme }) => theme.fontSize.xs};
+      font-size: ${({ theme }) => theme.fontSize.sm};
     }
   }
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 60%;
+  width: 65%;
   margin: 0 auto;
-  padding-top: 1rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.3rem;
   display: flex;
   justify-content: space-between;
 

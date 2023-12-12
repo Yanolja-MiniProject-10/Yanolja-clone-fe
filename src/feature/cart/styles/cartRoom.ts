@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { IoClose } from "react-icons/io5";
 
+export const CartList = styled.ul`
+  width: 100%;
+
+  margin: 20px 0 10px;
+`;
+
 export const AccommodationList = styled.li`
   width: 100%;
 

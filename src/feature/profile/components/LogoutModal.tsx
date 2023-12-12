@@ -14,16 +14,16 @@ const LogoutModal = ({ onClose, onConfirmLogout }: ModalProps) => {
 
   return (
     <commonStyle.ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
-      <commonStyle.Modal>
+      <style.LogoutModal>
         <div>
           <style.Title>로그아웃 하시겠습니까?</style.Title>
 
-          <commonStyle.ButtonWrapper>
+          <style.LogoutButtonWrapper>
             <commonStyle.CancelButton onClick={onClose}>취소</commonStyle.CancelButton>
             <commonStyle.ConfirmButton onClick={onConfirmLogout}>로그아웃</commonStyle.ConfirmButton>
-          </commonStyle.ButtonWrapper>
+          </style.LogoutButtonWrapper>
         </div>
-      </commonStyle.Modal>
+      </style.LogoutModal>
     </commonStyle.ModalBackground>
   );
 };
