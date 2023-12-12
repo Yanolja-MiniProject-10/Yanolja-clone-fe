@@ -11,6 +11,7 @@ import AccommodationInfoSkeleton from "./AccommodationInfoSkeleton";
 import { useEffect } from "react";
 import { loginModalState } from "../recoil/accommodationLoginModal";
 import LoginModal from "../../../components/loginModal/LoginModal";
+import { userState } from "../../../recoil/userData";
 
 const AccommodationInfo = () => {
   const [toast, setToast] = useRecoilState(toastState);
@@ -22,6 +23,7 @@ const AccommodationInfo = () => {
   const dateArray = handleDateParam(startDate, endDate);
 
   const [logInModal, setLogInModal] = useRecoilState(loginModalState);
+  const user = useRecoilValue(userState);
 
   let reservationStartDate = "";
   let reservationEndDate = "";
@@ -47,7 +49,10 @@ const AccommodationInfo = () => {
         null;
       };
     }
-  }, [navigation, status]);
+    if (user.accessToken) {
+      setLogInModal(false);
+    }
+  }, [navigation, setLogInModal, status, user.accessToken]);
 
   return status === "pending" ? (
     <AccommodationInfoSkeleton />
