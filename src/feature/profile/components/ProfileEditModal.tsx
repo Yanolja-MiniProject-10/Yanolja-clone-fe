@@ -2,12 +2,13 @@ import { useRef, useState } from "react";
 import * as commonStyle from "../../../components/loginModal/loginModal.styles";
 import { ModalProps } from "../../../components/loginModal/loginModal.types";
 import * as style from "../styles/profileEditModal";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { userState } from "../../../recoil/userData";
 import authInstance from "../../../api/authInstance";
+import axios from "axios";
 
 const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
-  const user = useRecoilValue(userState);
+  const [user, setUser] = useRecoilState(userState);
 
   const [name, setName] = useState(userName);
   const modalBackgroundRef = useRef<HTMLDivElement>(null);
@@ -39,6 +40,18 @@ const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
         }
       }
     } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        if (error.response.status === 405 || error.response.status === 401) {
+          setUser({
+            accessToken: "",
+            refreshToken: "",
+          });
+          alert("수정에 실패하였습니다.");
+          onClose();
+        } else {
+          console.error(error.response);
+        }
+      }
       console.error(error);
     }
   };
