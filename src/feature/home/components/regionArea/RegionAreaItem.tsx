@@ -1,7 +1,7 @@
 import { ItemContainer, ImgBox, Description, Title, Price } from "../../styles/regionArea/regionAreaItem.ts";
 import { AccommodationProp } from "../../home.types.ts";
 import { useSetRecoilState } from "recoil";
-import { relatedAccommodationsState } from "../../../../recoil/home/clickedCategoryAndRegion.ts";
+import { relatedAccommodationsState } from "../../../../recoil/clickedCategoryAndRegion.ts";
 
 const RegionAreaItem = ({ accommodation }: AccommodationProp) => {
   const setRelatedCateRegion = useSetRecoilState(relatedAccommodationsState);

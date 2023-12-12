@@ -2,10 +2,19 @@ import { ReservationWrapper } from "../styles/reservationWrapper";
 import * as style from "../styles/guestInformation";
 import { useEffect, useState } from "react";
 import { getUser } from "../../profile/profile.api";
+import axios from "axios";
+import { useSetRecoilState } from "recoil";
+import { userState } from "../../../recoil/userData";
+import LoginModal from "../../../components/loginModal/LoginModal";
 
 const GuestInformation = () => {
+  const setUser = useSetRecoilState(userState);
+
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
+
+  const [isLoginModal, setIsLoginModal] = useState<boolean>(false);
+
   // user 정보 가져오기
   const handleGetUser = async () => {
     try {
@@ -16,7 +25,17 @@ const GuestInformation = () => {
         setEmail(data.data.data.email);
       }
     } catch (error) {
-      console.error("유저 정보 조회 실패:", error);
+      if (axios.isAxiosError(error) && error.response) {
+        if (error.response.status === 405 || error.response.status === 401) {
+          setUser({
+            accessToken: "",
+            refreshToken: "",
+          });
+          setIsLoginModal(true);
+        } else {
+          console.error(error.response);
+        }
+      }
     }
   };
 
@@ -31,13 +50,16 @@ const GuestInformation = () => {
   }, []);
 
   return (
-    <ReservationWrapper>
-      <style.GuestInfoTitle>예약자 정보</style.GuestInfoTitle>
+    <>
+      <ReservationWrapper>
+        <style.GuestInfoTitle>예약자 정보</style.GuestInfoTitle>
 
-      <style.GuestName>{name}</style.GuestName>
-      <span>/</span>
-      <style.GuestEmail>{email}</style.GuestEmail>
-    </ReservationWrapper>
+        <style.GuestName>{name}</style.GuestName>
+        <span>/</span>
+        <style.GuestEmail>{email}</style.GuestEmail>
+      </ReservationWrapper>
+      {isLoginModal && <LoginModal onClose={() => setIsLoginModal(false)} />}
+    </>
   );
 };
 

@@ -9,7 +9,7 @@ import {
 } from "../../styles/rankingArea/rankingAreaItem";
 import { Accommodation } from "../../home.types";
 import { useSetRecoilState } from "recoil";
-import { relatedAccommodationsState } from "../../../../recoil/home/clickedCategoryAndRegion";
+import { relatedAccommodationsState } from "../../../../recoil/clickedCategoryAndRegion";
 
 interface RankinItemProps {
   index: number;

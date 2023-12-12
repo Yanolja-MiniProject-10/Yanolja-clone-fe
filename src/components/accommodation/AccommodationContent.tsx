@@ -3,7 +3,7 @@ import { AccommodationDataProps } from "./accommodation.types";
 import * as style from "../../feature/accommodation/styles/accommodationContent";
 import accommmodationSample from "../../assets/images/accommodationSample.svg";
 import { handleTitlelength } from "../../feature/accommodation/accommodation.utils";
-import { relatedAccommodationsState } from "../../recoil/home/clickedCategoryAndRegion";
+import { relatedAccommodationsState } from "../../recoil/clickedCategoryAndRegion";
 import { useSetRecoilState } from "recoil";
 
 const AccommodationContent = ({ accommodations }: AccommodationDataProps) => {
