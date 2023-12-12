@@ -19,7 +19,8 @@ const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
     }
   };
 
-  const handleEdit = async (name: string) => {
+  const handleEdit = async (e: React.FormEvent<HTMLFormElement>, name: string) => {
+    e.preventDefault();
     try {
       const data = await authInstance.put(
         "/users",
@@ -60,7 +61,7 @@ const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
     <commonStyle.ModalBackground onClick={handleClickBackground} ref={modalBackgroundRef}>
       <commonStyle.Modal>
         <div>
-          <style.Form>
+          <style.Form onSubmit={e => handleEdit(e, name ? name : "")}>
             <div>
               <label htmlFor="name">이름</label>
               <p>* 이름은 2글자 이상 10글자 이하로 입력해주세요.</p>
@@ -72,9 +73,7 @@ const ProfileEditModal = ({ onClose, userName, onNameUpdated }: ModalProps) => {
             <commonStyle.CancelButton type="button" onClick={onClose}>
               취소
             </commonStyle.CancelButton>
-            <commonStyle.ConfirmButton type="button" onClick={() => handleEdit(name ? name : "")}>
-              완료
-            </commonStyle.ConfirmButton>
+            <commonStyle.ConfirmButton type="submit">완료</commonStyle.ConfirmButton>
           </commonStyle.ButtonWrapper>
         </div>
       </commonStyle.Modal>
