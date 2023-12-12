@@ -1,6 +1,5 @@
 import { AccommodationInfoParams } from "./accommodationInformation.types";
 import authInstance from "../../api/authInstance";
-import getLocalStorage from "../../util/getLocalStorage";
 import instance from "../../api/instance";
 
 export const getAccommodationInfoData = async ({
@@ -31,13 +30,8 @@ export const postCart = async (
   reservationEndDate: string,
   stayDuration: number,
 ) => {
-  const { accessToken } = getLocalStorage();
-
   try {
     const { data } = await authInstance.post("/carts", {
-      headers: {
-        Authorization: accessToken,
-      },
       roomOptionId,
       numberOfGuest,
       reservationStartDate,
@@ -57,12 +51,8 @@ export const postReservation = async (
   reservationEndDate: string,
   stayDuration: number,
 ) => {
-  const { accessToken } = getLocalStorage();
   try {
     const { data } = await authInstance.post("/payment/instant", {
-      headers: {
-        Authorization: accessToken,
-      },
       roomOptionId,
       numberOfGuest,
       reservationStartDate,
