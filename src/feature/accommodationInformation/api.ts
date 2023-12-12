@@ -8,20 +8,19 @@ export const getAccommodationInfoData = async ({
   reservationEndDate,
   member,
 }: AccommodationInfoParams) => {
-  const { accessToken } = getLocalStorage();
-
-  const { data } = await authInstance.get(`/accommodations/${id}`, {
-    headers: {
-      Authorization: accessToken,
-    },
-    params: {
-      startDate: reservationStartDate,
-      endDate: reservationEndDate,
-      guest: member,
-      accommodationId: id,
-    },
-  });
-  return data;
+  try {
+    const { data } = await authInstance.get(`/accommodations/${id}`, {
+      params: {
+        startDate: reservationStartDate,
+        endDate: reservationEndDate,
+        guest: member,
+        accommodationId: id,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.error("error get accommodation info:", error);
+  }
 };
 
 export const postCart = async (
@@ -58,7 +57,6 @@ export const postReservation = async (
   stayDuration: number,
 ) => {
   const { accessToken } = getLocalStorage();
-
   try {
     const { data } = await authInstance.post("/payment/instant", {
       headers: {
