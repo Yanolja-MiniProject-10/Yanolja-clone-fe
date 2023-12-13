@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 import { paymentDataState } from "../recoil/paymentData";
-import RoomList from "../../../components/RoomList";
+import RoomList from "../../../components/roomList/RoomList";
 import TransportationRadio from "./TransportationRadio";
 import { CartData } from "../../../types";
 import * as common from "../../cart/styles/cartRoom";

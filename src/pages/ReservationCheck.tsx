@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import RoomList from "../components/RoomList";
+import RoomList from "../components/roomList/RoomList";
 import { updateTransportation } from "../feature/reservationCheck/reservationCheck.util";
 import { ReservationCheckData } from "../feature/reservationCheck/reservationCheck.types";
 import { Loading, LoadingWrapper } from "../styles/loading";
