@@ -30,18 +30,14 @@ export const postCart = async (
   reservationEndDate: string,
   stayDuration: number,
 ) => {
-  try {
-    const { data } = await authInstance.post("/carts", {
-      roomOptionId,
-      numberOfGuest,
-      reservationStartDate,
-      reservationEndDate,
-      stayDuration,
-    });
-    return data;
-  } catch (error) {
-    console.error("Error posting cart:", error);
-  }
+  const { data } = await authInstance.post("/carts", {
+    roomOptionId,
+    numberOfGuest,
+    reservationStartDate,
+    reservationEndDate,
+    stayDuration,
+  });
+  return data;
 };
 
 export const postReservation = async (
@@ -51,16 +47,12 @@ export const postReservation = async (
   reservationEndDate: string,
   stayDuration: number,
 ) => {
-  try {
-    const { data } = await authInstance.post("/payment/instant", {
-      roomOptionId,
-      numberOfGuest,
-      reservationStartDate,
-      reservationEndDate,
-      stayDuration,
-    });
-    return data;
-  } catch (error) {
-    console.error("Error posting reservation:", error);
-  }
+  const { data } = await authInstance.post("/payment/instant", {
+    roomOptionId,
+    numberOfGuest,
+    reservationStartDate,
+    reservationEndDate,
+    stayDuration,
+  });
+  return data;
 };

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { postCart } from "../../api";
 import { PostCart } from "../../accommodationInformation.types";
@@ -7,8 +6,6 @@ import { cartButtonState } from "../../recoil/cartButtonDisabled";
 
 export const usePostCart = () => {
   const queryClient = useQueryClient();
-
-  const navigation = useNavigate();
 
   const setIsButtonDisabled = useSetRecoilState(cartButtonState);
 
@@ -20,10 +17,6 @@ export const usePostCart = () => {
       setIsButtonDisabled(true);
       queryClient.invalidateQueries({ queryKey: ["fetchCarts"] });
       setTimeout(() => setIsButtonDisabled(false), 3000);
-    },
-    onError: () => {
-      window.alert("장바구니에 상품을 추가하는 과정에서 문제가 발생했습니다. 메인화면으로 돌아갑니다.");
-      navigation("/");
     },
   });
 };
