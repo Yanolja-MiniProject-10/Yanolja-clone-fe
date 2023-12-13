@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { AccommodationMemberDefault } from "../../feature/accommodation/accommodation.types";
+import { AccommodationMemberDefault } from "../feature/accommodation/accommodation.types";
 import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();

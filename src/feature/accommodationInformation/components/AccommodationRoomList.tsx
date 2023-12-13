@@ -3,10 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import * as style from "../styles/accommodationRoomList";
 import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
 import { RoomListProps } from "../accommodationInformation.types";
-import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
+import { accommodationDateState } from "../../../recoil/accommodationDate";
 import { useRecoilValue } from "recoil";
 import { handleDateParam } from "../../accommodation/accommodation.utils";
-import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
+import { accommodationMemberState } from "../../../recoil/accommodationMember";
 import { useEffect } from "react";
 import AccommodationRoomListSkeleton from "./AccommodationRoomListSkeleton";
 

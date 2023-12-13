@@ -1,7 +1,7 @@
 import * as style from "../styles/AccommodationSearchResult";
 import { useRecoilValue } from "recoil";
-import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
-import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
+import { accommodationDateState } from "../../../recoil/accommodationDate";
+import { accommodationMemberState } from "../../../recoil/accommodationMember";
 import { useAccommodationsSearchQuery } from "../hooks/search.hooks";
 import { useState, KeyboardEvent, useEffect } from "react";
 import { AccommodationSetSearchResultParams } from "../search.types";

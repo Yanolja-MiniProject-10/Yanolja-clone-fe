@@ -1,7 +1,25 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const AccommodationContentBox = styled.div``;
+export const AccommodationContentBox = styled.div`
+  & .infinite-scroll-component__outerdiv {
+    height: 85vh;
+    max-height: 85vh;
+  }
+
+  * > {
+    &::-webkit-scrollbar {
+      width: 8px;
+      display: none;
+      overflow-y: scroll;
+      border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+    }
+  }
+`;
 
 export const AccommodationContentTitleParagraph = styled.p`
   padding: 1rem 0;
@@ -16,23 +34,12 @@ export const AccommodationContentLink = styled(Link)`
 `;
 
 export const AccommodationContentGrid = styled.div`
-  max-height: 70vh;
+  max-height: 85vh;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
   overflow: scroll;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-    display: none;
-    overflow-y: scroll;
-    border-radius: 6px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 6px;
-  }
 
   > a:nth-child(even) > div {
     border-right: none;
@@ -73,7 +80,6 @@ export const AccommodationContentGridContainer = styled.div`
   }
 
   @media screen and (width < 400px) {
-    // padding: -
     flex-direction: column;
     margin-bottom: 1rem;
     > img {

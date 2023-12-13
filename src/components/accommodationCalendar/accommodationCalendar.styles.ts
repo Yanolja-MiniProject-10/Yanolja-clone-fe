@@ -2,7 +2,7 @@ import { IoClose } from "react-icons/io5";
 import styled, { css } from "styled-components";
 
 export const CalendarLayout = styled.div<{ $isCalendarShow: boolean }>`
-  width: 100vw;
+  width: 100%;
   height: 100%;
 
   display: flex;
@@ -120,19 +120,6 @@ export const CalendarContainer = styled.div`
       .react-datepicker__header {
         display: none;
       }
-      // .react-datepicker__header.react-datepicker__header--custom {
-      //   background-color: white;
-      //   border: none;
-      // }
-      // .react-datepicker__day-names {
-      //   display: none;
-      // }
-    }
-
-    .react-datepicker__week {
-      // display: flex;
-      // justify-content: center;
-      // gap: 1rem;
     }
 
     .react-datepicker__day-names {
@@ -157,11 +144,6 @@ export const CalendarContainer = styled.div`
       width: 3rem;
       line-height: 3rem;
     }
-
-    // .react-datepicker__day {
-    //   width: 3rem;
-    //   height: 3rem;
-    // }
     .react-datepicker__day:nth-child(1) {
       color: #dd2e5f;
     }
@@ -177,8 +159,6 @@ export const CalendarCloseBox = styled.div`
 
   display: flex;
   justify-content: flex-end;
-
-  // position: fixed;
 `;
 
 export const CalenderCloseIcon = styled(IoClose)`
@@ -192,7 +172,7 @@ export const CalenderCloseIcon = styled(IoClose)`
 `;
 
 export const CalendarNav = styled.nav`
-  width: 100vw;
+  width: 100%;
   height: 60px;
 
   display: flex;
