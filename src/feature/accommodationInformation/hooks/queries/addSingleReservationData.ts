@@ -27,9 +27,5 @@ export const usePostSingleReservation = () => {
         },
       });
     },
-    onError: () => {
-      window.alert("상품 예약 과정에서 문제가 발생했습니다. 메인화면으로 돌아갑니다.");
-      navigation("/");
-    },
   });
 };

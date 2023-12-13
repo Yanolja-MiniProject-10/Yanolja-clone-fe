@@ -21,7 +21,7 @@ const Reservation = () => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const postPaymentCartPayload: PostPaymentCartPayload = { ...location.state };
-  const { mutateAsync: postPaymentCart, status } = usePostPaymentCart();
+  const { mutateAsync: postPaymentCart } = usePostPaymentCart();
   const [paymentData, setPaymentData] = useRecoilState(paymentDataState);
   const setRadioData = useSetRecoilState(radioDataState);
   const navigation = useNavigate();
@@ -34,17 +34,22 @@ const Reservation = () => {
           paymentData,
           setPaymentData,
         });
-      } catch (e) {
-        if (axios.isAxiosError(e) && e.response) {
-          if (e.response.status === 405 || e.response.status === 401) {
+      } catch (error) {
+        if (axios.isAxiosError(error) && error.response) {
+          if (error.response.status === 401 || error.response.status === 405) {
             setUser({
               accessToken: "",
               refreshToken: "",
             });
-            setIsLoginModal(true);
+            window.alert("인증 오류가 발생했습니다. 로그인을 다시 해주세요.");
+            navigation("/login");
           } else {
-            console.error(e.response);
+            window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+            navigation("/");
           }
+        } else {
+          window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+          navigation("/");
         }
       }
     };
@@ -60,12 +65,6 @@ const Reservation = () => {
 
     return () => clearInterval(loadingTimer);
   }, []);
-
-  if (status === "error") {
-    window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
-    navigation("/");
-    return null;
-  }
 
   return isLoading || paymentData.cartId === -1 ? (
     <LoadingWrapper>
