@@ -37,7 +37,6 @@ const AccommodationInfoCalender = () => {
   }, [startDate, endDate]);
 
   useEffect(() => {
-    // const prevHistoryIdx = getSessionValue("historyIdx");
     const thisPage = pathname.split("/")[1];
     if (thisPage !== prevHistoryPage) {
       const tomorrow = getTomorrow();

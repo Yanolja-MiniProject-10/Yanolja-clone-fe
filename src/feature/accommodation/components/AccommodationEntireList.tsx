@@ -9,7 +9,6 @@ import { accommodationRegionState } from "../../../recoil/accommodationRegion";
 import { setSessionValue } from "../../../util/searchSessionValue";
 import { Loading, LoadingWrapper } from "../../../styles/loading";
 import { useNavigate } from "react-router-dom";
-// import { useInfiniteQuery } from "@tanstack/react-query";
 
 const AccommodationEntireList = () => {
   const [accommodations, setAccommodations] = useState<AccommodationProps[]>([]);
@@ -25,28 +24,9 @@ const AccommodationEntireList = () => {
     region,
   });
 
-  const xxx = useAccommodationsListQuery({
-    startDate,
-    endDate,
-    guest,
-    region,
-  });
-
-  console.log(xxx);
-
-  // const { data, fetchNextPage, hasNextPage, isLoading, isError } = useInfiniteQuery(
-  //   ["accommodationEntireList"],
-  //   ({ pageParam = 1 }) => fetchAccommodation({ page: pageParam, content: "list", view: 5 }),
-  //   {
-  //     getNextPageParam: (listPage, allPosts) => {
-  //       return lastPage.page !== allPosts[0].totalPage ? lastPage.page + 1 : undefined;
-  //     },
-  //   },
-  // );
-
   useEffect(() => {
-    if (status === "success" && data?.data.content) {
-      setAccommodations(data?.data.content);
+    if (status === "success" && data?.data?.content) {
+      setAccommodations(data?.data?.content);
     } else if (status === "error") {
       window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
       navigate("/");
