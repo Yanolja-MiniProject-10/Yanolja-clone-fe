@@ -1,5 +1,5 @@
-import { RoomListProps } from "../cart.types";
-import * as style from "../styles/roomList";
+import { RoomListProps } from "./roomList.types";
+import * as style from "./roomList.styles";
 
 const RoomList = ({ roomOption }: RoomListProps) => {
   return (

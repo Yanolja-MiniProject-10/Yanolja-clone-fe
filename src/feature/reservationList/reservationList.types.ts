@@ -14,6 +14,11 @@ export interface PaymentRoomOption {
   transportation: string;
 }
 
+export interface PayedRoomOptionProps {
+  roomOption: PaymentRoomOption;
+  isCanceled: boolean;
+}
+
 export interface PaymentAccommodation {
   accommodationId: number;
   name: string;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { PaymentData } from "../reservationList.types";
 import * as cartStyle from "../../cart/styles/cartRoom";
-import * as reserStyle from "../../reservation/styles/reservationRooms";
 import * as style from "../styles/payedRooms";
 import ReservationCancelModal from "./ReservationCancelModal";
+import PayedRoomOptions from "./PayedRoomOptions";
 
 const PayedRooms = ({ paymentData }: { paymentData: PaymentData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,19 +28,7 @@ const PayedRooms = ({ paymentData }: { paymentData: PaymentData }) => {
 
           {accommodation.roomOptions.map(roomOption => (
             <div key={`room-option-${roomOption.paymentProductId}`}>
-              <reserStyle.RoomOptions>
-                <reserStyle.RoomOptionImg src={roomOption.thumbnailImage} alt="숙소 사진" $isPaymentId={isCanceled} />
-
-                <reserStyle.RoomOptionsText>
-                  <reserStyle.RoomOptionsName>{roomOption.name}</reserStyle.RoomOptionsName>
-                  <span>
-                    {roomOption.reservationStartDate} ~ {roomOption.reservationEndDate} | {roomOption.stayDuration} 박
-                  </span>
-                  <reserStyle.RoomOptionsCapacity>{roomOption.numberOfGuest} 인</reserStyle.RoomOptionsCapacity>
-                </reserStyle.RoomOptionsText>
-
-                <reserStyle.RoomOptionsPrice>{roomOption.totalPrice.toLocaleString()} 원</reserStyle.RoomOptionsPrice>
-              </reserStyle.RoomOptions>
+              <PayedRoomOptions roomOption={roomOption} isCanceled={isCanceled} />
 
               <style.RoomOptionsTrans>
                 <span>방문 수단</span>
