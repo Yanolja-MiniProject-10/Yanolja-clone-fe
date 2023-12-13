@@ -41,6 +41,8 @@ const SignUp = () => {
   const [hasEmailCheck, setHasEmailCheck] = useState<boolean>(false); // 이메일 중복 확인 여부
   const [isConfirmPassword, setIsConfirmPassword] = useState<boolean>(false); // 비밀번호 일치 여부
 
+  const [isSubmitting, setIsSubmitting] = useState(false); // 회원가입 제출 여부 확인
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { id, value } = e.target;
 
@@ -165,6 +167,9 @@ const SignUp = () => {
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>, email: string, password: string, name: string) => {
     e.preventDefault();
 
+    if (isSubmitting) return; // 이미 제출 중이면 반환
+    setIsSubmitting(true); // 제출 중으로 상태 변경
+
     try {
       const data = await postSignUp(email, password, name);
       if (data.status === 201) {
@@ -175,6 +180,8 @@ const SignUp = () => {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsSubmitting(false); // 처리 완료 시 제출 중 상태 변경
     }
   };
 
@@ -239,7 +246,7 @@ const SignUp = () => {
           </div>
           <input type="password" id="confirmPassword" value={formData.confirmPassword} onChange={handleInputChange} />
         </style.FormItem>
-        <style.Button type="submit" disabled={!isValid}>
+        <style.Button type="submit" disabled={!isValid || isSubmitting}>
           회원가입
         </style.Button>
       </style.Form>
