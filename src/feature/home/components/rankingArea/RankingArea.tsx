@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRankingAccommodations } from "../../hooks/queries/home.hooks";
 import { HomeInnerContainer, Title } from "../../styles/homeCommon";
@@ -6,14 +7,14 @@ import { RankingWrapper } from "../../styles/rankingArea/rankingArea";
 
 const RankingArea = () => {
   const { data: accommodations, status } = useRankingAccommodations();
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
-  if (status === "error") {
-    window.alert("잘못된 접근입니다. 다시 시도해 주세요.");
-    navigation("/");
-    return null;
-  }
-
+  useEffect(() => {
+    if (status === "error") {
+      window.alert("잘못된 접근입니다. 다시 시도해 주세요.");
+      navigate("/");
+    }
+  }, [status]);
   return (
     <HomeInnerContainer>
       <Title>예약 숙소 랭킹</Title>
