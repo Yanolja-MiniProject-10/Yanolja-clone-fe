@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { HomeInnerContainer, Title } from "../../styles/homeCommon";
 import RegionAreaTabs from "./RegionAreaTabs";
@@ -15,13 +15,14 @@ import "swiper/css/thumbs";
 const RegionArea = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | null>(null);
   const { data: regions, status } = useRegionList();
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
-  if (status === "error") {
-    window.alert("잘못된 접근입니다. 다시 시도해 주세요.");
-    navigation("/");
-    return null;
-  }
+  useEffect(() => {
+    if (status === "error") {
+      window.alert("잘못된 접근입니다. 다시 시도해 주세요.");
+      navigate("/");
+    }
+  }, [status]);
 
   return (
     <HomeInnerContainer>

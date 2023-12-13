@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { HomeInnerContainer } from "../../styles/homeCommon";
 import { useFestivalInfo } from "../../hooks/queries/home.hooks";
@@ -12,13 +13,14 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const FestivalCarousel = () => {
   const { data: festivals, isFetching, status } = useFestivalInfo();
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
-  if (status === "error") {
-    window.alert("잘못된 접근입니다. 다시 시도해 주세요.");
-    navigation("/");
-    return null;
-  }
+  useEffect(() => {
+    if (status === "error") {
+      window.alert("잘못된 접근입니다. 다시 시도해 주세요.");
+      navigate("/");
+    }
+  }, [status]);
 
   return (
     <HomeInnerContainer style={{ marginTop: "3rem" }}>
