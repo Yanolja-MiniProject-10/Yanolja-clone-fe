@@ -7,6 +7,9 @@ import { useRecoilValue } from "recoil";
 import { accommodationMemberState } from "../recoil/accommodationMember";
 import { accommodationDateState } from "../recoil/accommodationDate";
 import { handleDateParam } from "../feature/accommodation/accommodation.utils";
+import { useEffect } from "react";
+import AccommodationRoomInfoSkeleton from "../feature/accommodationRoom/components/AccommodationRoomInfoSkeleton";
+import BottomBarSkeleton from "../feature/accommodationRoom/components/BottomBarSkeleton";
 
 const AccommodationRoom = () => {
   const { roomOptionId } = useParams();
@@ -24,23 +27,32 @@ const AccommodationRoom = () => {
     reservationEndDate = dateArray![1];
   }
 
-  const { status, data, error } = useRoomInfoQuery({
+  const { status, data } = useRoomInfoQuery({
     id: roomOptionId,
     reservationStartDate,
     reservationEndDate,
     member: guest,
   });
 
-  if (status === "error") {
-    window.alert("잘못된 접근입니다. 메인 페이지로 이동합니다.");
-    navigation("/");
-    return null;
-  }
+  useEffect(() => {
+    if (status === "error") {
+      window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+      navigation("/");
+      return () => {
+        null;
+      };
+    }
+  }, [navigation, status]);
 
-  return (
+  return status === "pending" ? (
     <Wrapper>
-      <AccommodationRoomInfo status={status} data={data} error={error} />
-      <BottomBar status={status} data={data} error={error} />
+      <AccommodationRoomInfoSkeleton />
+      <BottomBarSkeleton />
+    </Wrapper>
+  ) : (
+    <Wrapper>
+      <AccommodationRoomInfo data={data} />
+      <BottomBar data={data} />
     </Wrapper>
   );
 };

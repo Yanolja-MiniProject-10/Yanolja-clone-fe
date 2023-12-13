@@ -1,14 +1,14 @@
 import AccommodationRoomItem from "./AccommodationRoomItem";
 import { useParams, useNavigate } from "react-router-dom";
 import * as style from "../styles/accommodationRoomList";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";
 import { RoomListProps } from "../accommodationInformation.types";
 import { accommodationDateState } from "../../../recoil/accommodationDate";
 import { useRecoilValue } from "recoil";
 import { handleDateParam } from "../../accommodation/accommodation.utils";
 import { accommodationMemberState } from "../../../recoil/accommodationMember";
+import { useEffect } from "react";
+import AccommodationRoomListSkeleton from "./AccommodationRoomListSkeleton";
 
 const AccommodationRoomList = () => {
   const { accommodationId } = useParams();
@@ -33,33 +33,19 @@ const AccommodationRoomList = () => {
     member: guest,
   });
 
-  if (status === "pending") {
-    return (
-      <style.Wrapper style={{ zIndex: 0 }}>
-        {[...Array(4)].map((_, index) => (
-          <style.SkeletonBox key={index}>
-            <style.SkeletonRoomImgWrapper>
-              <Skeleton width={270} height={180} style={{ borderRadius: "10px" }} />
-            </style.SkeletonRoomImgWrapper>
-            <style.RoomInfo>
-              <style.SkeletonRoomTopWrapper>
-                <Skeleton height={30} width={180} />
-                <Skeleton width={240} height={20} />
-              </style.SkeletonRoomTopWrapper>
-              <Skeleton height={25} width={170} />
-              <Skeleton height={15} width={100} />
-            </style.RoomInfo>
-          </style.SkeletonBox>
-        ))}
-      </style.Wrapper>
-    );
-  } else if (status === "error") {
-    window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
-    navigation("/");
-    return null;
-  }
+  useEffect(() => {
+    if (status === "error") {
+      window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+      navigation("/");
+      return () => {
+        null;
+      };
+    }
+  }, [navigation, status]);
 
-  return (
+  return status === "pending" ? (
+    <AccommodationRoomListSkeleton />
+  ) : (
     <style.Wrapper>
       <style.ChooseRoomText>객실 선택</style.ChooseRoomText>
       {data.data.roomOptions.map((room: RoomListProps) => (

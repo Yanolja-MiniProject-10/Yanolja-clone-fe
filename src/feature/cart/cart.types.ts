@@ -14,10 +14,6 @@ export interface CartListHeaderProps {
 
 export type CartRoomProps = Pick<CartListHeaderProps, "accommodations" | "setIsSelectAll">;
 
-export interface RoomListProps {
-  roomOption: RoomOption;
-}
-
 export interface CartModalProps {
   selectedRooms: RoomOption[] | [];
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;

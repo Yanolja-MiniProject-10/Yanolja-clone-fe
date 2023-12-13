@@ -27,6 +27,14 @@ export interface PostCart {
   stayDuration: number;
 }
 
+export interface PostSingleReservation {
+  roomOptionId: number;
+  numberOfGuest: number;
+  reservationStartDate: string;
+  reservationEndDate: string;
+  stayDuration: number;
+}
+
 export interface CartButtonProps {
   available: boolean;
   roomOptionId: number;
