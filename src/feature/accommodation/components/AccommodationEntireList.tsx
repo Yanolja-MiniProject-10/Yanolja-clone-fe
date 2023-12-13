@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { AccommodationProps } from "../accommodation.types";
-import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
-import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
+import { accommodationDateState } from "../../../recoil/accommodationDate";
+import { accommodationMemberState } from "../../../recoil/accommodationMember";
 import { useRecoilValue } from "recoil";
 import { useAccommodationsListQuery } from "../hooks/accommodation.hooks";
 import AccommodationContent from "../../../components/accommodation/AccommodationContent";
-import { accommodationRegionState } from "../../../recoil/accommodation/accommodationRegion";
+import { accommodationRegionState } from "../../../recoil/accommodationRegion";
 import { setSessionValue } from "../../../util/searchSessionValue";
 import { Loading, LoadingWrapper } from "../../../styles/loading";
 import { useNavigate } from "react-router-dom";

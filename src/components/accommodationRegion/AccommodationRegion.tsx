@@ -1,6 +1,6 @@
 import * as style from "../../feature/accommodation/styles/accommodationInfo";
 import { useSetRecoilState } from "recoil";
-import { accommodationRegionState } from "../../recoil/accommodation/accommodationRegion";
+import { accommodationRegionState } from "../../recoil/accommodationRegion";
 
 const AccommodationRegion = () => {
   const setAccommodationRegionState = useSetRecoilState(accommodationRegionState);

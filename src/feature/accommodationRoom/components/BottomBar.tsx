@@ -1,8 +1,8 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import * as style from "../styles/bottomBar";
 import { RoomInfoProps } from "../RoomInformation.types";
-import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
-import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
+import { accommodationMemberState } from "../../../recoil/accommodationMember";
+import { accommodationDateState } from "../../../recoil/accommodationDate";
 import { handleDateParam } from "../../accommodation/accommodation.utils";
 import LoginModal from "../../../components/loginModal/LoginModal";
 import CartButton from "../../accommodationInformation/components/CartButton";

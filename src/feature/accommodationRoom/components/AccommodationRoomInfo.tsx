@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { RoomInfoProps } from "../RoomInformation.types";
 import { useRecoilValue } from "recoil";
-import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
+import { accommodationMemberState } from "../../../recoil/accommodationMember";
 
 const AccommodationRoomInfo = ({ data }: RoomInfoProps) => {
   const [toast, setToast] = useRecoilState(toastState);
