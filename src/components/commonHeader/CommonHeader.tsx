@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { BiHome } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import { useMemo, memo } from "react";
 
 const CommonHeader = () => {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const CommonHeader = () => {
     }
   };
 
-  const isMatchingPath = ["/cart", "/accommodation", "/profile"].includes(pathname);
+  const isMatchingPath = useMemo(() => ["/cart", "/accommodation", "/profile"].includes(pathname), [pathname]);
 
   return (
     <Container>
@@ -76,4 +77,4 @@ const CommonHeader = () => {
   );
 };
 
-export default CommonHeader;
+export default memo(CommonHeader);
