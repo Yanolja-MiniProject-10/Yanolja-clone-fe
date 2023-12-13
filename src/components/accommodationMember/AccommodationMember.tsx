@@ -1,7 +1,7 @@
-import * as style from "./AccommodationMember";
+import * as style from "./accommodationMember.styles";
 import { MemberProps } from "./accommodationMember.types";
 import { useSetRecoilState } from "recoil";
-import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember";
+import { accommodationMemberState } from "../../recoil/accommodationMember";
 import { useEffect, useState } from "react";
 
 const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: MemberProps) => {
@@ -9,12 +9,6 @@ const AccommodationMember = ({ isMemberShow, setIsMemberShow, memberNumber }: Me
   const [memberCount, setMemberCount] = useState(memberNumber);
   const [minusDisabled, setMinusDisabled] = useState(false);
   const [plusDisabled, setPlusDisabled] = useState(false);
-
-  // useEffect(() => {
-  //   if (memberCount !== memberNumber) {
-  //     setMemberCount(memberNumber);
-  //   }
-  // }, [memberNumber]);
 
   useEffect(() => {
     if (!isMemberShow) {

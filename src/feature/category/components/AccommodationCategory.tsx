@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import AccommodationContent from "../../../components/accommodation/AccommodationContent";
 import { useRecoilValue } from "recoil";
-import { accommodationDateState } from "../../../recoil/accommodation/accommodationDate";
-import { accommodationMemberState } from "../../../recoil/accommodation/accommodationMember";
+import { accommodationDateState } from "../../../recoil/accommodationDate";
+import { accommodationMemberState } from "../../../recoil/accommodationMember";
 import { AccommodationProps } from "../../accommodation/accommodation.types";
 import { useAccommodationsCategoryQuery } from "../hooks/category.hooks";
 import { useLocation } from "react-router-dom";

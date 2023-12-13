@@ -2,7 +2,7 @@ import { IoClose } from "react-icons/io5";
 import styled, { css } from "styled-components";
 
 export const MemberLayout = styled.div<{ $isMemberShow: boolean }>`
-  width: 100vw;
+  width: 100%;
   height: 100%;
 
   display: flex;
@@ -98,7 +98,7 @@ export const MemberContentPeoplePick = styled.div`
 `;
 
 export const MemberNav = styled.nav`
-  width: 100vw;
+  width: 100%;
   height: 60px;
 
   display: flex;

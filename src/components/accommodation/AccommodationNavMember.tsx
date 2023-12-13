@@ -2,7 +2,7 @@ import { IoPeople } from "react-icons/io5";
 import * as style from "../../feature/accommodation/styles/accommodationInfo.ts";
 import { useRecoilValue } from "recoil";
 import { useState } from "react";
-import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember.ts";
+import { accommodationMemberState } from "../../recoil/accommodationMember.ts";
 import AccommodationMember from "../accommodationMember/AccommodationMember.tsx";
 
 const AccommodationInfoMember = () => {

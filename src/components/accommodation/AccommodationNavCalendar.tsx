@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { accommodationDateState } from "../../recoil/accommodation/accommodationDate.ts";
+import { accommodationDateState } from "../../recoil/accommodationDate.ts";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { handleDateString } from "../../feature/accommodation/accommodation.utils.ts";
 import * as style from "../../feature/accommodation/styles/accommodationInfo.ts";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import AccommodationCalendar from "../accommodationCalendar/AccommodationCalendar.tsx";
 import { getSessionValue } from "../../util/searchSessionValue.tsx";
-import { accommodationMemberState } from "../../recoil/accommodation/accommodationMember.ts";
+import { accommodationMemberState } from "../../recoil/accommodationMember.ts";
 import { getTomorrow } from "../../util/getTomorrow.tsx";
 import { useLocation } from "react-router-dom";
-import { accommodationRegionState } from "../../recoil/accommodation/accommodationRegion.ts";
+import { accommodationRegionState } from "../../recoil/accommodationRegion.ts";
 
 const AccommodationInfoCalender = () => {
   const [isCalendarShow, setIsCalendarShow] = useState<boolean>(false);
@@ -37,7 +37,6 @@ const AccommodationInfoCalender = () => {
   }, [startDate, endDate]);
 
   useEffect(() => {
-    // const prevHistoryIdx = getSessionValue("historyIdx");
     const thisPage = pathname.split("/")[1];
     if (thisPage !== prevHistoryPage) {
       const tomorrow = getTomorrow();
