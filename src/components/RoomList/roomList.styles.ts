@@ -18,12 +18,11 @@ export const RoomOptionImg = styled.img<{ $isPaymentId?: boolean }>`
 
   object-fit: cover;
 
-  opacity: 1;
   opacity: ${props => (props.$isPaymentId ? 0.5 : 1)};
 `;
 
 export const RoomOptionsText = styled.div`
-  width: 75%;
+  width: 80%;
   height: 100%;
 
   display: flex;
@@ -47,7 +46,7 @@ export const RoomOptionsCapacity = styled.span`
 `;
 
 export const RoomOptionsPrice = styled.span`
-  width: 25%;
+  width: 110px;
 
   text-align: end;
   font-size: ${({ theme }) => theme.fontSize.xs};

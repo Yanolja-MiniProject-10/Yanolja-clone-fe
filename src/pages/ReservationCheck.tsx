@@ -1,10 +1,10 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import RoomList from "../components/RoomList";
 import { updateTransportation } from "../feature/reservationCheck/reservationCheck.util";
 import { ReservationCheckData } from "../feature/reservationCheck/reservationCheck.types";
 import { Loading, LoadingWrapper } from "../styles/loading";
 import * as cartStyle from "../feature/cart/styles/cartRoom";
-import * as reserStyle from "../feature/reservation/styles/reservationRooms";
 import * as style from "../feature/reservationCheck/styles/reservationCheck";
 
 const ReservationCheck = () => {
@@ -50,21 +50,7 @@ const ReservationCheck = () => {
 
             {accommodation.roomOptions.map(roomOption => (
               <div key={`room-option-${roomOption.cartProductId}`}>
-                <reserStyle.RoomOptions>
-                  <reserStyle.RoomOptionImg src={roomOption.thumbnailImage} alt="숙소 사진" />
-
-                  <reserStyle.RoomOptionsText>
-                    <reserStyle.RoomOptionsName>{roomOption.name}</reserStyle.RoomOptionsName>
-                    <span>
-                      {roomOption.reservationStartDate} ~ {roomOption.reservationEndDate} | {roomOption.stayDuration} 박
-                    </span>
-                    <reserStyle.RoomOptionsCapacity>{roomOption.capacity} 인</reserStyle.RoomOptionsCapacity>
-                  </reserStyle.RoomOptionsText>
-
-                  <reserStyle.RoomOptionsPrice>
-                    {(roomOption.pricePerNight * roomOption.stayDuration).toLocaleString()} 원
-                  </reserStyle.RoomOptionsPrice>
-                </reserStyle.RoomOptions>
+                <RoomList roomOption={roomOption} />
 
                 <style.RoomOptionsTrans>
                   <span>방문 수단</span>
