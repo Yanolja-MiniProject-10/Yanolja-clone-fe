@@ -395,168 +395,157 @@ $ npm run dev
 <details>
 <summary>신현진</summary>
 
-- **숙소 이미지 깜빡임 관련**
+<br/>
+
+ **(숙소 이미지 깜빡임 관련)**
     
     
-    숙소 상세 페이지의 주소는 다음과 같이 구성되어 있습니다.
-    `/accommodation/:id` (숙소 고유 id)
+  숙소 상세 페이지의 주소는 다음과 같이 구성되어 있습니다.
+  `/accommodation/:id` (숙소 고유 id)
+
+  <br/>
+  
+  #### ❓ 문제
+  
+  숙소 a의 상세 페이지에 들어갔다 나온 뒤 또 다른 숙소 b의 상세 페이지에 들어갔을 때,  숙소 a의 이미지가 잠깐 보였다가 b의 이미지로 바뀌면서 깜빡이는 것 처럼 보이는 현상이 있었습니다.
+  
+  <br/>
+
+  #### 💡해결
+  
+  - getAccommodationInfoData 함수를 통해 숙소 상세 정보를 받아오는 API를 호출하고 있는 React-Query를 활용한 코드입니다.
+  
+  - **이전 방식**
+      
+      ```jsx
+      export const useAccommodationInfoQuery = ({
+        id,
+        reservationStartDate,
+        reservationEndDate,
+        member,
+      }: AccommodationInfoParams) => {
+        const { startDate, endDate } = useRecoilValue(accommodationDateState);
+        const { guest } = useRecoilValue(accommodationMemberState);
+        return useQuery({
+          queryKey: ["getAccommodationInfoData", startDate, endDate, guest],
+          queryFn: () => getAccommodationInfoData({ id, reservationStartDate, reservationEndDate, member }),
+        });
+      };
+      ```
+      
+      - 리팩토링 전에는 queryKey에 id를 작성하지 않았습니다.
+   
+        <br/>
+        
+  - **리팩토링 후**
+      - queryKey 배열에 id를 추가로 작성해주었습니다.
+      
+      ```jsx
+      //생략
+        return useQuery({
+          queryKey: ["getAccommodationInfoData", startDate, endDate, guest, id],
+          queryFn: () => getAccommodationInfoData({ id, reservationStartDate, reservationEndDate, member }),
+        });
+      };
+      ```
+        
+    <br/>
+    <br/>
+
+**(장바구니 연속 호출 방지)**
+    
+    
+  로그인 된 상태일 때, 숙소 상세 페이지 혹은 방 상세 페이지에서 장바구니 버튼을 누르면 3초간 Toast가 뜨도록 구현했습니다.
+  
+  <br/>
+  
+  #### ❓ 문제
+  
+  Toast가 뜨는 3초 동안 사용자가 또 다시 장바구니 버튼을 누르게 되었을 때 Toast가 중복해서 뜨지는 않지만 장바구니에 상품이 추가되는 상황이 발생합니다.
+
+  <br/>
+  
+  #### 💡해결
+  
+  - postCart 함수를 통해 장바구니에 상품을 추가하는 API를 호출하고 있는 React-Query를 활용한 코드입니다.
 
     <br/>
-    
-    ##### ❓ 문제
-    
-    숙소 a의 상세 페이지에 들어갔다 나온 뒤 또 다른 숙소 b의 상세 페이지에 들어갔을 때,  숙소 a의 이미지가 잠깐 보였다가 b의 이미지로 바뀌면서 깜빡이는 것 처럼 보이는 현상이 있었습니다.
-    
-    <br/>
-
-    ##### 💡해결
-    
-    - getAccommodationInfoData 함수를 통해 숙소 상세 정보를 받아오는 API를 호출하고 있는 React-Query를 활용한 코드입니다.
-    
-    - **이전 방식**
-        
-        ```jsx
-        export const useAccommodationInfoQuery = ({
-          id,
-          reservationStartDate,
-          reservationEndDate,
-          member,
-        }: AccommodationInfoParams) => {
-          const { startDate, endDate } = useRecoilValue(accommodationDateState);
-          const { guest } = useRecoilValue(accommodationMemberState);
-          return useQuery({
-            queryKey: ["getAccommodationInfoData", startDate, endDate, guest],
-            queryFn: () => getAccommodationInfoData({ id, reservationStartDate, reservationEndDate, member }),
-          });
-        };
-        ```
-        
-        - 리팩토링 전에는 queryKey에 id를 작성하지 않았습니다.
-     
-          <br/>
+  
+  - **리팩토링 후**
+      - onSuccess 함수 내부에 setTimeout 메서드를 사용해서 Toast가 떠있는 시간 (3초) 동안에 버튼을 disabled 상태가 되도록 했습니다.
           
-    - **리팩토링 후**
-        - queryKey 배열에 id를 추가로 작성해주었습니다.
-        
-        ```jsx
-        //생략
-          return useQuery({
-            queryKey: ["getAccommodationInfoData", startDate, endDate, guest, id],
-            queryFn: () => getAccommodationInfoData({ id, reservationStartDate, reservationEndDate, member }),
-          });
-        };
-        ```
-        
-    <br/>
-
-    ##### ❗결과
-    
-    1. **캐시 분리**: 리팩토링 후에 각 **`id`**에 대한 별도의 캐시가 생성되어, 서로 다른 숙박 시설에 대한 정보를 더 효과적으로 관리할 수 있게 되었습니다.
-    
-    2. **쿼리 호출의 정확성 강화**: **`queryKey`**가 더 다양한 정보를 포함하므로, 쿼리 호출이 더 정확하게 이루어질 수 있습니다. 특히, **`id`**를 추가함으로써 해당 숙박 시설에 대한 정보를 정확하게 가져올 수 있게 되었습니다.
-
-    <br/>
-    <br/>
-
-- **장바구니 연속 호출 방지**
-    
-    
-    로그인 된 상태일 때, 숙소 상세 페이지 혹은 방 상세 페이지에서 장바구니 버튼을 누르면 3초간 Toast가 뜨도록 구현했습니다.
-    
-    <br/>
-    
-    ##### ❓ 문제
-    
-    Toast가 뜨는 3초 동안 사용자가 또 다시 장바구니 버튼을 누르게 되었을 때 Toast가 중복해서 뜨지는 않지만 장바구니에 상품이 추가되는 상황이 발생합니다.
-
-    <br/>
-    
-    ##### 💡해결
-    
-    - postCart 함수를 통해 장바구니에 상품을 추가하는 API를 호출하고 있는 React-Query를 활용한 코드입니다.
- 
-      <br/>
-    
-    - **리팩토링 후**
-        - onSuccess 함수 내부에 setTimeout 메서드를 사용해서 Toast가 떠있는 시간 (3초) 동안에 버튼을 disabled 상태가 되도록 했습니다.
+          ```jsx
+          export const usePostCart = () => {
+            const queryClient = useQueryClient();
+          
+            const navigation = useNavigate();
+          
+            const setIsButtonDisabled = useSetRecoilState(cartButtonState);
+          
+            return useMutation({
+              mutationFn: ({ roomOptionId, numberOfGuest, reservationStartDate, reservationEndDate, stayDuration }: PostCart) => {
+                return postCart(roomOptionId, numberOfGuest, reservationStartDate, reservationEndDate, stayDuration);
+              },
+              onSuccess: () => {
+                setIsButtonDisabled(true);
+                queryClient.invalidateQueries({ queryKey: ["fetchCarts"] });
+                setTimeout(() => setIsButtonDisabled(false), 3000);
+              },
+              onError: () => {
+                window.alert("장바구니에 상품을 추가하는 과정에서 문제가 발생했습니다. 메인화면으로 돌아갑니다.");
+                navigation("/");
+              },
+            });
+          };
+          ```
+          
+      - disabled를 `Recoil` 을 사용한 이유는 실제 CartButton 컴포넌트에서 이를 통해 버튼의 상태를 변경시키기 위함입니다.
+          
+          ```jsx
+          <style.CartButton onClick={() => !cartButtonDisabled && (user.accessToken ? handleAddCart() : setLogInModal(true))}>
+              <style.CartIcon />
+          </style.CartButton>
+          ```
             
-            ```jsx
-            export const usePostCart = () => {
-              const queryClient = useQueryClient();
-            
-              const navigation = useNavigate();
-            
-              const setIsButtonDisabled = useSetRecoilState(cartButtonState);
-            
-              return useMutation({
-                mutationFn: ({ roomOptionId, numberOfGuest, reservationStartDate, reservationEndDate, stayDuration }: PostCart) => {
-                  return postCart(roomOptionId, numberOfGuest, reservationStartDate, reservationEndDate, stayDuration);
-                },
-                onSuccess: () => {
-                  setIsButtonDisabled(true);
-                  queryClient.invalidateQueries({ queryKey: ["fetchCarts"] });
-                  setTimeout(() => setIsButtonDisabled(false), 3000);
-                },
-                onError: () => {
-                  window.alert("장바구니에 상품을 추가하는 과정에서 문제가 발생했습니다. 메인화면으로 돌아갑니다.");
-                  navigation("/");
-                },
-              });
-            };
-            ```
-            
-        - disabled를 `Recoil` 을 사용한 이유는 실제 CartButton 컴포넌트에서 이를 통해 버튼의 상태를 변경시키기 위함입니다.
-            
-            ```jsx
-            <style.CartButton onClick={() => !cartButtonDisabled && (user.accessToken ? handleAddCart() : setLogInModal(true))}>
-                <style.CartIcon />
-            </style.CartButton>
-            ```
-            
-    <br/>
-    
-    ##### ❗결과
-    
-    - 이를 통해 장바구니에 상품을 추가하는 것에 성공했으나 Toast가 띄워져 있을 때에는 중복으로 추가되는 것이 불가능하고, 다른 상품을 추가하기 위해서는 잠시 기다려야 한다는 사실을 사용자에게 제공할 수 있게 되었습니다.
 
 <br/>
 <br/>
 
-- **로그인 모달 버그**
+**(로그인 모달 버그)**
     
     
-    로그인 되지 않은 상태일 때 장바구니 버튼/예약하기 버튼을 누르면 로그인이 필요하다는 모달이 나오게 됩니다.
-    
-    <br/>
-    
-    ##### ❓ 문제
-    
-    로그인을 하지 않은 채로 장바구니 버튼을 누름 → 로그인 모달이 띄워짐 → 로그인 화면으로 이동 → 로그인 진행 → 숙소 상세 페이지 진입
-    
-    위 과정에서 
-    
-    - 로그인을 이미 한 상태임에도
-    - 장바구니/예약하기 버튼을 누르지 않고 그저 상세 페이지로 진입했을 뿐임에도
-    
-    로그인 모달이 띄워지는 버그가 발생하였습니다.
+  로그인 되지 않은 상태일 때 장바구니 버튼/예약하기 버튼을 누르면 로그인이 필요하다는 모달이 나오게 됩니다.
+  
+  <br/>
+  
+  #### ❓ 문제
+  
+  로그인을 하지 않은 채로 장바구니 버튼을 누름 → 로그인 모달이 띄워짐 → 로그인 화면으로 이동 → 로그인 진행 → 숙소 상세 페이지 진입
+  
+  위 과정에서 
+  
+  - 로그인을 이미 한 상태임에도
+  - 장바구니/예약하기 버튼을 누르지 않고 그저 상세 페이지로 진입했을 뿐임에도
+  
+  로그인 모달이 띄워지는 버그가 발생하였습니다.
 
-    <br/>
-    
-    ##### 💡해결
-    
-    - 숙소 상세 페이지에서 `Recoil` 을 사용해 전역으로 관리하는 userState를 가져와 사용합니다.
-    - 이를 useEffect 내부에서 accessToken이 있을 시에 로그인 모달이 닫히도록 처리해주는 것으로 해결하였습니다.
-    
-    ```jsx
-    const user = useRecoilValue(userState);
-    
-    useEffect(() => {
-        //관련 없는 코드이므로 생략
-        if (user.accessToken) {
-          setLogInModal(false);
-        }
-      }, [/*생략*/, user.accessToken]);
-    ```
+  <br/>
+  
+  #### 💡해결
+  
+  - 숙소 상세 페이지에서 `Recoil` 을 사용해 전역으로 관리하는 userState를 가져와 사용합니다.
+  - 이를 useEffect 내부에서 accessToken이 있을 시에 로그인 모달이 닫히도록 처리해주는 것으로 해결하였습니다.
+  
+  ```jsx
+  const user = useRecoilValue(userState);
+  
+  useEffect(() => {
+      //관련 없는 코드이므로 생략
+      if (user.accessToken) {
+        setLogInModal(false);
+      }
+    }, [/*생략*/, user.accessToken]);
+  ```
 
 </details>
 
