@@ -1,6 +1,6 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import * as style from "../styles/accommodationInfo";
-import Toast from "../../../components/Toast/Toast";
+import Toast from "../../../components/toast/Toast";
 import { toastState } from "../../../recoil/toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAccommodationInfoQuery } from "../hooks/queries/fetchData";

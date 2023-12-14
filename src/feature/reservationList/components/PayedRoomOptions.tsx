@@ -1,4 +1,4 @@
-import * as style from "../../../components/RoomList/roomList.styles";
+import * as style from "../../../components/roomList/roomList.styles";
 import { PayedRoomOptionProps } from "../reservationList.types";
 
 const PayedRoomOptions = ({ roomOption, isCanceled }: PayedRoomOptionProps) => {

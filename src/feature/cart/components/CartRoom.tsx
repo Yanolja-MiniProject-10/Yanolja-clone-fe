@@ -2,7 +2,7 @@ import { useState } from "react";
 import { checkedCartRooms } from "../recoil/checkedCartRooms";
 import { useRecoilState } from "recoil";
 import CartModal from "./CartModal";
-import RoomList from "../../../components/RoomList";
+import RoomList from "../../../components/roomList/RoomList";
 import { RoomOption } from "../../../types";
 import { CartRoomProps } from "../cart.types";
 import * as commonStyle from "../../../styles/checkbox";
