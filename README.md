@@ -3,7 +3,7 @@
 <p align="center">
   <img src="public/favicon.ico"  width="100" height="100"/><br/>
   <a href="https://yanolja.vercel.app/">
-    <img src="https://img.shields.io/badge/Yanolja Clone-212125?style=for-the-badge&logoColor=white" alt="배포 링크"/>
+    <img src="https://img.shields.io/badge/배포 링크-212125?style=for-the-badge&logoColor=white" alt="배포 링크"/>
   </a>
 </p>
 
@@ -432,7 +432,9 @@ $ npm run dev
         ```
         
         - 리팩토링 전에는 queryKey에 id를 작성하지 않았습니다.
-        
+     
+          <br/>
+          
     - **리팩토링 후**
         - queryKey 배열에 id를 추가로 작성해주었습니다.
         
@@ -472,6 +474,8 @@ $ npm run dev
     ##### 💡해결
     
     - postCart 함수를 통해 장바구니에 상품을 추가하는 API를 호출하고 있는 React-Query를 활용한 코드입니다.
+ 
+      <br/>
     
     - **리팩토링 후**
         - onSuccess 함수 내부에 setTimeout 메서드를 사용해서 Toast가 떠있는 시간 (3초) 동안에 버튼을 disabled 상태가 되도록 했습니다.
@@ -515,6 +519,8 @@ $ npm run dev
     
     - 이를 통해 장바구니에 상품을 추가하는 것에 성공했으나 Toast가 띄워져 있을 때에는 중복으로 추가되는 것이 불가능하고, 다른 상품을 추가하기 위해서는 잠시 기다려야 한다는 사실을 사용자에게 제공할 수 있게 되었습니다.
 
+<br/>
+<br/>
 
 - **로그인 모달 버그**
     
