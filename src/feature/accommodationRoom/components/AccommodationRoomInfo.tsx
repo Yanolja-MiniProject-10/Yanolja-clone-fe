@@ -1,4 +1,4 @@
-import Toast from "../../../components/Toast/Toast";
+import Toast from "../../../components/toast/Toast";
 import { useRecoilState } from "recoil";
 import { toastState } from "../../../recoil/toast";
 import * as style from "../styles/accommodationRoomInfo";
