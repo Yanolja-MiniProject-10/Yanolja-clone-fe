@@ -13,6 +13,6 @@ export const getRoomInfoData = async ({ id, reservationStartDate, reservationEnd
     });
     return data;
   } catch (error) {
-    console.log("error get room information:", error);
+    console.error("error get room information:", error);
   }
 };

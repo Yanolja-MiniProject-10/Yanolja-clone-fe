@@ -5,3 +5,11 @@ export const getUser = async () => {
 
   return data;
 };
+
+export const putEditUser = async (name: string) => {
+  const data = await authInstance.put("/users", {
+    name: name,
+  });
+
+  return data;
+};

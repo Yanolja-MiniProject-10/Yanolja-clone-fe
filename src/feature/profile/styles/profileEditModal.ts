@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   padding: 1rem;
+  padding-bottom: 0.5rem;
 
-  > div {
-    margin-bottom: 1.5rem;
+  > div:first-of-type {
+    margin-bottom: 1rem;
   }
 
   label {
@@ -36,5 +37,22 @@ export const Form = styled.form`
 
   &:focus-within label {
     color: ${({ theme }) => theme.color.black};
+  }
+`;
+
+export const EditButtonWrapper = styled.div`
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 1.3rem;
+  display: flex;
+  justify-content: space-between;
+
+  > button {
+    background-color: inherit;
+    border: none;
+    transition: 0.4s;
+
+    font-size: ${({ theme }) => theme.fontSize.sm};
+    white-space: nowrap;
   }
 `;
