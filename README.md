@@ -3,7 +3,7 @@
 <p align="center">
   <img src="public/favicon.ico"  width="100" height="100"/><br/>
   <a href="https://yanolja.vercel.app/">
-    <img src="https://img.shields.io/badge/Yanolja Clone-212125?style=for-the-badge&logoColor=white" alt="Yanolja Clone"/>
+    <img src="https://img.shields.io/badge/Yanolja Clone-212125?style=for-the-badge&logoColor=white" alt="배포 링크"/>
   </a>
 </p>
 
@@ -384,6 +384,427 @@ $ npm run dev
 
 - 리코일과 리액트 쿼리를 활용하여 장바구니 구현을 해보면서, 클라이언트 및 서버 상태 관리를 하는데 많은 공부를 할 수 있었습니다.
 
-- 공통 컴포넌트 작업을 하는데 어려움을 겪었습니다. 페이지마다 조금씩 다른 데이터 조건을 하나씩 추가를 하다보니 가독성이 많이 떨어졌고, 결국 다시 분리하여 작업하는 일이 많았습니다. 단순 UI로만 공통 컴포넌트를 묶는것이 아닌, 같은 UI여도 데이터가 어떻게 다른지 생각하여 작업해야겠다고 느꼈습니다.
+- 공통 컴포넌트 작업을 하는데 어려움을 겪었습니다. 페이지마다 조금씩 다른 데이터 조건을 하나씩 추가를 하다보니 가독성이 많이 떨어졌고, 결국 다시 분리하여 작업하는 일이 많았습니다. 단순 UI로만 공통 컴포넌트를 묶는것이 아닌, 같은 UI여도 데이터가 어떻게 다른지 생각하여 작업해야겠다고 느꼈습니다. (리팩토링 과정에서 해당 문제점을 해결하였습니다.)
+
+- 
+
+</details>
+
+## 🧑🏻‍💻 리팩토링
+
+<details>
+<summary>신현진</summary>
+
+- **숙소 이미지 깜빡임 관련**
+    
+    
+    숙소 상세 페이지의 주소는 다음과 같이 구성되어 있습니다.
+    `/accommodation/:id` (숙소 고유 id)
+
+    <br/>
+    
+    ##### ❓ 문제
+    
+    숙소 a의 상세 페이지에 들어갔다 나온 뒤 또 다른 숙소 b의 상세 페이지에 들어갔을 때,  숙소 a의 이미지가 잠깐 보였다가 b의 이미지로 바뀌면서 깜빡이는 것 처럼 보이는 현상이 있었습니다.
+    
+    <br/>
+
+    ##### 💡해결
+    
+    - getAccommodationInfoData 함수를 통해 숙소 상세 정보를 받아오는 API를 호출하고 있는 React-Query를 활용한 코드입니다.
+    
+    - **이전 방식**
+        
+        ```jsx
+        export const useAccommodationInfoQuery = ({
+          id,
+          reservationStartDate,
+          reservationEndDate,
+          member,
+        }: AccommodationInfoParams) => {
+          const { startDate, endDate } = useRecoilValue(accommodationDateState);
+          const { guest } = useRecoilValue(accommodationMemberState);
+          return useQuery({
+            queryKey: ["getAccommodationInfoData", startDate, endDate, guest],
+            queryFn: () => getAccommodationInfoData({ id, reservationStartDate, reservationEndDate, member }),
+          });
+        };
+        ```
+        
+        - 리팩토링 전에는 queryKey에 id를 작성하지 않았습니다.
+        
+    - **리팩토링 후**
+        - queryKey 배열에 id를 추가로 작성해주었습니다.
+        
+        ```jsx
+        //생략
+          return useQuery({
+            queryKey: ["getAccommodationInfoData", startDate, endDate, guest, id],
+            queryFn: () => getAccommodationInfoData({ id, reservationStartDate, reservationEndDate, member }),
+          });
+        };
+        ```
+        
+    <br/>
+
+    ##### ❗결과
+    
+    1. **캐시 분리**: 리팩토링 후에 각 **`id`**에 대한 별도의 캐시가 생성되어, 서로 다른 숙박 시설에 대한 정보를 더 효과적으로 관리할 수 있게 되었습니다.
+    
+    2. **쿼리 호출의 정확성 강화**: **`queryKey`**가 더 다양한 정보를 포함하므로, 쿼리 호출이 더 정확하게 이루어질 수 있습니다. 특히, **`id`**를 추가함으로써 해당 숙박 시설에 대한 정보를 정확하게 가져올 수 있게 되었습니다.
+
+    <br/>
+    <br/>
+
+- **장바구니 연속 호출 방지**
+    
+    
+    로그인 된 상태일 때, 숙소 상세 페이지 혹은 방 상세 페이지에서 장바구니 버튼을 누르면 3초간 Toast가 뜨도록 구현했습니다.
+    
+    <br/>
+    
+    ##### ❓ 문제
+    
+    Toast가 뜨는 3초 동안 사용자가 또 다시 장바구니 버튼을 누르게 되었을 때 Toast가 중복해서 뜨지는 않지만 장바구니에 상품이 추가되는 상황이 발생합니다.
+
+    <br/>
+    
+    ##### 💡해결
+    
+    - postCart 함수를 통해 장바구니에 상품을 추가하는 API를 호출하고 있는 React-Query를 활용한 코드입니다.
+    
+    - **리팩토링 후**
+        - onSuccess 함수 내부에 setTimeout 메서드를 사용해서 Toast가 떠있는 시간 (3초) 동안에 버튼을 disabled 상태가 되도록 했습니다.
+            
+            ```jsx
+            export const usePostCart = () => {
+              const queryClient = useQueryClient();
+            
+              const navigation = useNavigate();
+            
+              const setIsButtonDisabled = useSetRecoilState(cartButtonState);
+            
+              return useMutation({
+                mutationFn: ({ roomOptionId, numberOfGuest, reservationStartDate, reservationEndDate, stayDuration }: PostCart) => {
+                  return postCart(roomOptionId, numberOfGuest, reservationStartDate, reservationEndDate, stayDuration);
+                },
+                onSuccess: () => {
+                  setIsButtonDisabled(true);
+                  queryClient.invalidateQueries({ queryKey: ["fetchCarts"] });
+                  setTimeout(() => setIsButtonDisabled(false), 3000);
+                },
+                onError: () => {
+                  window.alert("장바구니에 상품을 추가하는 과정에서 문제가 발생했습니다. 메인화면으로 돌아갑니다.");
+                  navigation("/");
+                },
+              });
+            };
+            ```
+            
+        - disabled를 `Recoil` 을 사용한 이유는 실제 CartButton 컴포넌트에서 이를 통해 버튼의 상태를 변경시키기 위함입니다.
+            
+            ```jsx
+            <style.CartButton onClick={() => !cartButtonDisabled && (user.accessToken ? handleAddCart() : setLogInModal(true))}>
+                <style.CartIcon />
+            </style.CartButton>
+            ```
+            
+    <br/>
+    
+    ##### ❗결과
+    
+    - 이를 통해 장바구니에 상품을 추가하는 것에 성공했으나 Toast가 띄워져 있을 때에는 중복으로 추가되는 것이 불가능하고, 다른 상품을 추가하기 위해서는 잠시 기다려야 한다는 사실을 사용자에게 제공할 수 있게 되었습니다.
+
+
+- **로그인 모달 버그**
+    
+    
+    로그인 되지 않은 상태일 때 장바구니 버튼/예약하기 버튼을 누르면 로그인이 필요하다는 모달이 나오게 됩니다.
+    
+    <br/>
+    
+    ##### ❓ 문제
+    
+    로그인을 하지 않은 채로 장바구니 버튼을 누름 → 로그인 모달이 띄워짐 → 로그인 화면으로 이동 → 로그인 진행 → 숙소 상세 페이지 진입
+    
+    위 과정에서 
+    
+    - 로그인을 이미 한 상태임에도
+    - 장바구니/예약하기 버튼을 누르지 않고 그저 상세 페이지로 진입했을 뿐임에도
+    
+    로그인 모달이 띄워지는 버그가 발생하였습니다.
+
+    <br/>
+    
+    ##### 💡해결
+    
+    - 숙소 상세 페이지에서 `Recoil` 을 사용해 전역으로 관리하는 userState를 가져와 사용합니다.
+    - 이를 useEffect 내부에서 accessToken이 있을 시에 로그인 모달이 닫히도록 처리해주는 것으로 해결하였습니다.
+    
+    ```jsx
+    const user = useRecoilValue(userState);
+    
+    useEffect(() => {
+        //관련 없는 코드이므로 생략
+        if (user.accessToken) {
+          setLogInModal(false);
+        }
+      }, [/*생략*/, user.accessToken]);
+    ```
+
+</details>
+
+<details>
+<summary>남현준</summary>
+
+### 캘린더 날짜 설정 / 인원 설정 관련 리팩토링
+
+- 문제
+    - 숙박 상품을 조회하는 경우, 캘린더 컴포넌트 내에서 시작-종료일을 설정하거나, 인원 컴포넌트 내에서 숙박 인원을 변동하려는 경우 오류가 발생하는 경우 발생
+- 기존 코드를 통한 원인 파악
+    
+    ```jsx
+    const setAccommodationDateState = useSetRecoilState(accommodationDateState);
+    const handleDatePick = dates => {
+        const [start, end] = dates;
+        setAccommodationDateState({
+          startDate: start,
+          endDate: end,
+        });
+      };
+    ...
+    <DatePicker
+      selected={startDate}
+      onChange={handleDatePick}
+      selectsRange
+      shouldCloseOnSelect={false}
+      startDate={startDate}
+      endDate={endDate}
+      locale={ko}
+      monthsShown={6}
+      inline
+    />
+    ```
+    
+    - 위와 같이 설정하였을 때, 사용자가 캘린더 안에서 날짜를 클릭할 때마다 react-datepicker 라이브러리의 DatePicker 컴포넌트에서 onChange 메서드가 동작하게 됩니다.
+    - 이로 인해 시작 날짜의 변동이 발생하는데, 시작 날짜만 설정한 시점에서는 끝 날짜를 의미하는 endDate의 값이 null임에도 onChange 메서드에 전달 인자로 넘겨주고 있는 handleDatePick 함수 내에서 useSetRecoilState 훅으로 인해 recoil로 관리하는 날짜 상태의 값에 대한 변경이 이루어지게 되었습니다.
+    - 컴포넌트가 리렌더링되며 새롭게 지정된 시작 날짜와 끝 날짜를 기준으로 상품 전체 조회 메서드를 호출할 때, 유효하지 않은 날짜 데이터(null)을 전달했기 때문에 오류가 발생하게 되었습니다.
+- 개선
+    - 날짜를 선택해도 useSetRecoilState 훅이 돌지 않게 개선
+        
+        ```jsx
+        const handleDatePick = (dates: Array<Date | null>) => {
+            const [start, end] = dates;
+        
+            setStartTime(start!);
+            setEndTime(end!);
+          };
+        ...
+          const handleDateChange = () => {
+            setIsCalendarShow(prev => !prev);
+            setAccommodationDateState({
+              startDate: startTime,
+              endDate: endTime,
+            });
+          };
+        
+        ...
+        
+        <DatePicker
+          selected={startTime}
+          onChange={handleDatePick}
+          selectsRange
+          shouldCloseOnSelect={false}
+          startDate={startTime}
+          endDate={endTime}
+          minDate={new Date()}
+          maxDate={handleMaxDate()}
+          locale={ko}
+          monthsShown={6}
+          inline
+        />
+        <style.CalendarNav>
+          <style.CalendarButton onClick={handleDateChange}>확인</style.CalendarButton>
+        </style.CalendarNav>
+        ```
+        
+        - 기존에는 날짜를 선택한 시점에(onChange 메서드가 동작할 시점) useSetRecoilState 훅이 동작하게 하였지만, 해당 훅이 동작하는 시점을 캘린더 컴포넌트 하단의 확인 버튼을 선택했을 때로 변경하였고, 이를 통해 상품 조회 API 호출시 올바른 날짜 데이터가 포함될 수 있도록 개선할 수 있었으며 기존 오류 역시 해결할 수 있었습니다.
+
+</details>
+
+<details>
+<summary>박은영</summary>
+
+### 메인홈&헤더 리팩토링
+- CommonHeader에서 useMemo, memo 사용
+-  MainHeader 장바구니 개수 불러오는 useQuery 수정
+-> **장바구니 개수 버그** 해결, 홈 버튼, 뒤로가기 버튼으로 **이동 시 에러** 해결
+
+에러 코드
+```
+//기존 하나의 useQuery 이용 시 enabled를 사용하지 않는 경우가 있어 이 부분에서 에러 발생
+
+export const useFetchCarts = (isLoginModal?: boolean) =>
+  useQuery({
+    queryKey: ["fetchCarts"],
+    queryFn: () => fetchCarts(),
+    enabled: isLoginModal,
+  });
+```
+
+에러 해결
+```
+//useQuery 분리 후 enabled 조건을 user로 변경
+
+export const useFetchCarts = () =>
+  useQuery({
+    queryKey: ["fetchCarts"],
+    queryFn: () => fetchCarts(),
+  });
+
+export const useFetchCartCount = (user: UserToken) =>
+  useQuery({
+    queryKey: ["fetchCarts"],
+    queryFn: () => fetchCarts(),
+    enabled: !!user.accessToken,
+  });
+```
+
+</details>
+
+<details>
+<summary>이연수</summary>
+
+#### 회원가입 버튼 연속 클릭 방지
+* 문제 : 회원가입 버튼 연속 클릭 시 API 중복 호출되는 이슈
+* 해결 : 버튼 클릭 여부를 확인할 수 있는 state를 선언하여 제출중/제출완료 상태를 체크해서 button ```disabled``` 설정
+  ```tsx
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>, email: string, password: string, name: string) => {
+      e.preventDefault();
+  
+      if (isSubmitting) return; // 이미 제출 중이면 반환
+      setIsSubmitting(true); // 제출 중으로 상태 변경
+  
+      try {
+        const data = await postSignUp(email, password, name);
+        if (data.status === 201) {
+          alert("회원가입되었습니다.");
+          navigate("/login");
+        } else {
+          alert("회원가입에 실패하였습니다.");
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsSubmitting(false); // 처리 완료 시 제출 중 상태 변경
+      }
+    };
+  ```
+<br/>
+
+#### Refresh Token 만료 시 재로그인 로직 추가
+* 문제 : Access Token 만료 시 재발급받는 로직만 있어서 Refresh Token 만료 시 에러 발생 
+* 해결 : Refresh Token 만료 시 로그인 페이지로 이동하게 해서 재로그인하는 로직 추가
+<br />
+  
+#### 401, 405 에러 핸들링
+* 문제 : Token을 사용하는 API 호출 시 에러 핸들링이 불안정해 중복 alert 창이 뜨던 이슈
+* 해결 : API를 호출하는 컴포넌트 내에서 ```try catch``` 문으로 공통된 에러 처리 패턴 사용
+  ```tsx
+    if (error.response.status === 401 || error.response.status === 405) {
+      setUser({
+        accessToken: "",
+        refreshToken: "",
+      });
+      window.alert("인증 오류가 발생했습니다. 로그인을 다시 해주세요.");
+      navigate("/login");
+    } else {
+      window.alert("사용 중 문제가 발생했습니다. 메인에서 다시 시도해주세요.");
+      navigate("/");
+    }
+  }
+  ```
+<br/>
+
+#### 프로필 수정 버튼 ```submit``` 으로 변경
+* 문제 : 프로필 수정 모달에서 엔터키 입력 시 변경되지 않고 모달만 닫히던 이슈
+* 해결 : 프로필 수정 버튼 type을 submit으로 변경
+<br/>
+
+#### 공통 헤더를 가지는 instance 생성
+* 문제 : 같은 헤더를 사용하는 API들의 중복되는 코드 발생
+* 해결 : 공통 instance를 생성하여 사용
+  ```tsx
+  const authInstance = axios.create({
+    baseURL: "https://ybe-mini.site/",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: accessToken,
+    },
+  });
+  ```
+
+</details>
+
+<details>
+<summary>최지훈</summary>
+
+### 💡 문제
+- 공통 컴포넌트 분리 작업에서의 의존성 파악 능력 부족  
+
+- 여러 곳에서 함께 사용하는 컴포넌트가 시간이 갈수록 전달받는 속성과 조건문이 추가되면서 수정하기엔 몸집이 너무 커지는 현상을 경험하였습니다.  
+    
+### 💡 해결 방식
+- 관련 아티클 정독 후 정리 및 공통 컴포넌트 생성
+
+- FE 의존성에 대한 아티클을 정독하고 Blog에 해당 내용을 정리하였습니다. [blog 글 발행](https://cs-yum-blog.vercel.app/blog/Front-End%20%EC%9D%98%EC%A1%B4%EC%84%B1)  
+
+- 공통 컴포넌트로 묶으려고 시도했던 각 페이지에서 요구하는 props와 상태, 함수, 컴포넌트, 타입을 하나씩 확인해 보았습니다.
+
+- 공통 컴포넌트가 시간이 지날수록 수정하기 어려웠던 이유는 타입 의존성를 고려하지 않았기 때문이었습니다.
+
+- 장바구니에서 페이지에서의 숙소 리스트와 예약 내역 확인 페이지에서 사용하는 숙소의 정보가 UI 측면에서는 동일했지만, 결제 전과 결제 후의 숙소 데이터 관리 방식이 달라지기 때문에 타입이 서로 달랐습니다.
+
+    ```tsx
+    // 장바구니 페이지에서의 숙소 리스트 타입
+
+    export interface RoomOption {
+    cartProductId: number;
+    roomOptionId: number;
+    name: string;
+    thumbnailImage: string;
+    capacity: number;
+    pricePerNight: number;
+    reservationStartDate: string;
+    reservationEndDate: string;
+    stayDuration: number;
+    transportation?: string;
+    totalPrice?: number;
+    }
+    ```
+
+    ```tsx
+    // 예약 내역 확인 페이지에서의 숙소 리스트 타입
+
+    export interface PaymentRoomOption {
+    paymentProductId: number;
+    accommodationId: number;
+    roomOptionId: number;
+    name: string;
+    thumbnailImage: string;
+    capacity: number;
+    pricePerNight: number;
+    totalPrice: number;
+    reservationStartDate: string;
+    reservationEndDate: string;
+    stayDuration: number;
+    numberOfGuest: number;
+    transportation: string;
+    }
+    ```
+
+- 장바구니 페이지에서 RoomOption 타입을 사용하는 숙소 리스트의 경우 모두 공통 컴포넌트로 쉽게 묶을 수 있었습니다.
+
+- 예약 내역 확인 페이지에서의 숙소 리스트 컴포넌트의 경우 독립적으로 관리하는 것으로 결정하였습니다.
 
 </details>
